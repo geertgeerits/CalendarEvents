@@ -11,7 +11,7 @@
 // Thanks to ...: Gerald Versluis
 
 using Plugin.Maui.CalendarStore;
-using static System.Net.Mime.MediaTypeNames;
+using System.Numerics;
 
 namespace CalendarEvents
 {
@@ -22,22 +22,39 @@ namespace CalendarEvents
             InitializeComponent();
         }
 
-        private async void OnCounterClicked(object sender, EventArgs e)
+        // Get calendar events.
+        private async void OnGetCalendarEventsClicked(object sender, EventArgs e)
         {
+            // Validate input values.
+            bool bIsNumber = int.TryParse(entNumDaysPast.Text, out int nNumDaysPast);
+            if (bIsNumber == false || nNumDaysPast < 0 || nNumDaysPast > 400)
+            {
+                entNumDaysPast.Text = "";
+                entNumDaysPast.Focus();
+                return;
+            }
+
+             bIsNumber = int.TryParse(entNumDaysFuture.Text, out int nNumDaysFuture);
+            if (bIsNumber == false || nNumDaysFuture < 0 || nNumDaysFuture > 400)
+            {
+                entNumDaysFuture.Text = "";
+                entNumDaysFuture.Focus();
+                return;
+            }
+
+
             // Get all the calendars from the device.
             var calendars = await CalendarStore.Default.GetCalendars();
 
-            foreach (var calendar in calendars)
-            {
-                //await DisplayAlert("Calendars", $"{calendar.Name} ({calendar.Id})", "OK");
-            }
+            //foreach (var calendar in calendars)
+            //{
+            //    await DisplayAlert("Calendars", $"{calendar.Name} ({calendar.Id})", "OK");
+            //}
 
             // Get (all) the events from the calendar.
-            var events = await CalendarStore.Default.GetEvents(startDate: DateTimeOffset.Now.AddDays(-1), endDate: DateTimeOffset.Now.AddDays(100));
+            var events = await CalendarStore.Default.GetEvents(startDate: DateTimeOffset.Now.AddDays(- nNumDaysPast), endDate: DateTimeOffset.Now.AddDays(nNumDaysFuture));
             
             string cCalendarEvents = "";
-
-            //await DisplayAlert("Events", $"{ev.Title} ({ev.Id}) Start: {ev.StartDate}", "OK");
 
             if (entSearchWord.Text is null or "")
             {
@@ -52,17 +69,20 @@ namespace CalendarEvents
                 {
                     if (ev.Title.ToLower().Contains(entSearchWord.Text.ToLower()))
                     {
-                        cCalendarEvents = $"{cCalendarEvents}\n{ev.StartDate}, {ev.Title}";
+                        cCalendarEvents = $"{cCalendarEvents}{ev.StartDate}, {ev.Title}\n";
                     }
                 }
             }
 
-            lblCalendarEvents.Text = $"{cCalendarEvents}\n";
-
-            await Clipboard.Default.SetTextAsync(lblCalendarEvents.Text);
+            lblCalendarEvents.Text = cCalendarEvents;
         }
 
-        private async void ButtonShare_Clicked(object sender, EventArgs e)
+        // Copy calendar events to clipboard.
+        private async void OnClipboardButtonClicked(object sender, EventArgs e) =>
+            await Clipboard.Default.SetTextAsync(lblCalendarEvents.Text);   
+
+        // Share calendar events.
+        private async void OnButtonShareClicked(object sender, EventArgs e)
         {
             if (lblCalendarEvents.Text is not null and not "")
             {
@@ -70,14 +90,14 @@ namespace CalendarEvents
             }
         }
 
-        private async Task ShareText(string text)
+        // Share calendar events.
+        private async Task ShareText(string cText)
         {
             await Share.Default.RequestAsync(new ShareTextRequest
             {
-                Text = text,
+                Text = cText,
                 Title = "Share calendar events"
             });
         }
-
     }
 }
