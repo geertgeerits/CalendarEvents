@@ -11,6 +11,7 @@
 // Thanks to ...: Gerald Versluis
 
 using Plugin.Maui.CalendarStore;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace CalendarEvents
 {
@@ -23,19 +24,60 @@ namespace CalendarEvents
 
         private async void OnCounterClicked(object sender, EventArgs e)
         {
+            // Get all the calendars from the device.
             var calendars = await CalendarStore.Default.GetCalendars();
 
             foreach (var calendar in calendars)
             {
-                await DisplayAlert("Calendars", $"{calendar.Name} ({calendar.Id})", "OK");
+                //await DisplayAlert("Calendars", $"{calendar.Name} ({calendar.Id})", "OK");
             }
 
+            // Get (all) the events from the calendar.
             var events = await CalendarStore.Default.GetEvents(startDate: DateTimeOffset.Now.AddDays(-1), endDate: DateTimeOffset.Now.AddDays(100));
+            
+            string cCalendarEvents = "";
 
-            foreach (var ev in events)
+            //await DisplayAlert("Events", $"{ev.Title} ({ev.Id}) Start: {ev.StartDate}", "OK");
+
+            if (entSearchWord.Text is null or "")
             {
-                await DisplayAlert("Events", $"{ev.Title} ({ev.Id}) Start: {ev.StartDate}", "OK");
+                foreach (CalendarEvent ev in events)
+                {
+                    cCalendarEvents = $"{cCalendarEvents}\n{ev.StartDate}, {ev.Title}";
+                }
+            }
+            else
+            {
+                foreach (CalendarEvent ev in events)
+                {
+                    if (ev.Title.ToLower().Contains(entSearchWord.Text.ToLower()))
+                    {
+                        cCalendarEvents = $"{cCalendarEvents}\n{ev.StartDate}, {ev.Title}";
+                    }
+                }
+            }
+
+            lblCalendarEvents.Text = $"{cCalendarEvents}\n";
+
+            await Clipboard.Default.SetTextAsync(lblCalendarEvents.Text);
+        }
+
+        private async void ButtonShare_Clicked(object sender, EventArgs e)
+        {
+            if (lblCalendarEvents.Text is not null and not "")
+            {
+                await ShareText(lblCalendarEvents.Text);
             }
         }
+
+        private async Task ShareText(string text)
+        {
+            await Share.Default.RequestAsync(new ShareTextRequest
+            {
+                Text = text,
+                Title = "Share calendar events"
+            });
+        }
+
     }
 }
