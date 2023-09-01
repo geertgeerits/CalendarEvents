@@ -1,59 +1,97 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:CalendarEvents"
              x:Class="CalendarEvents.MainPage"
              Title="Calendar Events">
 
     <ScrollView>
-        <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto"
-            ColumnDefinitions="170, 170"
+        <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto"
+            ColumnDefinitions="170, 170*"
             RowSpacing="10"
             ColumnSpacing="10"
             Margin="10">
             
             <Label
+                Style="{StaticResource labelStyleDefault}"
                 Grid.Row="0"
                 Grid.Column="0"
-                HorizontalOptions="Start"
                 Text="Search for:">
             </Label>
 
-            <Entry
-                x:Name="entSearchWord"
+            <Border
+                Style="{StaticResource borderStyleDefault}"
                 Grid.Row="0"
                 Grid.Column="1"
-                HorizontalOptions="Start">
-            </Entry>
+>
+                <Entry
+                    x:Name="entSearchWord"
+                    Style="{StaticResource entryStyleDefault}"
+                    HorizontalOptions="Fill"
+                    Text=""
+                    ReturnType="Next"
+                    Completed="GoToNextField"
+                    Focused="EntryFocused">
+                </Entry>
+            </Border>
 
             <Label
+                Style="{StaticResource labelStyleDefault}"
                 Grid.Row="1"
                 Grid.Column="0"
-                HorizontalOptions="Start"
                 Text="Number of days in the past:">
             </Label>
 
-            <Entry
-                x:Name="entNumDaysPast"
+            <Border
+                x:Name="brdNumDaysPast"
+                Style="{StaticResource borderStyleDefault}"
                 Grid.Row="1"
-                Grid.Column="1"
-                HorizontalOptions="Start"
-                Text="0">
-            </Entry>
-            
+                Grid.Column="1">
+
+                <Entry
+                    x:Name="entNumDaysPast"
+                    Style="{StaticResource entryStyleNumericNext}"
+                    Text=""
+                    Placeholder="0 - 400"
+                    MaxLength="3"
+                    Completed="GoToNextField"
+                    Focused="EntryFocused">
+                    <Entry.Triggers>
+                        <EventTrigger Event="TextChanged">
+                            <local:NumericValidationTriggerAction MinValue="0" MaxValue="400" BorderName="brdNumDaysPast"/>
+                        </EventTrigger>
+                    </Entry.Triggers>
+                </Entry>
+            </Border>
+           
             <Label
+                Style="{StaticResource labelStyleDefault}"
                 Grid.Row="2"
                 Grid.Column="0"
-                HorizontalOptions="Start"
                 Text="Number of days in the future:">
             </Label>
 
-            <Entry
-                x:Name="entNumDaysFuture"
+            <Border
+                x:Name="brdNumDaysFuture"
+                Style="{StaticResource borderStyleDefault}"
                 Grid.Row="2"
-                Grid.Column="1"
-                HorizontalOptions="Start"
-                Text="0">
-            </Entry>
+                Grid.Column="1">
+
+                <Entry
+                    x:Name="entNumDaysFuture"
+                    Style="{StaticResource entryStyleNumericDone}"
+                    Text=""
+                    Placeholder="0 - 400"
+                    MaxLength="3"
+                    Completed="GoToNextField"
+                    Focused="EntryFocused">
+                    <Entry.Triggers>
+                        <EventTrigger Event="TextChanged">
+                            <local:NumericValidationTriggerAction MinValue="0" MaxValue="400" BorderName="brdNumDaysFuture"/>
+                        </EventTrigger>
+                    </Entry.Triggers>
+                </Entry>
+            </Border>
 
             <Button
                 Grid.Row="3"
@@ -81,11 +119,19 @@
             </Button>
             
             <Label
+                x:Name="lblCalendarNames"
+                Style="{StaticResource labelStyleDefault}"
                 Grid.Row="5"
                 Grid.Column="0"
-                Grid.ColumnSpan="2"
+                Grid.ColumnSpan="2">
+            </Label>
+
+            <Label
                 x:Name="lblCalendarEvents"
-                HorizontalOptions="Center">
+                Style="{StaticResource labelStyleDefault}"
+                Grid.Row="6"
+                Grid.Column="0"
+                Grid.ColumnSpan="2">
             </Label>
 
         </Grid>

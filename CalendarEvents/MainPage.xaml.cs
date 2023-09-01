@@ -13,91 +13,121 @@
 using Plugin.Maui.CalendarStore;
 using System.Numerics;
 
-namespace CalendarEvents
+namespace CalendarEvents;
+
+public partial class MainPage : ContentPage
 {
-    public partial class MainPage : ContentPage
+    public MainPage()
     {
-        public MainPage()
+        InitializeComponent();
+    }
+
+    // Select all the text in the entry field.
+    private void EntryFocused(object sender, EventArgs e)
+    {
+        var entry = (Entry)sender;
+
+        entry.CursorPosition = entry.Text.Length;
+        entry.CursorPosition = 0;
+        entry.SelectionLength = entry.Text.Length;
+    }
+
+    // Go to the next field when the return key have been pressed.
+    private void GoToNextField(object sender, EventArgs e)
+    {
+        if (sender == entSearchWord)
         {
-            InitializeComponent();
+            entNumDaysPast.Focus();
+        }
+        else if (sender == entNumDaysPast)
+        {
+            entNumDaysFuture.Focus();
+        }
+    }
+
+    // Get calendar events.
+    private async void OnGetCalendarEventsClicked(object sender, EventArgs e)
+    {
+        // Validate input values.
+        bool bIsNumber = int.TryParse(entNumDaysPast.Text, out int nNumDaysPast);
+        if (bIsNumber == false || nNumDaysPast < 0 || nNumDaysPast > 400)
+        {
+            entNumDaysPast.Text = "";
+            entNumDaysPast.Focus();
+            return;
         }
 
-        // Get calendar events.
-        private async void OnGetCalendarEventsClicked(object sender, EventArgs e)
+         bIsNumber = int.TryParse(entNumDaysFuture.Text, out int nNumDaysFuture);
+        if (bIsNumber == false || nNumDaysFuture < 0 || nNumDaysFuture > 400)
         {
-            // Validate input values.
-            bool bIsNumber = int.TryParse(entNumDaysPast.Text, out int nNumDaysPast);
-            if (bIsNumber == false || nNumDaysPast < 0 || nNumDaysPast > 400)
+            entNumDaysFuture.Text = "";
+            entNumDaysFuture.Focus();
+            return;
+        }
+
+        // Close the keyboard.
+        entNumDaysFuture.IsEnabled = false;
+        entNumDaysFuture.IsEnabled = true;
+
+        // Get all the calendars from the device.
+        var calendars = await CalendarStore.Default.GetCalendars();
+        
+        string cCalendarNames = "Calendars: ";
+
+        foreach (var calendar in calendars)
+        {
+            //await DisplayAlert("Calendars", $"{calendar.Name} ({calendar.Id})", "OK");
+            cCalendarNames = $"{cCalendarNames} {calendar.Name}, ";
+        }
+        
+        lblCalendarNames.Text = cCalendarNames;
+
+        // Get (all) the events from the calendar.
+        var events = await CalendarStore.Default.GetEvents(startDate: DateTimeOffset.Now.AddDays(- nNumDaysPast), endDate: DateTimeOffset.Now.AddDays(nNumDaysFuture));
+        
+        string cCalendarEvents = "";
+
+        if (entSearchWord.Text is null or "")
+        {
+            foreach (CalendarEvent ev in events)
             {
-                entNumDaysPast.Text = "";
-                entNumDaysPast.Focus();
-                return;
+                cCalendarEvents = $"{cCalendarEvents}\n{ev.StartDate}, {ev.Title}";
             }
-
-             bIsNumber = int.TryParse(entNumDaysFuture.Text, out int nNumDaysFuture);
-            if (bIsNumber == false || nNumDaysFuture < 0 || nNumDaysFuture > 400)
+        }
+        else
+        {
+            foreach (CalendarEvent ev in events)
             {
-                entNumDaysFuture.Text = "";
-                entNumDaysFuture.Focus();
-                return;
-            }
-
-
-            // Get all the calendars from the device.
-            var calendars = await CalendarStore.Default.GetCalendars();
-
-            //foreach (var calendar in calendars)
-            //{
-            //    await DisplayAlert("Calendars", $"{calendar.Name} ({calendar.Id})", "OK");
-            //}
-
-            // Get (all) the events from the calendar.
-            var events = await CalendarStore.Default.GetEvents(startDate: DateTimeOffset.Now.AddDays(- nNumDaysPast), endDate: DateTimeOffset.Now.AddDays(nNumDaysFuture));
-            
-            string cCalendarEvents = "";
-
-            if (entSearchWord.Text is null or "")
-            {
-                foreach (CalendarEvent ev in events)
+                if (ev.Title.ToLower().Contains(entSearchWord.Text.ToLower()))
                 {
-                    cCalendarEvents = $"{cCalendarEvents}\n{ev.StartDate}, {ev.Title}";
+                    cCalendarEvents = $"{cCalendarEvents}{ev.StartDate}, {ev.Title}\n";
                 }
             }
-            else
-            {
-                foreach (CalendarEvent ev in events)
-                {
-                    if (ev.Title.ToLower().Contains(entSearchWord.Text.ToLower()))
-                    {
-                        cCalendarEvents = $"{cCalendarEvents}{ev.StartDate}, {ev.Title}\n";
-                    }
-                }
-            }
-
-            lblCalendarEvents.Text = cCalendarEvents;
         }
 
-        // Copy calendar events to clipboard.
-        private async void OnClipboardButtonClicked(object sender, EventArgs e) =>
-            await Clipboard.Default.SetTextAsync(lblCalendarEvents.Text);   
+        lblCalendarEvents.Text = cCalendarEvents;
+    }
 
-        // Share calendar events.
-        private async void OnButtonShareClicked(object sender, EventArgs e)
+    // Copy calendar events to clipboard.
+    private async void OnClipboardButtonClicked(object sender, EventArgs e) =>
+        await Clipboard.Default.SetTextAsync(lblCalendarEvents.Text);   
+
+    // Share calendar events.
+    private async void OnButtonShareClicked(object sender, EventArgs e)
+    {
+        if (lblCalendarEvents.Text is not null and not "")
         {
-            if (lblCalendarEvents.Text is not null and not "")
-            {
-                await ShareText(lblCalendarEvents.Text);
-            }
+            await ShareText(lblCalendarEvents.Text);
         }
+    }
 
-        // Share calendar events.
-        private async Task ShareText(string cText)
+    // Share calendar events.
+    private async Task ShareText(string cText)
+    {
+        await Share.Default.RequestAsync(new ShareTextRequest
         {
-            await Share.Default.RequestAsync(new ShareTextRequest
-            {
-                Text = cText,
-                Title = "Share calendar events"
-            });
-        }
+            Text = cText,
+            Title = "Share calendar events"
+        });
     }
 }
