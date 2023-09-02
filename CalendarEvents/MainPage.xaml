@@ -3,11 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:CalendarEvents"
              x:Class="CalendarEvents.MainPage"
-             Title="Calendar Events">
+             Title="Calendar Events"
+             Loaded="OnPageLoaded">
 
     <ScrollView>
         <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto"
-            ColumnDefinitions="170, 170*"
+            ColumnDefinitions="170, 130*"
             RowSpacing="10"
             ColumnSpacing="10"
             Margin="10">
@@ -29,7 +30,6 @@
                     Style="{StaticResource entryStyleDefault}"
                     HorizontalOptions="Fill"
                     Text=""
-                    ReturnType="Next"
                     Completed="GoToNextField"
                     Focused="EntryFocused">
                 </Entry>
@@ -51,14 +51,14 @@
                 <Entry
                     x:Name="entNumDaysPast"
                     Style="{StaticResource entryStyleNumericNext}"
-                    Text=""
-                    Placeholder="0 - 400"
-                    MaxLength="3"
+                    Text="0"
+                    Placeholder="0 - 4000"
+                    MaxLength="4"
                     Completed="GoToNextField"
                     Focused="EntryFocused">
                     <Entry.Triggers>
                         <EventTrigger Event="TextChanged">
-                            <local:NumericValidationTriggerAction MinValue="0" MaxValue="400" BorderName="brdNumDaysPast"/>
+                            <local:NumericValidationTriggerAction MinValue="0" MaxValue="4000" BorderName="brdNumDaysPast"/>
                         </EventTrigger>
                     </Entry.Triggers>
                 </Entry>
@@ -80,20 +80,21 @@
                 <Entry
                     x:Name="entNumDaysFuture"
                     Style="{StaticResource entryStyleNumericDone}"
-                    Text=""
-                    Placeholder="0 - 400"
-                    MaxLength="3"
+                    Text="31"
+                    Placeholder="0 - 4000"
+                    MaxLength="4"
                     Completed="GoToNextField"
                     Focused="EntryFocused">
                     <Entry.Triggers>
                         <EventTrigger Event="TextChanged">
-                            <local:NumericValidationTriggerAction MinValue="0" MaxValue="400" BorderName="brdNumDaysFuture"/>
+                            <local:NumericValidationTriggerAction MinValue="0" MaxValue="4000" BorderName="brdNumDaysFuture"/>
                         </EventTrigger>
                     </Entry.Triggers>
                 </Entry>
             </Border>
 
             <Button
+                x:Name="btnGetCalendarEvents"
                 Grid.Row="3"
                 Grid.Column="0"
                 Grid.ColumnSpan="2"
@@ -106,7 +107,7 @@
                 Grid.Row="4"
                 Grid.Column="0"
                 Text="Copy to clipboard"
-                HorizontalOptions="Center"
+                HorizontalOptions="Start"
                 Clicked="OnClipboardButtonClicked">
             </Button>
             
@@ -114,25 +115,33 @@
                 Grid.Row="4"
                 Grid.Column="1"
                 Text="Share calendar events"
-                HorizontalOptions="Center"
+                HorizontalOptions="End"
                 Clicked="OnButtonShareClicked">
             </Button>
-            
-            <Label
-                x:Name="lblCalendarNames"
-                Style="{StaticResource labelStyleDefault}"
+
+            <Border
+                Style="{StaticResource borderStyleDefault}"
                 Grid.Row="5"
                 Grid.Column="0"
                 Grid.ColumnSpan="2">
-            </Label>
+                
+                <Label
+                    x:Name="lblCalendarNames"
+                    Style="{StaticResource labelStyleDefault}">
+                </Label>
+            </Border>
 
-            <Label
-                x:Name="lblCalendarEvents"
-                Style="{StaticResource labelStyleDefault}"
+            <Border
+                Style="{StaticResource borderStyleDefault}"
                 Grid.Row="6"
                 Grid.Column="0"
                 Grid.ColumnSpan="2">
-            </Label>
+                
+                <Label
+                    x:Name="lblCalendarEvents"
+                    Style="{StaticResource labelStyleDefault}">
+                </Label>
+            </Border>
 
         </Grid>
     </ScrollView>

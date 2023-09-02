@@ -2,7 +2,7 @@
 // Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
 // Copyright ...: (C) 2023-2023
 // Version .....: 1.0.1
-// Date ........: 2023-09-01 (YYYY-MM-DD)
+// Date ........: 2023-09-02 (YYYY-MM-DD)
 // Language ....: Microsoft Visual Studio 2022: .NET 7.0 MAUI C# 11.0
 // Description .: Read calendar events to share
 // Dependencies : NuGet Package: Plugin.Maui.CalendarStore by Gerald Versluis ; https://github.com/jfversluis/Plugin.Maui.CalendarStore
@@ -11,7 +11,6 @@
 // Thanks to ...: Gerald Versluis
 
 using Plugin.Maui.CalendarStore;
-using System.Numerics;
 
 namespace CalendarEvents;
 
@@ -20,6 +19,13 @@ public partial class MainPage : ContentPage
     public MainPage()
     {
         InitializeComponent();
+    }
+
+    // Set focus to the first entry field (workaround for !!!BUG!!! ?).
+    // Add in the header of the xaml page: 'Loaded="OnPageLoaded"'
+    private void OnPageLoaded(object sender, EventArgs e)
+    {
+        entSearchWord.Focus();
     }
 
     // Select all the text in the entry field.
@@ -43,6 +49,10 @@ public partial class MainPage : ContentPage
         {
             entNumDaysFuture.Focus();
         }
+        else if (sender == entNumDaysFuture)
+        {
+            btnGetCalendarEvents.Focus();
+        }
     }
 
     // Get calendar events.
@@ -50,7 +60,7 @@ public partial class MainPage : ContentPage
     {
         // Validate input values.
         bool bIsNumber = int.TryParse(entNumDaysPast.Text, out int nNumDaysPast);
-        if (bIsNumber == false || nNumDaysPast < 0 || nNumDaysPast > 400)
+        if (bIsNumber == false || nNumDaysPast < 0 || nNumDaysPast > 4000)
         {
             entNumDaysPast.Text = "";
             entNumDaysPast.Focus();
@@ -58,7 +68,7 @@ public partial class MainPage : ContentPage
         }
 
          bIsNumber = int.TryParse(entNumDaysFuture.Text, out int nNumDaysFuture);
-        if (bIsNumber == false || nNumDaysFuture < 0 || nNumDaysFuture > 400)
+        if (bIsNumber == false || nNumDaysFuture < 0 || nNumDaysFuture > 4000)
         {
             entNumDaysFuture.Text = "";
             entNumDaysFuture.Focus();
@@ -69,38 +79,75 @@ public partial class MainPage : ContentPage
         entNumDaysFuture.IsEnabled = false;
         entNumDaysFuture.IsEnabled = true;
 
+        // Get the UTC offset.
+        string cUtcOffset = TimeZoneInfo.Local.GetUtcOffset(DateTime.Now).ToString();
+        //await DisplayAlert("", "UTC offset: " + cUtcOffset, "OK");
+        int nUtcOffset = Convert.ToInt32(TimeZoneInfo.Local.GetUtcOffset(DateTime.Now).TotalHours);
+        //await DisplayAlert("", "UTC offset: " + nUtcOffset, "OK");
+
         // Get all the calendars from the device.
         var calendars = await CalendarStore.Default.GetCalendars();
-        
+
+        //DisplayAlert("", Convert.ToString(calendars.Length), "OK");
+        //string[,] calendarArray = new string[calendars.Length, 2];
+
+        //for (int i = 0; i < calendars.Length; i++)
+        //{
+        //    calendarArray[i, 0] = calendars[i].Name;
+        //    calendarArray[i, 1] = calendars[i].Id.ToString();
+        //}
+
         string cCalendarNames = "Calendars: ";
 
         foreach (var calendar in calendars)
         {
-            //await DisplayAlert("Calendars", $"{calendar.Name} ({calendar.Id})", "OK");
-            cCalendarNames = $"{cCalendarNames} {calendar.Name}, ";
+            cCalendarNames = $"{cCalendarNames} {calendar.Name} ({calendar.Id}), ";
         }
         
         lblCalendarNames.Text = cCalendarNames;
 
         // Get (all) the events from the calendar.
-        var events = await CalendarStore.Default.GetEvents(startDate: DateTimeOffset.Now.AddDays(- nNumDaysPast), endDate: DateTimeOffset.Now.AddDays(nNumDaysFuture));
-        
+        var events = await CalendarStore.Default.GetEvents(startDate: DateTimeOffset.UtcNow.AddDays(-nNumDaysPast), endDate: DateTimeOffset.UtcNow.AddDays(nNumDaysFuture));
+
         string cCalendarEvents = "";
+        string cTemp;
 
         if (entSearchWord.Text is null or "")
         {
             foreach (CalendarEvent ev in events)
             {
-                cCalendarEvents = $"{cCalendarEvents}\n{ev.StartDate}, {ev.Title}";
+                if (Convert.ToString(ev.StartDate).Contains("+00:00"))
+                {
+                    //cCalendarEvents = $"{cCalendarEvents}{ev.StartDate.AddHours(nUtcOffset)}, {ev.Title}\n";
+                    cTemp = $"{ev.StartDate.AddHours(nUtcOffset)}";
+                    cTemp = cTemp.Replace("+00:00", "+" + cUtcOffset[..5]);
+                    cCalendarEvents = $"{cCalendarEvents}{cTemp}, {ev.Title}\n";
+                }
+                else
+                {
+                    cCalendarEvents = $"{cCalendarEvents}{ev.StartDate}, {ev.Title}\n";
+                }
             }
         }
         else
         {
+            string cSearchWord = entSearchWord.Text.ToLower().Trim();
+
             foreach (CalendarEvent ev in events)
             {
-                if (ev.Title.ToLower().Contains(entSearchWord.Text.ToLower()))
+                if (ev.Title.ToLower().Contains(cSearchWord))
                 {
-                    cCalendarEvents = $"{cCalendarEvents}{ev.StartDate}, {ev.Title}\n";
+                    if (Convert.ToString(ev.StartDate).Contains("+00:00"))
+                    {
+                        //cCalendarEvents = $"{cCalendarEvents}{ev.StartDate.AddHours(nUtcOffset)}, {ev.Title}\n";
+                        cTemp = $"{ev.StartDate.AddHours(nUtcOffset)}";
+                        cTemp = cTemp.Replace("+00:00", "+" + cUtcOffset[..5]);
+                        cCalendarEvents = $"{cCalendarEvents}{cTemp}, {ev.Title}\n";
+                    }
+                    else
+                    {
+                        cCalendarEvents = $"{cCalendarEvents}{ev.StartDate}, {ev.Title}\n";
+                    }
                 }
             }
         }
@@ -130,4 +177,23 @@ public partial class MainPage : ContentPage
             Title = "Share calendar events"
         });
     }
+
+    // Get the UTC offset.
+    //private TimeSpan GetUtcOffset()
+    //{
+    //    TimeZoneInfo localZone = TimeZoneInfo.Local;
+    //    DateTime currentDate = DateTime.Now;
+    //    TimeSpan currentOffset;
+
+    //    if (localZone.IsDaylightSavingTime(currentDate))
+    //    {
+    //        currentOffset = localZone.GetUtcOffset(currentDate);
+    //    }
+    //    else
+    //    {
+    //        currentOffset = localZone.BaseUtcOffset;
+    //    }
+
+    //    return currentOffset;
+    //}
 }
