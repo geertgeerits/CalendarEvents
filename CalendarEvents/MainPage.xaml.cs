@@ -1,7 +1,7 @@
 ﻿// Program .....: CalendarEvents.sln
 // Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
 // Copyright ...: (C) 2023-2023
-// Version .....: 1.0.1
+// Version .....: 1.0.2
 // Date ........: 2023-09-02 (YYYY-MM-DD)
 // Language ....: Microsoft Visual Studio 2022: .NET 7.0 MAUI C# 11.0
 // Description .: Read calendar events to share
@@ -11,14 +11,32 @@
 // Thanks to ...: Gerald Versluis
 
 using Plugin.Maui.CalendarStore;
+using System.Globalization;
 
 namespace CalendarEvents;
 
 public partial class MainPage : ContentPage
 {
+    // Local variables.
+    private bool bDateFormatSystem = true;
+    private string cSysDateFormat = "";
+    private string cDateFormat = "";
+
     public MainPage()
     {
         InitializeComponent();
+
+        // Get the system date format and set the date format.
+        cSysDateFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern;
+
+        if (bDateFormatSystem == true)
+        {
+            cDateFormat = cSysDateFormat;
+        }
+        else
+        {
+            cDateFormat = "yyyy-MM-dd";
+        }
     }
 
     // Set focus to the first entry field (workaround for !!!BUG!!! ?).
@@ -80,10 +98,8 @@ public partial class MainPage : ContentPage
         entNumDaysFuture.IsEnabled = true;
 
         // Get the UTC offset.
-        string cUtcOffset = TimeZoneInfo.Local.GetUtcOffset(DateTime.Now).ToString();
-        //await DisplayAlert("", "UTC offset: " + cUtcOffset, "OK");
-        int nUtcOffset = Convert.ToInt32(TimeZoneInfo.Local.GetUtcOffset(DateTime.Now).TotalHours);
-        //await DisplayAlert("", "UTC offset: " + nUtcOffset, "OK");
+        //string cUtcOffset = TimeZoneInfo.Local.GetUtcOffset(DateTime.Now).ToString()[..5];
+        //double nUtcOffset = Convert.ToDouble(TimeZoneInfo.Local.GetUtcOffset(DateTime.Now).TotalHours);
 
         // Get all the calendars from the device.
         var calendars = await CalendarStore.Default.GetCalendars();
@@ -110,7 +126,8 @@ public partial class MainPage : ContentPage
         var events = await CalendarStore.Default.GetEvents(startDate: DateTimeOffset.UtcNow.AddDays(-nNumDaysPast), endDate: DateTimeOffset.UtcNow.AddDays(nNumDaysFuture));
 
         string cCalendarEvents = "";
-        string cTemp;
+        string cStartDate;
+        DateTime dStartDate;
 
         if (entSearchWord.Text is null or "")
         {
@@ -118,10 +135,9 @@ public partial class MainPage : ContentPage
             {
                 if (Convert.ToString(ev.StartDate).Contains("+00:00"))
                 {
-                    //cCalendarEvents = $"{cCalendarEvents}{ev.StartDate.AddHours(nUtcOffset)}, {ev.Title}\n";
-                    cTemp = $"{ev.StartDate.AddHours(nUtcOffset)}";
-                    cTemp = cTemp.Replace("+00:00", "+" + cUtcOffset[..5]);
-                    cCalendarEvents = $"{cCalendarEvents}{cTemp}, {ev.Title}\n";
+                    dStartDate = DateTime.Parse(Convert.ToString(ev.StartDate));
+                    cStartDate = dStartDate.ToString(cDateFormat + " HH:mm zzz");
+                    cCalendarEvents = $"{cCalendarEvents}{cStartDate}, {ev.Title}\n";
                 }
                 else
                 {
@@ -139,10 +155,9 @@ public partial class MainPage : ContentPage
                 {
                     if (Convert.ToString(ev.StartDate).Contains("+00:00"))
                     {
-                        //cCalendarEvents = $"{cCalendarEvents}{ev.StartDate.AddHours(nUtcOffset)}, {ev.Title}\n";
-                        cTemp = $"{ev.StartDate.AddHours(nUtcOffset)}";
-                        cTemp = cTemp.Replace("+00:00", "+" + cUtcOffset[..5]);
-                        cCalendarEvents = $"{cCalendarEvents}{cTemp}, {ev.Title}\n";
+                        dStartDate = DateTime.Parse(Convert.ToString(ev.StartDate));
+                        cStartDate = dStartDate.ToString(cDateFormat + " HH:mm zzz");
+                        cCalendarEvents = $"{cCalendarEvents}{cStartDate}, {ev.Title}\n";
                     }
                     else
                     {
@@ -177,23 +192,4 @@ public partial class MainPage : ContentPage
             Title = "Share calendar events"
         });
     }
-
-    // Get the UTC offset.
-    //private TimeSpan GetUtcOffset()
-    //{
-    //    TimeZoneInfo localZone = TimeZoneInfo.Local;
-    //    DateTime currentDate = DateTime.Now;
-    //    TimeSpan currentOffset;
-
-    //    if (localZone.IsDaylightSavingTime(currentDate))
-    //    {
-    //        currentOffset = localZone.GetUtcOffset(currentDate);
-    //    }
-    //    else
-    //    {
-    //        currentOffset = localZone.BaseUtcOffset;
-    //    }
-
-    //    return currentOffset;
-    //}
 }
