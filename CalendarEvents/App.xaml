@@ -5,7 +5,7 @@
              x:Class="CalendarEvents.App">
     <Application.Resources>
         <ResourceDictionary>
-            <Color x:Key="Primary">#75F94D</Color>
+            <Color x:Key="Primary">Gold</Color>
             <Color x:Key="Light">#e2e2e2</Color>
             <Color x:Key="Dark">#303030</Color>
             <Color x:Key="White">White</Color>

@@ -11,32 +11,66 @@
 // Thanks to ...: Gerald Versluis
 
 using Plugin.Maui.CalendarStore;
-using System.Globalization;
 
 namespace CalendarEvents;
 
 public partial class MainPage : ContentPage
 {
     // Local variables.
-    private bool bDateFormatSystem = true;
-    private string cSysDateFormat = "";
-    private string cDateFormat = "";
+    private string cCopyright;
+    private string cLicenseText;
+    private readonly bool bLicense;
 
     public MainPage()
     {
         InitializeComponent();
 
-        // Get the system date format and set the date format.
-        cSysDateFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern;
+        // Get the saved settings.License
+        Globals.cTheme = Preferences.Default.Get("SettingTheme", "System");
+        Globals.bDateFormatSystem = Preferences.Default.Get("SettingDateFormatSystem", true);
+        Globals.cLanguage = Preferences.Default.Get("SettingLanguage", "");
+        bLicense = Preferences.Default.Get("SettingLicense", false);
 
-        if (bDateFormatSystem == true)
+        // Set the theme.
+        if (Globals.cTheme == "Light")
         {
-            cDateFormat = cSysDateFormat;
+            Application.Current.UserAppTheme = AppTheme.Light;
+        }
+        else if (Globals.cTheme == "Dark")
+        {
+            Application.Current.UserAppTheme = AppTheme.Dark;
         }
         else
         {
-            cDateFormat = "yyyy-MM-dd";
+            Application.Current.UserAppTheme = AppTheme.Unspecified;
         }
+
+        // Get the system date format and set the date format.
+        Globals.cSysDateFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern;
+
+        if (Globals.bDateFormatSystem == true)
+        {
+            Globals.cDateFormat = Globals.cSysDateFormat;
+        }
+        else
+        {
+            Globals.cDateFormat = "yyyy-MM-dd";
+        }
+
+        // Get and set the system OS user language.
+        try
+        {
+            if (string.IsNullOrEmpty(Globals.cLanguage))
+            {
+                Globals.cLanguage = Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName;
+            }
+        }
+        catch (Exception)
+        {
+            Globals.cLanguage = "en";
+        }
+
+        SetTextLanguage();
     }
 
     // Set focus to the first entry field (workaround for !!!BUG!!! ?).
@@ -136,7 +170,7 @@ public partial class MainPage : ContentPage
                 if (Convert.ToString(ev.StartDate).Contains("+00:00"))
                 {
                     dStartDate = DateTime.Parse(Convert.ToString(ev.StartDate));
-                    cStartDate = dStartDate.ToString(cDateFormat + " HH:mm zzz");
+                    cStartDate = dStartDate.ToString(Globals.cDateFormat + " HH:mm zzz");
                     cCalendarEvents = $"{cCalendarEvents}{cStartDate}, {ev.Title}\n";
                 }
                 else
@@ -156,7 +190,7 @@ public partial class MainPage : ContentPage
                     if (Convert.ToString(ev.StartDate).Contains("+00:00"))
                     {
                         dStartDate = DateTime.Parse(Convert.ToString(ev.StartDate));
-                        cStartDate = dStartDate.ToString(cDateFormat + " HH:mm zzz");
+                        cStartDate = dStartDate.ToString(Globals.cDateFormat + " HH:mm zzz");
                         cCalendarEvents = $"{cCalendarEvents}{cStartDate}, {ev.Title}\n";
                     }
                     else
@@ -198,5 +232,32 @@ public partial class MainPage : ContentPage
             Text = cText,
             Title = "Share calendar events"
         });
+    }
+
+    // Put text in the chosen language in the controls.
+    private void SetTextLanguage()
+    {
+        // Set the CurrentUICulture.
+        //Globals.cLanguage = "es";  // For testing.
+        //App.Current.MainPage.DisplayAlert("Globals.cLanguage", Globals.cLanguage, "OK");  // For testing.
+
+        Globals.SetCultureSelectedLanguage();
+
+        cCopyright = $"{CalEventLang.Copyright_Text} © 2023-2023 Geert Geerits";
+        cLicenseText = $"{CalEventLang.License_Text}\n\n{CalEventLang.LicenseMit2_Text}";
+
+        //App.Current.MainPage.DisplayAlert(CalEventLang.ErrorTitle_Text, Globals.cLanguage, cButtonCloseText);  // For testing.
+    }
+
+    // Set language using the Appearing event of the MainPage.xaml.
+    private void OnPageAppearing(object sender, EventArgs e)
+    {
+        if (Globals.bLanguageChanged)
+        {
+            SetTextLanguage();
+            Globals.bLanguageChanged = false;
+
+            //DisplayAlert("Globals.bLanguageChanged", "true", "OK");  // For testing.
+        }
     }
 }
