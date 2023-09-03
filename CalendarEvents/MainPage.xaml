@@ -7,143 +7,151 @@
              Loaded="OnPageLoaded">
 
     <ScrollView>
-        <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto"
-            ColumnDefinitions="170, 130*"
-            RowSpacing="10"
-            ColumnSpacing="10"
-            Margin="10">
+        <StackLayout>
+            <Grid
+                Style="{StaticResource gridStyleEvents}"
+                RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto">
             
-            <Label
-                Style="{StaticResource labelStyleDefault}"
-                Grid.Row="0"
-                Grid.Column="0"
-                Text="Search for:">
-            </Label>
+                <Label
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Text="Search for:">
+                </Label>
 
-            <Border
-                Style="{StaticResource borderStyleDefault}"
-                Grid.Row="0"
-                Grid.Column="1"
+                <Border
+                    Style="{StaticResource borderStyleDefault}"
+                    Grid.Row="0"
+                    Grid.Column="1"
 >
-                <Entry
-                    x:Name="entSearchWord"
-                    Style="{StaticResource entryStyleDefault}"
-                    HorizontalOptions="Fill"
-                    Text=""
-                    Completed="GoToNextField"
-                    Focused="EntryFocused">
-                </Entry>
-            </Border>
+                    <Entry
+                        x:Name="entSearchWord"
+                        Style="{StaticResource entryStyleDefault}"
+                        HorizontalOptions="Fill"
+                        Text=""
+                        Completed="GoToNextField"
+                        Focused="EntryFocused">
+                    </Entry>
+                </Border>
 
-            <Label
-                Style="{StaticResource labelStyleDefault}"
-                Grid.Row="1"
-                Grid.Column="0"
-                Text="Number of days in the past:">
-            </Label>
+                <Label
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Text="Number of days in the past:">
+                </Label>
 
-            <Border
-                x:Name="brdNumDaysPast"
-                Style="{StaticResource borderStyleDefault}"
-                Grid.Row="1"
-                Grid.Column="1">
+                <Border
+                    x:Name="brdNumDaysPast"
+                    Style="{StaticResource borderStyleDefault}"
+                    Grid.Row="1"
+                    Grid.Column="1">
 
-                <Entry
-                    x:Name="entNumDaysPast"
-                    Style="{StaticResource entryStyleNumericNext}"
-                    Text="0"
-                    Placeholder="0 - 4000"
-                    MaxLength="4"
-                    Completed="GoToNextField"
-                    Focused="EntryFocused">
-                    <Entry.Triggers>
-                        <EventTrigger Event="TextChanged">
-                            <local:NumericValidationTriggerAction MinValue="0" MaxValue="4000" BorderName="brdNumDaysPast"/>
-                        </EventTrigger>
-                    </Entry.Triggers>
-                </Entry>
-            </Border>
+                    <Entry
+                        x:Name="entNumDaysPast"
+                        Style="{StaticResource entryStyleNumericNext}"
+                        Text="0"
+                        Placeholder="0 - 4000"
+                        MaxLength="4"
+                        Completed="GoToNextField"
+                        Focused="EntryFocused">
+                        <Entry.Triggers>
+                            <EventTrigger Event="TextChanged">
+                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="4000" BorderName="brdNumDaysPast"/>
+                            </EventTrigger>
+                        </Entry.Triggers>
+                    </Entry>
+                </Border>
            
-            <Label
-                Style="{StaticResource labelStyleDefault}"
-                Grid.Row="2"
-                Grid.Column="0"
-                Text="Number of days in the future:">
-            </Label>
+                <Label
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Text="Number of days in the future:">
+                </Label>
 
-            <Border
-                x:Name="brdNumDaysFuture"
-                Style="{StaticResource borderStyleDefault}"
-                Grid.Row="2"
-                Grid.Column="1">
+                <Border
+                    x:Name="brdNumDaysFuture"
+                    Style="{StaticResource borderStyleDefault}"
+                    Grid.Row="2"
+                    Grid.Column="1">
 
-                <Entry
-                    x:Name="entNumDaysFuture"
-                    Style="{StaticResource entryStyleNumericDone}"
-                    Text="31"
-                    Placeholder="0 - 4000"
-                    MaxLength="4"
-                    Completed="GoToNextField"
-                    Focused="EntryFocused">
-                    <Entry.Triggers>
-                        <EventTrigger Event="TextChanged">
-                            <local:NumericValidationTriggerAction MinValue="0" MaxValue="4000" BorderName="brdNumDaysFuture"/>
-                        </EventTrigger>
-                    </Entry.Triggers>
-                </Entry>
-            </Border>
+                    <Entry
+                        x:Name="entNumDaysFuture"
+                        Style="{StaticResource entryStyleNumericDone}"
+                        Text="31"
+                        Placeholder="0 - 4000"
+                        MaxLength="4"
+                        Completed="GoToNextField"
+                        Focused="EntryFocused">
+                        <Entry.Triggers>
+                            <EventTrigger Event="TextChanged">
+                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="4000" BorderName="brdNumDaysFuture"/>
+                            </EventTrigger>
+                        </Entry.Triggers>
+                    </Entry>
+                </Border>
 
-            <Button
-                x:Name="btnGetCalendarEvents"
-                Grid.Row="3"
-                Grid.Column="0"
-                Grid.ColumnSpan="2"
-                HorizontalOptions="Center"
-                Text="Get calendar events"
-                Clicked="OnGetCalendarEventsClicked">
-            </Button>
+                <Button
+                    x:Name="btnGetCalendarEvents"
+                    Style="{StaticResource buttonStyleDefault}"
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    Text="Get events"
+                    Clicked="OnGetCalendarEventsClicked">
+                </Button>
 
-            <Button
-                Grid.Row="4"
-                Grid.Column="0"
-                Text="Copy to clipboard"
-                HorizontalOptions="Start"
-                Clicked="OnClipboardButtonClicked">
-            </Button>
+                <Button
+                    Style="{StaticResource buttonStyleDefault}"
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    HorizontalOptions="End"
+                    Text="Clear events"
+                    Clicked="OnClearEventsClicked">
+                </Button>
+
+                <Button
+                    Style="{StaticResource buttonStyleDefault}"
+                    Grid.Row="4"
+                    Grid.Column="0"
+                    Text="Copy events"
+                    Clicked="OnClipboardButtonClicked">
+                </Button>
             
-            <Button
-                Grid.Row="4"
-                Grid.Column="1"
-                Text="Share calendar events"
-                HorizontalOptions="End"
-                Clicked="OnButtonShareClicked">
-            </Button>
+                <Button
+                    Style="{StaticResource buttonStyleDefault}"
+                    Grid.Row="4"
+                    Grid.Column="1"
+                    HorizontalOptions="End"
+                    Text="Share events"
+                    Clicked="OnButtonShareClicked">
+                </Button>
 
-            <Border
-                Style="{StaticResource borderStyleDefault}"
-                Grid.Row="5"
-                Grid.Column="0"
-                Grid.ColumnSpan="2">
+                <Border
+                    Style="{StaticResource borderStyleDefault}"
+                    Grid.Row="5"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2">
                 
-                <Label
-                    x:Name="lblCalendarNames"
-                    Style="{StaticResource labelStyleDefault}">
-                </Label>
-            </Border>
+                    <Label
+                        x:Name="lblCalendarNames"
+                        Style="{StaticResource labelStyleDefault}">
+                    </Label>
+                </Border>
 
-            <Border
-                Style="{StaticResource borderStyleDefault}"
-                Grid.Row="6"
-                Grid.Column="0"
-                Grid.ColumnSpan="2">
+                <Border
+                    Style="{StaticResource borderStyleDefault}"
+                    Grid.Row="6"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2">
                 
-                <Label
-                    x:Name="lblCalendarEvents"
-                    Style="{StaticResource labelStyleDefault}">
-                </Label>
-            </Border>
+                    <Label
+                        x:Name="lblCalendarEvents"
+                        Style="{StaticResource labelStyleDefault}">
+                    </Label>
+                </Border>
 
-        </Grid>
+            </Grid>
+        </StackLayout>
     </ScrollView>
-
 </ContentPage>

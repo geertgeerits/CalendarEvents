@@ -153,7 +153,8 @@
                                     <Setter Property="ColumnDefinitions">
                                         <Setter.Value>
                                             <ColumnDefinitionCollection>
-                                                <ColumnDefinition Width="{OnIdiom 340, Phone=340, Tablet=560, Desktop=560}" />
+                                                <ColumnDefinition Width="{OnIdiom 170, Phone=170, Tablet=270, Desktop=270}" />
+                                                <ColumnDefinition Width="{OnIdiom 170, Phone=170, Tablet=270, Desktop=270}" />
                                             </ColumnDefinitionCollection>
                                         </Setter.Value>
                                     </Setter>
@@ -167,7 +168,8 @@
                                     <Setter Property="ColumnDefinitions">
                                         <Setter.Value>
                                             <ColumnDefinitionCollection>
-                                                <ColumnDefinition Width="{OnIdiom 540, Phone=540, Tablet=760, Desktop=760}" />
+                                                <ColumnDefinition Width="{OnIdiom 270, Phone=270, Tablet=370, Desktop=370}" />
+                                                <ColumnDefinition Width="{OnIdiom 270, Phone=270, Tablet=370, Desktop=370}" />
                                             </ColumnDefinitionCollection>
                                         </Setter.Value>
                                     </Setter>
@@ -178,11 +180,12 @@
                 </Setter>
                 <Setter Property="HorizontalOptions" Value="Center" />
                 <Setter Property="Margin" Value="{OnIdiom 5, Phone=5, Tablet=10, Desktop=10}" />
-                <Setter Property="RowSpacing" Value="0" />
+                <Setter Property="ColumnSpacing" Value="{OnIdiom 5, Phone=5, Tablet=15, Desktop=15}" />
+                <Setter Property="RowSpacing" Value="4" />
             </Style>
 
             <!--!!!BUG!!!? - Do not use this style if you need to define another 'Grid ColumnDefinition Width OnIdiom' on another xaml page.-->
-            <Style x:Key="gridStyleMenuItems" TargetType="Grid">
+            <Style x:Key="gridStyleEvents" TargetType="Grid">
                 <Setter Property="VisualStateManager.VisualStateGroups">
                     <VisualStateGroupList>
                         <VisualStateGroup>
@@ -196,7 +199,6 @@
                                             <ColumnDefinitionCollection>
                                                 <ColumnDefinition Width="{OnIdiom 160, Phone=160, Tablet=260, Desktop=260}" />
                                                 <ColumnDefinition Width="{OnIdiom 160, Phone=160, Tablet=260, Desktop=260}" />
-                                                <ColumnDefinition Width="{OnIdiom 25, Phone=25, Tablet=30, Desktop=30}" />
                                             </ColumnDefinitionCollection>
                                         </Setter.Value>
                                     </Setter>
@@ -212,7 +214,6 @@
                                             <ColumnDefinitionCollection>
                                                 <ColumnDefinition Width="{OnIdiom 260, Phone=260, Tablet=360, Desktop=360}" />
                                                 <ColumnDefinition Width="{OnIdiom 260, Phone=260, Tablet=360, Desktop=360}" />
-                                                <ColumnDefinition Width="{OnIdiom 30, Phone=30, Tablet=30, Desktop=30}" />
                                             </ColumnDefinitionCollection>
                                         </Setter.Value>
                                     </Setter>
@@ -355,13 +356,14 @@
             </Style>
 
             <Style x:Key="buttonStyleDefault" TargetType="Button">
-                <Setter Property="HorizontalOptions" Value="Fill" />
+                <Setter Property="HorizontalOptions" Value="Start" />
                 <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="WidthRequest" Value="{OnIdiom 160, Phone=160, Tablet=260, Desktop=260}" />
             </Style>
 
             <Style x:Key="buttonStyleCalculate" TargetType="Button">
                 <Setter Property="Margin" Value="0,6,0,0" />
-                <Setter Property="HorizontalOptions" Value="Fill" />
+                <Setter Property="HorizontalOptions" Value="Start" />
                 <Setter Property="VerticalOptions" Value="Center" />
                 <Setter Property="Text" Value="Calculate" />
             </Style>
