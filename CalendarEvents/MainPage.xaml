@@ -17,8 +17,11 @@
     <ScrollView>
         <StackLayout>
             <Grid
-                Style="{StaticResource gridStyleEvents}"
-                RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto">
+                RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto"
+                ColumnDefinitions="170, 130*"
+                ColumnSpacing="5"
+                RowSpacing="5"
+                Margin="5">
             
                 <Label
                     Style="{StaticResource labelStyleDefault}"
@@ -143,7 +146,8 @@
                 
                     <Label
                         x:Name="lblCalendarNames"
-                        Style="{StaticResource labelStyleDefault}">
+                        Style="{StaticResource labelStyleDefault}"
+                        IsVisible="False">
                     </Label>
                 </Border>
 

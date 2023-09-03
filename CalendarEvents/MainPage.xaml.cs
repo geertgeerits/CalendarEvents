@@ -155,6 +155,7 @@ public partial class MainPage : ContentPage
         }
         
         lblCalendarNames.Text = cCalendarNames;
+        //lblCalendarNames.IsVisible = true;
 
         // Get (all) the events from the calendar.
         var events = await CalendarStore.Default.GetEvents(startDate: DateTimeOffset.UtcNow.AddDays(-nNumDaysPast), endDate: DateTimeOffset.UtcNow.AddDays(nNumDaysFuture));
@@ -162,6 +163,7 @@ public partial class MainPage : ContentPage
         string cCalendarEvents = "";
         string cStartDate;
         DateTime dStartDate;
+        string cNewLine = "\n\n";
 
         if (entSearchWord.Text is null or "")
         {
@@ -170,12 +172,14 @@ public partial class MainPage : ContentPage
                 if (Convert.ToString(ev.StartDate).Contains("+00:00"))
                 {
                     dStartDate = DateTime.Parse(Convert.ToString(ev.StartDate));
-                    cStartDate = dStartDate.ToString(Globals.cDateFormat + " HH:mm zzz");
-                    cCalendarEvents = $"{cCalendarEvents}{cStartDate}, {ev.Title}\n";
+                    //cStartDate = dStartDate.ToString(Globals.cDateFormat + " HH:mm zzz");
+                    cStartDate = dStartDate.ToString(Globals.cDateFormat + "  HH:mm");
+                    cCalendarEvents = $"{cCalendarEvents}{cStartDate}  {ev.Title}{cNewLine}";
                 }
                 else
                 {
-                    cCalendarEvents = $"{cCalendarEvents}{ev.StartDate}, {ev.Title}\n";
+                    //cCalendarEvents = $"{cCalendarEvents}{ev.StartDate}, {ev.Title}\n";
+                    cCalendarEvents = $"{cCalendarEvents}{ev.StartDate.ToString(Globals.cDateFormat + "  HH:mm")}  {ev.Title}{cNewLine}";
                 }
             }
         }
@@ -190,12 +194,14 @@ public partial class MainPage : ContentPage
                     if (Convert.ToString(ev.StartDate).Contains("+00:00"))
                     {
                         dStartDate = DateTime.Parse(Convert.ToString(ev.StartDate));
-                        cStartDate = dStartDate.ToString(Globals.cDateFormat + " HH:mm zzz");
-                        cCalendarEvents = $"{cCalendarEvents}{cStartDate}, {ev.Title}\n";
+                        //cStartDate = dStartDate.ToString(Globals.cDateFormat + " HH:mm zzz");
+                        cStartDate = dStartDate.ToString(Globals.cDateFormat + "  HH:mm");
+                        cCalendarEvents = $"{cCalendarEvents}{cStartDate}  {ev.Title}{cNewLine}";
                     }
                     else
                     {
-                        cCalendarEvents = $"{cCalendarEvents}{ev.StartDate}, {ev.Title}\n";
+                        //cCalendarEvents = $"{cCalendarEvents}{ev.StartDate}, {ev.Title}\n";
+                        cCalendarEvents = $"{cCalendarEvents}{ev.StartDate.ToString(Globals.cDateFormat + "  HH:mm")}  {ev.Title}{cNewLine}";
                     }
                 }
             }
