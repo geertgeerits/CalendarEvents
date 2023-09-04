@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resx="clr-namespace:CalendarEvents.Resources.Languages"
+             x:Class="CalendarEvents.PageAbout">
+
+    <NavigationPage.TitleView>
+        <Label
+            Style="{StaticResource labelStyleTitleView}"
+            Text="{x:Static resx:CalEventLang.Info_Text}">
+        </Label>
+    </NavigationPage.TitleView>
+       
+    <ScrollView>
+        <StackLayout>
+            <Grid
+                Style="{StaticResource gridStyleInfo}"
+                RowDefinitions="Auto">
+
+                <VerticalStackLayout>
+                    <Label
+                        Style="{StaticResource labelStyleInfo}"
+                        Text="{x:Static resx:CalEventLang.NameProgram_Text}"
+                        FontSize="16">
+                    </Label>
+
+                    <Label
+                        Style="{StaticResource labelStyleInfo}"
+                        Text="{x:Static resx:CalEventLang.Description_Text}">
+                    </Label>
+
+                    <Label
+                        x:Name="lblVersion"
+                        Style="{StaticResource labelStyleInfo}">
+                    </Label>
+
+                    <Label
+                        x:Name="lblCopyright"
+                        Style="{StaticResource labelStyleInfo}">
+                    </Label>
+
+                    <HorizontalStackLayout>
+                        <Label
+                            x:Name="lblEmail"
+                            Style="{StaticResource labelStyleInfo}">
+                        </Label>
+
+                        <ImageButton
+                            Source="circled_envelope_24p.png"                         
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            HeightRequest="24"
+                            WidthRequest="24"
+                            Clicked="OnbtnEmailLinkClicked">
+                        </ImageButton>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout>
+                        <Label
+                            x:Name="lblWebsite"
+                            Style="{StaticResource labelStyleInfo}">
+                        </Label>
+
+                        <ImageButton
+                            Source="internet_24p.png"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            HeightRequest="24"
+                            WidthRequest="24"
+                            Clicked="OnbtnWebsiteLinkClicked">
+                        </ImageButton>
+                    </HorizontalStackLayout>
+
+                    <VerticalStackLayout>
+                        <Label
+                            x:Name="lblPrivacyPolicy"
+                            Style="{StaticResource labelStyleInfo}"
+                            FontSize="13">
+                        </Label>
+
+                        <Label
+                            x:Name="lblCrashErrorReport"
+                            Style="{StaticResource labelStyleInfo}"
+                            FontSize="13">
+                        </Label>
+
+                        <Label
+                            x:Name="lblLicense"
+                            Style="{StaticResource labelStyleInfo}"
+                            FontSize="13">
+                        </Label>
+
+                        <Label
+                            x:Name="lblExplanation"
+                            Style="{StaticResource labelStyleInfo}"
+                            FontSize="13">
+                        </Label>
+
+                        <Label
+                            x:Name="lblLicenseMit"
+                            Style="{StaticResource labelStyleInfo}"
+                            FontSize="13">
+                        </Label>
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+            
+            </Grid>               
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

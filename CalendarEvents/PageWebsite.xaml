@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resx="clr-namespace:CalendarEvents.Resources.Languages"
+             x:Class="CalendarEvents.PageWebsite">
+
+    <NavigationPage.TitleView>
+        <Grid
+            RowDefinitions="50"
+            ColumnDefinitions="200*, 60, 60"
+            BackgroundColor="#00bfff">
+
+            <Label
+                Style="{StaticResource labelStyleTitleView}"
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Text="{x:Static resx:CalEventLang.Website_Text}">
+            </Label>
+
+            <Button
+                x:Name="btnGoBack"
+                Style="{StaticResource buttonStyleWebsite}"
+                Grid.Row="0"
+                Grid.Column="1"
+                HorizontalOptions="End"
+                ToolTipProperties.Text ="{x:Static resx:CalEventLang.ToolTipGoBack_Text}"
+                Text="&lt;"
+                Clicked="OnGoBackClicked">
+            </Button>
+
+            <Button
+                x:Name="btnGoForward"
+                Style="{StaticResource buttonStyleWebsite}"
+                Grid.Row="0"
+                Grid.Column="2"
+                HorizontalOptions="Start"
+                ToolTipProperties.Text ="{x:Static resx:CalEventLang.ToolTipGoForward_Text}"
+                Text=">"
+                Clicked="OnGoForwardClicked">
+            </Button>
+        </Grid>
+    </NavigationPage.TitleView>
+
+    <WebView
+        x:Name="wvWebpage"
+        HorizontalOptions="FillAndExpand"
+        VerticalOptions="FillAndExpand">
+    </WebView>
+
+</ContentPage>

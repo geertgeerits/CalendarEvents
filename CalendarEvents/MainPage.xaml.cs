@@ -1,8 +1,8 @@
 ﻿// Program .....: CalendarEvents.sln
 // Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
 // Copyright ...: (C) 2023-2023
-// Version .....: 1.0.2
-// Date ........: 2023-09-03 (YYYY-MM-DD)
+// Version .....: 1.0.3
+// Date ........: 2023-09-04 (YYYY-MM-DD)
 // Language ....: Microsoft Visual Studio 2022: .NET 7.0 MAUI C# 11.0
 // Description .: Read calendar events to share
 // Dependencies : NuGet Package: Plugin.Maui.CalendarStore by Gerald Versluis ; https://github.com/jfversluis/Plugin.Maui.CalendarStore
@@ -72,6 +72,18 @@ public partial class MainPage : ContentPage
 
         SetTextLanguage();
     }
+
+    // TitleView buttons clicked events.
+    private async void OnPageAboutClicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new PageAbout());
+    }
+
+    private async void OnPageSettingsClicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new PageSettings());
+    }
+
 
     // Set focus to the first entry field (workaround for !!!BUG!!! ?).
     // Add in the header of the xaml page: 'Loaded="OnPageLoaded"'
@@ -155,6 +167,7 @@ public partial class MainPage : ContentPage
         }
         
         lblCalendarNames.Text = cCalendarNames;
+        //brdCalendarNames.IsVisible = true;
         //lblCalendarNames.IsVisible = true;
 
         // Get (all) the events from the calendar.

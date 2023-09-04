@@ -117,19 +117,151 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Agree_Text" xml:space="preserve">
+    <value>Agree</value>
+  </data>
+  <data name="ButtonClose_Text" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="ButtonShare_Text" xml:space="preserve">
+    <value>Share</value>
+  </data>
+  <data name="Clear_Text" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="Contact_Text" xml:space="preserve">
+    <value>Contact:</value>
+  </data>
   <data name="Copyright_Text" xml:space="preserve">
-    <value />
+    <value>Copyright</value>
+  </data>
+  <data name="Dark_Text" xml:space="preserve">
+    <value>Dark</value>
+  </data>
+  <data name="DateFormat_Text" xml:space="preserve">
+    <value>Date format:</value>
+  </data>
+  <data name="DateISO8601_Text" xml:space="preserve">
+    <value>ISO 8601</value>
+  </data>
+  <data name="Default_Text" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="Description_Text" xml:space="preserve">
+    <value>Calendar Events</value>
+  </data>
+  <data name="Disagree_Text" xml:space="preserve">
+    <value>Disagree</value>
+  </data>
+  <data name="Email_Text" xml:space="preserve">
+    <value>E-mail:</value>
   </data>
   <data name="ErrorTitle_Text" xml:space="preserve">
-    <value />
+    <value>Error</value>
+  </data>
+  <data name="EventsClear_Text" xml:space="preserve">
+    <value>Clear events</value>
+  </data>
+  <data name="EventsCopy_Text" xml:space="preserve">
+    <value>Copy events</value>
+  </data>
+  <data name="EventsGet_Text" xml:space="preserve">
+    <value>Get events</value>
+  </data>
+  <data name="EventsShare_Text" xml:space="preserve">
+    <value>Share events</value>
+  </data>
+  <data name="InfoExplanation_Text" xml:space="preserve">
+    <value>The date format can be changed in the settings to the international standard format ISO 8601 (YYYY-MM-DD).
+
+Google Translate was used for the translation of the text. This is not a guarantee that all translations are correct.
+The supporting languages are: Czech, Danish, Dutch, English, Finnish, French, German, Hungarian, Italian, Norwegian, Polish, Portuguese, Romanian, Spanish and Swedish.
+
+You can always contact me for any corrections.</value>
+  </data>
+  <data name="Info_Text" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="Language_Text" xml:space="preserve">
+    <value>Language:</value>
+  </data>
+  <data name="LicenseAgreement_Text" xml:space="preserve">
+    <value>Do you agree with the license conditions?</value>
   </data>
   <data name="LicenseMit2_Text" xml:space="preserve">
-    <value />
+    <value>The software is provided 'as is', without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose and noninfringement. In no event shall the author and/or publisher be liable for any claim, damages or other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the software or the use or other dealings in the software.</value>
+  </data>
+  <data name="LicenseMit_Text" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="LicenseTitle_Text" xml:space="preserve">
+    <value>License</value>
   </data>
   <data name="License_Text" xml:space="preserve">
-    <value />
+    <value>This application may be used freely for non-commercial purposes.
+Use this program entirely at your own risk.</value>
+  </data>
+  <data name="Light_Text" xml:space="preserve">
+    <value>Light</value>
+  </data>
+  <data name="NameProgram_Text" xml:space="preserve">
+    <value>Calendar Events</value>
+  </data>
+  <data name="No_Text" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="NumDaysFuture_Text" xml:space="preserve">
+    <value>Number of days in the future:</value>
+  </data>
+  <data name="NumDaysPast_Text" xml:space="preserve">
+    <value>Number of days in the past:</value>
+  </data>
+  <data name="PrivacyPolicyTitle_Text" xml:space="preserve">
+    <value>Privacy Policy:</value>
+  </data>
+  <data name="PrivacyPolicy_Text" xml:space="preserve">
+    <value>No personal and other data is stored or passed on to myself and others.</value>
   </data>
   <data name="ProgramName_Text" xml:space="preserve">
     <value>Calendar Events</value>
+  </data>
+  <data name="Reset_Text" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="Save_Text" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="SearchFor_Text" xml:space="preserve">
+    <value>Search for:</value>
+  </data>
+  <data name="SettingsSaved_Text" xml:space="preserve">
+    <value>Some changed settings must be saved in order to apply them.</value>
+  </data>
+  <data name="Settings_Text" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="System_Text" xml:space="preserve">
+    <value>System</value>
+  </data>
+  <data name="Theme_Text" xml:space="preserve">
+    <value>Theme:</value>
+  </data>
+  <data name="ToolTipDateFormat_Text" xml:space="preserve">
+    <value>Switch between the ISO date format and the system date format</value>
+  </data>
+  <data name="ToolTipGoBack_Text" xml:space="preserve">
+    <value>Go back</value>
+  </data>
+  <data name="ToolTipGoForward_Text" xml:space="preserve">
+    <value>Go forward</value>
+  </data>
+  <data name="Version_Text" xml:space="preserve">
+    <value>Version:</value>
+  </data>
+  <data name="Website_Text" xml:space="preserve">
+    <value>Website</value>
+  </data>
+  <data name="Yes_Text" xml:space="preserve">
+    <value>Yes</value>
   </data>
 </root>

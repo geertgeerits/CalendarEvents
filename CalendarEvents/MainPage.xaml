@@ -8,12 +8,47 @@
              Appearing="OnPageAppearing">
 
     <NavigationPage.TitleView>
-        <Label
-            Style="{StaticResource labelStyleTitleView}"
-            Text="{local:Translate ProgramName_Text}">
-        </Label>
+        <Grid RowDefinitions="40"
+              ColumnDefinitions="60, 230*, 50"
+              Margin="5"
+              BackgroundColor="Gold">
+
+            <ImageButton
+                x:Name="imgbtnAbout"
+                Grid.Row="0"
+                Grid.Column="0"
+                Source="info_32p.png"
+                HorizontalOptions="Start"
+                VerticalOptions="Center"
+                HeightRequest="32"
+                WidthRequest="32"
+                ToolTipProperties.Text="{local:Translate Info_Text}"
+                Clicked="OnPageAboutClicked">
+            </ImageButton>
+
+            <Label
+                Style="{StaticResource labelStyleTitleView}"
+                Grid.Row="0"
+                Grid.Column="1"
+                FontSize="20"
+                Text="{local:Translate ProgramName_Text}">
+            </Label>
+
+            <ImageButton
+                x:Name="imgbtnSettings"
+                Grid.Row="0"
+                Grid.Column="2"
+                Source="settings_32p.png"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                HeightRequest="32"
+                WidthRequest="32"
+                ToolTipProperties.Text="{local:Translate Settings_Text}"
+                Clicked="OnPageSettingsClicked">
+            </ImageButton>
+        </Grid>
     </NavigationPage.TitleView>
-    
+
     <ScrollView>
         <StackLayout>
             <Grid
@@ -27,7 +62,7 @@
                     Style="{StaticResource labelStyleDefault}"
                     Grid.Row="0"
                     Grid.Column="0"
-                    Text="Search for:">
+                    Text="{local:Translate SearchFor_Text}">
                 </Label>
 
                 <Border
@@ -49,7 +84,7 @@
                     Style="{StaticResource labelStyleDefault}"
                     Grid.Row="1"
                     Grid.Column="0"
-                    Text="Number of days in the past:">
+                    Text="{local:Translate NumDaysPast_Text}">
                 </Label>
 
                 <Border
@@ -78,7 +113,7 @@
                     Style="{StaticResource labelStyleDefault}"
                     Grid.Row="2"
                     Grid.Column="0"
-                    Text="Number of days in the future:">
+                    Text="{local:Translate NumDaysFuture_Text}">
                 </Label>
 
                 <Border
@@ -108,7 +143,7 @@
                     Style="{StaticResource buttonStyleDefault}"
                     Grid.Row="3"
                     Grid.Column="0"
-                    Text="Get events"
+                    Text="{local:Translate EventsGet_Text}"
                     Clicked="OnGetCalendarEventsClicked">
                 </Button>
 
@@ -117,7 +152,7 @@
                     Grid.Row="3"
                     Grid.Column="1"
                     HorizontalOptions="End"
-                    Text="Clear events"
+                    Text="{local:Translate EventsClear_Text}"
                     Clicked="OnClearEventsClicked">
                 </Button>
 
@@ -125,7 +160,7 @@
                     Style="{StaticResource buttonStyleDefault}"
                     Grid.Row="4"
                     Grid.Column="0"
-                    Text="Copy events"
+                    Text="{local:Translate EventsCopy_Text}"
                     Clicked="OnClipboardButtonClicked">
                 </Button>
             
@@ -134,15 +169,17 @@
                     Grid.Row="4"
                     Grid.Column="1"
                     HorizontalOptions="End"
-                    Text="Share events"
+                    Text="{local:Translate EventsShare_Text}"
                     Clicked="OnButtonShareClicked">
                 </Button>
 
                 <Border
+                    x:Name="brdCalendarNames"
                     Style="{StaticResource borderStyleDefault}"
                     Grid.Row="5"
                     Grid.Column="0"
-                    Grid.ColumnSpan="2">
+                    Grid.ColumnSpan="2"
+                    IsVisible="False">
                 
                     <Label
                         x:Name="lblCalendarNames"
