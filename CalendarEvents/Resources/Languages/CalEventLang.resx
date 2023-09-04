@@ -129,6 +129,9 @@
   <data name="Clear_Text" xml:space="preserve">
     <value>Remove</value>
   </data>
+  <data name="CloseApplication_Text" xml:space="preserve">
+    <value>Please close the application.</value>
+  </data>
   <data name="Contact_Text" xml:space="preserve">
     <value>Contact:</value>
   </data>
@@ -148,7 +151,7 @@
     <value>Default</value>
   </data>
   <data name="Description_Text" xml:space="preserve">
-    <value>Get and share calendar Events</value>
+    <value>Get and share calendar events</value>
   </data>
   <data name="Disagree_Text" xml:space="preserve">
     <value>Disagree</value>

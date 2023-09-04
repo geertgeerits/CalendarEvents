@@ -97,6 +97,15 @@ namespace CalendarEvents.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please close the application..
+        /// </summary>
+        internal static string CloseApplication_Text {
+            get {
+                return ResourceManager.GetString("CloseApplication_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Contact:.
         /// </summary>
         internal static string Contact_Text {
@@ -151,7 +160,7 @@ namespace CalendarEvents.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Get and share calendar Events.
+        ///   Looks up a localized string similar to Get and share calendar events.
         /// </summary>
         internal static string Description_Text {
             get {

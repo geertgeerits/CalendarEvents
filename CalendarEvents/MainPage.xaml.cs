@@ -84,13 +84,6 @@ public partial class MainPage : ContentPage
         await Navigation.PushAsync(new PageSettings());
     }
 
-    // Set focus to the first entry field (workaround for !!!BUG!!! ?).
-    // Add in the header of the xaml page: 'Loaded="OnPageLoaded"'
-    private void OnPageLoaded(object sender, EventArgs e)
-    {
-        entSearchWord.Focus();
-    }
-
     // Select all the text in the entry field.
     private void EntryFocused(object sender, EventArgs e)
     {
@@ -114,12 +107,12 @@ public partial class MainPage : ContentPage
         }
         else if (sender == entNumDaysFuture)
         {
-            btnGetCalendarEvents.Focus();
+            btnGetEvents.Focus();
         }
     }
 
     // Get calendar events.
-    private async void OnGetCalendarEventsClicked(object sender, EventArgs e)
+    private async void OnGetEventsClicked(object sender, EventArgs e)
     {
         // Validate input values.
         bool bIsNumber = int.TryParse(entNumDaysPast.Text, out int nNumDaysPast);
@@ -274,6 +267,42 @@ public partial class MainPage : ContentPage
         cLicenseText = $"{CalEventLang.License_Text}\n\n{CalEventLang.LicenseMit2_Text}";
 
         //App.Current.MainPage.DisplayAlert(CalEventLang.ErrorTitle_Text, Globals.cLanguage, cButtonCloseText);  // For testing.
+    }
+
+    // Show license using the Loaded event of the MainPage.xaml.
+    private async void OnPageLoaded(object sender, EventArgs e)
+    {
+        // Show license.
+        if (bLicense == false)
+        {
+            bool bAnswer = await Application.Current.MainPage.DisplayAlert(CalEventLang.LicenseTitle_Text, $"Calendar Events\n{cCopyright}\n\n{cLicenseText}", CalEventLang.Agree_Text, CalEventLang.Disagree_Text);
+
+            if (bAnswer)
+            {
+                Preferences.Default.Set("SettingLicense", true);
+            }
+            else
+            {
+#if IOS
+                //Thread.CurrentThread.Abort();  // Not allowed in iOS.
+                imgbtnAbout.IsEnabled = false;
+                imgbtnSettings.IsEnabled= false;
+                btnGetEvents.IsEnabled = false;
+                btnClearEvents.IsEnabled = false;
+                btnCopyEvents.IsEnabled = false;
+                btnShareEvents.IsEnabled = false;
+
+                await DisplayAlert(CalEventLang.LicenseTitle_Text, CalEventLang.CloseApplication_Text, CalEventLang.ButtonClose_Text);
+#else
+                Application.Current.Quit();
+#endif
+            }
+        }
+
+        // Set focus to the first entry field (workaround for !!!BUG!!! ?).
+        // Add in the header of the xaml page: 'Loaded="OnPageLoaded"'
+        Task.Delay(500).Wait();
+        entSearchWord.Focus();
     }
 
     // Set language using the Appearing event of the MainPage.xaml.
