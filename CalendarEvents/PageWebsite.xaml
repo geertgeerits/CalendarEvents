@@ -8,7 +8,7 @@
         <Grid
             RowDefinitions="50"
             ColumnDefinitions="200*, 60, 60"
-            BackgroundColor="#00bfff">
+            BackgroundColor="Gold">
 
             <Label
                 Style="{StaticResource labelStyleTitleView}"

@@ -78,11 +78,11 @@
                             FontSize="13">
                         </Label>
 
-                        <Label
+                        <!--<Label
                             x:Name="lblCrashErrorReport"
                             Style="{StaticResource labelStyleInfo}"
                             FontSize="13">
-                        </Label>
+                        </Label>-->
 
                         <Label
                             x:Name="lblLicense"
@@ -90,14 +90,14 @@
                             FontSize="13">
                         </Label>
 
-                        <Label
-                            x:Name="lblExplanation"
+                        <!--<Label
+                            x:Name="lblLicenseMit"
                             Style="{StaticResource labelStyleInfo}"
                             FontSize="13">
-                        </Label>
+                        </Label>-->
 
                         <Label
-                            x:Name="lblLicenseMit"
+                            x:Name="lblExplanation"
                             Style="{StaticResource labelStyleInfo}"
                             FontSize="13">
                         </Label>

@@ -49,13 +49,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\circled_envelope_24p.png" />
 	  <None Remove="Resources\Images\info_32p.png" />
+	  <None Remove="Resources\Images\internet_24p.png" />
 	  <None Remove="Resources\Images\settings_32p.png" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
-		<PackageReference Include="Plugin.Maui.CalendarStore" Version="1.0.0-preview1" />
+		<PackageReference Include="Plugin.Maui.CalendarStore" Version="1.0.0-preview2" />
 	</ItemGroup>
 
 	<ItemGroup>

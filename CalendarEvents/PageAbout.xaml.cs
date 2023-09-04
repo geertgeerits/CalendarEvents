@@ -19,12 +19,11 @@ public partial class PageAbout : ContentPage
         lblVersion.Text = $"{CalEventLang.Version_Text} 1.0.3";
         lblCopyright.Text = $"{CalEventLang.Copyright_Text} © 2023-2023 Geert Geerits";
         lblEmail.Text = $"{CalEventLang.Email_Text} geertgeerits@gmail.com";
-        lblWebsite.Text = $"{CalEventLang.Website_Text}: ../barcodegenerator";
+        lblWebsite.Text = $"{CalEventLang.Website_Text}: ../calendarevents";
         lblPrivacyPolicy.Text = $"\n{CalEventLang.PrivacyPolicyTitle_Text} {CalEventLang.PrivacyPolicy_Text}";
         //lblCrashErrorReport.Text = $"\n{CalEventLang.CrashErrorReport_Text}";
-        lblLicense.Text = $"\n{CalEventLang.LicenseTitle_Text}: {CalEventLang.License_Text}";
+        lblLicense.Text = $"\n{CalEventLang.LicenseTitle_Text}: {CalEventLang.License_Text}\n{CalEventLang.LicenseMit2_Text}";
         lblExplanation.Text = $"\n{CalEventLang.InfoExplanation_Text}";
-        lblLicenseMit.Text = $"\n{CalEventLang.Copyright_Text} © {CalEventLang.LicenseMit_Text}\n\n{CalEventLang.LicenseMit2_Text}";
     }
 
     // Open the e-mail program.
@@ -44,7 +43,7 @@ public partial class PageAbout : ContentPage
 #else
         if (Email.Default.IsComposeSupported)
         {
-            string subject = "Barcode generator and scanner";
+            string subject = "Calendar events";
             string body = "";
             string[] recipients = new[] { "geertgeerits@gmail.com" };
 
@@ -79,7 +78,7 @@ public partial class PageAbout : ContentPage
     //{
     //    try
     //    {
-    //        Uri uri = new("https://geertgeerits.wixsite.com/barcodegenerator");
+    //        Uri uri = new("https://geertgeerits.wixsite.com/calendarevents");
     //        await Browser.Default.OpenAsync(uri, BrowserLaunchMode.SystemPreferred);
     //    }
     //    catch (Exception ex)

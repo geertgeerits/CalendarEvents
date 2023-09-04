@@ -30,5 +30,13 @@
 	<string>Assets.xcassets/appicon.appiconset</string>
 	<key>NSCalendarsUsageDescription</key>
 	<string>This app wants to read from your calendar</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.geertgeerits.calendarevents</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0.3</string>
+	<key>MinimumOSVersion</key>
+	<string>11.0</string>
+	<key>CFBundleVersion</key>
+	<string>3</string>
 </dict>
 </plist>

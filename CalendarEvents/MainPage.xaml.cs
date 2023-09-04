@@ -5,7 +5,7 @@
 // Date ........: 2023-09-04 (YYYY-MM-DD)
 // Language ....: Microsoft Visual Studio 2022: .NET 7.0 MAUI C# 11.0
 // Description .: Read calendar events to share
-// Dependencies : NuGet Package: Plugin.Maui.CalendarStore by Gerald Versluis ; https://github.com/jfversluis/Plugin.Maui.CalendarStore
+// Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 1.0.0-preview2 ; https://github.com/jfversluis/Plugin.Maui.CalendarStore
 //                NuGet Package: Microsoft.AppCenter version 5.0.2 ; https://appcenter.ms/apps ; https://azure.microsoft.com/en-us/products/app-center/
 //                NuGet Package: Microsoft.AppCenter.Crashes version 5.0.2 
 // Thanks to ...: Gerald Versluis
@@ -83,7 +83,6 @@ public partial class MainPage : ContentPage
     {
         await Navigation.PushAsync(new PageSettings());
     }
-
 
     // Set focus to the first entry field (workaround for !!!BUG!!! ?).
     // Add in the header of the xaml page: 'Loaded="OnPageLoaded"'
@@ -174,27 +173,33 @@ public partial class MainPage : ContentPage
         var events = await CalendarStore.Default.GetEvents(startDate: DateTimeOffset.UtcNow.AddDays(-nNumDaysPast), endDate: DateTimeOffset.UtcNow.AddDays(nNumDaysFuture));
 
         string cCalendarEvents = "";
-        string cStartDate;
-        DateTime dStartDate;
+        //string cStartDate;
+        //DateTime dStartDate;
         string cNewLine = "\n\n";
 
         if (entSearchWord.Text is null or "")
         {
             foreach (CalendarEvent ev in events)
             {
-                if (Convert.ToString(ev.StartDate).Contains("+00:00"))
-                {
-                    dStartDate = DateTime.Parse(Convert.ToString(ev.StartDate));
-                    //cStartDate = dStartDate.ToString(Globals.cDateFormat + " HH:mm zzz");
-                    cStartDate = dStartDate.ToString(Globals.cDateFormat + "  HH:mm");
-                    cCalendarEvents = $"{cCalendarEvents}{cStartDate}  {ev.Title}{cNewLine}";
-                }
-                else
-                {
-                    //cCalendarEvents = $"{cCalendarEvents}{ev.StartDate}, {ev.Title}\n";
-                    cCalendarEvents = $"{cCalendarEvents}{ev.StartDate.ToString(Globals.cDateFormat + "  HH:mm")}  {ev.Title}{cNewLine}";
-                }
+                //cCalendarEvents = $"{cCalendarEvents}{ev.StartDate}, {ev.Title}\n";
+                cCalendarEvents = $"{cCalendarEvents}{ev.StartDate.ToString(Globals.cDateFormat + "  HH:mm")}  {ev.Title}{cNewLine}";
             }
+
+            //foreach (CalendarEvent ev in events)
+            //{
+            //    if (Convert.ToString(ev.StartDate).Contains("+00:00"))
+            //    {
+            //        dStartDate = DateTime.Parse(Convert.ToString(ev.StartDate));
+            //        //cStartDate = dStartDate.ToString(Globals.cDateFormat + " HH:mm zzz");
+            //        cStartDate = dStartDate.ToString(Globals.cDateFormat + "  HH:mm");
+            //        cCalendarEvents = $"{cCalendarEvents}{cStartDate}  {ev.Title}{cNewLine}";
+            //    }
+            //    else
+            //    {
+            //        //cCalendarEvents = $"{cCalendarEvents}{ev.StartDate}, {ev.Title}\n";
+            //        cCalendarEvents = $"{cCalendarEvents}{ev.StartDate.ToString(Globals.cDateFormat + "  HH:mm")}  {ev.Title}{cNewLine}";
+            //    }
+            //}
         }
         else
         {
@@ -204,18 +209,21 @@ public partial class MainPage : ContentPage
             {
                 if (ev.Title.ToLower().Contains(cSearchWord))
                 {
-                    if (Convert.ToString(ev.StartDate).Contains("+00:00"))
-                    {
-                        dStartDate = DateTime.Parse(Convert.ToString(ev.StartDate));
-                        //cStartDate = dStartDate.ToString(Globals.cDateFormat + " HH:mm zzz");
-                        cStartDate = dStartDate.ToString(Globals.cDateFormat + "  HH:mm");
-                        cCalendarEvents = $"{cCalendarEvents}{cStartDate}  {ev.Title}{cNewLine}";
-                    }
-                    else
-                    {
-                        //cCalendarEvents = $"{cCalendarEvents}{ev.StartDate}, {ev.Title}\n";
-                        cCalendarEvents = $"{cCalendarEvents}{ev.StartDate.ToString(Globals.cDateFormat + "  HH:mm")}  {ev.Title}{cNewLine}";
-                    }
+                    //cCalendarEvents = $"{cCalendarEvents}{ev.StartDate}, {ev.Title}\n";
+                    cCalendarEvents = $"{cCalendarEvents}{ev.StartDate.ToString(Globals.cDateFormat + "  HH:mm")}  {ev.Title}{cNewLine}";
+
+                    //if (Convert.ToString(ev.StartDate).Contains("+00:00"))
+                    //{
+                    //    dStartDate = DateTime.Parse(Convert.ToString(ev.StartDate));
+                    //    //cStartDate = dStartDate.ToString(Globals.cDateFormat + " HH:mm zzz");
+                    //    cStartDate = dStartDate.ToString(Globals.cDateFormat + "  HH:mm");
+                    //    cCalendarEvents = $"{cCalendarEvents}{cStartDate}  {ev.Title}{cNewLine}";
+                    //}
+                    //else
+                    //{
+                    //    //cCalendarEvents = $"{cCalendarEvents}{ev.StartDate}, {ev.Title}\n";
+                    //    cCalendarEvents = $"{cCalendarEvents}{ev.StartDate.ToString(Globals.cDateFormat + "  HH:mm")}  {ev.Title}{cNewLine}";
+                    //}
                 }
             }
         }
