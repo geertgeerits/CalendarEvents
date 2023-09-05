@@ -80,9 +80,22 @@ public partial class MainPage : ContentPage
             Globals.cLanguage = "en";
         }
 
+        // Set the date properties for the DatePicker.
+        dtpDatePast.MinimumDate = new DateTime(1583, 1, 1);
+        dtpDatePast.MaximumDate = new DateTime(5000, 1, 1);
+        dtpDateFuture.MinimumDate = new DateTime(1583, 1, 1);
+        dtpDateFuture.MaximumDate = new DateTime(5000, 1, 1);
+
+        dtpDatePast.Format = Globals.cDateFormat;
+        dtpDateFuture.Format = Globals.cDateFormat;
+
+        dtpDatePast.Date = DateTime.Today.AddDays(-Convert.ToDouble(Globals.cNumDaysPast));
+        dtpDateFuture.Date = DateTime.Today.AddDays(Convert.ToDouble(Globals.cNumDaysFuture));
+
+
         // Set the days in the past and in the future.
-        entNumDaysPast.Text = Globals.cNumDaysPast;
-        entNumDaysFuture.Text = Globals.cNumDaysFuture;
+        //entNumDaysPast.Text = Globals.cNumDaysPast;
+        //entNumDaysFuture.Text = Globals.cNumDaysFuture;
 
         // Set the text language.
         SetTextLanguage();
@@ -114,13 +127,13 @@ public partial class MainPage : ContentPage
     {
         if (sender == entSearchWord)
         {
-            entNumDaysPast.Focus();
+            dtpDatePast.Focus();
         }
-        else if (sender == entNumDaysPast)
+        else if (sender == dtpDatePast)
         {
-            entNumDaysFuture.Focus();
+            dtpDateFuture.Focus();
         }
-        else if (sender == entNumDaysFuture)
+        else if (sender == dtpDateFuture)
         {
             btnGetEvents.Focus();
         }
@@ -129,26 +142,9 @@ public partial class MainPage : ContentPage
     // Get calendar events.
     private async void OnGetEventsClicked(object sender, EventArgs e)
     {
-        // Validate input values.
-        bool bIsNumber = int.TryParse(entNumDaysPast.Text, out int nNumDaysPast);
-        if (bIsNumber == false || nNumDaysPast < 0 || nNumDaysPast > 4000)
-        {
-            entNumDaysPast.Text = "";
-            entNumDaysPast.Focus();
-            return;
-        }
-
-        bIsNumber = int.TryParse(entNumDaysFuture.Text, out int nNumDaysFuture);
-        if (bIsNumber == false || nNumDaysFuture < 0 || nNumDaysFuture > 4000)
-        {
-            entNumDaysFuture.Text = "";
-            entNumDaysFuture.Focus();
-            return;
-        }
-
         // Close the keyboard.
-        entNumDaysFuture.IsEnabled = false;
-        entNumDaysFuture.IsEnabled = true;
+        entSearchWord.IsEnabled = false;
+        entSearchWord.IsEnabled = true;
 
         // Get all the calendars from the device.
         string cCalendarNames;
@@ -178,8 +174,14 @@ public partial class MainPage : ContentPage
         // Get (all) the events from the calendar.
         string cCalendarEvents = "";
 
+        int nNumDaysPast = Convert.ToInt32(DateTime.Now.Subtract(dtpDatePast.Date).Days);
+        int nNumDaysFuture = Convert.ToInt32(dtpDateFuture.Date.Subtract(DateTime.Now).Days);
+        //await DisplayAlert("nNumDaysPast", nNumDaysPast.ToString(), "OK");
+        //await DisplayAlert("nNumDaysFuture", nNumDaysFuture.ToString(), "OK");
+
         try
         {
+            //var events = await CalendarStore.Default.GetEvents(startDate: DateTimeOffset.UtcNow.AddDays(-nNumDaysPast), endDate: DateTimeOffset.UtcNow.AddDays(nNumDaysFuture));
             var events = await CalendarStore.Default.GetEvents(startDate: DateTimeOffset.UtcNow.AddDays(-nNumDaysPast), endDate: DateTimeOffset.UtcNow.AddDays(nNumDaysFuture));
 
             if (entSearchWord.Text is null or "")
@@ -303,7 +305,10 @@ public partial class MainPage : ContentPage
         }
 
         // Set the days in the past and in the future.
-        entNumDaysPast.Text = Globals.cNumDaysPast;
-        entNumDaysFuture.Text = Globals.cNumDaysFuture;
+        //entNumDaysPast.Text = Globals.cNumDaysPast;
+        //entNumDaysFuture.Text = Globals.cNumDaysFuture;
+        dtpDatePast.Date = DateTime.Today.AddDays(-Convert.ToDouble(Globals.cNumDaysPast));
+        dtpDateFuture.Date = DateTime.Today.AddDays(Convert.ToDouble(Globals.cNumDaysFuture));
+
     }
 }

@@ -57,7 +57,7 @@
                 ColumnSpacing="5"
                 RowSpacing="5"
                 Margin="5">
-            
+
                 <Label
                     Style="{StaticResource labelStyleDefault}"
                     Grid.Row="0"
@@ -81,6 +81,47 @@
                 </Border>
 
                 <Label
+                    x:Name="lblDatePast"
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Text="{local:Translate NumDaysPast_Text}">
+                </Label>
+
+                <Border
+                    Style="{StaticResource borderStyleDefault}"
+                    Grid.Row="1"
+                    Grid.Column="1">
+
+                    <DatePicker
+                        x:Name="dtpDatePast"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Fill"
+                        Date="{Binding SelectedDate}">
+                    </DatePicker>
+                </Border>
+
+                <Label
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Text="{local:Translate NumDaysFuture_Text}">
+                </Label>
+
+                <Border
+                    Style="{StaticResource borderStyleDefault}"
+                    Grid.Row="2"
+                    Grid.Column="1">
+
+                    <DatePicker
+                        x:Name="dtpDateFuture"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Fill"
+                        Date="{Binding SelectedDate}">
+                    </DatePicker>
+                </Border>
+
+                <!--<Label
                     Style="{StaticResource labelStyleDefault}"
                     Grid.Row="1"
                     Grid.Column="0"
@@ -136,7 +177,7 @@
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>
-                </Border>
+                </Border>-->
 
                 <Button
                     x:Name="btnGetEvents"
