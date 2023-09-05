@@ -89,7 +89,7 @@ public partial class MainPage : ContentPage
         dtpDatePast.Format = Globals.cDateFormat;
         dtpDateFuture.Format = Globals.cDateFormat;
 
-        // Set the days in the past and in the future.
+        // Set the days in the past and in the future date controls.
         dtpDatePast.Date = DateTime.Today.Date.AddDays(-Convert.ToInt32(Globals.cNumDaysPast));
         dtpDateFuture.Date = DateTime.Today.Date.AddDays(Convert.ToInt32(Globals.cNumDaysFuture));
 
@@ -179,8 +179,8 @@ public partial class MainPage : ContentPage
         string cCalendarEvents = "";
 
         int nNumDaysPast = Convert.ToInt32(DateTime.Now.Date.Subtract(dtpDatePast.Date).Days);
-        int nNumDaysFuture = Convert.ToInt32(dtpDateFuture.Date.Subtract(DateTime.Now.Date).Days);
-        //await DisplayAlert("nNumDaysPast/Future", nNumDaysPast.ToString() + " ; " + nNumDaysFuture.ToString(), "OK");
+        int nNumDaysFuture = Convert.ToInt32(dtpDateFuture.Date.Subtract(DateTime.Now.Date).Days) + 1;
+        //await DisplayAlert("nNumDaysPast/Future", nNumDaysPast.ToString() + " ; " + nNumDaysFuture.ToString(), "OK");  // For testing.
 
         try
         {
@@ -308,10 +308,7 @@ public partial class MainPage : ContentPage
         }
 
         // Set the days in the past and in the future.
-        //entNumDaysPast.Text = Globals.cNumDaysPast;
-        //entNumDaysFuture.Text = Globals.cNumDaysFuture;
-        dtpDatePast.Date = DateTime.Today.AddDays(-Convert.ToDouble(Globals.cNumDaysPast));
-        dtpDateFuture.Date = DateTime.Today.AddDays(Convert.ToDouble(Globals.cNumDaysFuture));
-
+        dtpDatePast.Date = DateTime.Today.Date.AddDays(-Convert.ToInt32(Globals.cNumDaysPast));
+        dtpDateFuture.Date = DateTime.Today.Date.AddDays(Convert.ToInt32(Globals.cNumDaysFuture));
     }
 }
