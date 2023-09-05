@@ -82,8 +82,8 @@ public partial class MainPage : ContentPage
 
         // Set the date properties for the DatePicker.
         dtpDatePast.MinimumDate = new DateTime(1583, 1, 1);
-        dtpDatePast.MaximumDate = DateTime.Today;
-        dtpDateFuture.MinimumDate = DateTime.Today;
+        dtpDatePast.MaximumDate = new DateTime(3000, 1, 1);
+        dtpDateFuture.MinimumDate = new DateTime(1583, 1, 1);
         dtpDateFuture.MaximumDate = new DateTime(3000, 1, 1);
 
         dtpDatePast.Format = Globals.cDateFormat;
@@ -138,6 +138,14 @@ public partial class MainPage : ContentPage
     // Get calendar events.
     private async void OnGetEventsClicked(object sender, EventArgs e)
     {
+        // Validate the date values.
+        if (dtpDatePast.Date > dtpDateFuture.Date)
+        {
+            await DisplayAlert(CalEventLang.ErrorTitle_Text, CalEventLang.ErrorDate_Text, CalEventLang.ButtonClose_Text);
+            _ = dtpDatePast.Focus();
+            return;
+        }
+
         // Close the keyboard.
         entSearchWord.IsEnabled = false;
         entSearchWord.IsEnabled = true;
@@ -176,7 +184,8 @@ public partial class MainPage : ContentPage
 
         try
         {
-            var events = await CalendarStore.Default.GetEvents(startDate: DateTimeOffset.Now.AddDays(-nNumDaysPast), endDate: DateTimeOffset.Now.AddDays(nNumDaysFuture));
+            //var events = await CalendarStore.Default.GetEvents(startDate: DateTimeOffset.Now.AddDays(-nNumDaysPast), endDate: DateTimeOffset.Now.AddDays(nNumDaysFuture));
+            var events = await CalendarStore.Default.GetEvents(startDate: DateTimeOffset.Now.Date.AddDays(-nNumDaysPast), endDate: DateTimeOffset.Now.Date.AddDays(nNumDaysFuture));
 
             if (entSearchWord.Text is null or "")
             {
