@@ -144,11 +144,17 @@
   <data name="Dark_Text" xml:space="preserve">
     <value>Dark</value>
   </data>
+  <data name="DateEnd_Text" xml:space="preserve">
+    <value>End date:</value>
+  </data>
   <data name="DateFormat_Text" xml:space="preserve">
     <value>Date format:</value>
   </data>
   <data name="DateISO8601_Text" xml:space="preserve">
     <value>ISO 8601</value>
+  </data>
+  <data name="DateStart_Text" xml:space="preserve">
+    <value>Start date:</value>
   </data>
   <data name="Default_Text" xml:space="preserve">
     <value>Default</value>
@@ -258,11 +264,29 @@ Use this program entirely at your own risk.</value>
   <data name="ToolTipDateFormat_Text" xml:space="preserve">
     <value>Switch between the ISO date format and the system date format</value>
   </data>
+  <data name="ToolTipEventsClear_Text" xml:space="preserve">
+    <value>Clear calendar events</value>
+  </data>
+  <data name="ToolTipEventsCopy_Text" xml:space="preserve">
+    <value>Copy calendar events to the clipboard</value>
+  </data>
+  <data name="ToolTipEventsGet_Text" xml:space="preserve">
+    <value>Get calendar events</value>
+  </data>
+  <data name="ToolTipEventsShare_Text" xml:space="preserve">
+    <value>Share calendar events</value>
+  </data>
   <data name="ToolTipGoBack_Text" xml:space="preserve">
     <value>Go back</value>
   </data>
   <data name="ToolTipGoForward_Text" xml:space="preserve">
     <value>Go forward</value>
+  </data>
+  <data name="ToolTipSettingsReset_Text" xml:space="preserve">
+    <value>Reset the settings to their default values</value>
+  </data>
+  <data name="ToolTipSettingsSave_Text" xml:space="preserve">
+    <value>Save the settings</value>
   </data>
   <data name="Version_Text" xml:space="preserve">
     <value>Version:</value>

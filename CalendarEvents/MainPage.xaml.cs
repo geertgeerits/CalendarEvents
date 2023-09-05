@@ -81,17 +81,17 @@ public partial class MainPage : ContentPage
         }
 
         // Set the date properties for the DatePicker.
-        dtpDatePast.MinimumDate = new DateTime(1583, 1, 1);
-        dtpDatePast.MaximumDate = new DateTime(3000, 1, 1);
-        dtpDateFuture.MinimumDate = new DateTime(1583, 1, 1);
-        dtpDateFuture.MaximumDate = new DateTime(3000, 1, 1);
+        dtpDateStart.MinimumDate = new DateTime(1583, 1, 1);
+        dtpDateStart.MaximumDate = new DateTime(3000, 1, 1);
+        dtpDateEnd.MinimumDate = new DateTime(1583, 1, 1);
+        dtpDateEnd.MaximumDate = new DateTime(3000, 1, 1);
 
-        dtpDatePast.Format = Globals.cDateFormat;
-        dtpDateFuture.Format = Globals.cDateFormat;
+        dtpDateStart.Format = Globals.cDateFormat;
+        dtpDateEnd.Format = Globals.cDateFormat;
 
         // Set the days in the past and in the future date controls.
-        dtpDatePast.Date = DateTime.Today.Date.AddDays(-Convert.ToInt32(Globals.cNumDaysPast));
-        dtpDateFuture.Date = DateTime.Today.Date.AddDays(Convert.ToInt32(Globals.cNumDaysFuture));
+        dtpDateStart.Date = DateTime.Today.Date.AddDays(-Convert.ToInt32(Globals.cNumDaysPast));
+        dtpDateEnd.Date = DateTime.Today.Date.AddDays(Convert.ToInt32(Globals.cNumDaysFuture));
 
         // Set the text language.
         SetTextLanguage();
@@ -123,13 +123,13 @@ public partial class MainPage : ContentPage
     {
         if (sender == entSearchWord)
         {
-            dtpDatePast.Focus();
+            dtpDateStart.Focus();
         }
-        else if (sender == dtpDatePast)
+        else if (sender == dtpDateStart)
         {
-            dtpDateFuture.Focus();
+            dtpDateEnd.Focus();
         }
-        else if (sender == dtpDateFuture)
+        else if (sender == dtpDateEnd)
         {
             btnGetEvents.Focus();
         }
@@ -139,10 +139,10 @@ public partial class MainPage : ContentPage
     private async void OnGetEventsClicked(object sender, EventArgs e)
     {
         // Validate the date values.
-        if (dtpDatePast.Date > dtpDateFuture.Date)
+        if (dtpDateStart.Date > dtpDateEnd.Date)
         {
             await DisplayAlert(CalEventLang.ErrorTitle_Text, CalEventLang.ErrorDate_Text, CalEventLang.ButtonClose_Text);
-            _ = dtpDatePast.Focus();
+            _ = dtpDateStart.Focus();
             return;
         }
 
@@ -178,9 +178,9 @@ public partial class MainPage : ContentPage
         // Get (all) the events from the calendar.
         string cCalendarEvents = "";
 
-        int nNumDaysPast = Convert.ToInt32(DateTime.Now.Date.Subtract(dtpDatePast.Date).Days);
-        int nNumDaysFuture = Convert.ToInt32(dtpDateFuture.Date.Subtract(DateTime.Now.Date).Days) + 1;
-        //await DisplayAlert("nNumDaysPast/Future", nNumDaysPast.ToString() + " ; " + nNumDaysFuture.ToString(), "OK");  // For testing.
+        int nNumDaysPast = Convert.ToInt32(DateTime.Now.Date.Subtract(dtpDateStart.Date).Days);
+        int nNumDaysFuture = Convert.ToInt32(dtpDateEnd.Date.Subtract(DateTime.Now.Date).Days) + 1;
+        //await DisplayAlert("nNumDaysPast/Future", $"{nNumDaysPast.ToString()} ; {nNumDaysFuture.ToString()}", "OK");  // For testing.
 
         try
         {
@@ -307,8 +307,12 @@ public partial class MainPage : ContentPage
             Globals.bLanguageChanged = false;
         }
 
+        // Set the date properties.
+        dtpDateStart.Format = Globals.cDateFormat;
+        dtpDateEnd.Format = Globals.cDateFormat;
+
         // Set the days in the past and in the future.
-        dtpDatePast.Date = DateTime.Today.Date.AddDays(-Convert.ToInt32(Globals.cNumDaysPast));
-        dtpDateFuture.Date = DateTime.Today.Date.AddDays(Convert.ToInt32(Globals.cNumDaysFuture));
+        dtpDateStart.Date = DateTime.Today.Date.AddDays(-Convert.ToInt32(Globals.cNumDaysPast));
+        dtpDateEnd.Date = DateTime.Today.Date.AddDays(Convert.ToInt32(Globals.cNumDaysFuture));
     }
 }

@@ -87,4 +87,21 @@
 	  </MauiXaml>
 	</ItemGroup>
 
+	<PropertyGroup Condition="'$(TargetFramework)'=='net7.0-ios'">
+		<ProvisioningType>manual</ProvisioningType>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="$(TargetFramework.Contains('-ios')) and '$(Configuration)' == 'Release'">
+		<RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
+		<!-- Only needed when you have a need for entitlements -->
+		<!-- <CodesignEntitlement>Entitlements.plist</CodesignEntitlement> -->
+		<CodesignKey>iPhone Distribution: Geert Geerits (XXXXXXXXXX)</CodesignKey>
+		<CodesignProvision>provisioningprofile01iOSCalendarEvents</CodesignProvision>
+		<ArchiveOnBuild>true</ArchiveOnBuild>
+		<TcpPort>58181</TcpPort>
+
+		<ApplicationDisplayVersion>1.0.3</ApplicationDisplayVersion>
+		<ApplicationVersion>3</ApplicationVersion>
+		<ApplicationId>com.geertgeerits.calendarevents</ApplicationId>
+	</PropertyGroup>
 </Project>

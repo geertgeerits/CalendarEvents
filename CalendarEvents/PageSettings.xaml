@@ -203,7 +203,7 @@
                     Grid.Row="12"
                     Grid.Column="0"
                     Text="{local:Translate Save_Text}"
-                    ToolTipProperties.Text="{local:Translate Save_Text}"
+                    ToolTipProperties.Text="{local:Translate ToolTipSettingsSave_Text}"
                     Clicked="OnSettingsSaveClicked">
                 </Button>
 
@@ -213,7 +213,7 @@
                     Grid.Row="13"
                     Grid.Column="1"
                     Text="{local:Translate Reset_Text}"
-                    ToolTipProperties.Text="{local:Translate Reset_Text}"
+                    ToolTipProperties.Text="{local:Translate ToolTipSettingsReset_Text}"
                     Clicked="OnSettingsResetClicked">
                 </Button>
 
@@ -229,7 +229,7 @@
             HorizontalOptions="Start"
             WidthRequest="{OnIdiom 170, Phone=170, Tablet=270, Desktop=270}"
             Text="{local:Translate Save_Text}"
-            ToolTipProperties.Text="{local:Translate Save_Text}"
+            ToolTipProperties.Text="{local:Translate ToolTipSettingsSave_Text}"
             Clicked="OnSettingsSaveClicked">
         </Button>
 
@@ -240,7 +240,7 @@
             HorizontalOptions="End"
             WidthRequest="{OnIdiom 170, Phone=170, Tablet=270, Desktop=270}"
             Text="{local:Translate Reset_Text}"
-            ToolTipProperties.Text="{local:Translate Reset_Text}"
+            ToolTipProperties.Text="{local:Translate ToolTipSettingsReset_Text}"
             Clicked="OnSettingsResetClicked">
         </Button>
 

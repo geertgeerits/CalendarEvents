@@ -142,6 +142,15 @@ namespace CalendarEvents.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to End date:.
+        /// </summary>
+        internal static string DateEnd_Text {
+            get {
+                return ResourceManager.GetString("DateEnd_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Date format:.
         /// </summary>
         internal static string DateFormat_Text {
@@ -156,6 +165,15 @@ namespace CalendarEvents.Resources.Languages {
         internal static string DateISO8601_Text {
             get {
                 return ResourceManager.GetString("DateISO8601_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start date:.
+        /// </summary>
+        internal static string DateStart_Text {
+            get {
+                return ResourceManager.GetString("DateStart_Text", resourceCulture);
             }
         }
         
@@ -472,6 +490,42 @@ namespace CalendarEvents.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Clear calendar events.
+        /// </summary>
+        internal static string ToolTipEventsClear_Text {
+            get {
+                return ResourceManager.GetString("ToolTipEventsClear_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy calendar events to the clipboard.
+        /// </summary>
+        internal static string ToolTipEventsCopy_Text {
+            get {
+                return ResourceManager.GetString("ToolTipEventsCopy_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get calendar events.
+        /// </summary>
+        internal static string ToolTipEventsGet_Text {
+            get {
+                return ResourceManager.GetString("ToolTipEventsGet_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Share calendar events.
+        /// </summary>
+        internal static string ToolTipEventsShare_Text {
+            get {
+                return ResourceManager.GetString("ToolTipEventsShare_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Go back.
         /// </summary>
         internal static string ToolTipGoBack_Text {
@@ -486,6 +540,24 @@ namespace CalendarEvents.Resources.Languages {
         internal static string ToolTipGoForward_Text {
             get {
                 return ResourceManager.GetString("ToolTipGoForward_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset the settings to their default values.
+        /// </summary>
+        internal static string ToolTipSettingsReset_Text {
+            get {
+                return ResourceManager.GetString("ToolTipSettingsReset_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save the settings.
+        /// </summary>
+        internal static string ToolTipSettingsSave_Text {
+            get {
+                return ResourceManager.GetString("ToolTipSettingsSave_Text", resourceCulture);
             }
         }
         

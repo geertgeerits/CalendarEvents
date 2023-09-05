@@ -81,11 +81,11 @@
                 </Border>
 
                 <Label
-                    x:Name="lblDatePast"
+                    x:Name="lblDateStart"
                     Style="{StaticResource labelStyleDefault}"
                     Grid.Row="1"
                     Grid.Column="0"
-                    Text="{local:Translate NumDaysPast_Text}">
+                    Text="{local:Translate DateStart_Text}">
                 </Label>
 
                 <Border
@@ -94,7 +94,7 @@
                     Grid.Column="1">
 
                     <DatePicker
-                        x:Name="dtpDatePast"
+                        x:Name="dtpDateStart"
                         VerticalOptions="Center"
                         HorizontalOptions="Fill"
                         Date="{Binding SelectedDate}">
@@ -105,7 +105,7 @@
                     Style="{StaticResource labelStyleDefault}"
                     Grid.Row="2"
                     Grid.Column="0"
-                    Text="{local:Translate NumDaysFuture_Text}">
+                    Text="{local:Translate DateEnd_Text}">
                 </Label>
 
                 <Border
@@ -114,7 +114,7 @@
                     Grid.Column="1">
 
                     <DatePicker
-                        x:Name="dtpDateFuture"
+                        x:Name="dtpDateEnd"
                         VerticalOptions="Center"
                         HorizontalOptions="Fill"
                         Date="{Binding SelectedDate}">
@@ -127,6 +127,7 @@
                     Grid.Row="3"
                     Grid.Column="0"
                     Text="{local:Translate EventsGet_Text}"
+                    ToolTipProperties.Text="{local:Translate ToolTipEventsGet_Text}"
                     Clicked="OnGetEventsClicked">
                 </Button>
 
@@ -137,6 +138,7 @@
                     Grid.Column="1"
                     HorizontalOptions="End"
                     Text="{local:Translate EventsClear_Text}"
+                    ToolTipProperties.Text="{local:Translate ToolTipEventsClear_Text}"
                     Clicked="OnClearEventsClicked">
                 </Button>
 
@@ -146,6 +148,7 @@
                     Grid.Row="4"
                     Grid.Column="0"
                     Text="{local:Translate EventsCopy_Text}"
+                    ToolTipProperties.Text="{local:Translate ToolTipEventsCopy_Text}"
                     Clicked="OnClipboardButtonClicked">
                 </Button>
             
@@ -156,6 +159,7 @@
                     Grid.Column="1"
                     HorizontalOptions="End"
                     Text="{local:Translate EventsShare_Text}"
+                    ToolTipProperties.Text="{local:Translate ToolTipEventsShare_Text}"
                     Clicked="OnButtonShareClicked">
                 </Button>
 
