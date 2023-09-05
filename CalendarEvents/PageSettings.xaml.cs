@@ -94,6 +94,10 @@ public partial class PageSettings : ContentPage
             rbnDateFormatISO8601.IsChecked = true;
         }
 
+        // Set the days in the past and in the future.
+        entNumDaysPast.Text = Globals.cNumDaysPast;
+        entNumDaysFuture.Text = Globals.cNumDaysFuture;
+
         // Start the stopWatch for resetting all the settings.
         stopWatch.Start();
     }
@@ -247,12 +251,49 @@ public partial class PageSettings : ContentPage
         }
     }
 
+    // Verify the number of days in the past.
+    private void VerifyNumDaysPast(object sender, EventArgs e)
+    {
+        // Validate input values.
+        bool bIsNumber = int.TryParse(entNumDaysPast.Text, out int nNumDaysPast);
+        if (bIsNumber == false || nNumDaysPast < 0 || nNumDaysPast > 4000)
+        {
+            entNumDaysPast.Text = "";
+            entNumDaysPast.Focus();
+            return;
+        }
+
+        Globals.cNumDaysPast = Convert.ToString(nNumDaysPast);
+
+        entNumDaysFuture.Focus();
+    }
+
+    // Verify the number of days in the future.
+    private void VerifyNumDaysFuture(object sender, EventArgs e)
+    {
+        bool bIsNumber = int.TryParse(entNumDaysFuture.Text, out int nNumDaysFuture);
+        if (bIsNumber == false || nNumDaysFuture < 0 || nNumDaysFuture > 4000)
+        {
+            entNumDaysFuture.Text = "";
+            entNumDaysFuture.Focus();
+            return;
+        }
+
+        Globals.cNumDaysFuture = Convert.ToString(nNumDaysFuture);
+
+        // Close the keyboard.
+        entNumDaysFuture.IsEnabled = false;
+        entNumDaysFuture.IsEnabled = true;
+    }
+
     // Button save settings clicked event.
     private static void OnSettingsSaveClicked(object sender, EventArgs e)
     {
         Preferences.Default.Set("SettingTheme", Globals.cTheme);
         Preferences.Default.Set("SettingDateFormatSystem", Globals.bDateFormatSystem);
         Preferences.Default.Set("SettingLanguage", Globals.cLanguage);
+        Preferences.Default.Set("SettingNumDaysPast", Globals.cNumDaysPast);
+        Preferences.Default.Set("SettingNumDaysFuture", Globals.cNumDaysFuture);
 
         // Wait 500 milliseconds otherwise the settings are not saved in Android.
         Task.Delay(500).Wait();
@@ -279,6 +320,8 @@ public partial class PageSettings : ContentPage
             Preferences.Default.Remove("SettingTheme");
             Preferences.Default.Remove("SettingDateFormatSystem");
             Preferences.Default.Remove("SettingLanguage");
+            Preferences.Default.Remove("SettingNumDaysPast");
+            Preferences.Default.Remove("SettingNumDaysFuture");
         }
 
         // Wait 500 milliseconds otherwise the settings are not saved in Android.

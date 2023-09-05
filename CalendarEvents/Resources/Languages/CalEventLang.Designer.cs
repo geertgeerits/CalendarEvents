@@ -88,6 +88,15 @@ namespace CalendarEvents.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Calendars:.
+        /// </summary>
+        internal static string Calendars_Text {
+            get {
+                return ResourceManager.GetString("Calendars_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Remove.
         /// </summary>
         internal static string Clear_Text {

@@ -24,7 +24,7 @@
 
             <Grid
                 Style="{StaticResource gridStyleSettings}"
-                RowDefinitions="Auto, 4, Auto, 4, Auto, 4, Auto, 4, Auto, 4, Auto, Auto, 4, Auto, Auto, 4, Auto, Auto, 4, Auto, Auto, Auto, 4, Auto">
+                RowDefinitions="Auto, 4, Auto, 4, Auto, 4, Auto, Auto, 4, Auto, Auto, 4, Auto, Auto">
 
                 <BoxView
                     Grid.Row="0"
@@ -113,14 +113,14 @@
 
                 <Label
                     Style="{StaticResource labelStyleDefault}"
-                    Grid.Row="10"
+                    Grid.Row="6"
                     Grid.Column="0"
                     Text="{local:Translate DateFormat_Text}">
                 </Label>
             
                 <RadioButton
                     x:Name="rbnDateFormatSystem"
-                    Grid.Row="10"
+                    Grid.Row="6"
                     Grid.Column="1"
                     GroupName="rbgDateFormat"
                     Value="rbnDateFormatSystem"
@@ -130,7 +130,7 @@
                 
                 <RadioButton
                     x:Name="rbnDateFormatISO8601"
-                    Grid.Row="11"
+                    Grid.Row="7"
                     Grid.Column="1"
                     GroupName="rbgDateFormat"
                     Value="rbnDateFormatISO8601"
@@ -138,11 +138,69 @@
                     IsChecked="True"
                     CheckedChanged="OnDateFormatRadioButtonCheckedChanged">
                 </RadioButton>
-            
+
+                <Label
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="9"
+                    Grid.Column="0"
+                    Text="{local:Translate NumDaysPast_Text}">
+                </Label>
+
+                <Border
+                    x:Name="brdNumDaysPast"
+                    Style="{StaticResource borderStyleDefault}"
+                    Grid.Row="9"
+                    Grid.Column="1">
+
+                    <Entry
+                        x:Name="entNumDaysPast"
+                        Style="{StaticResource entryStyleNumericNext}"
+                        Text="0"
+                        Placeholder="0 - 4000"
+                        MaxLength="4"
+                        Completed="VerifyNumDaysPast"
+                        Focused="EntryFocused">
+                        <Entry.Triggers>
+                            <EventTrigger Event="TextChanged">
+                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="4000" BorderName="brdNumDaysPast"/>
+                            </EventTrigger>
+                        </Entry.Triggers>
+                    </Entry>
+                </Border>
+
+                <Label
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="10"
+                    Grid.Column="0"
+                    Text="{local:Translate NumDaysFuture_Text}">
+                </Label>
+
+                <Border
+                    x:Name="brdNumDaysFuture"
+                    Style="{StaticResource borderStyleDefault}"
+                    Grid.Row="10"
+                    Grid.Column="1">
+
+                    <Entry
+                        x:Name="entNumDaysFuture"
+                        Style="{StaticResource entryStyleNumericDone}"
+                        Text="31"
+                        Placeholder="0 - 4000"
+                        MaxLength="4"
+                        Completed="VerifyNumDaysFuture"
+                        Focused="EntryFocused">
+                        <Entry.Triggers>
+                            <EventTrigger Event="TextChanged">
+                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="4000" BorderName="brdNumDaysFuture"/>
+                            </EventTrigger>
+                        </Entry.Triggers>
+                    </Entry>
+                </Border>
+
                 <Button
                     Style="{StaticResource buttonStyleDefault}"
                     IsVisible="{OnPlatform false, iOS=true, Android=false}"
-                    Grid.Row="23"
+                    Grid.Row="12"
                     Grid.Column="0"
                     Text="{local:Translate Save_Text}"
                     ToolTipProperties.Text="{local:Translate Save_Text}"
@@ -152,7 +210,7 @@
                 <Button
                     Style="{StaticResource buttonStyleDefault}"
                     IsVisible="{OnPlatform false, iOS=true, Android=false}"
-                    Grid.Row="23"
+                    Grid.Row="13"
                     Grid.Column="1"
                     Text="{local:Translate Reset_Text}"
                     ToolTipProperties.Text="{local:Translate Reset_Text}"

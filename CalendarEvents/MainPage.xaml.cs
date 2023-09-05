@@ -2,7 +2,7 @@
 // Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
 // Copyright ...: (C) 2023-2023
 // Version .....: 1.0.3
-// Date ........: 2023-09-04 (YYYY-MM-DD)
+// Date ........: 2023-09-05 (YYYY-MM-DD)
 // Language ....: Microsoft Visual Studio 2022: .NET 7.0 MAUI C# 11.0
 // Description .: Read calendar events to share
 // Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 1.0.0-preview2 ; https://github.com/jfversluis/Plugin.Maui.CalendarStore
@@ -23,12 +23,22 @@ public partial class MainPage : ContentPage
 
     public MainPage()
     {
-        InitializeComponent();
+        try
+        {
+            InitializeComponent();
+        }
+        catch (Exception ex)
+        {
+            DisplayAlert("InitializeComponent MainPage", ex.Message, "OK");
+            return;
+        }
 
         // Get the saved settings.License
         Globals.cTheme = Preferences.Default.Get("SettingTheme", "System");
         Globals.bDateFormatSystem = Preferences.Default.Get("SettingDateFormatSystem", true);
         Globals.cLanguage = Preferences.Default.Get("SettingLanguage", "");
+        Globals.cNumDaysPast = Preferences.Default.Get("SettingNumDaysPast", "0");
+        Globals.cNumDaysFuture = Preferences.Default.Get("SettingNumDaysFuture", "31");
         bLicense = Preferences.Default.Get("SettingLicense", false);
 
         // Set the theme.
@@ -70,6 +80,11 @@ public partial class MainPage : ContentPage
             Globals.cLanguage = "en";
         }
 
+        // Set the days in the past and in the future.
+        entNumDaysPast.Text = Globals.cNumDaysPast;
+        entNumDaysFuture.Text = Globals.cNumDaysFuture;
+
+        // Set the text language.
         SetTextLanguage();
     }
 
@@ -123,7 +138,7 @@ public partial class MainPage : ContentPage
             return;
         }
 
-         bIsNumber = int.TryParse(entNumDaysFuture.Text, out int nNumDaysFuture);
+        bIsNumber = int.TryParse(entNumDaysFuture.Text, out int nNumDaysFuture);
         if (bIsNumber == false || nNumDaysFuture < 0 || nNumDaysFuture > 4000)
         {
             entNumDaysFuture.Text = "";
@@ -135,90 +150,62 @@ public partial class MainPage : ContentPage
         entNumDaysFuture.IsEnabled = false;
         entNumDaysFuture.IsEnabled = true;
 
-        // Get the UTC offset.
-        //string cUtcOffset = TimeZoneInfo.Local.GetUtcOffset(DateTime.Now).ToString()[..5];
-        //double nUtcOffset = Convert.ToDouble(TimeZoneInfo.Local.GetUtcOffset(DateTime.Now).TotalHours);
-
         // Get all the calendars from the device.
-        var calendars = await CalendarStore.Default.GetCalendars();
-
-        //DisplayAlert("", Convert.ToString(calendars.Length), "OK");
-        //string[,] calendarArray = new string[calendars.Length, 2];
-
-        //for (int i = 0; i < calendars.Length; i++)
-        //{
-        //    calendarArray[i, 0] = calendars[i].Name;
-        //    calendarArray[i, 1] = calendars[i].Id.ToString();
-        //}
-
-        string cCalendarNames = "Calendars: ";
-
-        foreach (var calendar in calendars)
+        string cCalendarNames;
+        
+        try
         {
-            cCalendarNames = $"{cCalendarNames} {calendar.Name} ({calendar.Id}), ";
+            var calendars = await CalendarStore.Default.GetCalendars();
+
+            cCalendarNames = CalEventLang.Calendars_Text;
+
+            foreach (var calendar in calendars)
+            {
+                //cCalendarNames = $"{cCalendarNames} {calendar.Name} ({calendar.Id}), ";
+                cCalendarNames = $"{cCalendarNames} {calendar.Name}, ";
+            }
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert(CalEventLang.ErrorTitle_Text, ex.Message, CalEventLang.ButtonClose_Text);
+            return;
         }
         
         lblCalendarNames.Text = cCalendarNames;
-        //brdCalendarNames.IsVisible = true;
-        //lblCalendarNames.IsVisible = true;
+        brdCalendarNames.IsVisible = true;
+        lblCalendarNames.IsVisible = true;
 
         // Get (all) the events from the calendar.
-        var events = await CalendarStore.Default.GetEvents(startDate: DateTimeOffset.UtcNow.AddDays(-nNumDaysPast), endDate: DateTimeOffset.UtcNow.AddDays(nNumDaysFuture));
-
         string cCalendarEvents = "";
-        //string cStartDate;
-        //DateTime dStartDate;
-        string cNewLine = "\n\n";
 
-        if (entSearchWord.Text is null or "")
+        try
         {
-            foreach (CalendarEvent ev in events)
-            {
-                //cCalendarEvents = $"{cCalendarEvents}{ev.StartDate}, {ev.Title}\n";
-                cCalendarEvents = $"{cCalendarEvents}{ev.StartDate.ToString(Globals.cDateFormat + "  HH:mm")}  {ev.Title}{cNewLine}";
-            }
+            var events = await CalendarStore.Default.GetEvents(startDate: DateTimeOffset.UtcNow.AddDays(-nNumDaysPast), endDate: DateTimeOffset.UtcNow.AddDays(nNumDaysFuture));
 
-            //foreach (CalendarEvent ev in events)
-            //{
-            //    if (Convert.ToString(ev.StartDate).Contains("+00:00"))
-            //    {
-            //        dStartDate = DateTime.Parse(Convert.ToString(ev.StartDate));
-            //        //cStartDate = dStartDate.ToString(Globals.cDateFormat + " HH:mm zzz");
-            //        cStartDate = dStartDate.ToString(Globals.cDateFormat + "  HH:mm");
-            //        cCalendarEvents = $"{cCalendarEvents}{cStartDate}  {ev.Title}{cNewLine}";
-            //    }
-            //    else
-            //    {
-            //        //cCalendarEvents = $"{cCalendarEvents}{ev.StartDate}, {ev.Title}\n";
-            //        cCalendarEvents = $"{cCalendarEvents}{ev.StartDate.ToString(Globals.cDateFormat + "  HH:mm")}  {ev.Title}{cNewLine}";
-            //    }
-            //}
-        }
-        else
-        {
-            string cSearchWord = entSearchWord.Text.ToLower().Trim();
-
-            foreach (CalendarEvent ev in events)
+            if (entSearchWord.Text is null or "")
             {
-                if (ev.Title.ToLower().Contains(cSearchWord))
+                foreach (CalendarEvent ev in events)
                 {
-                    //cCalendarEvents = $"{cCalendarEvents}{ev.StartDate}, {ev.Title}\n";
-                    cCalendarEvents = $"{cCalendarEvents}{ev.StartDate.ToString(Globals.cDateFormat + "  HH:mm")}  {ev.Title}{cNewLine}";
-
-                    //if (Convert.ToString(ev.StartDate).Contains("+00:00"))
-                    //{
-                    //    dStartDate = DateTime.Parse(Convert.ToString(ev.StartDate));
-                    //    //cStartDate = dStartDate.ToString(Globals.cDateFormat + " HH:mm zzz");
-                    //    cStartDate = dStartDate.ToString(Globals.cDateFormat + "  HH:mm");
-                    //    cCalendarEvents = $"{cCalendarEvents}{cStartDate}  {ev.Title}{cNewLine}";
-                    //}
-                    //else
-                    //{
-                    //    //cCalendarEvents = $"{cCalendarEvents}{ev.StartDate}, {ev.Title}\n";
-                    //    cCalendarEvents = $"{cCalendarEvents}{ev.StartDate.ToString(Globals.cDateFormat + "  HH:mm")}  {ev.Title}{cNewLine}";
-                    //}
+                    cCalendarEvents = $"{cCalendarEvents}{ev.StartDate.ToString(Globals.cDateFormat + "  HH:mm")}  {ev.Title}\n\n";
                 }
             }
+            else
+            {
+                string cSearchWord = entSearchWord.Text.ToLower().Trim();
+
+                foreach (CalendarEvent ev in events)
+                {
+                    if (ev.Title.ToLower().Contains(cSearchWord))
+                    {
+                        cCalendarEvents = $"{cCalendarEvents}{ev.StartDate.ToString(Globals.cDateFormat + "  HH:mm")}  {ev.Title}\n\n";
+                    }
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert(CalEventLang.ErrorTitle_Text, ex.Message, CalEventLang.ButtonClose_Text);
+            return;
         }
 
         lblCalendarEvents.Text = cCalendarEvents;
@@ -305,15 +292,18 @@ public partial class MainPage : ContentPage
         entSearchWord.Focus();
     }
 
-    // Set language using the Appearing event of the MainPage.xaml.
+    // Set language and days using the Appearing event of the MainPage.xaml.
     private void OnPageAppearing(object sender, EventArgs e)
     {
+        // Set language.
         if (Globals.bLanguageChanged)
         {
             SetTextLanguage();
             Globals.bLanguageChanged = false;
-
-            //DisplayAlert("Globals.bLanguageChanged", "true", "OK");  // For testing.
         }
+
+        // Set the days in the past and in the future.
+        entNumDaysPast.Text = Globals.cNumDaysPast;
+        entNumDaysFuture.Text = Globals.cNumDaysFuture;
     }
 }

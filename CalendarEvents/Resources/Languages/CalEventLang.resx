@@ -126,6 +126,9 @@
   <data name="ButtonShare_Text" xml:space="preserve">
     <value>Share</value>
   </data>
+  <data name="Calendars_Text" xml:space="preserve">
+    <value>Calendars:</value>
+  </data>
   <data name="Clear_Text" xml:space="preserve">
     <value>Remove</value>
   </data>
