@@ -155,7 +155,7 @@
                     <Entry
                         x:Name="entNumDaysPast"
                         Style="{StaticResource entryStyleNumericNext}"
-                        Text="0"
+                        Text="1"
                         Placeholder="0 - 4000"
                         MaxLength="4"
                         Completed="VerifyNumDaysPast"
@@ -184,7 +184,7 @@
                     <Entry
                         x:Name="entNumDaysFuture"
                         Style="{StaticResource entryStyleNumericDone}"
-                        Text="31"
+                        Text="32"
                         Placeholder="0 - 4000"
                         MaxLength="4"
                         Completed="VerifyNumDaysFuture"

@@ -121,64 +121,6 @@
                     </DatePicker>
                 </Border>
 
-                <!--<Label
-                    Style="{StaticResource labelStyleDefault}"
-                    Grid.Row="1"
-                    Grid.Column="0"
-                    Text="{local:Translate NumDaysPast_Text}">
-                </Label>
-
-                <Border
-                    x:Name="brdNumDaysPast"
-                    Style="{StaticResource borderStyleDefault}"
-                    Grid.Row="1"
-                    Grid.Column="1">
-
-                    <Entry
-                        x:Name="entNumDaysPast"
-                        Style="{StaticResource entryStyleNumericNext}"
-                        Text="0"
-                        Placeholder="0 - 4000"
-                        MaxLength="4"
-                        Completed="GoToNextField"
-                        Focused="EntryFocused">
-                        <Entry.Triggers>
-                            <EventTrigger Event="TextChanged">
-                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="4000" BorderName="brdNumDaysPast"/>
-                            </EventTrigger>
-                        </Entry.Triggers>
-                    </Entry>
-                </Border>
-           
-                <Label
-                    Style="{StaticResource labelStyleDefault}"
-                    Grid.Row="2"
-                    Grid.Column="0"
-                    Text="{local:Translate NumDaysFuture_Text}">
-                </Label>
-
-                <Border
-                    x:Name="brdNumDaysFuture"
-                    Style="{StaticResource borderStyleDefault}"
-                    Grid.Row="2"
-                    Grid.Column="1">
-
-                    <Entry
-                        x:Name="entNumDaysFuture"
-                        Style="{StaticResource entryStyleNumericDone}"
-                        Text="31"
-                        Placeholder="0 - 4000"
-                        MaxLength="4"
-                        Completed="GoToNextField"
-                        Focused="EntryFocused">
-                        <Entry.Triggers>
-                            <EventTrigger Event="TextChanged">
-                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="4000" BorderName="brdNumDaysFuture"/>
-                            </EventTrigger>
-                        </Entry.Triggers>
-                    </Entry>
-                </Border>-->
-
                 <Button
                     x:Name="btnGetEvents"
                     Style="{StaticResource buttonStyleDefault}"

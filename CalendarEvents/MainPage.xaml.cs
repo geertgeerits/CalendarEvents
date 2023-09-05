@@ -82,20 +82,16 @@ public partial class MainPage : ContentPage
 
         // Set the date properties for the DatePicker.
         dtpDatePast.MinimumDate = new DateTime(1583, 1, 1);
-        dtpDatePast.MaximumDate = new DateTime(5000, 1, 1);
-        dtpDateFuture.MinimumDate = new DateTime(1583, 1, 1);
-        dtpDateFuture.MaximumDate = new DateTime(5000, 1, 1);
+        dtpDatePast.MaximumDate = DateTime.Today;
+        dtpDateFuture.MinimumDate = DateTime.Today;
+        dtpDateFuture.MaximumDate = new DateTime(3000, 1, 1);
 
         dtpDatePast.Format = Globals.cDateFormat;
         dtpDateFuture.Format = Globals.cDateFormat;
 
-        dtpDatePast.Date = DateTime.Today.AddDays(-Convert.ToDouble(Globals.cNumDaysPast));
-        dtpDateFuture.Date = DateTime.Today.AddDays(Convert.ToDouble(Globals.cNumDaysFuture));
-
-
         // Set the days in the past and in the future.
-        //entNumDaysPast.Text = Globals.cNumDaysPast;
-        //entNumDaysFuture.Text = Globals.cNumDaysFuture;
+        dtpDatePast.Date = DateTime.Today.Date.AddDays(-Convert.ToInt32(Globals.cNumDaysPast));
+        dtpDateFuture.Date = DateTime.Today.Date.AddDays(Convert.ToInt32(Globals.cNumDaysFuture));
 
         // Set the text language.
         SetTextLanguage();
@@ -174,15 +170,13 @@ public partial class MainPage : ContentPage
         // Get (all) the events from the calendar.
         string cCalendarEvents = "";
 
-        int nNumDaysPast = Convert.ToInt32(DateTime.Now.Subtract(dtpDatePast.Date).Days);
-        int nNumDaysFuture = Convert.ToInt32(dtpDateFuture.Date.Subtract(DateTime.Now).Days);
-        //await DisplayAlert("nNumDaysPast", nNumDaysPast.ToString(), "OK");
-        //await DisplayAlert("nNumDaysFuture", nNumDaysFuture.ToString(), "OK");
+        int nNumDaysPast = Convert.ToInt32(DateTime.Now.Date.Subtract(dtpDatePast.Date).Days);
+        int nNumDaysFuture = Convert.ToInt32(dtpDateFuture.Date.Subtract(DateTime.Now.Date).Days);
+        //await DisplayAlert("nNumDaysPast/Future", nNumDaysPast.ToString() + " ; " + nNumDaysFuture.ToString(), "OK");
 
         try
         {
-            //var events = await CalendarStore.Default.GetEvents(startDate: DateTimeOffset.UtcNow.AddDays(-nNumDaysPast), endDate: DateTimeOffset.UtcNow.AddDays(nNumDaysFuture));
-            var events = await CalendarStore.Default.GetEvents(startDate: DateTimeOffset.UtcNow.AddDays(-nNumDaysPast), endDate: DateTimeOffset.UtcNow.AddDays(nNumDaysFuture));
+            var events = await CalendarStore.Default.GetEvents(startDate: DateTimeOffset.Now.AddDays(-nNumDaysPast), endDate: DateTimeOffset.Now.AddDays(nNumDaysFuture));
 
             if (entSearchWord.Text is null or "")
             {
