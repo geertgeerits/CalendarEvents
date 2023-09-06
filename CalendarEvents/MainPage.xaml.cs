@@ -33,7 +33,7 @@ public partial class MainPage : ContentPage
             return;
         }
 
-        // Get the saved settings.License
+        // Get the saved settings.
         Globals.cTheme = Preferences.Default.Get("SettingTheme", "System");
         Globals.bDateFormatSystem = Preferences.Default.Get("SettingDateFormatSystem", true);
         Globals.cLanguage = Preferences.Default.Get("SettingLanguage", "");
