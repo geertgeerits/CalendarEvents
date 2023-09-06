@@ -155,7 +155,8 @@
 
                     <Label
                         x:Name="lblCalendarNames"
-                        Style="{StaticResource labelStyleDefault}">
+                        Style="{StaticResource labelStyleDefault}"
+                        Padding="8">
                     </Label>
                 </Border>
 
@@ -190,7 +191,8 @@
                 
                     <Label
                         x:Name="lblCalendarEvents"
-                        Style="{StaticResource labelStyleDefault}">
+                        Style="{StaticResource labelStyleDefault}"
+                        Padding="8">
                     </Label>
                 </Border>
 
