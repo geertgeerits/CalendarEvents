@@ -24,7 +24,7 @@
 
             <Grid
                 Style="{StaticResource gridStyleSettings}"
-                RowDefinitions="Auto, 4, Auto, 4, Auto, 4, Auto, Auto, 4, Auto, Auto, 4, Auto, Auto">
+                RowDefinitions="Auto, 15, Auto, 4, Auto, 4, Auto, Auto, 4, Auto, 4, Auto, 15, Auto">
 
                 <BoxView
                     Grid.Row="0"
@@ -170,7 +170,7 @@
 
                 <Label
                     Style="{StaticResource labelStyleDefault}"
-                    Grid.Row="10"
+                    Grid.Row="11"
                     Grid.Column="0"
                     Text="{local:Translate NumDaysFuture_Text}">
                 </Label>
@@ -178,7 +178,7 @@
                 <Border
                     x:Name="brdNumDaysFuture"
                     Style="{StaticResource borderStyleDefault}"
-                    Grid.Row="10"
+                    Grid.Row="11"
                     Grid.Column="1">
 
                     <Entry
@@ -198,9 +198,9 @@
                 </Border>
 
                 <Button
-                    Style="{StaticResource buttonStyleDefault}"
+                    Style="{StaticResource buttonStyleFill}"
                     IsVisible="{OnPlatform false, iOS=true, Android=false}"
-                    Grid.Row="12"
+                    Grid.Row="13"
                     Grid.Column="0"
                     Text="{local:Translate Save_Text}"
                     ToolTipProperties.Text="{local:Translate ToolTipSettingsSave_Text}"
@@ -208,7 +208,7 @@
                 </Button>
 
                 <Button
-                    Style="{StaticResource buttonStyleDefault}"
+                    Style="{StaticResource buttonStyleFill}"
                     IsVisible="{OnPlatform false, iOS=true, Android=false}"
                     Grid.Row="13"
                     Grid.Column="1"

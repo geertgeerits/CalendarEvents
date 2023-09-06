@@ -86,13 +86,6 @@ public partial class MainPage : ContentPage
         dtpDateEnd.MinimumDate = new DateTime(1583, 1, 1);
         dtpDateEnd.MaximumDate = new DateTime(3000, 1, 1);
 
-        dtpDateStart.Format = Globals.cDateFormat;
-        dtpDateEnd.Format = Globals.cDateFormat;
-
-        // Set the days in the past and in the future date controls.
-        dtpDateStart.Date = DateTime.Today.Date.AddDays(-Convert.ToInt32(Globals.cNumDaysPast));
-        dtpDateEnd.Date = DateTime.Today.Date.AddDays(Convert.ToInt32(Globals.cNumDaysFuture));
-
         // Set the text language.
         SetTextLanguage();
     }
@@ -172,8 +165,6 @@ public partial class MainPage : ContentPage
         }
         
         lblCalendarNames.Text = cCalendarNames;
-        brdCalendarNames.IsVisible = true;
-        lblCalendarNames.IsVisible = true;
 
         // Get (all) the events from the calendar.
         string cCalendarEvents = "";
@@ -292,7 +283,7 @@ public partial class MainPage : ContentPage
         entSearchWord.Focus();
     }
 
-    // Set language and days using the Appearing event of the MainPage.xaml.
+    // Set language and dates using the Appearing event of the MainPage.xaml.
     private void OnPageAppearing(object sender, EventArgs e)
     {
         // Set language.
@@ -302,11 +293,11 @@ public partial class MainPage : ContentPage
             Globals.bLanguageChanged = false;
         }
 
-        // Set the date properties.
+        // Set the date format property.
         dtpDateStart.Format = Globals.cDateFormat;
         dtpDateEnd.Format = Globals.cDateFormat;
 
-        // Set the days in the past and in the future.
+        // Set the calendar days in the past and in the future.
         dtpDateStart.Date = DateTime.Today.Date.AddDays(-Convert.ToInt32(Globals.cNumDaysPast));
         dtpDateEnd.Date = DateTime.Today.Date.AddDays(Convert.ToInt32(Globals.cNumDaysFuture));
     }

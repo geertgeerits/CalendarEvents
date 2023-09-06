@@ -369,6 +369,11 @@
                 <Setter Property="WidthRequest" Value="{OnIdiom 160, Phone=160, Tablet=260, Desktop=260}" />
             </Style>
 
+            <Style x:Key="buttonStyleFill" TargetType="Button">
+                <Setter Property="HorizontalOptions" Value="Fill" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+            
             <Style x:Key="buttonStyleCalculate" TargetType="Button">
                 <Setter Property="Margin" Value="0,6,0,0" />
                 <Setter Property="HorizontalOptions" Value="Start" />

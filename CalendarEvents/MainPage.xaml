@@ -52,11 +52,11 @@
     <ScrollView>
         <StackLayout>
             <Grid
-                RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto"
-                ColumnDefinitions="170, 130*"
+                Grid.RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto"
+                Grid.ColumnDefinitions="170, 130*"
                 ColumnSpacing="5"
                 RowSpacing="5"
-                Margin="5">
+                Margin="{OnIdiom 5, Phone=5, Tablet='60,5,60,5', Desktop='60,5,60,5'}">
 
                 <Label
                     Style="{StaticResource labelStyleDefault}"
@@ -128,6 +128,7 @@
                     Style="{StaticResource buttonStyleDefault}"
                     Grid.Row="3"
                     Grid.Column="0"
+                    WidthRequest="{OnIdiom 170, Phone=170, Tablet=270, Desktop=270}"
                     Text="{local:Translate EventsGet_Text}"
                     ToolTipProperties.Text="{local:Translate ToolTipEventsGet_Text}"
                     Clicked="OnGetEventsClicked">
@@ -139,6 +140,7 @@
                     Grid.Row="3"
                     Grid.Column="1"
                     HorizontalOptions="End"
+                    WidthRequest="{OnIdiom 170, Phone=170, Tablet=270, Desktop=270}"
                     Text="{local:Translate EventsClear_Text}"
                     ToolTipProperties.Text="{local:Translate ToolTipEventsClear_Text}"
                     Clicked="OnClearEventsClicked">
@@ -149,13 +151,11 @@
                     Style="{StaticResource borderStyleDefault}"
                     Grid.Row="4"
                     Grid.Column="0"
-                    Grid.ColumnSpan="2"
-                    IsVisible="False">
+                    Grid.ColumnSpan="2">
 
                     <Label
                         x:Name="lblCalendarNames"
-                        Style="{StaticResource labelStyleDefault}"
-                        IsVisible="False">
+                        Style="{StaticResource labelStyleDefault}">
                     </Label>
                 </Border>
 
@@ -164,6 +164,7 @@
                     Style="{StaticResource buttonStyleDefault}"
                     Grid.Row="5"
                     Grid.Column="0"
+                    WidthRequest="{OnIdiom 170, Phone=170, Tablet=270, Desktop=270}"
                     Text="{local:Translate EventsCopy_Text}"
                     ToolTipProperties.Text="{local:Translate ToolTipEventsCopy_Text}"
                     Clicked="OnClipboardButtonClicked">
@@ -175,6 +176,7 @@
                     Grid.Row="5"
                     Grid.Column="1"
                     HorizontalOptions="End"
+                    WidthRequest="{OnIdiom 170, Phone=170, Tablet=270, Desktop=270}"
                     Text="{local:Translate EventsShare_Text}"
                     ToolTipProperties.Text="{local:Translate ToolTipEventsShare_Text}"
                     Clicked="OnButtonShareClicked">
