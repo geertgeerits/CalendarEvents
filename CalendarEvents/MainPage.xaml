@@ -57,7 +57,7 @@
                 ColumnSpacing="5"
                 RowSpacing="5"
                 Margin="{OnIdiom 5, Phone=5, Tablet='60,5,60,5', Desktop='60,5,60,5'}">
-
+                
                 <Label
                     Style="{StaticResource labelStyleDefault}"
                     Grid.Row="0"
