@@ -181,7 +181,7 @@
     <value>Copy events</value>
   </data>
   <data name="EventsGet_Text" xml:space="preserve">
-    <value>Get events</value>
+    <value>Import events</value>
   </data>
   <data name="EventsShare_Text" xml:space="preserve">
     <value>Share events</value>
@@ -281,6 +281,9 @@ Use this program entirely at your own risk.</value>
   </data>
   <data name="ToolTipGoForward_Text" xml:space="preserve">
     <value>Go forward</value>
+  </data>
+  <data name="ToolTipSearchFor_Text" xml:space="preserve">
+    <value>Search for text in the title or leave this field blank</value>
   </data>
   <data name="ToolTipSettingsReset_Text" xml:space="preserve">
     <value>Reset the settings to their default values</value>

@@ -1,101 +1,303 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-	<!-- 
-		Microsoft ResX Schema
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
 
-		Version 1.3
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Agree_Text" xml:space="preserve">
+    <value>Akkoord</value>
+  </data>
+  <data name="ButtonClose_Text" xml:space="preserve">
+    <value>Sluiten</value>
+  </data>
+  <data name="ButtonShare_Text" xml:space="preserve">
+    <value>Delen</value>
+  </data>
+  <data name="Calendars_Text" xml:space="preserve">
+    <value>Kalenders:</value>
+  </data>
+  <data name="Clear_Text" xml:space="preserve">
+    <value>Wissen</value>
+  </data>
+  <data name="CloseApplication_Text" xml:space="preserve">
+    <value>Gelieve de toepassing te sluiten.</value>
+  </data>
+  <data name="Contact_Text" xml:space="preserve">
+    <value>Contact:</value>
+  </data>
+  <data name="Copyright_Text" xml:space="preserve">
+    <value>Auteursrechten</value>
+  </data>
+  <data name="Dark_Text" xml:space="preserve">
+    <value>Donker</value>
+  </data>
+  <data name="DateEnd_Text" xml:space="preserve">
+    <value>Einddatum:</value>
+  </data>
+  <data name="DateFormat_Text" xml:space="preserve">
+    <value>Datumnotatie:</value>
+  </data>
+  <data name="DateISO8601_Text" xml:space="preserve">
+    <value>ISO 8601</value>
+  </data>
+  <data name="DateStart_Text" xml:space="preserve">
+    <value>Begin datum:</value>
+  </data>
+  <data name="Default_Text" xml:space="preserve">
+    <value>Standaard</value>
+  </data>
+  <data name="Description_Text" xml:space="preserve">
+    <value>Agenda-evenementen ophalen en delen</value>
+  </data>
+  <data name="Disagree_Text" xml:space="preserve">
+    <value>Niet akkoord</value>
+  </data>
+  <data name="Email_Text" xml:space="preserve">
+    <value>E-mail:</value>
+  </data>
+  <data name="ErrorDate_Text" xml:space="preserve">
+    <value>De tweede datum moet gelijk zijn aan of groter zijn dan de eerste datum.</value>
+  </data>
+  <data name="ErrorTitle_Text" xml:space="preserve">
+    <value>Fout</value>
+  </data>
+  <data name="EventsClear_Text" xml:space="preserve">
+    <value>Vrijmaken evenementen</value>
+  </data>
+  <data name="EventsCopy_Text" xml:space="preserve">
+    <value>Kopieer evenementen</value>
+  </data>
+  <data name="EventsGet_Text" xml:space="preserve">
+    <value>Importeer evenementen</value>
+  </data>
+  <data name="EventsShare_Text" xml:space="preserve">
+    <value>Deel evenementen</value>
+  </data>
+  <data name="InfoExplanation_Text" xml:space="preserve">
+    <value>Het datumformaat kan in de instellingen worden gewijzigd in het internationale standaardformaat ISO 8601 (JJJJ-MM-DD).
 
-		The primary goals of this format is to allow a simple XML format 
-		that is mostly human readable. The generation and parsing of the 
-		various data types are done through the TypeConverter classes 
-		associated with the data types.
+Voor de vertaling van de tekst werd Google Translate gebruikt. Dit is geen garantie dat alle vertalingen correct zijn.
+De ondersteunende talen zijn: Tsjechisch, Deens, Nederlands, Engels, Fins, Frans, Duits, Hongaars, Italiaans, Noors, Pools, Portugees, Roemeens, Spaans en Zweeds.
 
-		Example:
-
-		... ado.net/XML headers & schema ...
-		<resheader name="resmimetype">text/microsoft-resx</resheader>
-		<resheader name="version">1.3</resheader>
-		<resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
-		<resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
-		<data name="Name1">this is my long string</data>
-		<data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
-		<data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
-			[base64 mime encoded serialized .NET Framework object]
-		</data>
-		<data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-			[base64 mime encoded string representing a byte array form of the .NET Framework object]
-		</data>
-
-		There are any number of "resheader" rows that contain simple 
-		name/value pairs.
-
-		Each data row contains a name, and value. The row also contains a 
-		type or mimetype. Type corresponds to a .NET class that support 
-		text/value conversion through the TypeConverter architecture. 
-		Classes that don't support this are serialized and stored with the 
-		mimetype set.
-
-		The mimetype is used for serialized objects, and tells the 
-		ResXResourceReader how to depersist the object. This is currently not 
-		extensible. For a given mimetype the value must be set accordingly:
-
-		Note - application/x-microsoft.net.object.binary.base64 is the format 
-		that the ResXResourceWriter will generate, however the reader can 
-		read any of the formats listed below.
-
-		mimetype: application/x-microsoft.net.object.binary.base64
-		value   : The object must be serialized with 
-			: System.Serialization.Formatters.Binary.BinaryFormatter
-			: and then encoded with base64 encoding.
-
-		mimetype: application/x-microsoft.net.object.soap.base64
-		value   : The object must be serialized with 
-			: System.Runtime.Serialization.Formatters.Soap.SoapFormatter
-			: and then encoded with base64 encoding.
-
-		mimetype: application/x-microsoft.net.object.bytearray.base64
-		value   : The object must be serialized into a byte array 
-			: using a System.ComponentModel.TypeConverter
-			: and then encoded with base64 encoding.
-	-->
-	
-	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-		<xsd:element name="root" msdata:IsDataSet="true">
-			<xsd:complexType>
-				<xsd:choice maxOccurs="unbounded">
-					<xsd:element name="data">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
-							</xsd:sequence>
-							<xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
-							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="resheader">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-							</xsd:sequence>
-							<xsd:attribute name="name" type="xsd:string" use="required" />
-						</xsd:complexType>
-					</xsd:element>
-				</xsd:choice>
-			</xsd:complexType>
-		</xsd:element>
-	</xsd:schema>
-	<resheader name="resmimetype">
-		<value>text/microsoft-resx</value>
-	</resheader>
-	<resheader name="version">
-		<value>1.3</value>
-	</resheader>
-	<resheader name="reader">
-		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
-	<resheader name="writer">
-		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
+Voor eventuele correcties kunt u altijd contact met mij opnemen.</value>
+  </data>
+  <data name="Info_Text" xml:space="preserve">
+    <value>Informatie</value>
+  </data>
+  <data name="Language_Text" xml:space="preserve">
+    <value>Taal:</value>
+  </data>
+  <data name="LicenseAgreement_Text" xml:space="preserve">
+    <value>Akkoord met de licentievoorwaarden?</value>
+  </data>
+  <data name="LicenseMit2_Text" xml:space="preserve">
+    <value>De software wordt geleverd 'zoals ze is', zonder enige vorm van garantie, expliciet of impliciet, inclusief maar niet beperkt tot de garanties van verkoopbaarheid, geschiktheid voor een bepaald doel en niet-inbreuk. In geen geval zal de auteur en/of uitgever aansprakelijk zijn voor enige claim, schade of andere aansprakelijkheid, hetzij in een contractuele actie, onrechtmatige daad of anderszins, die voortvloeit van, uit of in verband staat met de software of het gebruik of andere transacties in de software.</value>
+  </data>
+  <data name="LicenseMit_Text" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="LicenseTitle_Text" xml:space="preserve">
+    <value>Licentie</value>
+  </data>
+  <data name="License_Text" xml:space="preserve">
+    <value>Deze applicatie mag vrij worden gebruikt voor niet-commerciële doeleinden.
+Gebruik dit programma geheel op eigen risico.</value>
+  </data>
+  <data name="Light_Text" xml:space="preserve">
+    <value>Licht</value>
+  </data>
+  <data name="NameProgram_Text" xml:space="preserve">
+    <value>Calendar Events</value>
+  </data>
+  <data name="No_Text" xml:space="preserve">
+    <value>Neen</value>
+  </data>
+  <data name="NumDaysFuture_Text" xml:space="preserve">
+    <value>Aantal dagen in de toekomst:</value>
+  </data>
+  <data name="NumDaysPast_Text" xml:space="preserve">
+    <value>Aantal dagen in het verleden:</value>
+  </data>
+  <data name="PrivacyPolicyTitle_Text" xml:space="preserve">
+    <value>Privacybeleid:</value>
+  </data>
+  <data name="PrivacyPolicy_Text" xml:space="preserve">
+    <value>Er worden geen persoonlijke en andere gegevens opgeslagen of doorgegeven aan mezelf en anderen.</value>
+  </data>
+  <data name="ProgramName_Text" xml:space="preserve">
+    <value>Calendar Events</value>
+  </data>
+  <data name="Reset_Text" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="Save_Text" xml:space="preserve">
+    <value>Opslaan</value>
+  </data>
+  <data name="SearchFor_Text" xml:space="preserve">
+    <value>Zoeken naar:</value>
+  </data>
+  <data name="SettingsSaved_Text" xml:space="preserve">
+    <value>Sommige gewijzigde instellingen moeten worden opgeslagen om ze toe te passen.</value>
+  </data>
+  <data name="Settings_Text" xml:space="preserve">
+    <value>Instellingen</value>
+  </data>
+  <data name="System_Text" xml:space="preserve">
+    <value>Systeem</value>
+  </data>
+  <data name="Theme_Text" xml:space="preserve">
+    <value>Thema:</value>
+  </data>
+  <data name="ToolTipDateFormat_Text" xml:space="preserve">
+    <value>Wissel tussen het ISO datumformaat en het systeem datumformaat</value>
+  </data>
+  <data name="ToolTipEventsClear_Text" xml:space="preserve">
+    <value>Agenda-evenementen leeg maken</value>
+  </data>
+  <data name="ToolTipEventsCopy_Text" xml:space="preserve">
+    <value>Kopieer agenda-evenementen naar het klembord</value>
+  </data>
+  <data name="ToolTipEventsGet_Text" xml:space="preserve">
+    <value>Kalender-evenementen ophalen</value>
+  </data>
+  <data name="ToolTipEventsShare_Text" xml:space="preserve">
+    <value>Deel agenda-evenementen</value>
+  </data>
+  <data name="ToolTipGoBack_Text" xml:space="preserve">
+    <value>Ga terug</value>
+  </data>
+  <data name="ToolTipGoForward_Text" xml:space="preserve">
+    <value>Ga vooruit</value>
+  </data>
+  <data name="ToolTipSearchFor_Text" xml:space="preserve">
+    <value>Zoek naar tekst in de titel of laat dit veld leeg</value>
+  </data>
+  <data name="ToolTipSettingsReset_Text" xml:space="preserve">
+    <value>Reset de instellingen naar hun standaardwaarden</value>
+  </data>
+  <data name="ToolTipSettingsSave_Text" xml:space="preserve">
+    <value>Sla de instellingen op</value>
+  </data>
+  <data name="Version_Text" xml:space="preserve">
+    <value>Versie:</value>
+  </data>
+  <data name="Website_Text" xml:space="preserve">
+    <value>Website</value>
+  </data>
+  <data name="Yes_Text" xml:space="preserve">
+    <value>Ja</value>
+  </data>
 </root>

@@ -250,7 +250,7 @@ namespace CalendarEvents.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Get events.
+        ///   Looks up a localized string similar to Import events.
         /// </summary>
         internal static string EventsGet_Text {
             get {
@@ -540,6 +540,15 @@ namespace CalendarEvents.Resources.Languages {
         internal static string ToolTipGoForward_Text {
             get {
                 return ResourceManager.GetString("ToolTipGoForward_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search for text in the title or leave this field blank.
+        /// </summary>
+        internal static string ToolTipSearchFor_Text {
+            get {
+                return ResourceManager.GetString("ToolTipSearchFor_Text", resourceCulture);
             }
         }
         

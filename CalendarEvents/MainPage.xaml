@@ -62,7 +62,9 @@
                     Style="{StaticResource labelStyleDefault}"
                     Grid.Row="0"
                     Grid.Column="0"
-                    Text="{local:Translate SearchFor_Text}">
+                    Text="{local:Translate SearchFor_Text}"
+                    ToolTipProperties.Text="{local:Translate ToolTipSearchFor_Text}"
+                    SemanticProperties.Hint="{local:Translate ToolTipSearchFor_Text}">
                 </Label>
 
                 <Border
@@ -142,10 +144,25 @@
                     Clicked="OnClearEventsClicked">
                 </Button>
 
+                <Border
+                    x:Name="brdCalendarNames"
+                    Style="{StaticResource borderStyleDefault}"
+                    Grid.Row="4"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    IsVisible="False">
+
+                    <Label
+                        x:Name="lblCalendarNames"
+                        Style="{StaticResource labelStyleDefault}"
+                        IsVisible="False">
+                    </Label>
+                </Border>
+
                 <Button
                     x:Name="btnCopyEvents"
                     Style="{StaticResource buttonStyleDefault}"
-                    Grid.Row="4"
+                    Grid.Row="5"
                     Grid.Column="0"
                     Text="{local:Translate EventsCopy_Text}"
                     ToolTipProperties.Text="{local:Translate ToolTipEventsCopy_Text}"
@@ -155,28 +172,13 @@
                 <Button
                     x:Name="btnShareEvents"
                     Style="{StaticResource buttonStyleDefault}"
-                    Grid.Row="4"
+                    Grid.Row="5"
                     Grid.Column="1"
                     HorizontalOptions="End"
                     Text="{local:Translate EventsShare_Text}"
                     ToolTipProperties.Text="{local:Translate ToolTipEventsShare_Text}"
                     Clicked="OnButtonShareClicked">
                 </Button>
-
-                <Border
-                    x:Name="brdCalendarNames"
-                    Style="{StaticResource borderStyleDefault}"
-                    Grid.Row="5"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="2"
-                    IsVisible="False">
-                
-                    <Label
-                        x:Name="lblCalendarNames"
-                        Style="{StaticResource labelStyleDefault}"
-                        IsVisible="False">
-                    </Label>
-                </Border>
 
                 <Border
                     Style="{StaticResource borderStyleDefault}"

@@ -2,7 +2,7 @@
 // Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
 // Copyright ...: (C) 2023-2023
 // Version .....: 1.0.3
-// Date ........: 2023-09-05 (YYYY-MM-DD)
+// Date ........: 2023-09-06 (YYYY-MM-DD)
 // Language ....: Microsoft Visual Studio 2022: .NET 7.0 MAUI C# 11.0
 // Description .: Read calendar events to share
 // Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 1.0.0-preview2 ; https://github.com/jfversluis/Plugin.Maui.CalendarStore
@@ -178,14 +178,9 @@ public partial class MainPage : ContentPage
         // Get (all) the events from the calendar.
         string cCalendarEvents = "";
 
-        int nNumDaysPast = Convert.ToInt32(DateTime.Now.Date.Subtract(dtpDateStart.Date).Days);
-        int nNumDaysFuture = Convert.ToInt32(dtpDateEnd.Date.Subtract(DateTime.Now.Date).Days) + 1;
-        //await DisplayAlert("nNumDaysPast/Future", $"{nNumDaysPast.ToString()} ; {nNumDaysFuture.ToString()}", "OK");  // For testing.
-
         try
         {
-            //var events = await CalendarStore.Default.GetEvents(startDate: DateTimeOffset.Now.AddDays(-nNumDaysPast), endDate: DateTimeOffset.Now.AddDays(nNumDaysFuture));
-            var events = await CalendarStore.Default.GetEvents(startDate: DateTimeOffset.Now.Date.AddDays(-nNumDaysPast), endDate: DateTimeOffset.Now.Date.AddDays(nNumDaysFuture));
+            var events = await CalendarStore.Default.GetEvents(startDate: dtpDateStart.Date, endDate: dtpDateEnd.Date.AddDays(1));
 
             if (entSearchWord.Text is null or "")
             {
