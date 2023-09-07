@@ -175,7 +175,7 @@
     <value>E-mailem:</value>
   </data>
   <data name="ErrorDate_Text" xml:space="preserve">
-    <value>Druhé datum musí být stejné nebo větší než první datum.</value>
+    <value>Datum ukončení musí být stejné nebo větší než datum zahájení.</value>
   </data>
   <data name="ErrorTitle_Text" xml:space="preserve">
     <value>Chyba</value>

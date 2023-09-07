@@ -232,7 +232,7 @@ namespace CalendarEvents.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The second date must be equal to or greater than the first date..
+        ///   Looks up a localized string similar to The end date must be equal to or greater than the start date..
         /// </summary>
         internal static string ErrorDate_Text {
             get {

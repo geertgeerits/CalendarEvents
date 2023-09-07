@@ -175,7 +175,7 @@
     <value>E-mail:</value>
   </data>
   <data name="ErrorDate_Text" xml:space="preserve">
-    <value>De tweede datum moet gelijk zijn aan of groter zijn dan de eerste datum.</value>
+    <value>De einddatum moet gelijk zijn aan of groter zijn dan de startdatum.</value>
   </data>
   <data name="ErrorTitle_Text" xml:space="preserve">
     <value>Fout</value>
