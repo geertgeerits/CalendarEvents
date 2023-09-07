@@ -95,8 +95,8 @@ public partial class PageSettings : ContentPage
         }
 
         // Set the days in the past and in the future.
-        entNumDaysPast.Text = Globals.cNumDaysPast;
-        entNumDaysFuture.Text = Globals.cNumDaysFuture;
+        entAddDaysToStart.Text = Globals.cAddDaysToStart;
+        entAddDaysToEnd.Text = Globals.cAddDaysToEnd;
 
         // Start the stopWatch for resetting all the settings.
         stopWatch.Start();
@@ -252,38 +252,38 @@ public partial class PageSettings : ContentPage
     }
 
     // Verify the number of days in the past.
-    private void VerifyNumDaysPast(object sender, EventArgs e)
+    private void VerifyAddDaysToStart(object sender, EventArgs e)
     {
         // Validate input values.
-        bool bIsNumber = int.TryParse(entNumDaysPast.Text, out int nNumDaysPast);
-        if (bIsNumber == false || nNumDaysPast < 0 || nNumDaysPast > 4000)
+        bool bIsNumber = int.TryParse(entAddDaysToStart.Text, out int nAddDaysToStart);
+        if (bIsNumber == false || nAddDaysToStart < -500 || nAddDaysToStart > 500)
         {
-            entNumDaysPast.Text = "";
-            entNumDaysPast.Focus();
+            entAddDaysToStart.Text = "";
+            entAddDaysToStart.Focus();
             return;
         }
 
-        Globals.cNumDaysPast = Convert.ToString(nNumDaysPast);
+        Globals.cAddDaysToStart = Convert.ToString(nAddDaysToStart);
 
-        entNumDaysFuture.Focus();
+        entAddDaysToEnd.Focus();
     }
 
     // Verify the number of days in the future.
-    private void VerifyNumDaysFuture(object sender, EventArgs e)
+    private void VerifyAddDaysToEnd(object sender, EventArgs e)
     {
-        bool bIsNumber = int.TryParse(entNumDaysFuture.Text, out int nNumDaysFuture);
-        if (bIsNumber == false || nNumDaysFuture < 0 || nNumDaysFuture > 4000)
+        bool bIsNumber = int.TryParse(entAddDaysToEnd.Text, out int nAddDaysToEnd);
+        if (bIsNumber == false || nAddDaysToEnd < -500 || nAddDaysToEnd > 500)
         {
-            entNumDaysFuture.Text = "";
-            entNumDaysFuture.Focus();
+            entAddDaysToEnd.Text = "";
+            entAddDaysToEnd.Focus();
             return;
         }
 
-        Globals.cNumDaysFuture = Convert.ToString(nNumDaysFuture);
+        Globals.cAddDaysToEnd = Convert.ToString(nAddDaysToEnd);
 
         // Close the keyboard.
-        entNumDaysFuture.IsEnabled = false;
-        entNumDaysFuture.IsEnabled = true;
+        entAddDaysToEnd.IsEnabled = false;
+        entAddDaysToEnd.IsEnabled = true;
     }
 
     // Button save settings clicked event.
@@ -291,9 +291,9 @@ public partial class PageSettings : ContentPage
     {
         Preferences.Default.Set("SettingTheme", Globals.cTheme);
         Preferences.Default.Set("SettingDateFormatSystem", Globals.bDateFormatSystem);
+        Preferences.Default.Set("SettingAddDaysToStart", Globals.cAddDaysToStart);
+        Preferences.Default.Set("SettingAddDaysToEnd", Globals.cAddDaysToEnd);
         Preferences.Default.Set("SettingLanguage", Globals.cLanguage);
-        Preferences.Default.Set("SettingNumDaysPast", Globals.cNumDaysPast);
-        Preferences.Default.Set("SettingNumDaysFuture", Globals.cNumDaysFuture);
 
         // Wait 500 milliseconds otherwise the settings are not saved in Android.
         Task.Delay(500).Wait();
@@ -319,9 +319,9 @@ public partial class PageSettings : ContentPage
             // Reset some settings.
             Preferences.Default.Remove("SettingTheme");
             Preferences.Default.Remove("SettingDateFormatSystem");
+            Preferences.Default.Remove("SettingAddDaysToStart");
+            Preferences.Default.Remove("SettingAddDaysToEnd");
             Preferences.Default.Remove("SettingLanguage");
-            Preferences.Default.Remove("SettingNumDaysPast");
-            Preferences.Default.Remove("SettingNumDaysFuture");
         }
 
         // Wait 500 milliseconds otherwise the settings are not saved in Android.

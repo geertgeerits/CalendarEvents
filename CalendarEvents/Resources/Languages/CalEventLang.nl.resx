@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddDaysToEnd_Text" xml:space="preserve">
+    <value>Dagen toe te voegen aan einddatum:</value>
+  </data>
+  <data name="AddDaysToStart_Text" xml:space="preserve">
+    <value>Dagen toe te voegen aan startdatum:</value>
+  </data>
   <data name="Agree_Text" xml:space="preserve">
     <value>Akkoord</value>
   </data>
@@ -224,12 +230,6 @@ Gebruik dit programma geheel op eigen risico.</value>
   </data>
   <data name="No_Text" xml:space="preserve">
     <value>Neen</value>
-  </data>
-  <data name="NumDaysFuture_Text" xml:space="preserve">
-    <value>Aantal dagen in de toekomst:</value>
-  </data>
-  <data name="NumDaysPast_Text" xml:space="preserve">
-    <value>Aantal dagen in het verleden:</value>
   </data>
   <data name="PrivacyPolicyTitle_Text" xml:space="preserve">
     <value>Privacybeleid:</value>

@@ -143,26 +143,26 @@
                     Style="{StaticResource labelStyleDefault}"
                     Grid.Row="9"
                     Grid.Column="0"
-                    Text="{local:Translate NumDaysPast_Text}">
+                    Text="{local:Translate AddDaysToStart_Text}">
                 </Label>
 
                 <Border
-                    x:Name="brdNumDaysPast"
+                    x:Name="brdAddDaysToStart"
                     Style="{StaticResource borderStyleDefault}"
                     Grid.Row="9"
                     Grid.Column="1">
 
                     <Entry
-                        x:Name="entNumDaysPast"
+                        x:Name="entAddDaysToStart"
                         Style="{StaticResource entryStyleNumericNext}"
                         Text="1"
-                        Placeholder="0 - 4000"
+                        Placeholder="-500 - 500"
                         MaxLength="4"
-                        Completed="VerifyNumDaysPast"
+                        Completed="VerifyAddDaysToStart"
                         Focused="EntryFocused">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="4000" BorderName="brdNumDaysPast"/>
+                                <local:NumericValidationTriggerAction MinValue="-500" MaxValue="500" BorderName="brdAddDaysToStart"/>
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>
@@ -172,26 +172,26 @@
                     Style="{StaticResource labelStyleDefault}"
                     Grid.Row="11"
                     Grid.Column="0"
-                    Text="{local:Translate NumDaysFuture_Text}">
+                    Text="{local:Translate AddDaysToEnd_Text}">
                 </Label>
 
                 <Border
-                    x:Name="brdNumDaysFuture"
+                    x:Name="brdAddDaysToEnd"
                     Style="{StaticResource borderStyleDefault}"
                     Grid.Row="11"
                     Grid.Column="1">
 
                     <Entry
-                        x:Name="entNumDaysFuture"
+                        x:Name="entAddDaysToEnd"
                         Style="{StaticResource entryStyleNumericDone}"
                         Text="32"
-                        Placeholder="0 - 4000"
+                        Placeholder="-500 - 500"
                         MaxLength="4"
-                        Completed="VerifyNumDaysFuture"
+                        Completed="VerifyAddDaysToEnd"
                         Focused="EntryFocused">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="4000" BorderName="brdNumDaysFuture"/>
+                                <local:NumericValidationTriggerAction MinValue="-500" MaxValue="500" BorderName="brdAddDaysToEnd"/>
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>

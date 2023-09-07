@@ -2,7 +2,7 @@
 // Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
 // Copyright ...: (C) 2023-2023
 // Version .....: 1.0.3
-// Date ........: 2023-09-06 (YYYY-MM-DD)
+// Date ........: 2023-09-07 (YYYY-MM-DD)
 // Language ....: Microsoft Visual Studio 2022: .NET 7.0 MAUI C# 11.0
 // Description .: Read calendar events to share
 // Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 1.0.0-preview2 ; https://github.com/jfversluis/Plugin.Maui.CalendarStore
@@ -36,9 +36,10 @@ public partial class MainPage : ContentPage
         // Get the saved settings.
         Globals.cTheme = Preferences.Default.Get("SettingTheme", "System");
         Globals.bDateFormatSystem = Preferences.Default.Get("SettingDateFormatSystem", true);
+        Globals.cAddDaysToStart = Preferences.Default.Get("SettingAddDaysToStart", "0");
+        Globals.cAddDaysToEnd = Preferences.Default.Get("SettingAddDaysToEnd", "31");
         Globals.cLanguage = Preferences.Default.Get("SettingLanguage", "");
-        Globals.cNumDaysPast = Preferences.Default.Get("SettingNumDaysPast", "0");
-        Globals.cNumDaysFuture = Preferences.Default.Get("SettingNumDaysFuture", "31");
+
         bLicense = Preferences.Default.Get("SettingLicense", false);
 
         // Set the theme.
@@ -210,9 +211,15 @@ public partial class MainPage : ContentPage
     }
 
     // Copy calendar events to clipboard.
-    private async void OnClipboardButtonClicked(object sender, EventArgs e) =>
-        await Clipboard.Default.SetTextAsync(lblCalendarEvents.Text);   
+    private async void OnClipboardButtonClicked(object sender, EventArgs e)
+    {
+        if (lblCalendarEvents.Text is not null and not "")
+        {
+            await Clipboard.Default.SetTextAsync(lblCalendarEvents.Text);
+        }
 
+    }
+        
     // Share calendar events.
     private async void OnButtonShareClicked(object sender, EventArgs e)
     {
@@ -225,6 +232,11 @@ public partial class MainPage : ContentPage
     // Share calendar events.
     private async Task ShareText(string cText)
     {
+        if (cText is null or "")
+        {
+            return;
+        }
+
         await Share.Default.RequestAsync(new ShareTextRequest
         {
             Text = cText,
@@ -298,7 +310,7 @@ public partial class MainPage : ContentPage
         dtpDateEnd.Format = Globals.cDateFormat;
 
         // Set the calendar days in the past and in the future.
-        dtpDateStart.Date = DateTime.Today.Date.AddDays(-Convert.ToInt32(Globals.cNumDaysPast));
-        dtpDateEnd.Date = DateTime.Today.Date.AddDays(Convert.ToInt32(Globals.cNumDaysFuture));
+        dtpDateStart.Date = DateTime.Today.Date.AddDays(Convert.ToInt32(Globals.cAddDaysToStart));
+        dtpDateEnd.Date = DateTime.Today.Date.AddDays(Convert.ToInt32(Globals.cAddDaysToEnd));
     }
 }

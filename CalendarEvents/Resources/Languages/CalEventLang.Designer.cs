@@ -61,6 +61,24 @@ namespace CalendarEvents.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Days to add to end date:.
+        /// </summary>
+        internal static string AddDaysToEnd_Text {
+            get {
+                return ResourceManager.GetString("AddDaysToEnd_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Days to add to start date:.
+        /// </summary>
+        internal static string AddDaysToStart_Text {
+            get {
+                return ResourceManager.GetString("AddDaysToStart_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Agree.
         /// </summary>
         internal static string Agree_Text {
@@ -369,24 +387,6 @@ namespace CalendarEvents.Resources.Languages {
         internal static string No_Text {
             get {
                 return ResourceManager.GetString("No_Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Number of days in the future:.
-        /// </summary>
-        internal static string NumDaysFuture_Text {
-            get {
-                return ResourceManager.GetString("NumDaysFuture_Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Number of days in the past:.
-        /// </summary>
-        internal static string NumDaysPast_Text {
-            get {
-                return ResourceManager.GetString("NumDaysPast_Text", resourceCulture);
             }
         }
         

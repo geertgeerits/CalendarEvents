@@ -12,10 +12,10 @@ static class Globals
     public static bool bDateFormatSystem;
     public static string cSysDateFormat;
     public static string cDateFormat;
+    public static string cAddDaysToStart;
+    public static string cAddDaysToEnd;
     public static string cLanguage;
     public static bool bLanguageChanged = false;
-    public static string cNumDaysPast;
-    public static string cNumDaysFuture;
 
     // Global methods.
     // Set the current UI culture of the selected language.
