@@ -187,7 +187,7 @@
     <value>Kopieer evenementen</value>
   </data>
   <data name="EventsGet_Text" xml:space="preserve">
-    <value>Importeer evenementen</value>
+    <value>Ophalen evenementen</value>
   </data>
   <data name="EventsShare_Text" xml:space="preserve">
     <value>Deel evenementen</value>
@@ -271,7 +271,7 @@ Gebruik dit programma geheel op eigen risico.</value>
     <value>Kopieer agenda-evenementen naar het klembord</value>
   </data>
   <data name="ToolTipEventsGet_Text" xml:space="preserve">
-    <value>Kalender-evenementen ophalen</value>
+    <value>Agenda-evenementen ophalen</value>
   </data>
   <data name="ToolTipEventsShare_Text" xml:space="preserve">
     <value>Deel agenda-evenementen</value>

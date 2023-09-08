@@ -166,7 +166,7 @@
     <value>Alapértelmezett</value>
   </data>
   <data name="Description_Text" xml:space="preserve">
-    <value>Naptári események beszerzése és megosztása</value>
+    <value>Naptári események lekérése és megosztása</value>
   </data>
   <data name="Disagree_Text" xml:space="preserve">
     <value>Nem ért egyet</value>
@@ -187,7 +187,7 @@
     <value>Események másolása</value>
   </data>
   <data name="EventsGet_Text" xml:space="preserve">
-    <value>Események importálása</value>
+    <value>Események lekérése</value>
   </data>
   <data name="EventsShare_Text" xml:space="preserve">
     <value>Események megosztása</value>

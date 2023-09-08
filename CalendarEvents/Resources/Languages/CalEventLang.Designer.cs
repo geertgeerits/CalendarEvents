@@ -205,7 +205,7 @@ namespace CalendarEvents.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Get and share calendar events.
+        ///   Looks up a localized string similar to Retrieve and share calendar events.
         /// </summary>
         internal static string Description_Text {
             get {
@@ -268,7 +268,7 @@ namespace CalendarEvents.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Import events.
+        ///   Looks up a localized string similar to Retrieve events.
         /// </summary>
         internal static string EventsGet_Text {
             get {
@@ -508,7 +508,7 @@ namespace CalendarEvents.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Get calendar events.
+        ///   Looks up a localized string similar to Retrieve calendar events.
         /// </summary>
         internal static string ToolTipEventsGet_Text {
             get {

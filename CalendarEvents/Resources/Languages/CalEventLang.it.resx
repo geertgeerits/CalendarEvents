@@ -166,7 +166,7 @@
     <value>Predefinito</value>
   </data>
   <data name="Description_Text" xml:space="preserve">
-    <value>Ottieni e condividi gli eventi del calendario</value>
+    <value>Recupera e condividi gli eventi del calendario</value>
   </data>
   <data name="Disagree_Text" xml:space="preserve">
     <value>Non accetto</value>
@@ -187,7 +187,7 @@
     <value>Copia eventi</value>
   </data>
   <data name="EventsGet_Text" xml:space="preserve">
-    <value>Importa eventi</value>
+    <value>Recupera eventi</value>
   </data>
   <data name="EventsShare_Text" xml:space="preserve">
     <value>Condividi eventi</value>
@@ -271,7 +271,7 @@ Utilizza questo programma interamente a tuo rischio e pericolo.</value>
     <value>Copia gli eventi del calendario negli appunti</value>
   </data>
   <data name="ToolTipEventsGet_Text" xml:space="preserve">
-    <value>Ottieni eventi del calendario</value>
+    <value>Recupera gli eventi del calendario</value>
   </data>
   <data name="ToolTipEventsShare_Text" xml:space="preserve">
     <value>Condividi gli eventi del calendario</value>

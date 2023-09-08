@@ -187,7 +187,7 @@
     <value>Ereignisse kopieren</value>
   </data>
   <data name="EventsGet_Text" xml:space="preserve">
-    <value>Ereignisse importieren</value>
+    <value>Ereignisse abrufen</value>
   </data>
   <data name="EventsShare_Text" xml:space="preserve">
     <value>Teilen Sie Ereignisse</value>
@@ -271,7 +271,7 @@ Die Nutzung dieses Programms erfolgt ausschließlich auf eigenes Risiko.</value>
     <value>Kalenderereignisse in die Zwischenablage kopieren</value>
   </data>
   <data name="ToolTipEventsGet_Text" xml:space="preserve">
-    <value>Erhalten Sie Kalenderereignisse</value>
+    <value>Kalenderereignisse abrufen</value>
   </data>
   <data name="ToolTipEventsShare_Text" xml:space="preserve">
     <value>Teilen Sie Kalenderereignisse</value>

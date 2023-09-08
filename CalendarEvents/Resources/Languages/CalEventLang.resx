@@ -166,7 +166,7 @@
     <value>Default</value>
   </data>
   <data name="Description_Text" xml:space="preserve">
-    <value>Get and share calendar events</value>
+    <value>Retrieve and share calendar events</value>
   </data>
   <data name="Disagree_Text" xml:space="preserve">
     <value>Disagree</value>
@@ -187,7 +187,7 @@
     <value>Copy events</value>
   </data>
   <data name="EventsGet_Text" xml:space="preserve">
-    <value>Import events</value>
+    <value>Retrieve events</value>
   </data>
   <data name="EventsShare_Text" xml:space="preserve">
     <value>Share events</value>
@@ -271,7 +271,7 @@ Use this program entirely at your own risk.</value>
     <value>Copy calendar events to the clipboard</value>
   </data>
   <data name="ToolTipEventsGet_Text" xml:space="preserve">
-    <value>Get calendar events</value>
+    <value>Retrieve calendar events</value>
   </data>
   <data name="ToolTipEventsShare_Text" xml:space="preserve">
     <value>Share calendar events</value>

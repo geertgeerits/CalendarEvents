@@ -166,7 +166,7 @@
     <value>Výchozí</value>
   </data>
   <data name="Description_Text" xml:space="preserve">
-    <value>Získejte a sdílejte události kalendáře</value>
+    <value>Načítání a sdílení událostí kalendáře</value>
   </data>
   <data name="Disagree_Text" xml:space="preserve">
     <value>Nesouhlasit</value>
@@ -187,7 +187,7 @@
     <value>Kopírovat události</value>
   </data>
   <data name="EventsGet_Text" xml:space="preserve">
-    <value>Import událostí</value>
+    <value>Načíst události</value>
   </data>
   <data name="EventsShare_Text" xml:space="preserve">
     <value>Sdílejte události</value>
@@ -271,7 +271,7 @@ Používejte tento program zcela na vlastní nebezpečí.</value>
     <value>Zkopírujte události kalendáře do schránky</value>
   </data>
   <data name="ToolTipEventsGet_Text" xml:space="preserve">
-    <value>Získejte události kalendáře</value>
+    <value>Načíst události kalendáře</value>
   </data>
   <data name="ToolTipEventsShare_Text" xml:space="preserve">
     <value>Sdílejte události kalendáře</value>

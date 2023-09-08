@@ -166,7 +166,7 @@
     <value>Standard</value>
   </data>
   <data name="Description_Text" xml:space="preserve">
-    <value>Få og del kalenderhendelser</value>
+    <value>Hent og del kalenderhendelser</value>
   </data>
   <data name="Disagree_Text" xml:space="preserve">
     <value>Være uenig</value>
@@ -187,7 +187,7 @@
     <value>Kopier hendelser</value>
   </data>
   <data name="EventsGet_Text" xml:space="preserve">
-    <value>Importer hendelser</value>
+    <value>Hent hendelser</value>
   </data>
   <data name="EventsShare_Text" xml:space="preserve">
     <value>Del hendelser</value>
@@ -271,7 +271,7 @@ Bruk dette programmet helt på egen risiko.</value>
     <value>Kopier kalenderhendelser til utklippstavlen</value>
   </data>
   <data name="ToolTipEventsGet_Text" xml:space="preserve">
-    <value>Få kalenderhendelser</value>
+    <value>Hent kalenderhendelser</value>
   </data>
   <data name="ToolTipEventsShare_Text" xml:space="preserve">
     <value>Del kalenderhendelser</value>

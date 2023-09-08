@@ -166,7 +166,7 @@
     <value>Défaut</value>
   </data>
   <data name="Description_Text" xml:space="preserve">
-    <value>Obtenez et partagez des événements de calendrier</value>
+    <value>Récupérer et partager des événements de calendrier</value>
   </data>
   <data name="Disagree_Text" xml:space="preserve">
     <value>Désaccord</value>
@@ -187,7 +187,7 @@
     <value>Copier des événements</value>
   </data>
   <data name="EventsGet_Text" xml:space="preserve">
-    <value>Importer des événements</value>
+    <value>Récupérer des événements</value>
   </data>
   <data name="EventsShare_Text" xml:space="preserve">
     <value>Partager des événements</value>
@@ -271,7 +271,7 @@ Utilisez ce programme entièrement à vos propres risques.</value>
     <value>Copier les événements du calendrier dans le presse-papiers</value>
   </data>
   <data name="ToolTipEventsGet_Text" xml:space="preserve">
-    <value>Obtenir les événements du calendrier</value>
+    <value>Récupérer les événements du calendrier</value>
   </data>
   <data name="ToolTipEventsShare_Text" xml:space="preserve">
     <value>Partager les événements du calendrier</value>
