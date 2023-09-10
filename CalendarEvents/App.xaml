@@ -229,7 +229,8 @@
                         </VisualStateGroup>
                     </VisualStateGroupList>
                 </Setter>
-                <!--<Setter Property="HorizontalOptions" Value="Center" />  !!!BUG!!! - Does not work on Windows Desktop for the MainPage, there shows only 1 colmun.-->
+                <!--!!!BUG!!! HorizontalOptions does not work on Windows Desktop for the MainPage, there shows only 1 colmun.-->
+                <Setter Property="HorizontalOptions" Value="Center" />
                 <Setter Property="Margin" Value="{OnIdiom 5, Phone=5, Tablet=10, Desktop=10}" />
                 <Setter Property="ColumnSpacing" Value="{OnIdiom 5, Phone=5, Tablet=15, Desktop=15}" />
                 <Setter Property="RowSpacing" Value="4" />

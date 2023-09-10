@@ -87,6 +87,53 @@ public partial class MainPage : ContentPage
 
         // Set the text language.
         SetTextLanguage();
+
+        // Set up the grid for the different platforms due a !!!BUG!!! in Windows with the grid style on the MainPage.xaml.
+#if ANDROID || IOS
+        var grid = new Grid()
+        {
+            Style = (Style)Application.Current.Resources["gridStyleEvents"],
+            RowDefinitions =
+            {
+                new RowDefinition(GridLength.Auto),
+                new RowDefinition(GridLength.Auto),
+                new RowDefinition(GridLength.Auto),
+                new RowDefinition(GridLength.Auto),
+                new RowDefinition(GridLength.Auto),
+                new RowDefinition(GridLength.Auto),
+                new RowDefinition(GridLength.Auto),
+            },           
+        };
+        grdEvents.Style = grid.Style;
+        grdEvents.RowDefinitions = grid.RowDefinitions;        
+#else
+        var grid = new Grid()
+        {
+            RowDefinitions =
+            {
+                new RowDefinition(GridLength.Auto),
+                new RowDefinition(GridLength.Auto),
+                new RowDefinition(GridLength.Auto),
+                new RowDefinition(GridLength.Auto),
+                new RowDefinition(GridLength.Auto),
+                new RowDefinition(GridLength.Auto),
+                new RowDefinition(GridLength.Auto),
+            },
+            ColumnDefinitions =
+            {
+                new ColumnDefinition { Width = new GridLength(170) },
+                new ColumnDefinition { Width = new GridLength(130, GridUnitType.Star) }
+            },
+            ColumnSpacing = 5,
+            RowSpacing = 5,
+            Margin = new Thickness(60,5,60,5)
+        };
+        grdEvents.RowDefinitions = grid.RowDefinitions;
+        grdEvents.ColumnDefinitions = grid.ColumnDefinitions;
+        grdEvents.ColumnSpacing = grid.ColumnSpacing;
+        grdEvents.RowSpacing = grid.RowSpacing;
+        grdEvents.Margin = grid.Margin;
+#endif
     }
 
     // TitleView buttons clicked events.

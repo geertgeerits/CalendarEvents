@@ -52,11 +52,8 @@
     <ScrollView>
         <StackLayout>
             <Grid
-                Grid.RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto"
-                Grid.ColumnDefinitions="170, 130*"
-                ColumnSpacing="5"
-                RowSpacing="5"
-                Margin="{OnIdiom 10, Phone=10, Tablet='60,5,60,5', Desktop='60,5,60,5'}">
+                x:Name="grdEvents">
+
                 <Label
                     x:Name="lblDateStart"
                     Style="{StaticResource labelStyleDefault}"
