@@ -31,7 +31,7 @@
                 Grid.Row="0"
                 Grid.Column="1"
                 FontSize="20"
-                Text="{local:Translate ProgramName_Text}">
+                Text="{local:Translate NameProgram_Text}">
             </Label>
 
             <ImageButton
