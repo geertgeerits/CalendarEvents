@@ -2,12 +2,10 @@
 // Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
 // Copyright ...: (C) 2023-2023
 // Version .....: 1.0.3
-// Date ........: 2023-09-08 (YYYY-MM-DD)
+// Date ........: 2023-09-10 (YYYY-MM-DD)
 // Language ....: Microsoft Visual Studio 2022: .NET 7.0 MAUI C# 11.0
 // Description .: Read calendar events to share
 // Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 1.0.0-preview2 ; https://github.com/jfversluis/Plugin.Maui.CalendarStore
-//                NuGet Package: Microsoft.AppCenter version 5.0.2 ; https://appcenter.ms/apps ; https://azure.microsoft.com/en-us/products/app-center/
-//                NuGet Package: Microsoft.AppCenter.Crashes version 5.0.2 
 // Thanks to ...: Gerald Versluis
 
 using Plugin.Maui.CalendarStore;
@@ -112,23 +110,6 @@ public partial class MainPage : ContentPage
         entry.SelectionLength = entry.Text.Length;
     }
 
-    // Go to the next field when the return key have been pressed.
-    private void GoToNextField(object sender, EventArgs e)
-    {
-        if (sender == entSearchWord)
-        {
-            dtpDateStart.Focus();
-        }
-        else if (sender == dtpDateStart)
-        {
-            dtpDateEnd.Focus();
-        }
-        else if (sender == dtpDateEnd)
-        {
-            btnGetEvents.Focus();
-        }
-    }
-
     // Get calendar events.
     private async void OnGetEventsClicked(object sender, EventArgs e)
     {
@@ -208,6 +189,8 @@ public partial class MainPage : ContentPage
     {
         lblCalendarNames.Text = "";
         lblCalendarEvents.Text = "";
+
+        _ = entSearchWord.Focus();
     }
 
     // Copy calendar events to clipboard.
@@ -312,5 +295,8 @@ public partial class MainPage : ContentPage
         // Set the calendar days in the past and in the future.
         dtpDateStart.Date = DateTime.Today.Date.AddDays(Convert.ToInt32(Globals.cAddDaysToStart));
         dtpDateEnd.Date = DateTime.Today.Date.AddDays(Convert.ToInt32(Globals.cAddDaysToEnd));
+
+        // Set focus to the first entry field.
+        entSearchWord.Focus();
     }
 }
