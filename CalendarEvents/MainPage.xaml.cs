@@ -211,11 +211,15 @@ public partial class MainPage : ContentPage
             }
             else
             {
-                string cSearchWord = entSearchWord.Text.ToLower().Trim();
+                string cSearchWord = entSearchWord.Text.ToLowerInvariant().Trim();
 
                 foreach (CalendarEvent ev in events)
                 {
-                    if (ev.Title.ToLower().Contains(cSearchWord))
+                    if (ev.Title is null or "")
+                    {
+                        continue;
+                    }
+                    if (ev.Title.ToLowerInvariant().Contains(cSearchWord))
                     {
                         cCalendarEvents = $"{cCalendarEvents}{ev.StartDate.ToString(Globals.cDateFormat + "  HH:mm")}  {ev.Title}\n\n";
                     }
@@ -260,7 +264,7 @@ public partial class MainPage : ContentPage
     }
 
     // Share calendar events.
-    private async Task ShareText(string cText)
+    private static async Task ShareText(string cText)
     {
         if (cText is null or "")
         {
@@ -270,7 +274,7 @@ public partial class MainPage : ContentPage
         await Share.Default.RequestAsync(new ShareTextRequest
         {
             Text = cText,
-            Title = "Share calendar events"
+            Title = CalEventLang.NameProgramLocal_Text
         });
     }
 

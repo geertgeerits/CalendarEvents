@@ -225,6 +225,9 @@ Ezt a programot kizárólag saját felelősségére használja.</value>
   <data name="Light_Text" xml:space="preserve">
     <value>Világos</value>
   </data>
+  <data name="NameProgramLocal_Text" xml:space="preserve">
+    <value>Események naptárban</value>
+  </data>
   <data name="NameProgram_Text" xml:space="preserve">
     <value>Calendar Events</value>
   </data>
@@ -236,9 +239,6 @@ Ezt a programot kizárólag saját felelősségére használja.</value>
   </data>
   <data name="PrivacyPolicy_Text" xml:space="preserve">
     <value>Személyes és egyéb adatokat nem tárolunk, illetve nem adunk át magamnak és másoknak.</value>
-  </data>
-  <data name="ProgramName_Text" xml:space="preserve">
-    <value>Calendar Events</value>
   </data>
   <data name="Reset_Text" xml:space="preserve">
     <value>Visszaállítás</value>

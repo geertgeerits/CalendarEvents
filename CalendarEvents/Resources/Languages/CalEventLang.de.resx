@@ -225,6 +225,9 @@ Die Nutzung dieses Programms erfolgt ausschließlich auf eigenes Risiko.</value>
   <data name="Light_Text" xml:space="preserve">
     <value>Hell</value>
   </data>
+  <data name="NameProgramLocal_Text" xml:space="preserve">
+    <value>Kalenderereignisse</value>
+  </data>
   <data name="NameProgram_Text" xml:space="preserve">
     <value>Calendar Events</value>
   </data>
@@ -236,9 +239,6 @@ Die Nutzung dieses Programms erfolgt ausschließlich auf eigenes Risiko.</value>
   </data>
   <data name="PrivacyPolicy_Text" xml:space="preserve">
     <value>Es werden keine personenbezogenen und sonstigen Daten gespeichert oder an mich und andere weitergegeben.</value>
-  </data>
-  <data name="ProgramName_Text" xml:space="preserve">
-    <value>Calendar Events</value>
   </data>
   <data name="Reset_Text" xml:space="preserve">
     <value>Zurücksetzen</value>

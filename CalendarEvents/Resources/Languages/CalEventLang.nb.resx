@@ -225,6 +225,9 @@ Bruk dette programmet helt på egen risiko.</value>
   <data name="Light_Text" xml:space="preserve">
     <value>Lys</value>
   </data>
+  <data name="NameProgramLocal_Text" xml:space="preserve">
+    <value>Kalenderhendelser</value>
+  </data>
   <data name="NameProgram_Text" xml:space="preserve">
     <value>Calendar Events</value>
   </data>
@@ -236,9 +239,6 @@ Bruk dette programmet helt på egen risiko.</value>
   </data>
   <data name="PrivacyPolicy_Text" xml:space="preserve">
     <value>Ingen personlige og andre data lagres eller gis videre til meg selv og andre.</value>
-  </data>
-  <data name="ProgramName_Text" xml:space="preserve">
-    <value>Calendar Events</value>
   </data>
   <data name="Reset_Text" xml:space="preserve">
     <value>Nullstille</value>

@@ -382,6 +382,15 @@ namespace CalendarEvents.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Calendar Events.
+        /// </summary>
+        internal static string NameProgramLocal_Text {
+            get {
+                return ResourceManager.GetString("NameProgramLocal_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No.
         /// </summary>
         internal static string No_Text {
@@ -405,15 +414,6 @@ namespace CalendarEvents.Resources.Languages {
         internal static string PrivacyPolicyTitle_Text {
             get {
                 return ResourceManager.GetString("PrivacyPolicyTitle_Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Calendar Events.
-        /// </summary>
-        internal static string ProgramName_Text {
-            get {
-                return ResourceManager.GetString("ProgramName_Text", resourceCulture);
             }
         }
         

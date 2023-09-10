@@ -225,6 +225,9 @@ Use este programa inteiramente por sua conta e risco.</value>
   <data name="Light_Text" xml:space="preserve">
     <value>Claro</value>
   </data>
+  <data name="NameProgramLocal_Text" xml:space="preserve">
+    <value>Eventos do calendário</value>
+  </data>
   <data name="NameProgram_Text" xml:space="preserve">
     <value>Calendar Events</value>
   </data>
@@ -236,9 +239,6 @@ Use este programa inteiramente por sua conta e risco.</value>
   </data>
   <data name="PrivacyPolicy_Text" xml:space="preserve">
     <value>Nenhum dado pessoal e outros são armazenados ou transmitidos para mim e para outros.</value>
-  </data>
-  <data name="ProgramName_Text" xml:space="preserve">
-    <value>Calendar Events</value>
   </data>
   <data name="Reset_Text" xml:space="preserve">
     <value>Redefinir</value>

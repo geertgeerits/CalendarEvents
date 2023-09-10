@@ -228,6 +228,9 @@ Utilizați acest program în întregime pe propriul risc.</value>
   <data name="Light_Text" xml:space="preserve">
     <value>Ușoară</value>
   </data>
+  <data name="NameProgramLocal_Text" xml:space="preserve">
+    <value>Evenimente din calendar</value>
+  </data>
   <data name="NameProgram_Text" xml:space="preserve">
     <value>Calendar Events</value>
   </data>
@@ -239,9 +242,6 @@ Utilizați acest program în întregime pe propriul risc.</value>
   </data>
   <data name="PrivacyPolicy_Text" xml:space="preserve">
     <value>Nicio dată cu caracter personal sau de altă natură nu este stocată sau transmisă mie și altora.</value>
-  </data>
-  <data name="ProgramName_Text" xml:space="preserve">
-    <value>Calendar Events</value>
   </data>
   <data name="Reset_Text" xml:space="preserve">
     <value>Resetați</value>

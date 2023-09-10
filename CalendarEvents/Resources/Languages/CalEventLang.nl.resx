@@ -225,6 +225,9 @@ Gebruik dit programma geheel op eigen risico.</value>
   <data name="Light_Text" xml:space="preserve">
     <value>Licht</value>
   </data>
+  <data name="NameProgramLocal_Text" xml:space="preserve">
+    <value>Agenda-evenementen</value>
+  </data>
   <data name="NameProgram_Text" xml:space="preserve">
     <value>Calendar Events</value>
   </data>
@@ -236,9 +239,6 @@ Gebruik dit programma geheel op eigen risico.</value>
   </data>
   <data name="PrivacyPolicy_Text" xml:space="preserve">
     <value>Er worden geen persoonlijke en andere gegevens opgeslagen of doorgegeven aan mezelf en anderen.</value>
-  </data>
-  <data name="ProgramName_Text" xml:space="preserve">
-    <value>Calendar Events</value>
   </data>
   <data name="Reset_Text" xml:space="preserve">
     <value>Reset</value>
