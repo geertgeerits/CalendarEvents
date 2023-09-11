@@ -151,6 +151,18 @@ namespace CalendarEvents.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Crash and error reports: To help us fixing any problems, the application will send anonymous crash and error reports when the application is restarted.
+        ///The reports contain information on the crash or error, including device specifications, operating system, application version, timestamp, and anonymous installation identifier.
+        ///The data is collected for the sole purpose of helping us to improve the application and does not include any personal information.  No other data is collected.
+        ///Anonymous crash and  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string CrashErrorReport_Text {
+            get {
+                return ResourceManager.GetString("CrashErrorReport_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dark.
         /// </summary>
         internal static string Dark_Text {

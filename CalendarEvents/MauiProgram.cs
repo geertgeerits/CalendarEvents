@@ -1,7 +1,5 @@
-﻿using Plugin.Maui.CalendarStore;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using Microsoft.AppCenter;
-using Microsoft.AppCenter.Crashes;
 
 namespace CalendarEvents
 {

@@ -15,6 +15,7 @@ public partial class PageSettings : ContentPage
         }
         catch (Exception ex)
         {
+            Crashes.TrackError(ex);
             DisplayAlert("InitializeComponent PageSettings", ex.Message, "OK");
             return;
         }

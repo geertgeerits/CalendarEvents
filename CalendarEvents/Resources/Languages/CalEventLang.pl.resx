@@ -147,6 +147,14 @@
   <data name="Copyright_Text" xml:space="preserve">
     <value>Prawo autorskie</value>
   </data>
+  <data name="CrashErrorReport_Text" xml:space="preserve">
+    <value>Raporty o awariach i błędach: Aby pomóc nam rozwiązać wszelkie problemy, aplikacja wyśle anonimowe raporty o awariach i błędach po ponownym uruchomieniu aplikacji.
+Raporty zawierają informacje o awarii lub błędzie, w tym specyfikacje urządzenia, system operacyjny, wersję aplikacji, znacznik czasu i anonimowy identyfikator instalacji.
+Dane są zbierane wyłącznie w celu pomocy nam w ulepszaniu aplikacji i nie zawierają żadnych danych osobowych. Żadne inne dane nie są gromadzone.
+Anonimowe raporty o awariach i błędach są przechowywane w Microsoft App Center.
+Nie są one udostępniane nikomu poza twórcą aplikacji.
+Dane z raportu są przechowywane przez 28 dni.</value>
+  </data>
   <data name="Dark_Text" xml:space="preserve">
     <value>Ciemny</value>
   </data>
@@ -226,25 +234,25 @@ Korzystaj z tego programu całkowicie na własne ryzyko.</value>
     <value>Jasny</value>
   </data>
   <data name="LogAlwaysSend_Text" xml:space="preserve">
-    <value>Always send</value>
+    <value>Zawsze wysyłaj</value>
   </data>
   <data name="LogDontSend_Text" xml:space="preserve">
-    <value>Don't send</value>
+    <value>Nie wysyłaj</value>
   </data>
   <data name="LogMessage_Text" xml:space="preserve">
-    <value>The application detected an error in a previous session.
-To improve the application, I would like to receive the log with that error.
-May the log of that error be sent?
-Thank you in advance.</value>
+    <value>Aplikacja wykryła błąd w poprzedniej sesji.
+Aby ulepszyć aplikację, chciałbym otrzymać log z tym błędem.
+Czy można przesłać log z tego błędu?
+Z góry dziękuję.</value>
   </data>
   <data name="LogSend_Text" xml:space="preserve">
-    <value>Send</value>
+    <value>Wysłać</value>
   </data>
   <data name="LogTitle2_Text" xml:space="preserve">
-    <value>An error has been detected. Send the error log?</value>
+    <value>Wykryto błąd. Wysłać dziennik błędów?</value>
   </data>
   <data name="LogTitle_Text" xml:space="preserve">
-    <value>Sending the error log</value>
+    <value>Wysyłanie dziennika błędów</value>
   </data>
   <data name="NameProgramLocal_Text" xml:space="preserve">
     <value>Wydarzenia w kalendarzu</value>

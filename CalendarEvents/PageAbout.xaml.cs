@@ -10,7 +10,7 @@ public partial class PageAbout : ContentPage
         }
         catch (Exception ex)
         {
-            //Crashes.TrackError(ex);
+            Crashes.TrackError(ex);
             DisplayAlert("InitializeComponent: PageAbout", ex.Message, "OK");
             return;
         }
@@ -21,7 +21,7 @@ public partial class PageAbout : ContentPage
         lblEmail.Text = $"{CalEventLang.Email_Text} geertgeerits@gmail.com";
         lblWebsite.Text = $"{CalEventLang.Website_Text}: ../calendarevents";
         lblPrivacyPolicy.Text = $"\n{CalEventLang.PrivacyPolicyTitle_Text} {CalEventLang.PrivacyPolicy_Text}";
-        //lblCrashErrorReport.Text = $"\n{CalEventLang.CrashErrorReport_Text}";
+        lblCrashErrorReport.Text = $"\n{CalEventLang.CrashErrorReport_Text}";
         lblLicense.Text = $"\n{CalEventLang.LicenseTitle_Text}: {CalEventLang.License_Text}\n{CalEventLang.LicenseMit2_Text}";
         lblExplanation.Text = $"\n{CalEventLang.InfoExplanation_Text}";
     }

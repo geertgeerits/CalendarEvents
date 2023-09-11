@@ -147,6 +147,14 @@
   <data name="Copyright_Text" xml:space="preserve">
     <value>Tekijänoikeus</value>
   </data>
+  <data name="CrashErrorReport_Text" xml:space="preserve">
+    <value>Kaatumis- ja virheraportit: Sovellus lähettää anonyymejä kaatumis- ja virheraportteja, kun sovellus käynnistetään uudelleen, jotta voimme korjata mahdolliset ongelmat.
+Raportit sisältävät tietoja kaatumisesta tai virheestä, mukaan lukien laitteen tekniset tiedot, käyttöjärjestelmä, sovellusversio, aikaleima ja anonyymi asennustunniste.
+Tiedot kerätään yksinomaan auttaaksemme meitä parantamaan sovellusta, eivätkä ne sisällä henkilötietoja. Muita tietoja ei kerätä.
+Nimettömät kaatumis- ja virheraportit tallennetaan Microsoft App Center.
+Niitä ei jaeta kenellekään muulle kuin sovelluksen kehittäjälle.
+Raporttitietoja säilytetään 28 päivää.</value>
+  </data>
   <data name="Dark_Text" xml:space="preserve">
     <value>Tumma</value>
   </data>
@@ -226,25 +234,25 @@ Käytä tätä ohjelmaa täysin omalla vastuullasi.</value>
     <value>Valo</value>
   </data>
   <data name="LogAlwaysSend_Text" xml:space="preserve">
-    <value>Always send</value>
+    <value>Lähetä aina</value>
   </data>
   <data name="LogDontSend_Text" xml:space="preserve">
-    <value>Don't send</value>
+    <value>Älä lähetä</value>
   </data>
   <data name="LogMessage_Text" xml:space="preserve">
-    <value>The application detected an error in a previous session.
-To improve the application, I would like to receive the log with that error.
-May the log of that error be sent?
-Thank you in advance.</value>
+    <value>Sovellus havaitsi virheen edellisessä istunnossa.
+Sovelluksen parantamiseksi haluaisin saada lokin, jossa on tämä virhe.
+Voidaanko virheloki lähettää?
+Kiitos jo etukäteen.</value>
   </data>
   <data name="LogSend_Text" xml:space="preserve">
-    <value>Send</value>
+    <value>Lähettää</value>
   </data>
   <data name="LogTitle2_Text" xml:space="preserve">
-    <value>An error has been detected. Send the error log?</value>
+    <value>Virhe on havaittu. Lähetetäänkö virheloki?</value>
   </data>
   <data name="LogTitle_Text" xml:space="preserve">
-    <value>Sending the error log</value>
+    <value>Virhelokin lähettäminen</value>
   </data>
   <data name="NameProgramLocal_Text" xml:space="preserve">
     <value>Kalenteri Tapahtumat</value>

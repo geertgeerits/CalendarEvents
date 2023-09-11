@@ -147,6 +147,14 @@
   <data name="Copyright_Text" xml:space="preserve">
     <value>Auteursrechten</value>
   </data>
+  <data name="CrashErrorReport_Text" xml:space="preserve">
+    <value>Crash- en foutrapporten: Om ons te helpen eventuele problemen op te lossen, stuurt de applicatie anonieme crash- en foutrapporten wanneer de applicatie opnieuw wordt opgestart.
+De rapporten bevatten informatie over de crash of fout, inclusief apparaatspecificaties, besturingssysteem, applicatieversie, tijdstempel en anonieme installatie-ID.
+De gegevens worden uitsluitend verzameld om ons te helpen de applicatie te verbeteren en bevatten geen persoonlijke informatie. Er worden geen andere gegevens verzameld.
+Anonieme crash- en foutrapporten worden opgeslagen in het Microsoft App Center.
+Ze worden niet gedeeld met iemand anders buiten de ontwikkelaar van de applicatie.
+De rapportgegevens worden 28 dagen bewaard.</value>
+  </data>
   <data name="Dark_Text" xml:space="preserve">
     <value>Donker</value>
   </data>
@@ -226,25 +234,25 @@ Gebruik dit programma geheel op eigen risico.</value>
     <value>Licht</value>
   </data>
   <data name="LogAlwaysSend_Text" xml:space="preserve">
-    <value>Always send</value>
+    <value>Verstuur altijd</value>
   </data>
   <data name="LogDontSend_Text" xml:space="preserve">
-    <value>Don't send</value>
+    <value>Niet versturen</value>
   </data>
   <data name="LogMessage_Text" xml:space="preserve">
-    <value>The application detected an error in a previous session.
-To improve the application, I would like to receive the log with that error.
-May the log of that error be sent?
-Thank you in advance.</value>
+    <value>De toepassing heeft in een vorige sessie een fout vastgesteld.
+Om de toepassing beter te maken had ik graag het logboek met die fout ontvangen.
+Mag het logboek van die fout verzonden worden?
+Alvast bedankt.</value>
   </data>
   <data name="LogSend_Text" xml:space="preserve">
-    <value>Send</value>
+    <value>Versturen</value>
   </data>
   <data name="LogTitle2_Text" xml:space="preserve">
-    <value>An error has been detected. Send the error log?</value>
+    <value>Er werd een fout vastgesteld.  Het foutenlogboek verzenden?</value>
   </data>
   <data name="LogTitle_Text" xml:space="preserve">
-    <value>Sending the error log</value>
+    <value>Verzenden van het foutenlogboek</value>
   </data>
   <data name="NameProgramLocal_Text" xml:space="preserve">
     <value>Agenda-evenementen</value>

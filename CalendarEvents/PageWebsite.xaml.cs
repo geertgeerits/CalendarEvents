@@ -10,7 +10,7 @@ public partial class PageWebsite : ContentPage
         }
         catch (Exception ex)
         {
-            //Crashes.TrackError(ex);
+            Crashes.TrackError(ex);
             DisplayAlert("InitializeComponent: PageWebsite", ex.Message, "OK");
             return;
         }

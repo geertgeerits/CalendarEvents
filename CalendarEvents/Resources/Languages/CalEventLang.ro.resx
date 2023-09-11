@@ -147,6 +147,14 @@
   <data name="Copyright_Text" xml:space="preserve">
     <value>Drepturi de autor</value>
   </data>
+  <data name="CrashErrorReport_Text" xml:space="preserve">
+    <value>Rapoarte de blocare și erori: Pentru a ne ajuta să remediem orice probleme, aplicația va trimite rapoarte anonime de blocare și erori atunci când aplicația este repornită.
+Rapoartele conțin informații despre blocarea sau eroarea, inclusiv specificațiile dispozitivului, sistemul de operare, versiunea aplicației, marcajul de timp și identificatorul de instalare anonim.
+Datele sunt colectate doar cu scopul de a ne ajuta să îmbunătățim aplicația și nu includ nicio informație personală. Nu sunt colectate alte date.
+Rapoartele anonime de blocare și erori sunt stocate în Microsoft App Center.
+Ele nu sunt partajate cu nimeni altcineva din afara dezvoltatorului aplicației.
+Datele raportului sunt păstrate timp de 28 de zile.</value>
+  </data>
   <data name="Dark_Text" xml:space="preserve">
     <value>Întunecat</value>
   </data>
@@ -216,10 +224,7 @@ Mă puteți contacta oricând pentru orice corecturi.</value>
     <value>None</value>
   </data>
   <data name="LicenseTitle_Text" xml:space="preserve">
-    <value>234 / 5,000
-Translation results
-Translation result
-Licență</value>
+    <value>Licență</value>
   </data>
   <data name="License_Text" xml:space="preserve">
     <value>Această aplicație poate fi folosită gratuit în scopuri necomerciale.
@@ -229,25 +234,25 @@ Utilizați acest program în întregime pe propriul risc.</value>
     <value>Ușoară</value>
   </data>
   <data name="LogAlwaysSend_Text" xml:space="preserve">
-    <value>Always send</value>
+    <value>Trimite mereu</value>
   </data>
   <data name="LogDontSend_Text" xml:space="preserve">
-    <value>Don't send</value>
+    <value>Nu trimite</value>
   </data>
   <data name="LogMessage_Text" xml:space="preserve">
-    <value>The application detected an error in a previous session.
-To improve the application, I would like to receive the log with that error.
-May the log of that error be sent?
-Thank you in advance.</value>
+    <value>Aplicația a detectat o eroare într-o sesiune anterioară.
+Pentru a îmbunătăți aplicația, aș dori să primesc jurnalul cu acea eroare.
+Se poate trimite jurnalul acelei erori?
+Vă mulțumesc anticipat.</value>
   </data>
   <data name="LogSend_Text" xml:space="preserve">
-    <value>Send</value>
+    <value>Trimite</value>
   </data>
   <data name="LogTitle2_Text" xml:space="preserve">
-    <value>An error has been detected. Send the error log?</value>
+    <value>A fost detectată o eroare. Trimiteți jurnalul de erori?</value>
   </data>
   <data name="LogTitle_Text" xml:space="preserve">
-    <value>Sending the error log</value>
+    <value>Se trimite jurnalul de erori</value>
   </data>
   <data name="NameProgramLocal_Text" xml:space="preserve">
     <value>Evenimente din calendar</value>

@@ -147,6 +147,14 @@
   <data name="Copyright_Text" xml:space="preserve">
     <value>Opphavsrett</value>
   </data>
+  <data name="CrashErrorReport_Text" xml:space="preserve">
+    <value>Krasj- og feilrapporter: For å hjelpe oss med å fikse eventuelle problemer, vil applikasjonen sende anonyme krasj- og feilrapporter når applikasjonen startes på nytt.
+Rapportene inneholder informasjon om krasj eller feil, inkludert enhetsspesifikasjoner, operativsystem, programversjon, tidsstempel og anonym installasjonsidentifikator.
+Dataene samles inn for det eneste formål å hjelpe oss med å forbedre applikasjonen og inkluderer ingen personlig informasjon. Ingen andre data samles inn.
+Anonyme krasj- og feilrapporter lagres i Microsoft App Center.
+De deles ikke med noen andre utenfor utvikleren av applikasjonen.
+Rapportdataene oppbevares i 28 dager.</value>
+  </data>
   <data name="Dark_Text" xml:space="preserve">
     <value>Mørk</value>
   </data>
@@ -226,25 +234,25 @@ Bruk dette programmet helt på egen risiko.</value>
     <value>Lys</value>
   </data>
   <data name="LogAlwaysSend_Text" xml:space="preserve">
-    <value>Always send</value>
+    <value>Send alltid</value>
   </data>
   <data name="LogDontSend_Text" xml:space="preserve">
-    <value>Don't send</value>
+    <value>Ikke send</value>
   </data>
   <data name="LogMessage_Text" xml:space="preserve">
-    <value>The application detected an error in a previous session.
-To improve the application, I would like to receive the log with that error.
-May the log of that error be sent?
-Thank you in advance.</value>
+    <value>Applikasjonen oppdaget en feil i en tidligere økt.
+For å forbedre applikasjonen vil jeg gjerne motta loggen med den feilen.
+Kan loggen for den feilen sendes?
+Takk på forhånd.</value>
   </data>
   <data name="LogSend_Text" xml:space="preserve">
-    <value>Send</value>
+    <value>Sende</value>
   </data>
   <data name="LogTitle2_Text" xml:space="preserve">
-    <value>An error has been detected. Send the error log?</value>
+    <value>En feil er oppdaget. Sende feilloggen?</value>
   </data>
   <data name="LogTitle_Text" xml:space="preserve">
-    <value>Sending the error log</value>
+    <value>Sender feilloggen</value>
   </data>
   <data name="NameProgramLocal_Text" xml:space="preserve">
     <value>Kalenderhendelser</value>

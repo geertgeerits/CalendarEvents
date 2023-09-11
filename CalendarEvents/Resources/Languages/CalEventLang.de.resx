@@ -147,6 +147,14 @@
   <data name="Copyright_Text" xml:space="preserve">
     <value>Urheberrechte</value>
   </data>
+  <data name="CrashErrorReport_Text" xml:space="preserve">
+    <value>Absturz- und Fehlerberichte: Um uns bei der Behebung etwaiger Probleme zu helfen, sendet die Anwendung beim Neustart der Anwendung anonyme Absturz- und Fehlerberichte.
+Die Berichte enthalten Informationen zum Absturz oder Fehler, einschließlich Gerätespezifikationen, Betriebssystem, Anwendungsversion, Zeitstempel und anonymer Installationskennung.
+Die Daten werden ausschließlich zu dem Zweck erhoben, die Anwendung zu verbessern und enthalten keine personenbezogenen Daten. Es werden keine weiteren Daten erhoben.
+Anonyme Absturz- und Fehlerberichte werden im Microsoft App Center gespeichert.
+Sie werden nicht an Dritte außerhalb des Entwicklers der Anwendung weitergegeben.
+Die Berichtsdaten werden 28 Tage lang aufbewahrt.</value>
+  </data>
   <data name="Dark_Text" xml:space="preserve">
     <value>Dunkel</value>
   </data>
@@ -226,25 +234,25 @@ Die Nutzung dieses Programms erfolgt ausschließlich auf eigenes Risiko.</value>
     <value>Hell</value>
   </data>
   <data name="LogAlwaysSend_Text" xml:space="preserve">
-    <value>Always send</value>
+    <value>Immer senden</value>
   </data>
   <data name="LogDontSend_Text" xml:space="preserve">
-    <value>Don't send</value>
+    <value>Nicht senden</value>
   </data>
   <data name="LogMessage_Text" xml:space="preserve">
-    <value>The application detected an error in a previous session.
-To improve the application, I would like to receive the log with that error.
-May the log of that error be sent?
-Thank you in advance.</value>
+    <value>Die Anwendung hat in einer früheren Sitzung einen Fehler festgestellt.
+Um die Anwendung zu verbessern, möchte ich das Protokoll mit diesem Fehler erhalten.
+Darf das Protokoll dieses Fehlers gesendet werden?
+Vielen Dank im Voraus.</value>
   </data>
   <data name="LogSend_Text" xml:space="preserve">
-    <value>Send</value>
+    <value>Senden</value>
   </data>
   <data name="LogTitle2_Text" xml:space="preserve">
-    <value>An error has been detected. Send the error log?</value>
+    <value>Es wurde ein Fehler erkannt. Fehlerprotokoll senden?</value>
   </data>
   <data name="LogTitle_Text" xml:space="preserve">
-    <value>Sending the error log</value>
+    <value>Senden des Fehlerprotokolls</value>
   </data>
   <data name="NameProgramLocal_Text" xml:space="preserve">
     <value>Kalenderereignisse</value>

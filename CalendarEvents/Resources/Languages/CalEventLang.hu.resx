@@ -147,6 +147,14 @@
   <data name="Copyright_Text" xml:space="preserve">
     <value>Szerzői jog</value>
   </data>
+  <data name="CrashErrorReport_Text" xml:space="preserve">
+    <value>Összeomlási és hibajelentések: A probléma megoldása érdekében az alkalmazás névtelen összeomlási és hibajelentéseket küld az alkalmazás újraindításakor.
+A jelentések információkat tartalmaznak az összeomlásról vagy hibáról, beleértve az eszköz specifikációit, az operációs rendszert, az alkalmazás verzióját, az időbélyeget és a névtelen telepítési azonosítót.
+Az adatokat kizárólag azzal a céllal gyűjtjük, hogy segítsünk az alkalmazás fejlesztésében, és nem tartalmaznak személyes adatokat. Más adatot nem gyűjtenek.
+A névtelen összeomlási és hibajelentéseket a Microsoft App Center tárolja.
+Nem osztják meg senki mással az alkalmazás fejlesztőjén kívül.
+A jelentés adatait 28 napig őrzik meg.</value>
+  </data>
   <data name="Dark_Text" xml:space="preserve">
     <value>Sötét</value>
   </data>
@@ -226,25 +234,25 @@ Ezt a programot kizárólag saját felelősségére használja.</value>
     <value>Világos</value>
   </data>
   <data name="LogAlwaysSend_Text" xml:space="preserve">
-    <value>Always send</value>
+    <value>Mindig küldjön</value>
   </data>
   <data name="LogDontSend_Text" xml:space="preserve">
-    <value>Don't send</value>
+    <value>Ne küldj</value>
   </data>
   <data name="LogMessage_Text" xml:space="preserve">
-    <value>The application detected an error in a previous session.
-To improve the application, I would like to receive the log with that error.
-May the log of that error be sent?
-Thank you in advance.</value>
+    <value>Az alkalmazás hibát észlelt az előző munkamenetben.
+Az alkalmazás fejlesztése érdekében szeretném megkapni a naplót ezzel a hibával.
+Elküldhető a hibanapló?
+Előre is köszönöm.</value>
   </data>
   <data name="LogSend_Text" xml:space="preserve">
-    <value>Send</value>
+    <value>Küld</value>
   </data>
   <data name="LogTitle2_Text" xml:space="preserve">
-    <value>An error has been detected. Send the error log?</value>
+    <value>A rendszer hibát észlelt. Elküldöd a hibanaplót?</value>
   </data>
   <data name="LogTitle_Text" xml:space="preserve">
-    <value>Sending the error log</value>
+    <value>Hibanapló küldése</value>
   </data>
   <data name="NameProgramLocal_Text" xml:space="preserve">
     <value>Események naptárban</value>
