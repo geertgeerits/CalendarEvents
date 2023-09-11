@@ -225,6 +225,27 @@ Bruk dette programmet helt på egen risiko.</value>
   <data name="Light_Text" xml:space="preserve">
     <value>Lys</value>
   </data>
+  <data name="LogAlwaysSend_Text" xml:space="preserve">
+    <value>Always send</value>
+  </data>
+  <data name="LogDontSend_Text" xml:space="preserve">
+    <value>Don't send</value>
+  </data>
+  <data name="LogMessage_Text" xml:space="preserve">
+    <value>The application detected an error in a previous session.
+To improve the application, I would like to receive the log with that error.
+May the log of that error be sent?
+Thank you in advance.</value>
+  </data>
+  <data name="LogSend_Text" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="LogTitle2_Text" xml:space="preserve">
+    <value>An error has been detected. Send the error log?</value>
+  </data>
+  <data name="LogTitle_Text" xml:space="preserve">
+    <value>Sending the error log</value>
+  </data>
   <data name="NameProgramLocal_Text" xml:space="preserve">
     <value>Kalenderhendelser</value>
   </data>

@@ -373,6 +373,63 @@ namespace CalendarEvents.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Always send.
+        /// </summary>
+        internal static string LogAlwaysSend_Text {
+            get {
+                return ResourceManager.GetString("LogAlwaysSend_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Don&apos;t send.
+        /// </summary>
+        internal static string LogDontSend_Text {
+            get {
+                return ResourceManager.GetString("LogDontSend_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The application detected an error in a previous session.
+        ///To improve the application, I would like to receive the log with that error.
+        ///May the log of that error be sent?
+        ///Thank you in advance..
+        /// </summary>
+        internal static string LogMessage_Text {
+            get {
+                return ResourceManager.GetString("LogMessage_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send.
+        /// </summary>
+        internal static string LogSend_Text {
+            get {
+                return ResourceManager.GetString("LogSend_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sending the error log.
+        /// </summary>
+        internal static string LogTitle_Text {
+            get {
+                return ResourceManager.GetString("LogTitle_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An error has been detected. Send the error log?.
+        /// </summary>
+        internal static string LogTitle2_Text {
+            get {
+                return ResourceManager.GetString("LogTitle2_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Calendar Events.
         /// </summary>
         internal static string NameProgram_Text {

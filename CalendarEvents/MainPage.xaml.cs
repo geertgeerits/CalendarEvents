@@ -2,10 +2,12 @@
 // Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
 // Copyright ...: (C) 2023-2023
 // Version .....: 1.0.3
-// Date ........: 2023-09-10 (YYYY-MM-DD)
+// Date ........: 2023-09-11 (YYYY-MM-DD)
 // Language ....: Microsoft Visual Studio 2022: .NET 7.0 MAUI C# 11.0
 // Description .: Read calendar events to share
 // Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 1.0.0-preview2 ; https://github.com/jfversluis/Plugin.Maui.CalendarStore
+//                NuGet Package: Microsoft.AppCenter version 5.0.2 ; https://appcenter.ms/apps ; https://azure.microsoft.com/en-us/products/app-center/
+//                NuGet Package: Microsoft.AppCenter.Crashes version 5.0.2 
 // Thanks to ...: Gerald Versluis
 
 using Plugin.Maui.CalendarStore;
@@ -18,6 +20,7 @@ public partial class MainPage : ContentPage
     private string cCopyright;
     private string cLicenseText;
     private readonly bool bLicense;
+    private readonly bool bLogAlwaysSend;
 
     public MainPage()
     {
@@ -27,6 +30,7 @@ public partial class MainPage : ContentPage
         }
         catch (Exception ex)
         {
+            Crashes.TrackError(ex);
             DisplayAlert("InitializeComponent MainPage", ex.Message, "OK");
             return;
         }
@@ -37,8 +41,19 @@ public partial class MainPage : ContentPage
         Globals.cAddDaysToStart = Preferences.Default.Get("SettingAddDaysToStart", "0");
         Globals.cAddDaysToEnd = Preferences.Default.Get("SettingAddDaysToEnd", "31");
         Globals.cLanguage = Preferences.Default.Get("SettingLanguage", "");
-
         bLicense = Preferences.Default.Get("SettingLicense", false);
+        bLogAlwaysSend = Preferences.Default.Get("SettingLogAlwaysSend", false);
+
+        // Crash log confirmation.
+        if (!bLogAlwaysSend)
+        {
+            Crashes.ShouldAwaitUserConfirmation = () =>
+            {
+                // Return true if you built a UI for user consent and are waiting for user input on that custom UI, otherwise false.
+                ConfirmationSendCrashLog();
+                return true;
+            };
+        }
 
         // Set the theme.
         if (Globals.cTheme == "Light")
@@ -177,6 +192,9 @@ public partial class MainPage : ContentPage
         
         try
         {
+            // For testing crashes - DivideByZeroException.
+            //int divByZero = 51 / int.Parse("0");
+
             var calendars = await CalendarStore.Default.GetCalendars();
 
             cCalendarNames = CalEventLang.Calendars_Text;
@@ -189,6 +207,14 @@ public partial class MainPage : ContentPage
         }
         catch (Exception ex)
         {
+            var properties = new Dictionary<string, string> {
+                { "File:", "MainPage.xaml.cs" },
+                { "Method:", "OnGetEventsClicked" },
+                { "CalendarStore:", "GetCalendars" },
+                { "AppLanguage:", Globals.cLanguage }                
+            };
+            Crashes.TrackError(ex, properties);
+
             await DisplayAlert(CalEventLang.ErrorTitle_Text, ex.Message, CalEventLang.ButtonClose_Text);
             return;
         }
@@ -228,6 +254,14 @@ public partial class MainPage : ContentPage
         }
         catch (Exception ex)
         {
+            var properties = new Dictionary<string, string> {
+                { "File:", "MainPage.xaml.cs" },
+                { "Method:", "OnGetEventsClicked" },
+                { "CalendarStore:", "GetEvents" },
+                { "AppLanguage:", Globals.cLanguage }
+            };
+            Crashes.TrackError(ex, properties);
+
             await DisplayAlert(CalEventLang.ErrorTitle_Text, ex.Message, CalEventLang.ButtonClose_Text);
             return;
         }
@@ -349,5 +383,38 @@ public partial class MainPage : ContentPage
 
         // Set focus to the first entry field.
         entSearchWord.Focus();
+    }
+
+    // Crash log confirmation.
+    private async void ConfirmationSendCrashLog()
+    {
+        // Using the DisplayActionSheet with 3 choices.
+        string cAction = await DisplayActionSheet(CalEventLang.LogTitle2_Text, null, null, CalEventLang.LogSend_Text, CalEventLang.LogAlwaysSend_Text, CalEventLang.LogDontSend_Text);
+
+        if (cAction == CalEventLang.LogSend_Text)
+        {
+            Crashes.NotifyUserConfirmation(UserConfirmation.Send);
+        }
+        else if (cAction == CalEventLang.LogAlwaysSend_Text)
+        {
+            Crashes.NotifyUserConfirmation(UserConfirmation.AlwaysSend);
+            Preferences.Default.Set("SettingLogAlwaysSend", true);
+        }
+        else if (cAction == CalEventLang.LogDontSend_Text)
+        {
+            Crashes.NotifyUserConfirmation(UserConfirmation.DontSend);
+        }
+
+        // Using the DisplayAlert with 2 choices.
+        //bool bAction = await DisplayAlert(CodeLang.LogTitle_Text, CodeLang.LogMessage_Text, CodeLang.LogSend_Text, CodeLang.LogDontSend_Text);
+
+        //if (bAction)
+        //{
+        //    Crashes.NotifyUserConfirmation(UserConfirmation.Send);
+        //}
+        //else
+        //{
+        //    Crashes.NotifyUserConfirmation(UserConfirmation.DontSend);
+        //}
     }
 }
