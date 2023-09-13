@@ -222,8 +222,8 @@ public partial class MainPage : ContentPage
         lblCalendarNames.Text = cCalendarNames;
 
 #if IOS
-    GetEventsIOS(sender, e);  // !!!BUG!!! Workaround for IOS - Time is 2 hours behind.
-    return;
+    //GetEventsIOS(sender, e);  // !!!BUG!!! Workaround for IOS - Time is 2 hours behind.
+    //return;
 #endif
 
         // Get (all) the events from the calendar.

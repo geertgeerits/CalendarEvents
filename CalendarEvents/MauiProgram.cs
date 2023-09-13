@@ -22,10 +22,6 @@ namespace CalendarEvents
             "macos={Your macOS App secret here};",
             typeof(Crashes));
 
-#if DEBUG
-            builder.Logging.AddDebug();
-#endif
-
             return builder.Build();
         }
     }
