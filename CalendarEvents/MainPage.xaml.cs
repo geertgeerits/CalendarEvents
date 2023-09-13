@@ -2,7 +2,7 @@
 // Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
 // Copyright ...: (C) 2023-2023
 // Version .....: 1.0.3
-// Date ........: 2023-09-11 (YYYY-MM-DD)
+// Date ........: 2023-09-14 (YYYY-MM-DD)
 // Language ....: Microsoft Visual Studio 2022: .NET 7.0 MAUI C# 11.0
 // Description .: Read calendar events to share
 // Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 1.0.0-preview2 ; https://github.com/jfversluis/Plugin.Maui.CalendarStore
@@ -221,6 +221,11 @@ public partial class MainPage : ContentPage
         
         lblCalendarNames.Text = cCalendarNames;
 
+#if IOS
+    GetEventsIOS(sender, e);  // !!!BUG!!! Workaround for IOS - Time is 2 hours behind.
+    return;
+#endif
+
         // Get (all) the events from the calendar.
         string cCalendarEvents = "";
 
@@ -245,6 +250,7 @@ public partial class MainPage : ContentPage
                     {
                         continue;
                     }
+                    
                     if (ev.Title.ToLowerInvariant().Contains(cSearchWord))
                     {
                         cCalendarEvents = $"{cCalendarEvents}{ev.StartDate.ToString(Globals.cDateFormat + "  HH:mm")}  {ev.Title}\n\n";
@@ -416,5 +422,74 @@ public partial class MainPage : ContentPage
         //{
         //    Crashes.NotifyUserConfirmation(UserConfirmation.DontSend);
         //}
+    }
+
+    // !!!BUG!!! Workaround for IOS: Time is 2 hours behind - Get (all) the events from the calendar.
+    private async void GetEventsIOS(object sender, EventArgs e)
+    {
+        // Get (all) the events from the calendar.
+        string cCalendarEvents = "";
+        DateTime dStartDate;
+
+        try
+        {
+            var events = await CalendarStore.Default.GetEvents(startDate: dtpDateStart.Date, endDate: dtpDateEnd.Date.AddDays(1));
+
+            if (entSearchWord.Text is null or "")
+            {
+                foreach (CalendarEvent ev in events)
+                {
+                    if (Convert.ToString(ev.StartDate).Contains("+00:00"))
+                    {
+                        dStartDate = DateTime.Parse(Convert.ToString(ev.StartDate));
+                        cCalendarEvents = $"{cCalendarEvents}{dStartDate.ToString(Globals.cDateFormat + "  HH:mm")}  {ev.Title}\n\n";
+                    }
+                    else
+                    {
+                        cCalendarEvents = $"{cCalendarEvents}{ev.StartDate.ToString(Globals.cDateFormat + "  HH:mm")}  {ev.Title}\n\n";
+                    }
+                }
+            }
+            else
+            {
+                string cSearchWord = entSearchWord.Text.ToLowerInvariant().Trim();
+
+                foreach (CalendarEvent ev in events)
+                {
+                    if (ev.Title is null or "")
+                    {
+                        continue;
+                    }
+                    
+                    if (ev.Title.ToLowerInvariant().Contains(cSearchWord))
+                    {
+                        if (Convert.ToString(ev.StartDate).Contains("+00:00"))
+                        {
+                            dStartDate = DateTime.Parse(Convert.ToString(ev.StartDate));
+                            cCalendarEvents = $"{cCalendarEvents}{dStartDate.ToString(Globals.cDateFormat + "  HH:mm")}  {ev.Title}\n\n";
+                        }
+                        else
+                        {
+                            cCalendarEvents = $"{cCalendarEvents}{ev.StartDate.ToString(Globals.cDateFormat + "  HH:mm")}  {ev.Title}\n\n";
+                        }
+                    }
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            var properties = new Dictionary<string, string> {
+                { "File:", "MainPage.xaml.cs" },
+                { "Method:", "OnGetEventsClicked" },
+                { "CalendarStore:", "GetEventsIOS" },
+                { "AppLanguage:", Globals.cLanguage }
+            };
+            Crashes.TrackError(ex, properties);
+
+            await DisplayAlert(CalEventLang.ErrorTitle_Text, ex.Message, CalEventLang.ButtonClose_Text);
+            return;
+        }
+
+        lblCalendarEvents.Text = cCalendarEvents;
     }
 }
