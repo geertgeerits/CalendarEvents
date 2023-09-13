@@ -480,8 +480,8 @@ public partial class MainPage : ContentPage
         {
             var properties = new Dictionary<string, string> {
                 { "File:", "MainPage.xaml.cs" },
-                { "Method:", "OnGetEventsClicked" },
-                { "CalendarStore:", "GetEventsIOS" },
+                { "Method:", "GetEventsIOS" },
+                { "CalendarStore:", "GetEvents" },
                 { "AppLanguage:", Globals.cLanguage }
             };
             Crashes.TrackError(ex, properties);
