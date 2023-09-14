@@ -122,10 +122,9 @@
 
                 <Button
                     x:Name="btnGetEvents"
-                    Style="{StaticResource buttonStyleDefault}"
+                    Style="{StaticResource buttonStyleFill}"
                     Grid.Row="3"
                     Grid.Column="0"
-                    WidthRequest="{OnIdiom 170, Phone=170, Tablet=270, Desktop=270}"
                     Text="{local:Translate EventsGet_Text}"
                     ToolTipProperties.Text="{local:Translate ToolTipEventsGet_Text}"
                     Clicked="OnGetEventsClicked">
@@ -133,11 +132,9 @@
 
                 <Button
                     x:Name="btnClearEvents"
-                    Style="{StaticResource buttonStyleDefault}"
+                    Style="{StaticResource buttonStyleFill}"
                     Grid.Row="3"
                     Grid.Column="1"
-                    HorizontalOptions="End"
-                    WidthRequest="{OnIdiom 170, Phone=170, Tablet=270, Desktop=270}"
                     Text="{local:Translate EventsClear_Text}"
                     ToolTipProperties.Text="{local:Translate ToolTipEventsClear_Text}"
                     Clicked="OnClearEventsClicked">
@@ -159,10 +156,9 @@
 
                 <Button
                     x:Name="btnCopyEvents"
-                    Style="{StaticResource buttonStyleDefault}"
+                    Style="{StaticResource buttonStyleFill}"
                     Grid.Row="5"
                     Grid.Column="0"
-                    WidthRequest="{OnIdiom 170, Phone=170, Tablet=270, Desktop=270}"
                     Text="{local:Translate EventsCopy_Text}"
                     ToolTipProperties.Text="{local:Translate ToolTipEventsCopy_Text}"
                     Clicked="OnClipboardButtonClicked">
@@ -170,11 +166,9 @@
             
                 <Button
                     x:Name="btnShareEvents"
-                    Style="{StaticResource buttonStyleDefault}"
+                    Style="{StaticResource buttonStyleFill}"
                     Grid.Row="5"
                     Grid.Column="1"
-                    HorizontalOptions="End"
-                    WidthRequest="{OnIdiom 170, Phone=170, Tablet=270, Desktop=270}"
                     Text="{local:Translate EventsShare_Text}"
                     ToolTipProperties.Text="{local:Translate ToolTipEventsShare_Text}"
                     Clicked="OnButtonShareClicked">

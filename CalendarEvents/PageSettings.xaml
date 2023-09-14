@@ -227,7 +227,6 @@
             IsVisible="{OnPlatform true, iOS=false, Android=true}"
             Grid.Row="2"
             HorizontalOptions="Start"
-            WidthRequest="{OnIdiom 170, Phone=170, Tablet=270, Desktop=270}"
             Text="{local:Translate Save_Text}"
             ToolTipProperties.Text="{local:Translate ToolTipSettingsSave_Text}"
             Clicked="OnSettingsSaveClicked">
@@ -238,7 +237,6 @@
             IsVisible="{OnPlatform true, iOS=false, Android=true}"
             Grid.Row="2"
             HorizontalOptions="End"
-            WidthRequest="{OnIdiom 170, Phone=170, Tablet=270, Desktop=270}"
             Text="{local:Translate Reset_Text}"
             ToolTipProperties.Text="{local:Translate ToolTipSettingsReset_Text}"
             Clicked="OnSettingsResetClicked">

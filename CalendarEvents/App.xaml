@@ -164,7 +164,7 @@
                                     <Setter Property="ColumnDefinitions">
                                         <Setter.Value>
                                             <ColumnDefinitionCollection>
-                                                <ColumnDefinition Width="{OnIdiom 340, Phone=340, Tablet=560, Desktop=560}" />
+                                                <ColumnDefinition Width="{OnIdiom 340, Phone=340, Tablet=600, Desktop=600}" />
                                             </ColumnDefinitionCollection>
                                         </Setter.Value>
                                     </Setter>
@@ -178,7 +178,7 @@
                                     <Setter Property="ColumnDefinitions">
                                         <Setter.Value>
                                             <ColumnDefinitionCollection>
-                                                <ColumnDefinition Width="{OnIdiom 540, Phone=540, Tablet=760, Desktop=760}" />
+                                                <ColumnDefinition Width="{OnIdiom 540, Phone=540, Tablet=800, Desktop=800}" />
                                             </ColumnDefinitionCollection>
                                         </Setter.Value>
                                     </Setter>
@@ -204,8 +204,8 @@
                                     <Setter Property="ColumnDefinitions">
                                         <Setter.Value>
                                             <ColumnDefinitionCollection>
-                                                <ColumnDefinition Width="{OnIdiom 170, Phone=170, Tablet=270, Desktop=270}" />
-                                                <ColumnDefinition Width="{OnIdiom 170, Phone=170, Tablet=270, Desktop=270}" />
+                                                <ColumnDefinition Width="{OnIdiom 170, Phone=170, Tablet=300, Desktop=300}" />
+                                                <ColumnDefinition Width="{OnIdiom 170, Phone=170, Tablet=300, Desktop=300}" />
                                             </ColumnDefinitionCollection>
                                         </Setter.Value>
                                     </Setter>
@@ -219,8 +219,8 @@
                                     <Setter Property="ColumnDefinitions">
                                         <Setter.Value>
                                             <ColumnDefinitionCollection>
-                                                <ColumnDefinition Width="{OnIdiom 270, Phone=270, Tablet=370, Desktop=370}" />
-                                                <ColumnDefinition Width="{OnIdiom 270, Phone=270, Tablet=370, Desktop=370}" />
+                                                <ColumnDefinition Width="{OnIdiom 270, Phone=270, Tablet=400, Desktop=400}" />
+                                                <ColumnDefinition Width="{OnIdiom 270, Phone=270, Tablet=400, Desktop=400}" />
                                             </ColumnDefinitionCollection>
                                         </Setter.Value>
                                     </Setter>
@@ -248,8 +248,8 @@
                                     <Setter Property="ColumnDefinitions">
                                         <Setter.Value>
                                             <ColumnDefinitionCollection>
-                                                <ColumnDefinition Width="{OnIdiom 170, Phone=170, Tablet=270, Desktop=270}" />
-                                                <ColumnDefinition Width="{OnIdiom 170, Phone=170, Tablet=270, Desktop=270}" />
+                                                <ColumnDefinition Width="{OnIdiom 170, Phone=170, Tablet=300, Desktop=300}" />
+                                                <ColumnDefinition Width="{OnIdiom 170, Phone=170, Tablet=300, Desktop=300}" />
                                             </ColumnDefinitionCollection>
                                         </Setter.Value>
                                     </Setter>
@@ -263,8 +263,8 @@
                                     <Setter Property="ColumnDefinitions">
                                         <Setter.Value>
                                             <ColumnDefinitionCollection>
-                                                <ColumnDefinition Width="{OnIdiom 270, Phone=270, Tablet=370, Desktop=370}" />
-                                                <ColumnDefinition Width="{OnIdiom 270, Phone=270, Tablet=370, Desktop=370}" />
+                                                <ColumnDefinition Width="{OnIdiom 270, Phone=270, Tablet=400, Desktop=400}" />
+                                                <ColumnDefinition Width="{OnIdiom 270, Phone=270, Tablet=400, Desktop=400}" />
                                             </ColumnDefinitionCollection>
                                         </Setter.Value>
                                     </Setter>
@@ -348,7 +348,7 @@
             <Style x:Key="buttonStyleDefault" TargetType="Button">
                 <Setter Property="HorizontalOptions" Value="Start" />
                 <Setter Property="VerticalOptions" Value="Center" />
-                <Setter Property="WidthRequest" Value="{OnIdiom 160, Phone=160, Tablet=260, Desktop=260}" />
+                <Setter Property="WidthRequest" Value="{OnIdiom 170, Phone=170, Tablet=300, Desktop=300}" />
             </Style>
 
             <Style x:Key="buttonStyleFill" TargetType="Button">
