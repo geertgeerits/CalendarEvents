@@ -202,6 +202,7 @@ I dati del rapporto vengono conservati per 28 giorni.</value>
   </data>
   <data name="InfoExplanation_Text" xml:space="preserve">
     <value>Il formato della data può essere modificato nelle impostazioni nel formato standard internazionale ISO 8601 (AAAA-MM-GG).
+Nota: 4 anni è il periodo massimo in cui un calendario iOS può cercare eventi.
 
 Per la traduzione del testo è stato utilizzato Google Translate. Questa non è una garanzia che tutte le traduzioni siano corrette.
 Le lingue supportate sono: ceco, danese, olandese, inglese, finlandese, francese, tedesco, ungherese, italiano, norvegese, polacco, portoghese, rumeno, spagnolo e svedese.

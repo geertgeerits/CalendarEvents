@@ -202,6 +202,7 @@ Die Berichtsdaten werden 28 Tage lang aufbewahrt.</value>
   </data>
   <data name="InfoExplanation_Text" xml:space="preserve">
     <value>Das Datumsformat kann in den Einstellungen auf das internationale Standardformat ISO 8601 (JJJJ-MM-TT) geändert werden.
+Hinweis: Der maximale Zeitraum, in dem ein iOS-Kalender nach Ereignissen suchen kann, beträgt 4 Jahre.
 
 Für die Übersetzung des Textes wurde Google Translate verwendet. Dies ist keine Garantie dafür, dass alle Übersetzungen korrekt sind.
 Die unterstützenden Sprachen sind: Tschechisch, Dänisch, Niederländisch, Englisch, Finnisch, Französisch, Deutsch, Ungarisch, Italienisch, Norwegisch, Polnisch, Portugiesisch, Rumänisch, Spanisch und Schwedisch.

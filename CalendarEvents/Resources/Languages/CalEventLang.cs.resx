@@ -202,6 +202,7 @@ Nejsou sdíleny s nikým jiným mimo vývojáře aplikace.
   </data>
   <data name="InfoExplanation_Text" xml:space="preserve">
     <value>Formát data lze v nastavení změnit na mezinárodní standardní formát ISO 8601 (RRRR-MM-DD).
+Poznámka: 4 roky je maximální období, po které může kalendář iOS vyhledávat události.
 
 K překladu textu byl použit Google Translate. To nezaručuje, že všechny překlady jsou správné.
 Podporované jazyky jsou: čeština, dánština, holandština, angličtina, finština, francouzština, němčina, maďarština, italština, norština, polština, portugalština, rumunština, španělština a švédština.

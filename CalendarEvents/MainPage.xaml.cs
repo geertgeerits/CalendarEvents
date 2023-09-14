@@ -5,7 +5,7 @@
 // Date ........: 2023-09-14 (YYYY-MM-DD)
 // Language ....: Microsoft Visual Studio 2022: .NET 7.0 MAUI C# 11.0
 // Description .: Read calendar events to share
-// Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 1.0.0-preview2 ; https://github.com/jfversluis/Plugin.Maui.CalendarStore
+// Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 1.0.0-preview4 ; https://github.com/jfversluis/Plugin.Maui.CalendarStore
 //                NuGet Package: Microsoft.AppCenter version 5.0.2 ; https://appcenter.ms/apps ; https://azure.microsoft.com/en-us/products/app-center/
 //                NuGet Package: Microsoft.AppCenter.Crashes version 5.0.2 
 // Thanks to ...: Gerald Versluis
@@ -103,7 +103,8 @@ public partial class MainPage : ContentPage
         // Set the text language.
         SetTextLanguage();
 
-        // Set up the grid for the different platforms due a !!!BUG!!! in Windows with the grid style on the MainPage.xaml.
+        // Set up the grid for the different platforms due a
+        // !!!BUG!!! in Windows with the grid style on the MainPage.xaml: there is only 1 column.
 #if ANDROID || IOS
         var grid = new Grid()
         {
@@ -221,10 +222,9 @@ public partial class MainPage : ContentPage
         
         lblCalendarNames.Text = cCalendarNames;
 
-#if IOS
-    //GetEventsIOS(sender, e);  // !!!BUG!!! Workaround for IOS - Time is 2 hours behind.
-    //return;
-#endif
+        // !!!BUG!!! Workaround for timezone not added to the datetime. Solved with 'Plugin.Maui.CalendarStore version 1.0.0-preview4'.
+        //GetEventsTimezone(sender, e);
+        //return;
 
         // Get (all) the events from the calendar.
         string cCalendarEvents = "";
@@ -424,72 +424,73 @@ public partial class MainPage : ContentPage
         //}
     }
 
-    // !!!BUG!!! Workaround for IOS: Time is 2 hours behind - Get (all) the events from the calendar.
-    private async void GetEventsIOS(object sender, EventArgs e)
-    {
-        // Get (all) the events from the calendar.
-        string cCalendarEvents = "";
-        DateTime dStartDate;
+    // !!!BUG!!! Workaround for Workaround for timezone not added to the datetime.
+    // Get(all) the events from the calendar.
+    //private async void GetEventsTimezone(object sender, EventArgs e)
+    //{
+    //    // Get (all) the events from the calendar.
+    //    string cCalendarEvents = "";
+    //    DateTime dStartDate;
 
-        try
-        {
-            var events = await CalendarStore.Default.GetEvents(startDate: dtpDateStart.Date, endDate: dtpDateEnd.Date.AddDays(1));
+    //    try
+    //    {
+    //        var events = await CalendarStore.Default.GetEvents(startDate: dtpDateStart.Date, endDate: dtpDateEnd.Date.AddDays(1));
 
-            if (entSearchWord.Text is null or "")
-            {
-                foreach (CalendarEvent ev in events)
-                {
-                    if (Convert.ToString(ev.StartDate).Contains("+00:00"))
-                    {
-                        dStartDate = DateTime.Parse(Convert.ToString(ev.StartDate));
-                        cCalendarEvents = $"{cCalendarEvents}{dStartDate.ToString(Globals.cDateFormat + "  HH:mm")}  {ev.Title}\n\n";
-                    }
-                    else
-                    {
-                        cCalendarEvents = $"{cCalendarEvents}{ev.StartDate.ToString(Globals.cDateFormat + "  HH:mm")}  {ev.Title}\n\n";
-                    }
-                }
-            }
-            else
-            {
-                string cSearchWord = entSearchWord.Text.ToLowerInvariant().Trim();
+    //        if (entSearchWord.Text is null or "")
+    //        {
+    //            foreach (CalendarEvent ev in events)
+    //            {
+    //                if (Convert.ToString(ev.StartDate).Contains("+00:00"))
+    //                {
+    //                    dStartDate = DateTime.Parse(Convert.ToString(ev.StartDate));
+    //                    cCalendarEvents = $"{cCalendarEvents}{dStartDate.ToString(Globals.cDateFormat + "  HH:mm")}  {ev.Title}\n\n";
+    //                }
+    //                else
+    //                {
+    //                    cCalendarEvents = $"{cCalendarEvents}{ev.StartDate.ToString(Globals.cDateFormat + "  HH:mm")}  {ev.Title}\n\n";
+    //                }
+    //            }
+    //        }
+    //        else
+    //        {
+    //            string cSearchWord = entSearchWord.Text.ToLowerInvariant().Trim();
 
-                foreach (CalendarEvent ev in events)
-                {
-                    if (ev.Title is null or "")
-                    {
-                        continue;
-                    }
+    //            foreach (CalendarEvent ev in events)
+    //            {
+    //                if (ev.Title is null or "")
+    //                {
+    //                    continue;
+    //                }
                     
-                    if (ev.Title.ToLowerInvariant().Contains(cSearchWord))
-                    {
-                        if (Convert.ToString(ev.StartDate).Contains("+00:00"))
-                        {
-                            dStartDate = DateTime.Parse(Convert.ToString(ev.StartDate));
-                            cCalendarEvents = $"{cCalendarEvents}{dStartDate.ToString(Globals.cDateFormat + "  HH:mm")}  {ev.Title}\n\n";
-                        }
-                        else
-                        {
-                            cCalendarEvents = $"{cCalendarEvents}{ev.StartDate.ToString(Globals.cDateFormat + "  HH:mm")}  {ev.Title}\n\n";
-                        }
-                    }
-                }
-            }
-        }
-        catch (Exception ex)
-        {
-            var properties = new Dictionary<string, string> {
-                { "File:", "MainPage.xaml.cs" },
-                { "Method:", "GetEventsIOS" },
-                { "CalendarStore:", "GetEvents" },
-                { "AppLanguage:", Globals.cLanguage }
-            };
-            Crashes.TrackError(ex, properties);
+    //                if (ev.Title.ToLowerInvariant().Contains(cSearchWord))
+    //                {
+    //                    if (Convert.ToString(ev.StartDate).Contains("+00:00"))
+    //                    {
+    //                        dStartDate = DateTime.Parse(Convert.ToString(ev.StartDate));
+    //                        cCalendarEvents = $"{cCalendarEvents}{dStartDate.ToString(Globals.cDateFormat + "  HH:mm")}  {ev.Title}\n\n";
+    //                    }
+    //                    else
+    //                    {
+    //                        cCalendarEvents = $"{cCalendarEvents}{ev.StartDate.ToString(Globals.cDateFormat + "  HH:mm")}  {ev.Title}\n\n";
+    //                    }
+    //                }
+    //            }
+    //        }
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        var properties = new Dictionary<string, string> {
+    //            { "File:", "MainPage.xaml.cs" },
+    //            { "Method:", "GetEventsTimezone" },
+    //            { "CalendarStore:", "GetEvents" },
+    //            { "AppLanguage:", Globals.cLanguage }
+    //        };
+    //        Crashes.TrackError(ex, properties);
 
-            await DisplayAlert(CalEventLang.ErrorTitle_Text, ex.Message, CalEventLang.ButtonClose_Text);
-            return;
-        }
+    //        await DisplayAlert(CalEventLang.ErrorTitle_Text, ex.Message, CalEventLang.ButtonClose_Text);
+    //        return;
+    //    }
 
-        lblCalendarEvents.Text = cCalendarEvents;
-    }
+    //    lblCalendarEvents.Text = cCalendarEvents;
+    //}
 }

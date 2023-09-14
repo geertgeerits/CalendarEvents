@@ -202,6 +202,7 @@ A jelentés adatait 28 napig őrzik meg.</value>
   </data>
   <data name="InfoExplanation_Text" xml:space="preserve">
     <value>A dátumformátum a beállításokban módosítható az ISO 8601 nemzetközi szabvány formátumra (ÉÉÉÉ-HH-NN).
+Megjegyzés: 4 év a maximális időtartam, amelyre az iOS-naptár eseményeket kereshet.
 
 A szöveg fordításához a Google Fordítót használtuk. Ez nem garancia arra, hogy minden fordítás helyes.
 A támogatott nyelvek: cseh, dán, holland, angol, finn, francia, német, magyar, olasz, norvég, lengyel, portugál, román, spanyol és svéd.

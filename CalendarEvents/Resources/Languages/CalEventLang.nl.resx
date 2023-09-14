@@ -202,6 +202,7 @@ De rapportgegevens worden 28 dagen bewaard.</value>
   </data>
   <data name="InfoExplanation_Text" xml:space="preserve">
     <value>Het datumformaat kan in de instellingen worden gewijzigd in het internationale standaardformaat ISO 8601 (JJJJ-MM-DD).
+Let op: 4 jaar is de maximale periode waarin een iOS-agenda naar evenementen kan zoeken.
 
 Voor de vertaling van de tekst werd Google Translate gebruikt. Dit is geen garantie dat alle vertalingen correct zijn.
 De ondersteunende talen zijn: Tsjechisch, Deens, Nederlands, Engels, Fins, Frans, Duits, Hongaars, Italiaans, Noors, Pools, Portugees, Roemeens, Spaans en Zweeds.

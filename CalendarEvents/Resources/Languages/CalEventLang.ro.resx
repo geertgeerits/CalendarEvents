@@ -202,6 +202,7 @@ Datele raportului sunt păstrate timp de 28 de zile.</value>
   </data>
   <data name="InfoExplanation_Text" xml:space="preserve">
     <value>Formatul datei poate fi schimbat în setări la formatul standard internațional ISO 8601 (AAAA-LL-ZZ).
+Notă: 4 ani este perioada maximă pe care un calendar iOS poate căuta evenimente.
 
 Google Translate a fost folosit pentru traducerea textului. Aceasta nu este o garanție că toate traducerile sunt corecte.
 Limbile suportate sunt: cehă, daneză, olandeză, engleză, finlandeză, franceză, germană, maghiară, italiană, norvegiană, poloneză, portugheză, română, spaniolă și suedeză.

@@ -202,6 +202,7 @@ Raporttitietoja säilytetään 28 päivää.</value>
   </data>
   <data name="InfoExplanation_Text" xml:space="preserve">
     <value>Päivämäärän muoto voidaan muuttaa asetuksista kansainväliseen standardimuotoon ISO 8601 (VVVV-KK-PP).
+Huomautus: 4 vuotta on enimmäisaika, jonka iOS-kalenteri voi etsiä tapahtumia.
 
 Tekstin kääntämiseen käytettiin Google Translatea. Tämä ei takaa, että kaikki käännökset ovat oikein.
 Tukikielet ovat: tšekki, tanska, hollanti, englanti, suomi, ranska, saksa, unkari, italia, norja, puola, portugali, romania, espanja ja ruotsi.

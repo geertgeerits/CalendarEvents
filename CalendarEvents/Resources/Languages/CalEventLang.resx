@@ -202,6 +202,7 @@ The report data is retained for 28 days.</value>
   </data>
   <data name="InfoExplanation_Text" xml:space="preserve">
     <value>The date format can be changed in the settings to the international standard format ISO 8601 (YYYY-MM-DD).
+Note: 4 years is the maximum period an iOS calendar can search for events.
 
 Google Translate was used for the translation of the text. This is not a guarantee that all translations are correct.
 The supporting languages are: Czech, Danish, Dutch, English, Finnish, French, German, Hungarian, Italian, Norwegian, Polish, Portuguese, Romanian, Spanish and Swedish.

@@ -202,6 +202,7 @@ Rapportdata bevaras i 28 dagar.</value>
   </data>
   <data name="InfoExplanation_Text" xml:space="preserve">
     <value>Datumformatet kan ändras i inställningarna till det internationella standardformatet ISO 8601 (ÅÅÅÅ-MM-DD).
+Obs: 4 år är den maximala perioden en iOS-kalender kan söka efter händelser.
 
 Google Translate användes för översättningen av texten. Detta är inte en garanti för att alla översättningar är korrekta.
 Stödspråken är: tjeckiska, danska, holländska, engelska, finska, franska, tyska, ungerska, italienska, norska, polska, portugisiska, rumänska, spanska och svenska.

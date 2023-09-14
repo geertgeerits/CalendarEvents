@@ -202,6 +202,7 @@ Os dados do relatório são retidos por 28 dias.</value>
   </data>
   <data name="InfoExplanation_Text" xml:space="preserve">
     <value>O formato da data pode ser alterado nas configurações para o formato padrão internacional ISO 8601 (AAAA-MM-DD).
+Observação: 4 anos é o período máximo que um calendário iOS pode pesquisar eventos.
 
 O Google Translate foi utilizado para a tradução do texto. Isto não é uma garantia de que todas as traduções estejam corretas.
 Os idiomas de apoio são: checo, dinamarquês, holandês, inglês, finlandês, francês, alemão, húngaro, italiano, norueguês, polaco, português, romeno, espanhol e sueco.
