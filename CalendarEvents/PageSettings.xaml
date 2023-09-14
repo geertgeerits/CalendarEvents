@@ -226,7 +226,6 @@
             Style="{StaticResource buttonStyleDefault}"
             IsVisible="{OnPlatform true, iOS=false, Android=true}"
             Grid.Row="2"
-            HorizontalOptions="Start"
             Text="{local:Translate Save_Text}"
             ToolTipProperties.Text="{local:Translate ToolTipSettingsSave_Text}"
             Clicked="OnSettingsSaveClicked">
