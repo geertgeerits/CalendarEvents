@@ -15,8 +15,8 @@
         {
             var window = base.CreateWindow(activationState);
 
-            const int newHeight = 900;
-            const int newWidth = 900;
+            const int newHeight = 950;
+            const int newWidth = 950;
 
             window.X = 200;
             window.Y = 50;
@@ -25,7 +25,7 @@
             window.Width = newWidth;
 
             window.MinimumHeight = 800;
-            window.MinimumWidth = 900;
+            window.MinimumWidth = 950;
 
             return window;
         }

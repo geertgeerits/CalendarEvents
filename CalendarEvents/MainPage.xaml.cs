@@ -2,7 +2,7 @@
 // Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
 // Copyright ...: (C) 2023-2023
 // Version .....: 1.0.3
-// Date ........: 2023-09-14 (YYYY-MM-DD)
+// Date ........: 2023-09-15 (YYYY-MM-DD)
 // Language ....: Microsoft Visual Studio 2022: .NET 7.0 MAUI C# 11.0
 // Description .: Read calendar events to share
 // Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 1.0.0-preview4 ; https://github.com/jfversluis/Plugin.Maui.CalendarStore
@@ -137,14 +137,16 @@ public partial class MainPage : ContentPage
             },
             ColumnDefinitions =
             {
-                new ColumnDefinition { Width = new GridLength(170) },
-                new ColumnDefinition { Width = new GridLength(130, GridUnitType.Star) }
+                new ColumnDefinition { Width = new GridLength(400) },
+                new ColumnDefinition { Width = new GridLength(400) }
             },
-            ColumnSpacing = 5,
-            RowSpacing = 5,
-            Margin = new Thickness(60,5,60,5)
+            HorizontalOptions = LayoutOptions.Center,
+            ColumnSpacing = 15,
+            RowSpacing = 4,
+            Margin = new Thickness(10,10,10,10)
         };
         grdEvents.RowDefinitions = grid.RowDefinitions;
+        grdEvents.HorizontalOptions = grid.HorizontalOptions;
         grdEvents.ColumnDefinitions = grid.ColumnDefinitions;
         grdEvents.ColumnSpacing = grid.ColumnSpacing;
         grdEvents.RowSpacing = grid.RowSpacing;
@@ -306,11 +308,6 @@ public partial class MainPage : ContentPage
     // Share calendar events.
     private static async Task ShareText(string cText)
     {
-        if (cText is null or "")
-        {
-            return;
-        }
-
         await Share.Default.RequestAsync(new ShareTextRequest
         {
             Text = cText,
