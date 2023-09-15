@@ -91,14 +91,16 @@
 	</ItemGroup>
 
 	<PropertyGroup Condition="'$(TargetFramework)'=='net7.0-ios'">
-		<ProvisioningType>manual</ProvisioningType>
+		<ProvisioningType>automatic</ProvisioningType>
+		<CodesignKey>Apple Development: Created via API (KL96X68Q72)</CodesignKey>
+		<CodesignProvision>VS: WildCard Development</CodesignProvision>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="$(TargetFramework.Contains('-ios')) and '$(Configuration)' == 'Release'">
 		<RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
 		<!-- Only needed when you have a need for entitlements -->
 		<!-- <CodesignEntitlement>Entitlements.plist</CodesignEntitlement> -->
-		<CodesignKey>iPhone Distribution: Geert Geerits (XXXXXXXXXX)</CodesignKey>
+		<CodesignKey>iPhone Distribution: Geert Geerits (S6CWMSSJ54)</CodesignKey>
 		<CodesignProvision>provisioningprofile01iOSCalendarEvents</CodesignProvision>
 		<ArchiveOnBuild>true</ArchiveOnBuild>
 		<TcpPort>58181</TcpPort>
