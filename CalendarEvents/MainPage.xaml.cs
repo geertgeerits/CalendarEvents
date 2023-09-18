@@ -1,8 +1,8 @@
 ﻿// Program .....: CalendarEvents.sln
 // Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
 // Copyright ...: (C) 2023-2023
-// Version .....: 1.0.3
-// Date ........: 2023-09-15 (YYYY-MM-DD)
+// Version .....: 1.0.4
+// Date ........: 2023-09-18 (YYYY-MM-DD)
 // Language ....: Microsoft Visual Studio 2022: .NET 7.0 MAUI C# 11.0
 // Description .: Read calendar events to share
 // Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 1.0.0-preview4 ; https://github.com/jfversluis/Plugin.Maui.CalendarStore
