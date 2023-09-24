@@ -120,10 +120,38 @@
                     </Entry>
                 </Border>
 
+                <Label
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    VerticalTextAlignment="Center"
+                    Text="{local:Translate Calendars_Text}">
+                </Label>
+                
+                <Border
+                    Style="{StaticResource borderStyleDefault}"
+                    Grid.Row="3"
+                    Grid.Column="1">
+
+                    <Picker
+                        x:Name="pckCalendars"
+                        VerticalOptions="Center"
+                        MinimumWidthRequest="160"
+                        VerticalTextAlignment="Center"
+                        SelectedIndexChanged="OnPickerCalendarChanged"
+                        IsEnabled="True">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>1</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                </Border>
+
                 <Button
                     x:Name="btnGetEvents"
                     Style="{StaticResource buttonStyleFill}"
-                    Grid.Row="3"
+                    Grid.Row="4"
                     Grid.Column="0"
                     Text="{local:Translate EventsGet_Text}"
                     ToolTipProperties.Text="{local:Translate ToolTipEventsGet_Text}"
@@ -133,7 +161,7 @@
                 <Button
                     x:Name="btnClearEvents"
                     Style="{StaticResource buttonStyleFill}"
-                    Grid.Row="3"
+                    Grid.Row="4"
                     Grid.Column="1"
                     Text="{local:Translate EventsClear_Text}"
                     ToolTipProperties.Text="{local:Translate ToolTipEventsClear_Text}"
@@ -143,7 +171,7 @@
                 <Border
                     x:Name="brdCalendarNames"
                     Style="{StaticResource borderStyleDefault}"
-                    Grid.Row="4"
+                    Grid.Row="5"
                     Grid.Column="0"
                     Grid.ColumnSpan="2">
 
@@ -157,7 +185,7 @@
                 <Button
                     x:Name="btnCopyEvents"
                     Style="{StaticResource buttonStyleFill}"
-                    Grid.Row="5"
+                    Grid.Row="6"
                     Grid.Column="0"
                     Text="{local:Translate EventsCopy_Text}"
                     ToolTipProperties.Text="{local:Translate ToolTipEventsCopy_Text}"
@@ -167,7 +195,7 @@
                 <Button
                     x:Name="btnShareEvents"
                     Style="{StaticResource buttonStyleFill}"
-                    Grid.Row="5"
+                    Grid.Row="6"
                     Grid.Column="1"
                     Text="{local:Translate EventsShare_Text}"
                     ToolTipProperties.Text="{local:Translate ToolTipEventsShare_Text}"
@@ -176,7 +204,7 @@
 
                 <Border
                     Style="{StaticResource borderStyleDefault}"
-                    Grid.Row="6"
+                    Grid.Row="7"
                     Grid.Column="0"
                     Grid.ColumnSpan="2">
                 

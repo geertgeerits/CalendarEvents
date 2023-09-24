@@ -126,6 +126,9 @@
   <data name="Agree_Text" xml:space="preserve">
     <value>Accetto</value>
   </data>
+  <data name="AllCalendars_Text" xml:space="preserve">
+    <value>All calendars</value>
+  </data>
   <data name="ButtonClose_Text" xml:space="preserve">
     <value>Chiudi</value>
   </data>
@@ -134,6 +137,9 @@
   </data>
   <data name="Calendars_Text" xml:space="preserve">
     <value>Calendari:</value>
+  </data>
+  <data name="Calendar_Text" xml:space="preserve">
+    <value>Calendar:</value>
   </data>
   <data name="Clear_Text" xml:space="preserve">
     <value>Rimuovi</value>

@@ -2,7 +2,7 @@
 // Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
 // Copyright ...: (C) 2023-2023
 // Version .....: 1.0.4
-// Date ........: 2023-09-19 (YYYY-MM-DD)
+// Date ........: 2023-09-24 (YYYY-MM-DD)
 // Language ....: Microsoft Visual Studio 2022: .NET 7.0 MAUI C# 11.0
 // Description .: Read calendar events to share
 // Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 1.0.0-preview6 ; https://github.com/jfversluis/Plugin.Maui.CalendarStore
@@ -21,6 +21,11 @@ public partial class MainPage : ContentPage
     private string cLicenseText;
     private readonly bool bLicense;
     private readonly bool bLogAlwaysSend;
+    private string cCalendarName;
+    private string cCalendarNamesAll;
+    private string cCalendarId;
+    private readonly string[,] calendarArray = new string[300, 2];
+    private IEnumerable<CalendarEvent> events;
 
     public MainPage()
     {
@@ -118,15 +123,17 @@ public partial class MainPage : ContentPage
                 new RowDefinition(GridLength.Auto),
                 new RowDefinition(GridLength.Auto),
                 new RowDefinition(GridLength.Auto),
+                new RowDefinition(GridLength.Auto),
             },           
         };
         grdEvents.Style = grid.Style;
-        grdEvents.RowDefinitions = grid.RowDefinitions;        
+        grdEvents.RowDefinitions = grid.RowDefinitions;
 #else
         var grid = new Grid()
         {
             RowDefinitions =
             {
+                new RowDefinition(GridLength.Auto),
                 new RowDefinition(GridLength.Auto),
                 new RowDefinition(GridLength.Auto),
                 new RowDefinition(GridLength.Auto),
@@ -152,6 +159,9 @@ public partial class MainPage : ContentPage
         grdEvents.RowSpacing = grid.RowSpacing;
         grdEvents.Margin = grid.Margin;
 #endif
+
+        // Get all the calendars from the device and put them in a picker.
+        GetCalendars();
     }
 
     // TitleView buttons clicked events.
@@ -175,6 +185,87 @@ public partial class MainPage : ContentPage
         entry.SelectionLength = entry.Text.Length;
     }
 
+    // Select a calendar from the picker.
+    private void OnPickerCalendarChanged(object sender, EventArgs e)
+    {
+        lblCalendarEvents.Text = "";
+
+        // All calendars.
+        if (pckCalendars.SelectedIndex == 0)
+        {
+            lblCalendarNames.Text = $"{CalEventLang.Calendars_Text} {cCalendarNamesAll}";
+            return;
+        }
+
+        // One calendar.
+        cCalendarName = calendarArray[pckCalendars.SelectedIndex, 0];
+        cCalendarId = calendarArray[pckCalendars.SelectedIndex, 1];
+
+        lblCalendarNames.Text = $"{CalEventLang.Calendar_Text} {cCalendarName}";
+    }
+
+    // Get all the calendars from the device and put them in a picker.
+    private async void GetCalendars()
+    {
+        try
+        {
+            // For testing crashes - DivideByZeroException.
+            //int divByZero = 51 / int.Parse("0");
+
+            var calendars = await CalendarStore.Default.GetCalendars();
+
+            // Count the number of calendars and put them in the variable cCalendarNamesAll.
+            cCalendarNamesAll = "";
+            int nNumberCalendars = 0;
+
+            foreach (var calendar in calendars)
+            {
+                //cCalendarNamesAll = $"{cCalendarNamesAll} {calendar.Name} ({calendar.Id}), ";
+                cCalendarNamesAll = $"{cCalendarNamesAll} {calendar.Name}, ";
+                nNumberCalendars++;
+            }
+
+            // Local name for 'All calendars'.
+            calendarArray[0, 0] = CalEventLang.AllCalendars_Text;  // "Todos los calendarios" - "Alle kalenders" - "Tous les calendriers" - "Alle Kalender 
+            
+            // Put the calendars in the array.
+            int nRow = 1;
+            foreach (var calendar in calendars)
+            {
+                calendarArray[nRow, 0] = calendar.Name;
+                calendarArray[nRow, 1] = calendar.Id;
+                nRow++;
+            }
+
+            // Put the calendars in the picker.
+            Picker calendarPicker = new Picker();
+
+            nRow = 0;
+            for (int i = 0; i < nNumberCalendars + 1; i++)
+            {
+                calendarPicker.Items.Add(calendarArray[i, 0]);
+                nRow++;
+            }
+
+            pckCalendars.ItemsSource = calendarPicker.Items.ToList();
+            pckCalendars.SelectedIndex = 0;
+        }
+        catch (Exception ex)
+        {
+            var properties = new Dictionary<string, string>
+            {
+                { "File:", "MainPage.xaml.cs" },
+                { "Method:", "GetCalendars" },
+                { "CalendarStore:", "GetCalendars" },
+                { "AppLanguage:", Globals.cLanguage }
+            };
+            Crashes.TrackError(ex, properties);
+
+            _ = DisplayAlert(CalEventLang.ErrorTitle_Text, ex.Message, CalEventLang.ButtonClose_Text);
+            return;
+        }        
+    }
+
     // Get calendar events.
     private async void OnGetEventsClicked(object sender, EventArgs e)
     {
@@ -190,39 +281,7 @@ public partial class MainPage : ContentPage
         entSearchWord.IsEnabled = false;
         entSearchWord.IsEnabled = true;
 
-        // Get all the calendars from the device.
-        string cCalendarNames;
-        
-        try
-        {
-            // For testing crashes - DivideByZeroException.
-            //int divByZero = 51 / int.Parse("0");
 
-            var calendars = await CalendarStore.Default.GetCalendars();
-
-            cCalendarNames = CalEventLang.Calendars_Text;
-
-            foreach (var calendar in calendars)
-            {
-                //cCalendarNames = $"{cCalendarNames} {calendar.Name} ({calendar.Id}), ";
-                cCalendarNames = $"{cCalendarNames} {calendar.Name}, ";
-            }
-        }
-        catch (Exception ex)
-        {
-            var properties = new Dictionary<string, string> {
-                { "File:", "MainPage.xaml.cs" },
-                { "Method:", "OnGetEventsClicked" },
-                { "CalendarStore:", "GetCalendars" },
-                { "AppLanguage:", Globals.cLanguage }                
-            };
-            Crashes.TrackError(ex, properties);
-
-            await DisplayAlert(CalEventLang.ErrorTitle_Text, ex.Message, CalEventLang.ButtonClose_Text);
-            return;
-        }
-        
-        lblCalendarNames.Text = cCalendarNames;
 
         // !!!BUG!!! Workaround for timezone not added to the datetime. Solved with 'Plugin.Maui.CalendarStore version 1.0.0-preview4'.
         //GetEventsTimezone(sender, e);
@@ -233,7 +292,16 @@ public partial class MainPage : ContentPage
 
         try
         {
-            var events = await CalendarStore.Default.GetEvents(startDate: dtpDateStart.Date, endDate: dtpDateEnd.Date.AddDays(1));
+            // All calendars.
+            if (pckCalendars.SelectedIndex == 0)
+            {
+                events = await CalendarStore.Default.GetEvents(startDate: dtpDateStart.Date, endDate: dtpDateEnd.Date.AddDays(1));
+            }
+            // One calendar.
+            else
+            {
+                events = await CalendarStore.Default.GetEvents(calendarId: cCalendarId, startDate: dtpDateStart.Date, endDate: dtpDateEnd.Date.AddDays(1));
+            }
 
             if (entSearchWord.Text is null or "")
             {
@@ -280,7 +348,6 @@ public partial class MainPage : ContentPage
     // Clear the calendar events.
     private void OnClearEventsClicked(object sender, EventArgs e)
     {
-        lblCalendarNames.Text = "";
         lblCalendarEvents.Text = "";
 
         _ = entSearchWord.Focus();
@@ -458,7 +525,7 @@ public partial class MainPage : ContentPage
     //                {
     //                    continue;
     //                }
-                    
+
     //                if (ev.Title.ToLowerInvariant().Contains(cSearchWord))
     //                {
     //                    if (Convert.ToString(ev.StartDate).Contains("+00:00"))

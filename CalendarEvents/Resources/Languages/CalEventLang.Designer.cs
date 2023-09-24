@@ -88,6 +88,15 @@ namespace CalendarEvents.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to All calendars.
+        /// </summary>
+        internal static string AllCalendars_Text {
+            get {
+                return ResourceManager.GetString("AllCalendars_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Close.
         /// </summary>
         internal static string ButtonClose_Text {
@@ -102,6 +111,15 @@ namespace CalendarEvents.Resources.Languages {
         internal static string ButtonShare_Text {
             get {
                 return ResourceManager.GetString("ButtonShare_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Calendar:.
+        /// </summary>
+        internal static string Calendar_Text {
+            get {
+                return ResourceManager.GetString("Calendar_Text", resourceCulture);
             }
         }
         
