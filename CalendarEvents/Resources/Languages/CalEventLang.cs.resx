@@ -127,7 +127,7 @@
     <value>Souhlasit</value>
   </data>
   <data name="AllCalendars_Text" xml:space="preserve">
-    <value>All calendars</value>
+    <value>Všechny kalendáře</value>
   </data>
   <data name="ButtonClose_Text" xml:space="preserve">
     <value>Zavřít</value>
@@ -139,7 +139,7 @@
     <value>Kalendáře:</value>
   </data>
   <data name="Calendar_Text" xml:space="preserve">
-    <value>Calendar:</value>
+    <value>Kalendář:</value>
   </data>
   <data name="Clear_Text" xml:space="preserve">
     <value>Vymazat</value>

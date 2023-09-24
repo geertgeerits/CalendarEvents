@@ -127,7 +127,7 @@
     <value>Egyetért</value>
   </data>
   <data name="AllCalendars_Text" xml:space="preserve">
-    <value>All calendars</value>
+    <value>Minden naptár</value>
   </data>
   <data name="ButtonClose_Text" xml:space="preserve">
     <value>Zárja be</value>
@@ -139,7 +139,7 @@
     <value>Naptárak:</value>
   </data>
   <data name="Calendar_Text" xml:space="preserve">
-    <value>Calendar:</value>
+    <value>Naptár:</value>
   </data>
   <data name="Clear_Text" xml:space="preserve">
     <value>Töröl</value>

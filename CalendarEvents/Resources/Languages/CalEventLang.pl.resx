@@ -127,7 +127,7 @@
     <value>Zgadzać się</value>
   </data>
   <data name="AllCalendars_Text" xml:space="preserve">
-    <value>All calendars</value>
+    <value>Wszystkie kalendarze</value>
   </data>
   <data name="ButtonClose_Text" xml:space="preserve">
     <value>Zamknąć</value>
@@ -139,7 +139,7 @@
     <value>Kalendarze:</value>
   </data>
   <data name="Calendar_Text" xml:space="preserve">
-    <value>Calendar:</value>
+    <value>Kalendarz:</value>
   </data>
   <data name="Clear_Text" xml:space="preserve">
     <value>Usunąć</value>
