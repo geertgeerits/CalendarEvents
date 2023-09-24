@@ -226,7 +226,7 @@ public partial class MainPage : ContentPage
             }
 
             // Local name for 'All calendars'.
-            calendarArray[0, 0] = CalEventLang.AllCalendars_Text;  // "Todos los calendarios" - "Alle kalenders" - "Tous les calendriers" - "Alle Kalender 
+            calendarArray[0, 0] = CalEventLang.AllCalendars_Text;
             
             // Put the calendars in the array.
             int nRow = 1;
@@ -394,7 +394,15 @@ public partial class MainPage : ContentPage
         cCopyright = $"{CalEventLang.Copyright_Text} © 2023-2023 Geert Geerits";
         cLicenseText = $"{CalEventLang.License_Text}\n\n{CalEventLang.LicenseMit2_Text}";
 
-        //App.Current.MainPage.DisplayAlert(CalEventLang.ErrorTitle_Text, Globals.cLanguage, cButtonCloseText);  // For testing.
+        // Local name for 'All calendars'.
+        calendarArray[0, 0] = CalEventLang.AllCalendars_Text;
+
+        //// Assign the picker's list to a new list instance to allow modification of the list.
+        //List<string> items = new List<string>(pckCalendars.Items);
+        //// Update the value of the first item in the list.
+        //items[0] = CalEventLang.AllCalendars_Text;
+        //// Update the picker's ItemsSource to the updated list.
+        //pckCalendars.ItemsSource = items;
     }
 
     // Show license using the Loaded event of the MainPage.xaml.
