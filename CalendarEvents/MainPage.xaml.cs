@@ -24,7 +24,7 @@ public partial class MainPage : ContentPage
     private string cCalendarName;
     private string cCalendarNamesAll;
     private string cCalendarId;
-    private readonly string[,] calendarArray = new string[300, 2];
+    private readonly string[,] calendarArray = new string[200, 2];
     private IEnumerable<CalendarEvent> events;
 
     public MainPage()
