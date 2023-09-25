@@ -12,7 +12,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 
 		<!-- Display name -->
-		<ApplicationTitle>CalendarEvents</ApplicationTitle>
+		<ApplicationTitle>Calendar Events</ApplicationTitle>
 
 		<!-- App Identifier -->
 		<ApplicationId>com.companyname.calendarevents</ApplicationId>

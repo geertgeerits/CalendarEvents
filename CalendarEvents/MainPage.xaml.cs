@@ -2,7 +2,7 @@
 // Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
 // Copyright ...: (C) 2023-2023
 // Version .....: 1.0.4
-// Date ........: 2023-09-24 (YYYY-MM-DD)
+// Date ........: 2023-09-25 (YYYY-MM-DD)
 // Language ....: Microsoft Visual Studio 2022: .NET 7.0 MAUI C# 11.0
 // Description .: Read calendar events to share
 // Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 1.0.0-preview6 ; https://github.com/jfversluis/Plugin.Maui.CalendarStore
@@ -238,16 +238,22 @@ public partial class MainPage : ContentPage
             }
 
             // Put the calendars in the picker.
-            Picker calendarPicker = new Picker();
+            //Picker calendarPicker = new();
 
-            nRow = 0;
-            for (int i = 0; i < nNumberCalendars + 1; i++)
+            //for (nRow = 0; nRow < nNumberCalendars + 1; nRow++)
+            //{
+            //    calendarPicker.Items.Add(calendarArray[nRow, 0]);
+            //}
+
+            //pckCalendars.ItemsSource = calendarPicker.Items.ToList();
+            //pckCalendars.SelectedIndex = 0;
+
+            List<string> calendarList = new();
+            for (nRow = 0; nRow < nNumberCalendars + 1; nRow++)
             {
-                calendarPicker.Items.Add(calendarArray[i, 0]);
-                nRow++;
+                calendarList.Add(calendarArray[nRow, 0]);
             }
-
-            pckCalendars.ItemsSource = calendarPicker.Items.ToList();
+            pckCalendars.ItemsSource = calendarList;
             pckCalendars.SelectedIndex = 0;
         }
         catch (Exception ex)
@@ -263,7 +269,7 @@ public partial class MainPage : ContentPage
 
             _ = DisplayAlert(CalEventLang.ErrorTitle_Text, ex.Message, CalEventLang.ButtonClose_Text);
             return;
-        }        
+        }
     }
 
     // Get calendar events.
@@ -281,11 +287,11 @@ public partial class MainPage : ContentPage
         entSearchWord.IsEnabled = false;
         entSearchWord.IsEnabled = true;
 
-
-
         // !!!BUG!!! Workaround for timezone not added to the datetime. Solved with 'Plugin.Maui.CalendarStore version 1.0.0-preview4'.
         //GetEventsTimezone(sender, e);
         //return;
+
+        activityIndicator.IsRunning = true;
 
         // Get (all) the events from the calendar.
         string cCalendarEvents = "";
@@ -327,6 +333,8 @@ public partial class MainPage : ContentPage
                     }
                 }
             }
+
+            lblCalendarEvents.Text = cCalendarEvents;
         }
         catch (Exception ex)
         {
@@ -339,10 +347,9 @@ public partial class MainPage : ContentPage
             Crashes.TrackError(ex, properties);
 
             await DisplayAlert(CalEventLang.ErrorTitle_Text, ex.Message, CalEventLang.ButtonClose_Text);
-            return;
         }
 
-        lblCalendarEvents.Text = cCalendarEvents;
+        activityIndicator.IsRunning = false;
     }
 
     // Clear the calendar events.
@@ -396,13 +403,7 @@ public partial class MainPage : ContentPage
 
         // Local name for 'All calendars'.
         calendarArray[0, 0] = CalEventLang.AllCalendars_Text;
-
-        //// Assign the picker's list to a new list instance to allow modification of the list.
-        //List<string> items = new List<string>(pckCalendars.Items);
-        //// Update the value of the first item in the list.
-        //items[0] = CalEventLang.AllCalendars_Text;
-        //// Update the picker's ItemsSource to the updated list.
-        //pckCalendars.ItemsSource = items;
+        //pckCalendars.ItemsSource[0] = CalEventLang.AllCalendars_Text;
     }
 
     // Show license using the Loaded event of the MainPage.xaml.

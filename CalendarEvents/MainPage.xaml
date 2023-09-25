@@ -34,6 +34,16 @@
                 Text="{local:Translate NameProgram_Text}">
             </Label>
 
+            <ActivityIndicator
+                    x:Name="activityIndicator"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    VerticalOptions="Center"
+                    HorizontalOptions="End"
+                    IsRunning="False"
+                    Color="#1186f8">
+            </ActivityIndicator>
+
             <ImageButton
                 x:Name="imgbtnSettings"
                 Grid.Row="0"
@@ -142,7 +152,7 @@
                         IsEnabled="True">
                         <Picker.ItemsSource>
                             <x:Array Type="{x:Type x:String}">
-                                <x:String>1</x:String>
+                                <x:String>0</x:String>
                             </x:Array>
                         </Picker.ItemsSource>
                     </Picker>

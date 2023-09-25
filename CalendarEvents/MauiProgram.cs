@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
-using Microsoft.AppCenter;
+﻿using Microsoft.AppCenter;
 
 namespace CalendarEvents
 {
