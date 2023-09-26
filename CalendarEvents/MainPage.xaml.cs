@@ -159,11 +159,7 @@ public partial class MainPage : ContentPage
         grdEvents.RowSpacing = grid.RowSpacing;
         grdEvents.Margin = grid.Margin;
 #endif
-
-        // Permissions for CalendarRead.
-        Task<PermissionStatus> taskCalendarRead = CheckAndRequestCalendarRead();
-        Task.Delay(500).Wait();
-        
+       
         // Get all the calendars from the device and put them in a picker.
         GetCalendars();
     }
@@ -211,6 +207,10 @@ public partial class MainPage : ContentPage
     // Get all the calendars from the device and put them in a picker.
     private async void GetCalendars()
     {
+#if ANDROID
+        // Permissions for CalendarRead - Sometimes permission is not set in Android (not yet tested in iOS).
+        _ = await CheckAndRequestCalendarRead();
+#endif
         try
         {
             // For testing crashes - DivideByZeroException.
@@ -485,25 +485,16 @@ public partial class MainPage : ContentPage
 
     public async Task<PermissionStatus> CheckAndRequestCalendarRead()
     {
-        PermissionStatus status = await Permissions.CheckStatusAsync<Permissions.CalendarRead>();       
-        //await DisplayAlert("CheckAndRequestCalendarRead", status.ToString(), "OK");
+        PermissionStatus status = await Permissions.CheckStatusAsync<Permissions.CalendarRead>();
         
         if (status == PermissionStatus.Granted)
             return status;
 
-        if (status == PermissionStatus.Denied && DeviceInfo.Platform == DevicePlatform.iOS)
-        {
-            // Prompt the user to turn on in settings
-            // On iOS once a permission has been denied it may not be requested again from the application
-            return status;
-        }
-
-        if (Permissions.ShouldShowRationale<Permissions.CalendarRead>())
-        {
-            // Prompt the user with additional information as to why the permission is needed
-        }
+        // !!!BUG!!! in Android?: does not works without the DisplayAlert.
+        await DisplayAlert("", CalEventLang.CalendarPermission_Text, CalEventLang.ButtonClose_Text);
 
         status = await Permissions.RequestAsync<Permissions.CalendarRead>();
+        //await DisplayAlert("CheckAndRequestCalendarRead", status.ToString(), "OK");  // For testing.
 
         return status;
     }

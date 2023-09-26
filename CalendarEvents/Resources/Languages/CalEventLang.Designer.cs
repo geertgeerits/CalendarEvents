@@ -124,6 +124,15 @@ namespace CalendarEvents.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to If permission to the calendar is not given, permission can be enabled in the device settings, select the application and grant access to the calendar..
+        /// </summary>
+        internal static string CalendarPermission_Text {
+            get {
+                return ResourceManager.GetString("CalendarPermission_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Calendars:.
         /// </summary>
         internal static string Calendars_Text {

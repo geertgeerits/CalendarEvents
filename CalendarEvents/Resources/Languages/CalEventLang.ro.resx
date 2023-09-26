@@ -135,6 +135,9 @@
   <data name="ButtonShare_Text" xml:space="preserve">
     <value>Acțiune</value>
   </data>
+  <data name="CalendarPermission_Text" xml:space="preserve">
+    <value>Dacă nu se acordă permisiunea pentru calendar, permisiunea poate fi activată în setările dispozitivului, selectați aplicația și acordați acces la calendar.</value>
+  </data>
   <data name="Calendars_Text" xml:space="preserve">
     <value>Calendare:</value>
   </data>

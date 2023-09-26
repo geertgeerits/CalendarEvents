@@ -135,6 +135,9 @@
   <data name="ButtonShare_Text" xml:space="preserve">
     <value>Udział</value>
   </data>
+  <data name="CalendarPermission_Text" xml:space="preserve">
+    <value>Jeżeli nie udzielono uprawnień do kalendarza, można je włączyć w ustawieniach urządzenia, wybrać aplikację i przyznać dostęp do kalendarza.</value>
+  </data>
   <data name="Calendars_Text" xml:space="preserve">
     <value>Kalendarze:</value>
   </data>

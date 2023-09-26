@@ -135,6 +135,9 @@
   <data name="ButtonShare_Text" xml:space="preserve">
     <value>Dela</value>
   </data>
+  <data name="CalendarPermission_Text" xml:space="preserve">
+    <value>Om behörighet till kalendern inte ges kan behörighet aktiveras i enhetsinställningarna, välj applikationen och ge åtkomst till kalendern.</value>
+  </data>
   <data name="Calendars_Text" xml:space="preserve">
     <value>Kalendrar:</value>
   </data>

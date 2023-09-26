@@ -135,6 +135,9 @@
   <data name="ButtonShare_Text" xml:space="preserve">
     <value>Delen</value>
   </data>
+  <data name="CalendarPermission_Text" xml:space="preserve">
+    <value>Als er geen toestemming voor de agenda wordt gegeven, kan toestemming worden ingeschakeld in de apparaatinstellingen, selecteert u de applicatie en verleent u toegang tot de agenda.</value>
+  </data>
   <data name="Calendars_Text" xml:space="preserve">
     <value>Kalenders:</value>
   </data>

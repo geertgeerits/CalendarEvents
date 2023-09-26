@@ -135,6 +135,9 @@
   <data name="ButtonShare_Text" xml:space="preserve">
     <value>Oszd meg</value>
   </data>
+  <data name="CalendarPermission_Text" xml:space="preserve">
+    <value>Ha a naptárhoz nem adnak engedélyt, akkor a készülék beállításaiban engedélyezheti az engedélyt, válassza ki az alkalmazást, és engedélyezze a hozzáférést a naptárhoz.</value>
+  </data>
   <data name="Calendars_Text" xml:space="preserve">
     <value>Naptárak:</value>
   </data>

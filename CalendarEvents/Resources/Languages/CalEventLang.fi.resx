@@ -135,6 +135,9 @@
   <data name="ButtonShare_Text" xml:space="preserve">
     <value>Jaa</value>
   </data>
+  <data name="CalendarPermission_Text" xml:space="preserve">
+    <value>Jos kalenteriin ei anneta lupaa, käyttöoikeus voidaan ottaa käyttöön laitteen asetuksista, valita sovellus ja myöntää käyttöoikeus kalenteriin.</value>
+  </data>
   <data name="Calendars_Text" xml:space="preserve">
     <value>Kalenterit:</value>
   </data>

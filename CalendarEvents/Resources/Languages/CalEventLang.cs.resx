@@ -135,6 +135,9 @@
   <data name="ButtonShare_Text" xml:space="preserve">
     <value>Podíl</value>
   </data>
+  <data name="CalendarPermission_Text" xml:space="preserve">
+    <value>Pokud oprávnění ke kalendáři není uděleno, lze oprávnění povolit v nastavení zařízení, vybrat aplikaci a udělit přístup ke kalendáři.</value>
+  </data>
   <data name="Calendars_Text" xml:space="preserve">
     <value>Kalendáře:</value>
   </data>

@@ -135,6 +135,9 @@
   <data name="ButtonShare_Text" xml:space="preserve">
     <value>Compartir</value>
   </data>
+  <data name="CalendarPermission_Text" xml:space="preserve">
+    <value>Si no se otorga permiso para el calendario, se puede habilitar el permiso en la configuración del dispositivo, seleccionar la aplicación y otorgar acceso al calendario.</value>
+  </data>
   <data name="Calendars_Text" xml:space="preserve">
     <value>Calendarios:</value>
   </data>

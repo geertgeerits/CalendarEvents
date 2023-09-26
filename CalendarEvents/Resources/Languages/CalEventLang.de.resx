@@ -135,6 +135,9 @@
   <data name="ButtonShare_Text" xml:space="preserve">
     <value>Teilen</value>
   </data>
+  <data name="CalendarPermission_Text" xml:space="preserve">
+    <value>Wenn keine Berechtigung für den Kalender erteilt wird, kann die Berechtigung in den Geräteeinstellungen aktiviert werden, die Anwendung auswählen und Zugriff auf den Kalender gewähren.</value>
+  </data>
   <data name="Calendars_Text" xml:space="preserve">
     <value>Kalender:</value>
   </data>
