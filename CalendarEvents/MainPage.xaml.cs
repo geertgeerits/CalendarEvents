@@ -2,7 +2,7 @@
 // Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
 // Copyright ...: (C) 2023-2023
 // Version .....: 1.0.4
-// Date ........: 2023-09-25 (YYYY-MM-DD)
+// Date ........: 2023-09-26 (YYYY-MM-DD)
 // Language ....: Microsoft Visual Studio 2022: .NET 7.0 MAUI C# 11.0
 // Description .: Read calendar events to share
 // Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 1.0.0-preview6 ; https://github.com/jfversluis/Plugin.Maui.CalendarStore
@@ -24,7 +24,7 @@ public partial class MainPage : ContentPage
     private string cCalendarName;
     private string cCalendarNamesAll;
     private string cCalendarId;
-    private readonly string[,] calendarArray = new string[200, 2];
+    private readonly Dictionary<string, string> calendarDictionary = new();
     private IEnumerable<CalendarEvent> events;
 
     public MainPage()
@@ -198,8 +198,8 @@ public partial class MainPage : ContentPage
         }
 
         // One calendar.
-        cCalendarName = calendarArray[pckCalendars.SelectedIndex, 0];
-        cCalendarId = calendarArray[pckCalendars.SelectedIndex, 1];
+        cCalendarName = calendarDictionary.Values.ElementAt(pckCalendars.SelectedIndex);
+        cCalendarId = calendarDictionary.Keys.ElementAt(pckCalendars.SelectedIndex);
 
         lblCalendarNames.Text = $"{CalEventLang.Calendar_Text} {cCalendarName}";
     }
@@ -212,49 +212,30 @@ public partial class MainPage : ContentPage
             // For testing crashes - DivideByZeroException.
             //int divByZero = 51 / int.Parse("0");
 
+            // Get all the calendars from the device.
             var calendars = await CalendarStore.Default.GetCalendars();
 
-            // Count the number of calendars and put them in the variable cCalendarNamesAll.
+            // Local language name for 'All calendars' (first element in the list of calendars).
+            calendarDictionary.Add("000-AllCalendars-51", CalEventLang.AllCalendars_Text);
             cCalendarNamesAll = "";
-            int nNumberCalendars = 0;
 
+            // Put the calendars in the dictionary and in the variable cCalendarNamesAll.
             foreach (var calendar in calendars)
             {
-                //cCalendarNamesAll = $"{cCalendarNamesAll} {calendar.Name} ({calendar.Id}), ";
+                calendarDictionary.Add(calendar.Id, calendar.Name);
                 cCalendarNamesAll = $"{cCalendarNamesAll} {calendar.Name}, ";
-                nNumberCalendars++;
             }
 
-            // Local name for 'All calendars'.
-            calendarArray[0, 0] = CalEventLang.AllCalendars_Text;
+            // Put the calendars from the dictonary in the picker.
+            List<string> calendarList = calendarDictionary.Values.ToList();
             
-            // Put the calendars in the array.
-            int nRow = 1;
-            foreach (var calendar in calendars)
-            {
-                calendarArray[nRow, 0] = calendar.Name;
-                calendarArray[nRow, 1] = calendar.Id;
-                nRow++;
-            }
-
-            // Put the calendars in the picker.
-            //Picker calendarPicker = new();
-
-            //for (nRow = 0; nRow < nNumberCalendars + 1; nRow++)
-            //{
-            //    calendarPicker.Items.Add(calendarArray[nRow, 0]);
-            //}
-
-            //pckCalendars.ItemsSource = calendarPicker.Items.ToList();
-            //pckCalendars.SelectedIndex = 0;
-
-            List<string> calendarList = new();
-            for (nRow = 0; nRow < nNumberCalendars + 1; nRow++)
-            {
-                calendarList.Add(calendarArray[nRow, 0]);
-            }
             pckCalendars.ItemsSource = calendarList;
             pckCalendars.SelectedIndex = 0;
+        }
+        catch (Exception ex) when (ex is ArgumentException)
+        {
+            // ArgumentException: Value does not fall within the expected range.
+            // The Add method throws an exception if the new key is already in the dictionary.
         }
         catch (Exception ex)
         {
@@ -268,7 +249,6 @@ public partial class MainPage : ContentPage
             Crashes.TrackError(ex, properties);
 
             _ = DisplayAlert(CalEventLang.ErrorTitle_Text, ex.Message, CalEventLang.ButtonClose_Text);
-            return;
         }
     }
 
@@ -287,10 +267,6 @@ public partial class MainPage : ContentPage
         entSearchWord.IsEnabled = false;
         entSearchWord.IsEnabled = true;
 
-        // !!!BUG!!! Workaround for timezone not added to the datetime. Solved with 'Plugin.Maui.CalendarStore version 1.0.0-preview4'.
-        //GetEventsTimezone(sender, e);
-        //return;
-
         activityIndicator.IsRunning = true;
 
         // Get (all) the events from the calendar.
@@ -298,6 +274,9 @@ public partial class MainPage : ContentPage
 
         try
         {
+            // For testing crashes - DivideByZeroException.
+            //int divByZero = 51 / int.Parse("0");
+
             // All calendars.
             if (pckCalendars.SelectedIndex == 0)
             {
@@ -336,6 +315,11 @@ public partial class MainPage : ContentPage
 
             lblCalendarEvents.Text = cCalendarEvents;
         }
+        catch (Exception ex) when (ex is ObjectDisposedException)
+        {
+            // ObjectDisposedException: Cannot access a disposed object.
+            lblCalendarEvents.Text = "";
+        }
         catch (Exception ex)
         {
             var properties = new Dictionary<string, string> {
@@ -345,7 +329,7 @@ public partial class MainPage : ContentPage
                 { "AppLanguage:", Globals.cLanguage }
             };
             Crashes.TrackError(ex, properties);
-
+            
             await DisplayAlert(CalEventLang.ErrorTitle_Text, ex.Message, CalEventLang.ButtonClose_Text);
         }
 
@@ -367,7 +351,6 @@ public partial class MainPage : ContentPage
         {
             await Clipboard.Default.SetTextAsync(lblCalendarEvents.Text);
         }
-
     }
         
     // Share calendar events.
@@ -402,7 +385,6 @@ public partial class MainPage : ContentPage
         cLicenseText = $"{CalEventLang.License_Text}\n\n{CalEventLang.LicenseMit2_Text}";
 
         // Local name for 'All calendars'.
-        calendarArray[0, 0] = CalEventLang.AllCalendars_Text;
         //pckCalendars.ItemsSource[0] = CalEventLang.AllCalendars_Text;
     }
 
@@ -496,74 +478,4 @@ public partial class MainPage : ContentPage
         //    Crashes.NotifyUserConfirmation(UserConfirmation.DontSend);
         //}
     }
-
-    // !!!BUG!!! Workaround for Workaround for timezone not added to the datetime.
-    // Get(all) the events from the calendar.
-    //private async void GetEventsTimezone(object sender, EventArgs e)
-    //{
-    //    // Get (all) the events from the calendar.
-    //    string cCalendarEvents = "";
-    //    DateTime dStartDate;
-
-    //    try
-    //    {
-    //        var events = await CalendarStore.Default.GetEvents(startDate: dtpDateStart.Date, endDate: dtpDateEnd.Date.AddDays(1));
-
-    //        if (entSearchWord.Text is null or "")
-    //        {
-    //            foreach (CalendarEvent ev in events)
-    //            {
-    //                if (Convert.ToString(ev.StartDate).Contains("+00:00"))
-    //                {
-    //                    dStartDate = DateTime.Parse(Convert.ToString(ev.StartDate));
-    //                    cCalendarEvents = $"{cCalendarEvents}{dStartDate.ToString(Globals.cDateFormat + "  HH:mm")}  {ev.Title}\n\n";
-    //                }
-    //                else
-    //                {
-    //                    cCalendarEvents = $"{cCalendarEvents}{ev.StartDate.ToString(Globals.cDateFormat + "  HH:mm")}  {ev.Title}\n\n";
-    //                }
-    //            }
-    //        }
-    //        else
-    //        {
-    //            string cSearchWord = entSearchWord.Text.ToLowerInvariant().Trim();
-
-    //            foreach (CalendarEvent ev in events)
-    //            {
-    //                if (ev.Title is null or "")
-    //                {
-    //                    continue;
-    //                }
-
-    //                if (ev.Title.ToLowerInvariant().Contains(cSearchWord))
-    //                {
-    //                    if (Convert.ToString(ev.StartDate).Contains("+00:00"))
-    //                    {
-    //                        dStartDate = DateTime.Parse(Convert.ToString(ev.StartDate));
-    //                        cCalendarEvents = $"{cCalendarEvents}{dStartDate.ToString(Globals.cDateFormat + "  HH:mm")}  {ev.Title}\n\n";
-    //                    }
-    //                    else
-    //                    {
-    //                        cCalendarEvents = $"{cCalendarEvents}{ev.StartDate.ToString(Globals.cDateFormat + "  HH:mm")}  {ev.Title}\n\n";
-    //                    }
-    //                }
-    //            }
-    //        }
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        var properties = new Dictionary<string, string> {
-    //            { "File:", "MainPage.xaml.cs" },
-    //            { "Method:", "GetEventsTimezone" },
-    //            { "CalendarStore:", "GetEvents" },
-    //            { "AppLanguage:", Globals.cLanguage }
-    //        };
-    //        Crashes.TrackError(ex, properties);
-
-    //        await DisplayAlert(CalEventLang.ErrorTitle_Text, ex.Message, CalEventLang.ButtonClose_Text);
-    //        return;
-    //    }
-
-    //    lblCalendarEvents.Text = cCalendarEvents;
-    //}
 }
