@@ -209,8 +209,9 @@ public partial class MainPage : ContentPage
     {
 #if ANDROID
         // Permissions for CalendarRead - Sometimes permission is not set in Android (not yet tested in iOS).
-        _ = await CheckAndRequestCalendarRead();
+        //_ = await CheckAndRequestCalendarRead();
 #endif
+    GetCalendars:
         try
         {
             // For testing crashes - DivideByZeroException.
@@ -240,6 +241,13 @@ public partial class MainPage : ContentPage
         {
             // ArgumentException: Value does not fall within the expected range.
             // The Add method throws an exception if the new key is already in the dictionary.
+        }
+        catch (Exception ex) when (ex is NullReferenceException)
+        {
+            // NullReferenceException: Object reference not set to an instance of an object.
+            // Permissions for CalendarRead - Sometimes permission is not set in Android (not yet tested in iOS).
+            _ = await CheckAndRequestCalendarRead();
+            goto GetCalendars;
         }
         catch (Exception ex)
         {
