@@ -11,7 +11,6 @@
 // Thanks to ...: Gerald Versluis
 
 using Plugin.Maui.CalendarStore;
-using System.Reflection.Metadata.Ecma335;
 
 namespace CalendarEvents;
 
@@ -25,6 +24,7 @@ public partial class MainPage : ContentPage
     private string cCalendarName;
     private string cCalendarNamesAll;
     private string cCalendarId;
+    private readonly string cKeyAllCalendars = "000-AllCalendars-51";
     private readonly Dictionary<string, string> calendarDictionary = new();
     private IEnumerable<CalendarEvent> events;
 
@@ -190,17 +190,24 @@ public partial class MainPage : ContentPage
     private void OnPickerCalendarChanged(object sender, EventArgs e)
     {
         lblCalendarEvents.Text = "";
+        
+        int nSelectedIndex = pckCalendars.SelectedIndex;
+        
+        if (nSelectedIndex == -1)
+        {
+            nSelectedIndex = 0;
+        }
 
         // All calendars.
-        if (pckCalendars.SelectedIndex == 0)
+        if (nSelectedIndex == 0)
         {
             lblCalendarNames.Text = $"{CalEventLang.Calendars_Text} {cCalendarNamesAll}";
             return;
         }
 
         // One calendar.
-        cCalendarName = calendarDictionary.Values.ElementAt(pckCalendars.SelectedIndex);
-        cCalendarId = calendarDictionary.Keys.ElementAt(pckCalendars.SelectedIndex);
+        cCalendarName = calendarDictionary.Values.ElementAt(nSelectedIndex);
+        cCalendarId = calendarDictionary.Keys.ElementAt(nSelectedIndex);
 
         lblCalendarNames.Text = $"{CalEventLang.Calendar_Text} {cCalendarName}";
     }
@@ -223,7 +230,7 @@ public partial class MainPage : ContentPage
             var calendars = await CalendarStore.Default.GetCalendars();
 
             // Local language name for 'All calendars' (first element in the list of calendars).
-            calendarDictionary.Add("000-AllCalendars-51", CalEventLang.AllCalendars_Text);
+            calendarDictionary.Add(cKeyAllCalendars, CalEventLang.AllCalendars_Text);
             cCalendarNamesAll = "";
 
             // Put the calendars in the dictionary and in the variable cCalendarNamesAll.
@@ -404,17 +411,15 @@ public partial class MainPage : ContentPage
         // Local name for 'All calendars'.
         if (Globals.bLanguageChanged)
         {
-            //pckCalendars.ItemsSource[0] = CalEventLang.AllCalendars_Text;
+            calendarDictionary[cKeyAllCalendars] = CalEventLang.AllCalendars_Text;
 
-            //pckCalendars.SelectedIndex = 0;
-            //pckCalendars.SelectedItem = CalEventLang.AllCalendars_Text;
-
-            //calendarDictionary["000-AllCalendars-51"] = CalEventLang.AllCalendars_Text;
-            //DisplayAlert("SetTextLanguage", calendarDictionary["000-AllCalendars-51"], "OK");  // For testing.
             // Put the calendars from the dictonary in the picker.
-            //List<string> calendarList = calendarDictionary.Values.ToList();
-            //pckCalendars.ItemsSource = calendarList;
-            //pckCalendars.SelectedIndex = 0;
+            int nSelectedIndex = pckCalendars.SelectedIndex;
+
+            List<string> calendarList = calendarDictionary.Values.ToList();
+            pckCalendars.ItemsSource = calendarList;
+
+            pckCalendars.SelectedIndex = nSelectedIndex;
         }
     }
 
