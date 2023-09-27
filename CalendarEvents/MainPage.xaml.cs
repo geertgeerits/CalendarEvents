@@ -2,7 +2,7 @@
 // Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
 // Copyright ...: (C) 2023-2023
 // Version .....: 1.0.4
-// Date ........: 2023-09-26 (YYYY-MM-DD)
+// Date ........: 2023-09-27 (YYYY-MM-DD)
 // Language ....: Microsoft Visual Studio 2022: .NET 7.0 MAUI C# 11.0
 // Description .: Read calendar events to share
 // Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 1.0.0-preview6 ; https://github.com/jfversluis/Plugin.Maui.CalendarStore
@@ -11,6 +11,7 @@
 // Thanks to ...: Gerald Versluis
 
 using Plugin.Maui.CalendarStore;
+using System.Reflection.Metadata.Ecma335;
 
 namespace CalendarEvents;
 
@@ -208,10 +209,11 @@ public partial class MainPage : ContentPage
     private async void GetCalendars()
     {
 #if ANDROID
-        // Permissions for CalendarRead - Sometimes permission is not set in Android (not yet tested in iOS).
-        //_ = await CheckAndRequestCalendarRead();
+        // Permissions for CalendarRead - Sometimes permission is not given in Android (not yet tested in iOS).
+        _ = await CheckAndRequestCalendarRead();
 #endif
-    GetCalendars:
+        int nRetries = 0;
+    Start:
         try
         {
             // For testing crashes - DivideByZeroException.
@@ -245,9 +247,14 @@ public partial class MainPage : ContentPage
         catch (Exception ex) when (ex is NullReferenceException)
         {
             // NullReferenceException: Object reference not set to an instance of an object.
-            // Permissions for CalendarRead - Sometimes permission is not set in Android (not yet tested in iOS).
-            _ = await CheckAndRequestCalendarRead();
-            goto GetCalendars;
+            // Permissions for CalendarRead - Sometimes permission is not given.
+            if (nRetries < 4)
+            {
+                nRetries++;
+                _ = await CheckAndRequestCalendarRead();
+                goto Start;
+            }
+            pckCalendars.SelectedIndex = 0;
         }
         catch (Exception ex)
         {
@@ -330,6 +337,7 @@ public partial class MainPage : ContentPage
         catch (Exception ex) when (ex is ObjectDisposedException)
         {
             // ObjectDisposedException: Cannot access a disposed object.
+            // Happens when there are no events in the selected calendar or between the startDate and endDate.
             lblCalendarEvents.Text = "";
         }
         catch (Exception ex)
@@ -388,16 +396,26 @@ public partial class MainPage : ContentPage
     private void SetTextLanguage()
     {
         // Set the CurrentUICulture.
-        //Globals.cLanguage = "es";  // For testing.
-        //App.Current.MainPage.DisplayAlert("Globals.cLanguage", Globals.cLanguage, "OK");  // For testing.
-
         Globals.SetCultureSelectedLanguage();
 
         cCopyright = $"{CalEventLang.Copyright_Text} © 2023-2023 Geert Geerits";
         cLicenseText = $"{CalEventLang.License_Text}\n\n{CalEventLang.LicenseMit2_Text}";
 
         // Local name for 'All calendars'.
-        //pckCalendars.ItemsSource[0] = CalEventLang.AllCalendars_Text;
+        if (Globals.bLanguageChanged)
+        {
+            //pckCalendars.ItemsSource[0] = CalEventLang.AllCalendars_Text;
+
+            //pckCalendars.SelectedIndex = 0;
+            //pckCalendars.SelectedItem = CalEventLang.AllCalendars_Text;
+
+            //calendarDictionary["000-AllCalendars-51"] = CalEventLang.AllCalendars_Text;
+            //DisplayAlert("SetTextLanguage", calendarDictionary["000-AllCalendars-51"], "OK");  // For testing.
+            // Put the calendars from the dictonary in the picker.
+            //List<string> calendarList = calendarDictionary.Values.ToList();
+            //pckCalendars.ItemsSource = calendarList;
+            //pckCalendars.SelectedIndex = 0;
+        }
     }
 
     // Show license using the Loaded event of the MainPage.xaml.

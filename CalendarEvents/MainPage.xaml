@@ -152,8 +152,7 @@
                         IsEnabled="True">
                         <Picker.ItemsSource>
                             <x:Array Type="{x:Type x:String}">
-                                <x:String>0</x:String>
-                                <x:String>1</x:String>
+                                <x:String>All calendars</x:String>
                             </x:Array>
                         </Picker.ItemsSource>
                     </Picker>
