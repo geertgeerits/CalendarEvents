@@ -24,7 +24,7 @@ public partial class MainPage : ContentPage
     private string cCalendarName;
     private string cCalendarNamesAll;
     private string cCalendarId;
-    private readonly string cKeyAllCalendars = "000-AllCalendars-51";
+    private readonly string cKeyAllCalendars = "000-AllCalendars-gg51";
     private readonly Dictionary<string, string> calendarDictionary = new();
     private IEnumerable<CalendarEvent> events;
 
@@ -226,7 +226,20 @@ public partial class MainPage : ContentPage
         // Permissions for CalendarRead - Sometimes permission is not given in Android (not yet tested in iOS).
         _ = await CheckAndRequestCalendarRead();
 #endif
+        // After using the save button in the settings page the calendarDictionary is not empty.
+        if (calendarDictionary.Count > 0)
+        {
+            if (calendarDictionary.ContainsKey(cKeyAllCalendars))
+            {
+                calendarDictionary.Remove(cKeyAllCalendars);
+            }
+
+            calendarDictionary.Clear();
+        }
+
         int nRetries = 0;
+        Dictionary<string, string> calendarDictionaryTemp = new();
+
     Start:
         try
         {
@@ -236,15 +249,30 @@ public partial class MainPage : ContentPage
             // Get all the calendars from the device.
             var calendars = await CalendarStore.Default.GetCalendars();
 
-            // Local language name for 'All calendars' (first element in the list of calendars).
+            // Local language name for 'All calendars' (first item in the calendarDictionary and list of calendars).
             calendarDictionary.Add(cKeyAllCalendars, CalEventLang.AllCalendars_Text);
             cCalendarNamesAll = "";
 
-            // Put the calendars in the dictionary and in the variable cCalendarNamesAll.
+            // Put the calendars in the calendarDictionaryTemp and in the variable cCalendarNamesAll.
             foreach (var calendar in calendars)
             {
-                calendarDictionary.Add(calendar.Id, calendar.Name);
+                calendarDictionaryTemp.Add(calendar.Id, calendar.Name);
                 cCalendarNamesAll = $"{cCalendarNamesAll} {calendar.Name}, ";
+            }
+
+            // Remove the last comma and space of the variable cCalendarNamesAll.
+            cCalendarNamesAll = cCalendarNamesAll.Remove(cCalendarNamesAll.Length - 2);
+
+            // Sort the calendarDictionaryTemp by value (calendar name).
+            calendarDictionaryTemp = calendarDictionaryTemp.OrderBy(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
+
+            // Add the sorted calendarDictionaryTemp to the calendarDictionary - 'All calendars' stays this way on the first place.
+            foreach (var item in calendarDictionaryTemp)
+            {
+                if (!calendarDictionary.ContainsKey(item.Key))
+                {
+                    calendarDictionary.Add(item.Key, item.Value);
+                }
             }
 
             // Put the calendars from the dictonary in the picker.
@@ -257,6 +285,7 @@ public partial class MainPage : ContentPage
         {
             // ArgumentException: Value does not fall within the expected range.
             // The Add method throws an exception if the new key is already in the dictionary.
+            //await DisplayAlert(CalEventLang.ErrorTitle_Text, ex.Message, CalEventLang.ButtonClose_Text);
         }
         catch (Exception ex) when (ex is NullReferenceException)
         {
