@@ -27,6 +27,7 @@
             </ImageButton>
 
             <Label
+                x:Name="lblTitle"
                 Style="{StaticResource labelStyleTitleView}"
                 Grid.Row="0"
                 Grid.Column="1"

@@ -2,7 +2,7 @@
 // Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
 // Copyright ...: (C) 2023-2023
 // Version .....: 1.0.4
-// Date ........: 2023-09-27 (YYYY-MM-DD)
+// Date ........: 2023-09-28 (YYYY-MM-DD)
 // Language ....: Microsoft Visual Studio 2022: .NET 7.0 MAUI C# 11.0
 // Description .: Read calendar events to share
 // Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 1.0.0-preview6 ; https://github.com/jfversluis/Plugin.Maui.CalendarStore
@@ -60,6 +60,13 @@ public partial class MainPage : ContentPage
                 return true;
             };
         }
+
+#if IOS
+        // The height of the title bar is lower when an iPhone is in horizontal position.
+        imgbtnAbout.VerticalOptions = LayoutOptions.Start;
+        lblTitle.VerticalOptions = LayoutOptions.Start;
+        imgbtnSettings.VerticalOptions = LayoutOptions.Start;
+#endif
 
         // Set the theme.
         if (Globals.cTheme == "Light")
