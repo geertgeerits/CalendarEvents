@@ -25,7 +25,7 @@ public partial class MainPage : ContentPage
     private string cCalendarNamesAll;
     private string cCalendarId;
     private readonly string cKeyAllCalendars = "000-AllCalendars-gg51";
-    private readonly Dictionary<string, string> calendarDictionary = new();
+    private Dictionary<string, string> calendarDictionary = new();
     private IEnumerable<CalendarEvent> events;
 
     public MainPage()
@@ -167,9 +167,15 @@ public partial class MainPage : ContentPage
         grdEvents.RowSpacing = grid.RowSpacing;
         grdEvents.Margin = grid.Margin;
 #endif
-       
+
         // Get all the calendars from the device and put them in a picker.
+        //calendarDictionary.Clear();
         GetCalendars();
+    }
+
+    async void GetCalendars()
+    {
+        await LoadCalendars();
     }
 
     // TitleView buttons clicked events.
@@ -220,23 +226,12 @@ public partial class MainPage : ContentPage
     }
 
     // Get all the calendars from the device and put them in a picker.
-    private async void GetCalendars()
+    private async Task LoadCalendars()
     {
 #if ANDROID
         // Permissions for CalendarRead - Sometimes permission is not given in Android (not yet tested in iOS).
         _ = await CheckAndRequestCalendarRead();
 #endif
-        // After using the save button in the settings page the calendarDictionary is not empty.
-        if (calendarDictionary.Count > 0)
-        {
-            if (calendarDictionary.ContainsKey(cKeyAllCalendars))
-            {
-                calendarDictionary.Remove(cKeyAllCalendars);
-            }
-
-            calendarDictionary.Clear();
-        }
-
         int nRetries = 0;
         Dictionary<string, string> calendarDictionaryTemp = new();
 
@@ -250,6 +245,17 @@ public partial class MainPage : ContentPage
             var calendars = await CalendarStore.Default.GetCalendars();
 
             // Local language name for 'All calendars' (first item in the calendarDictionary and list of calendars).
+            // After using the save button in the settings page the calendarDictionary is not empty.
+
+            //if (calendarDictionary.ContainsKey(cKeyAllCalendars))
+            //{
+            //    calendarDictionary.Remove(cKeyAllCalendars);
+            //}
+            if (calendarDictionary.Count > 0)
+            {
+                calendarDictionary.Clear();
+            }
+
             calendarDictionary.Add(cKeyAllCalendars, CalEventLang.AllCalendars_Text);
             cCalendarNamesAll = "";
 
