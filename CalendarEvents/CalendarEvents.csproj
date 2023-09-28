@@ -60,7 +60,7 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.AppCenter" Version="5.0.2" />
 		<PackageReference Include="Microsoft.AppCenter.Crashes" Version="5.0.2" />
-		<PackageReference Include="Plugin.Maui.CalendarStore" Version="1.0.0-preview6" />
+		<PackageReference Include="Plugin.Maui.CalendarStore" Version="1.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
