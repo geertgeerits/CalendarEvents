@@ -2,10 +2,10 @@
 // Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
 // Copyright ...: (C) 2023-2023
 // Version .....: 1.0.4
-// Date ........: 2023-09-28 (YYYY-MM-DD)
+// Date ........: 2023-09-29 (YYYY-MM-DD)
 // Language ....: Microsoft Visual Studio 2022: .NET 7.0 MAUI C# 11.0
 // Description .: Read calendar events to share
-// Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 1.0.0-preview6 ; https://github.com/jfversluis/Plugin.Maui.CalendarStore
+// Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 1.0.0 ; https://github.com/jfversluis/Plugin.Maui.CalendarStore
 //                NuGet Package: Microsoft.AppCenter version 5.0.2 ; https://appcenter.ms/apps ; https://azure.microsoft.com/en-us/products/app-center/
 //                NuGet Package: Microsoft.AppCenter.Crashes version 5.0.2 
 // Thanks to ...: Gerald Versluis
@@ -25,7 +25,7 @@ public partial class MainPage : ContentPage
     private string cCalendarNamesAll;
     private string cCalendarId;
     private readonly string cKeyAllCalendars = "000-AllCalendars-gg51";
-    private Dictionary<string, string> calendarDictionary = new();
+    private readonly Dictionary<string, string> calendarDictionary = new();
     private IEnumerable<CalendarEvent> events;
 
     public MainPage()
@@ -107,7 +107,7 @@ public partial class MainPage : ContentPage
             Globals.cLanguage = "en";
         }
 
-        // Set the date properties for the DatePicker.
+        // Set the date properties for the DatePickers.
         dtpDateStart.MinimumDate = new DateTime(1583, 1, 1);
         dtpDateStart.MaximumDate = new DateTime(3000, 1, 1);
         dtpDateEnd.MinimumDate = new DateTime(1583, 1, 1);
@@ -169,14 +169,8 @@ public partial class MainPage : ContentPage
 #endif
 
         // Get all the calendars from the device and put them in a picker.
-        //calendarDictionary.Clear();
         GetCalendars();
-    }
-
-    async void GetCalendars()
-    {
-        await LoadCalendars();
-    }
+    }   
 
     // TitleView buttons clicked events.
     private async void OnPageAboutClicked(object sender, EventArgs e)
@@ -199,7 +193,7 @@ public partial class MainPage : ContentPage
         entry.SelectionLength = entry.Text.Length;
     }
 
-    // Select a calendar from the picker.
+    // Event calendar picker changed.
     private void OnPickerCalendarChanged(object sender, EventArgs e)
     {
         lblCalendarEvents.Text = "";
@@ -226,6 +220,12 @@ public partial class MainPage : ContentPage
     }
 
     // Get all the calendars from the device and put them in a picker.
+    private async void GetCalendars()
+    {
+        await LoadCalendars();
+    }
+
+    // Get all the calendars from the device and put them in a picker.
     private async Task LoadCalendars()
     {
 #if ANDROID
@@ -246,11 +246,6 @@ public partial class MainPage : ContentPage
 
             // Local language name for 'All calendars' (first item in the calendarDictionary and list of calendars).
             // After using the save button in the settings page the calendarDictionary is not empty.
-
-            //if (calendarDictionary.ContainsKey(cKeyAllCalendars))
-            //{
-            //    calendarDictionary.Remove(cKeyAllCalendars);
-            //}
             if (calendarDictionary.Count > 0)
             {
                 calendarDictionary.Clear();
@@ -266,8 +261,8 @@ public partial class MainPage : ContentPage
                 cCalendarNamesAll = $"{cCalendarNamesAll} {calendar.Name}, ";
             }
 
-            // Remove the last comma and space of the variable cCalendarNamesAll.
-            cCalendarNamesAll = cCalendarNamesAll.Remove(cCalendarNamesAll.Length - 2);
+            // Remove the last comma and space of the variable cCalendarNamesAll and add a point.
+            cCalendarNamesAll = $"{cCalendarNamesAll.Remove(cCalendarNamesAll.Length - 2)}.";
 
             // Sort the calendarDictionaryTemp by value (calendar name).
             calendarDictionaryTemp = calendarDictionaryTemp.OrderBy(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
@@ -281,7 +276,7 @@ public partial class MainPage : ContentPage
                 }
             }
 
-            // Put the calendars from the dictonary in the picker.
+            // Put the calendars from the calendarDictionary in the picker.
             List<string> calendarList = calendarDictionary.Values.ToList();
             
             pckCalendars.ItemsSource = calendarList;
@@ -303,7 +298,6 @@ public partial class MainPage : ContentPage
                 _ = await CheckAndRequestCalendarRead();
                 goto Start;
             }
-            pckCalendars.SelectedIndex = 0;
         }
         catch (Exception ex)
         {
@@ -323,6 +317,16 @@ public partial class MainPage : ContentPage
     // Get calendar events.
     private async void OnGetEventsClicked(object sender, EventArgs e)
     {
+        activityIndicator.IsRunning = true;
+
+        await LoadEvents();
+
+        activityIndicator.IsRunning = false;
+    }
+
+    // Get calendar events.
+    private async Task LoadEvents()
+    {
         // Validate the date values.
         if (dtpDateStart.Date > dtpDateEnd.Date)
         {
@@ -334,8 +338,6 @@ public partial class MainPage : ContentPage
         // Close the keyboard.
         entSearchWord.IsEnabled = false;
         entSearchWord.IsEnabled = true;
-
-        activityIndicator.IsRunning = true;
 
         // Get (all) the events from the calendar.
         string cCalendarEvents = "";
@@ -401,8 +403,6 @@ public partial class MainPage : ContentPage
             
             await DisplayAlert(CalEventLang.ErrorTitle_Text, ex.Message, CalEventLang.ButtonClose_Text);
         }
-
-        activityIndicator.IsRunning = false;
     }
 
     // Clear the calendar events.
@@ -453,9 +453,10 @@ public partial class MainPage : ContentPage
         // Local name for 'All calendars'.
         if (Globals.bLanguageChanged)
         {
+            // Local language name for 'All calendars' (first item in the calendarDictionary and list of calendars).
             calendarDictionary[cKeyAllCalendars] = CalEventLang.AllCalendars_Text;
 
-            // Put the calendars from the dictonary in the picker.
+            // Put the calendars from the calendarDictionary in the picker.
             int nSelectedIndex = pckCalendars.SelectedIndex;
 
             List<string> calendarList = calendarDictionary.Values.ToList();
