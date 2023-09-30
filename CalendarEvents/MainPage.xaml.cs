@@ -304,31 +304,28 @@ public partial class MainPage : ContentPage
     // Get calendar events.
     private async void OnGetEventsClicked(object sender, EventArgs e)
     {
-        activityIndicator.IsRunning = true;
-
-        await LoadEvents();
-        
-        //await Task.Delay(500);
-        activityIndicator.IsRunning = false;
-    }
-
-    // Get calendar events.
-    private async Task LoadEvents()    
-    {
         // Validate the date values.
         if (dtpDateStart.Date > dtpDateEnd.Date)
         {
             // Swap the two dates.
             (dtpDateStart.Date, dtpDateEnd.Date) = (dtpDateEnd.Date, dtpDateStart.Date);
-            //await DisplayAlert(CalEventLang.ErrorTitle_Text, CalEventLang.ErrorDate_Text, CalEventLang.ButtonClose_Text);
-            //_ = dtpDateStart.Focus();
-            //return;
         }
 
         // Close the keyboard.
         entSearchWord.IsEnabled = false;
         entSearchWord.IsEnabled = true;
 
+        // Get calendar events.
+        activityIndicator.IsRunning = true;
+
+        await LoadEvents();
+        
+        activityIndicator.IsRunning = false;
+    }
+
+    // Get calendar events.
+    private async Task LoadEvents()    
+    {
         // Get (all) the events from the calendar.
         string cCalendarEvents = "";
 
