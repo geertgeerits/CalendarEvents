@@ -61,7 +61,7 @@ namespace CalendarEvents.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Days to add to end date:.
+        ///   Looks up a localized string similar to Number of days +/- end date:.
         /// </summary>
         internal static string AddDaysToEnd_Text {
             get {
@@ -70,7 +70,7 @@ namespace CalendarEvents.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Days to add to start date:.
+        ///   Looks up a localized string similar to Number of days +/- start date:.
         /// </summary>
         internal static string AddDaysToStart_Text {
             get {

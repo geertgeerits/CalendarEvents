@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AddDaysToEnd_Text" xml:space="preserve">
-    <value>Dny, které se mají přidat k datu ukončení:</value>
+    <value>Počet dní +/- datum ukončení:</value>
   </data>
   <data name="AddDaysToStart_Text" xml:space="preserve">
-    <value>Dny, které je třeba přidat k datu zahájení:</value>
+    <value>Počet dní +/- datum zahájení:</value>
   </data>
   <data name="Agree_Text" xml:space="preserve">
     <value>Souhlasit</value>

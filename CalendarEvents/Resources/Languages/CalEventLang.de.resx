@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AddDaysToEnd_Text" xml:space="preserve">
-    <value>Tage, die zum Enddatum hinzugefügt werden müssen:</value>
+    <value>Anzahl Tage +/- Enddatum:</value>
   </data>
   <data name="AddDaysToStart_Text" xml:space="preserve">
-    <value>Tage, die zum Startdatum hinzugefügt werden müssen:</value>
+    <value>Anzahl Tage +/- Startdatum:</value>
   </data>
   <data name="Agree_Text" xml:space="preserve">
     <value>Zustimmen</value>

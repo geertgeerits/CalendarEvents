@@ -179,24 +179,10 @@
                     Clicked="OnClearEventsClicked">
                 </Button>
 
-                <Border
-                    x:Name="brdCalendarNames"
-                    Style="{StaticResource borderStyleDefault}"
-                    Grid.Row="5"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="2">
-
-                    <Label
-                        x:Name="lblCalendarNames"
-                        Style="{StaticResource labelStyleDefault}"
-                        Padding="8">
-                    </Label>
-                </Border>
-
                 <Button
                     x:Name="btnCopyEvents"
                     Style="{StaticResource buttonStyleFill}"
-                    Grid.Row="6"
+                    Grid.Row="5"
                     Grid.Column="0"
                     Text="{local:Translate EventsCopy_Text}"
                     ToolTipProperties.Text="{local:Translate ToolTipEventsCopy_Text}"
@@ -206,7 +192,7 @@
                 <Button
                     x:Name="btnShareEvents"
                     Style="{StaticResource buttonStyleFill}"
-                    Grid.Row="6"
+                    Grid.Row="5"
                     Grid.Column="1"
                     Text="{local:Translate EventsShare_Text}"
                     ToolTipProperties.Text="{local:Translate ToolTipEventsShare_Text}"
@@ -215,7 +201,7 @@
 
                 <Border
                     Style="{StaticResource borderStyleDefault}"
-                    Grid.Row="7"
+                    Grid.Row="6"
                     Grid.Column="0"
                     Grid.ColumnSpan="2">
                 

@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AddDaysToEnd_Text" xml:space="preserve">
-    <value>A befejező dátumhoz hozzáadandó napok száma:</value>
+    <value>Napok száma +/- befejezési dátum:</value>
   </data>
   <data name="AddDaysToStart_Text" xml:space="preserve">
-    <value>A kezdő dátumhoz hozzáadandó napok száma:</value>
+    <value>Napok száma +/- kezdési dátum:</value>
   </data>
   <data name="Agree_Text" xml:space="preserve">
     <value>Egyetért</value>
