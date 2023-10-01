@@ -11,7 +11,6 @@
 // Thanks to ...: Gerald Versluis
 
 using Plugin.Maui.CalendarStore;
-using System.Diagnostics;
 
 namespace CalendarEvents;
 
@@ -316,7 +315,10 @@ public partial class MainPage : ContentPage
         entSearchWord.IsEnabled = false;
         entSearchWord.IsEnabled = true;
 
-        // Get calendar events. Need to wait for the LoadEvents() with a Task.Delay() to view the activityIndicator.
+        // Clear the calendar events.
+        lblCalendarEvents.Text = "";
+
+        // Get calendar events. !!!BUG!!!? activityIndicator is only working after adding a Task.Delay().
         activityIndicator.IsRunning = true;
         await Task.Delay(200);
 

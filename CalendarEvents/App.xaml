@@ -15,6 +15,8 @@
             <Color x:Key="DarkGray">#505050</Color>
             <Color x:Key="LightEntryBG">#fdfdfd</Color>
             <Color x:Key="DarkEntryBG">#646464</Color>
+            <Color x:Key="LightActInd">Cyan</Color>
+            <Color x:Key="DarkActInd">Gold</Color>
 
             <Style TargetType="Page" ApplyToDerivedTypes="True">
                 <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LightGray}, Dark={StaticResource DarkGray}}" />
@@ -152,6 +154,10 @@
                 <Setter Property="FontAttributes" Value="Bold"/>
             </Style>
 
+            <Style TargetType="ActivityIndicator">
+                <Setter Property="Color" Value="{AppThemeBinding Light={StaticResource LightActInd}, Dark={StaticResource DarkActInd}}" />
+            </Style>
+            
             <Style x:Key="gridStyleInfo" TargetType="Grid">
                 <Setter Property="VisualStateManager.VisualStateGroups">
                     <VisualStateGroupList>

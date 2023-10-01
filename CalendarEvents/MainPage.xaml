@@ -35,16 +35,6 @@
                 Text="{local:Translate NameProgram_Text}">
             </Label>
 
-            <ActivityIndicator
-                    x:Name="activityIndicator"
-                    Grid.Row="0"
-                    Grid.Column="1"
-                    VerticalOptions="Center"
-                    HorizontalOptions="End"
-                    IsRunning="False"
-                    Color="#1186f8">
-            </ActivityIndicator>
-
             <ImageButton
                 x:Name="imgbtnSettings"
                 Grid.Row="0"
@@ -168,6 +158,15 @@
                     ToolTipProperties.Text="{local:Translate ToolTipEventsGet_Text}"
                     Clicked="OnGetEventsClicked">
                 </Button>
+
+                <ActivityIndicator
+                    x:Name="activityIndicator"
+                    Grid.Row="4"
+                    Grid.Column="0"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    IsRunning="False">
+                </ActivityIndicator>
 
                 <Button
                     x:Name="btnClearEvents"
