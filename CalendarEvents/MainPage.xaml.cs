@@ -316,19 +316,11 @@ public partial class MainPage : ContentPage
         entSearchWord.IsEnabled = false;
         entSearchWord.IsEnabled = true;
 
-        // Get calendar events.
+        // Get calendar events. Need to wait for the LoadEvents() with a Task.Delay() to view the activityIndicator.
         activityIndicator.IsRunning = true;
-
-        //Stopwatch stopWatch = new();
-        //stopWatch.Start();
+        await Task.Delay(200);
 
         await LoadEvents();
-
-        //stopWatch.Stop();
-        //TimeSpan ts = stopWatch.Elapsed;
-        //string elapsedTime = $"{"Elapsed time HH:MM:SS.ms ="} {ts.Hours:00}:{ts.Minutes:00}:{ts.Seconds:00}.{ts.Milliseconds:00}";
-        //Debug.WriteLine(elapsedTime);
-        //await DisplayAlert("Stopwatch", elapsedTime, "OK");
 
         activityIndicator.IsRunning = false;
     }
