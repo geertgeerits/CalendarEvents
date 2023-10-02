@@ -2,7 +2,7 @@
 // Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
 // Copyright ...: (C) 2023-2023
 // Version .....: 1.0.4
-// Date ........: 2023-10-01 (YYYY-MM-DD)
+// Date ........: 2023-10-02 (YYYY-MM-DD)
 // Language ....: Microsoft Visual Studio 2022: .NET 7.0 MAUI C# 11.0
 // Description .: Read calendar events to share
 // Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 1.0.0 ; https://github.com/jfversluis/Plugin.Maui.CalendarStore
@@ -22,7 +22,7 @@ public partial class MainPage : ContentPage
     private readonly bool bLicense;
     private readonly bool bLogAlwaysSend;
     private string cCalendarId;
-    private readonly string cKeyAllCalendars = "000-AllCalendars-gg51";
+    private readonly string cDicKeyAllCalendars = "000-AllCalendars-gg51";
     private readonly Dictionary<string, string> calendarDictionary = new();
     private IEnumerable<CalendarEvent> events;
 
@@ -221,10 +221,13 @@ public partial class MainPage : ContentPage
     private async Task LoadCalendars()
     {
 #if ANDROID
-        // Permissions for CalendarRead - Sometimes permission is not given in Android (not yet tested in iOS).
+        // Permissions for Calendar read - Sometimes permission is not given in Android (not yet tested in iOS).
         _ = await CheckAndRequestCalendarRead();
 #endif
+        // Declare a temporary dictionary used to sort the calendars on name.
         Dictionary<string, string> calendarDictionaryTemp = new();
+
+        // Declare variable for the number op retries for asking for permission to read the calendar.
         int nRetries = 0;
 
     Start:
@@ -243,7 +246,7 @@ public partial class MainPage : ContentPage
                 calendarDictionary.Clear();
             }
 
-            calendarDictionary.Add(cKeyAllCalendars, CalEventLang.AllCalendars_Text);
+            calendarDictionary.Add(cDicKeyAllCalendars, CalEventLang.AllCalendars_Text);
 
             // Put the calendars in the calendarDictionaryTemp.
             foreach (var calendar in calendars)
@@ -445,7 +448,7 @@ public partial class MainPage : ContentPage
         if (Globals.bLanguageChanged)
         {
             // Local language name for 'All calendars' (first item in the calendarDictionary, calendarList and calendar picker).
-            calendarDictionary[cKeyAllCalendars] = CalEventLang.AllCalendars_Text;
+            calendarDictionary[cDicKeyAllCalendars] = CalEventLang.AllCalendars_Text;
 
             // Put the calendars from the calendarDictionary via the calendarList in the picker.
             int nSelectedIndex = pckCalendars.SelectedIndex;
