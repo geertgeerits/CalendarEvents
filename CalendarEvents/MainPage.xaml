@@ -9,7 +9,7 @@
 
     <NavigationPage.TitleView>
         <Grid RowDefinitions="40"
-              ColumnDefinitions="60, 230*, 50"
+              ColumnDefinitions="60, 160*, 50, 50"
               Margin="5"
               BackgroundColor="Gold">
 
@@ -35,10 +35,20 @@
                 Text="{local:Translate NameProgram_Text}">
             </Label>
 
+            <ActivityIndicator
+                    x:Name="activityIndicator"
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    Color="#1186f8"
+                    IsRunning="False">
+            </ActivityIndicator>
+
             <ImageButton
                 x:Name="imgbtnSettings"
                 Grid.Row="0"
-                Grid.Column="2"
+                Grid.Column="3"
                 Source="settings_32p.png"
                 HorizontalOptions="Center"
                 VerticalOptions="Center"
@@ -158,14 +168,6 @@
                     ToolTipProperties.Text="{local:Translate ToolTipEventsGet_Text}"
                     Clicked="OnGetEventsClicked">
                 </Button>
-
-                <ActivityIndicator
-                    x:Name="activityIndicator"
-                    Grid.Row="4"
-                    Grid.Column="0"
-                    VerticalOptions="Center"
-                    HorizontalOptions="Center">
-                </ActivityIndicator>
 
                 <Button
                     x:Name="btnClearEvents"
