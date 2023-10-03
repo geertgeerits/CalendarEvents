@@ -221,7 +221,7 @@ public partial class MainPage : ContentPage
     private async Task LoadCalendars()
     {
 #if ANDROID
-        // Permissions for Calendar read - Sometimes permission is not given in Android (not yet tested in iOS).
+        // Permissions for Calendar read - Sometimes permission is not given in Android.
         _ = await CheckAndRequestCalendarRead();
 #endif
         // Declare a temporary dictionary used to sort the calendars on name.
