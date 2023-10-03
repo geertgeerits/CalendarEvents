@@ -164,8 +164,7 @@
                     Grid.Row="4"
                     Grid.Column="0"
                     VerticalOptions="Center"
-                    HorizontalOptions="Center"
-                    IsRunning="False">
+                    HorizontalOptions="Center">
                 </ActivityIndicator>
 
                 <Button

@@ -156,6 +156,8 @@
 
             <Style TargetType="ActivityIndicator">
                 <Setter Property="Color" Value="{AppThemeBinding Light={StaticResource LightActInd}, Dark={StaticResource DarkActInd}}" />
+                <Setter Property="IsEnabled" Value="False" />
+                <Setter Property="IsRunning" Value="False" />
             </Style>
             
             <Style x:Key="gridStyleInfo" TargetType="Grid">
