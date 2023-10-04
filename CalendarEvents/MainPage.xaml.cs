@@ -10,7 +10,6 @@
 //                NuGet Package: Microsoft.AppCenter.Crashes version 5.0.3 
 // Thanks to ...: Gerald Versluis
 
-using Microsoft.Maui.Controls;
 using Plugin.Maui.CalendarStore;
 
 namespace CalendarEvents;
