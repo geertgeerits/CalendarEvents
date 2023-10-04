@@ -191,6 +191,9 @@ Nejsou sdíleny s nikým jiným mimo vývojáře aplikace.
   <data name="Email_Text" xml:space="preserve">
     <value>E-mailem:</value>
   </data>
+  <data name="ErrorCalendar_Text" xml:space="preserve">
+    <value>Toto zařízení obsahuje kalendář, který obsahuje jednu nebo více chyb nebo není kompatibilní s touto aplikací.</value>
+  </data>
   <data name="ErrorDate_Text" xml:space="preserve">
     <value>Datum ukončení musí být stejné nebo větší než datum zahájení.</value>
   </data>

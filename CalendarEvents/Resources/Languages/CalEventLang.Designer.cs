@@ -271,6 +271,15 @@ namespace CalendarEvents.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This device contains a calendar that contains one or more errors or is not compatible with this application..
+        /// </summary>
+        internal static string ErrorCalendar_Text {
+            get {
+                return ResourceManager.GetString("ErrorCalendar_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The end date must be equal to or greater than the start date..
         /// </summary>
         internal static string ErrorDate_Text {

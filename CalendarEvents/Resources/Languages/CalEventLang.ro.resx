@@ -191,6 +191,9 @@ Datele raportului sunt păstrate timp de 28 de zile.</value>
   <data name="Email_Text" xml:space="preserve">
     <value>E-mail:</value>
   </data>
+  <data name="ErrorCalendar_Text" xml:space="preserve">
+    <value>Acest dispozitiv conține un calendar care conține una sau mai multe erori sau nu este compatibil cu această aplicație.</value>
+  </data>
   <data name="ErrorDate_Text" xml:space="preserve">
     <value>Data de încheiere trebuie să fie egală sau mai mare decât data de început.</value>
   </data>

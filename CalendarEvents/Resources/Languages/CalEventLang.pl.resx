@@ -191,6 +191,9 @@ Dane z raportu są przechowywane przez 28 dni.</value>
   <data name="Email_Text" xml:space="preserve">
     <value>E-mail:</value>
   </data>
+  <data name="ErrorCalendar_Text" xml:space="preserve">
+    <value>To urządzenie zawiera kalendarz zawierający jeden lub więcej błędów lub nie jest kompatybilny z tą aplikacją.</value>
+  </data>
   <data name="ErrorDate_Text" xml:space="preserve">
     <value>Data końcowa musi być równa lub większa niż data początkowa.</value>
   </data>

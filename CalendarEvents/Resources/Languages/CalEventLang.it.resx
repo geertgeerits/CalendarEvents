@@ -191,6 +191,9 @@ I dati del rapporto vengono conservati per 28 giorni.</value>
   <data name="Email_Text" xml:space="preserve">
     <value>E-mail:</value>
   </data>
+  <data name="ErrorCalendar_Text" xml:space="preserve">
+    <value>Questo dispositivo contiene un calendario che contiene uno o più errori o non è compatibile con questa applicazione.</value>
+  </data>
   <data name="ErrorDate_Text" xml:space="preserve">
     <value>La data di fine deve essere uguale o successiva alla data di inizio.</value>
   </data>

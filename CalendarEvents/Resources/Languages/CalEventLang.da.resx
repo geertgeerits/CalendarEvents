@@ -191,6 +191,9 @@ Rapportdataene opbevares i 28 dage.</value>
   <data name="Email_Text" xml:space="preserve">
     <value>E-mail:</value>
   </data>
+  <data name="ErrorCalendar_Text" xml:space="preserve">
+    <value>Denne enhed indeholder en kalender, der indeholder en eller flere fejl eller ikke er kompatibel med denne applikation.</value>
+  </data>
   <data name="ErrorDate_Text" xml:space="preserve">
     <value>Slutdatoen skal være lig med eller større end startdatoen.</value>
   </data>

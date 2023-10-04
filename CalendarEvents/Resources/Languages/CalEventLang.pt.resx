@@ -191,6 +191,9 @@ Os dados do relatório são retidos por 28 dias.</value>
   <data name="Email_Text" xml:space="preserve">
     <value>E-mail:</value>
   </data>
+  <data name="ErrorCalendar_Text" xml:space="preserve">
+    <value>Este dispositivo contém um calendário que contém um ou mais erros ou não é compatível com este aplicativo.</value>
+  </data>
   <data name="ErrorDate_Text" xml:space="preserve">
     <value>A data de término deve ser igual ou superior à data de início.</value>
   </data>
