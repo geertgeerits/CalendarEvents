@@ -1,4 +1,5 @@
-﻿using Microsoft.AppCenter;
+﻿using Microsoft.Extensions.Logging;
+using Microsoft.AppCenter;
 
 namespace CalendarEvents
 {
@@ -20,6 +21,10 @@ namespace CalendarEvents
             "ios=1b9b77a2-6260-4b72-8344-a120c1e36572;" +
             "macos={Your macOS App secret here};",
             typeof(Crashes));
+
+#if DEBUG
+    		builder.Logging.AddDebug();
+#endif
 
             return builder.Build();
         }

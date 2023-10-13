@@ -2,8 +2,8 @@
 // Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
 // Copyright ...: (C) 2023-2023
 // Version .....: 1.0.5
-// Date ........: 2023-10-04 (YYYY-MM-DD)
-// Language ....: Microsoft Visual Studio 2022: .NET 7.0 MAUI C# 11.0
+// Date ........: 2023-10-12 (YYYY-MM-DD)
+// Language ....: Microsoft Visual Studio 2022: .NET 8.0 MAUI C# 12.0
 // Description .: Read calendar events to share
 // Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 1.0.1 ; https://github.com/jfversluis/Plugin.Maui.CalendarStore
 //                NuGet Package: Microsoft.AppCenter version 5.0.3 ; https://appcenter.ms/apps ; https://azure.microsoft.com/en-us/products/app-center/
@@ -19,7 +19,6 @@ public partial class MainPage : ContentPage
     // Local variables.
     private string cCopyright;
     private string cLicenseText;
-    private readonly bool bLicense;
     private readonly bool bLogAlwaysSend;
     private string cCalendarId;
     private readonly string cDicKeyAllCalendars = "000-AllCalendars-gg51";
@@ -45,7 +44,7 @@ public partial class MainPage : ContentPage
         Globals.cAddDaysToStart = Preferences.Default.Get("SettingAddDaysToStart", "0");
         Globals.cAddDaysToEnd = Preferences.Default.Get("SettingAddDaysToEnd", "31");
         Globals.cLanguage = Preferences.Default.Get("SettingLanguage", "");
-        bLicense = Preferences.Default.Get("SettingLicense", false);
+        Globals.bLicense = Preferences.Default.Get("SettingLicense", false);
         bLogAlwaysSend = Preferences.Default.Get("SettingLogAlwaysSend", false);
 
         // Crash log confirmation.
@@ -464,11 +463,11 @@ public partial class MainPage : ContentPage
     private async void OnPageLoaded(object sender, EventArgs e)
     {
         // Show license.
-        if (bLicense == false)
+        if (Globals.bLicense == false)
         {
-            bool bAnswer = await Application.Current.MainPage.DisplayAlert(CalEventLang.LicenseTitle_Text, $"Calendar Events\n{cCopyright}\n\n{cLicenseText}", CalEventLang.Agree_Text, CalEventLang.Disagree_Text);
+            Globals.bLicense = await Application.Current.MainPage.DisplayAlert(CalEventLang.LicenseTitle_Text, $"Calendar Events\n{cCopyright}\n\n{cLicenseText}", CalEventLang.Agree_Text, CalEventLang.Disagree_Text);
 
-            if (bAnswer)
+            if (Globals.bLicense)
             {
                 Preferences.Default.Set("SettingLicense", true);
             }

@@ -17,6 +17,7 @@ static class Globals
     public static string cAddDaysToEnd;
     public static string cLanguage;
     public static bool bLanguageChanged = false;
+    public static bool bLicense;
 
     // Global methods.
     // Set the current UI culture of the selected language.
