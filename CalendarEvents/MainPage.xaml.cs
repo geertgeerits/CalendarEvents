@@ -2,7 +2,7 @@
 // Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
 // Copyright ...: (C) 2023-2023
 // Version .....: 1.0.5
-// Date ........: 2023-10-12 (YYYY-MM-DD)
+// Date ........: 2023-10-15 (YYYY-MM-DD)
 // Language ....: Microsoft Visual Studio 2022: .NET 8.0 MAUI C# 12.0
 // Description .: Read calendar events to share
 // Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 1.0.1 ; https://github.com/jfversluis/Plugin.Maui.CalendarStore
@@ -113,55 +113,55 @@ public partial class MainPage : ContentPage
         // Set the text language.
         SetTextLanguage();
 
-        // Set up the grid for the different platforms due a
+        // Solved in .NET 8.  Set up the grid for the different platforms due a
         // !!!BUG!!! in Windows with the grid style on the MainPage.xaml: there is only 1 column.
-#if ANDROID || IOS
-        var grid = new Grid()
-        {
-            Style = (Style)Application.Current.Resources["gridStyleEvents"],
-            RowDefinitions =
-            {
-                new RowDefinition(GridLength.Auto),
-                new RowDefinition(GridLength.Auto),
-                new RowDefinition(GridLength.Auto),
-                new RowDefinition(GridLength.Auto),
-                new RowDefinition(GridLength.Auto),
-                new RowDefinition(GridLength.Auto),
-                new RowDefinition(GridLength.Auto)
-            },           
-        };
-        grdEvents.Style = grid.Style;
-        grdEvents.RowDefinitions = grid.RowDefinitions;
-#else
-        var grid = new Grid()
-        {
-            RowDefinitions =
-            {
-                new RowDefinition(GridLength.Auto),
-                new RowDefinition(GridLength.Auto),
-                new RowDefinition(GridLength.Auto),
-                new RowDefinition(GridLength.Auto),
-                new RowDefinition(GridLength.Auto),
-                new RowDefinition(GridLength.Auto),
-                new RowDefinition(GridLength.Auto)
-            },
-            ColumnDefinitions =
-            {
-                new ColumnDefinition { Width = new GridLength(400) },
-                new ColumnDefinition { Width = new GridLength(400) }
-            },
-            HorizontalOptions = LayoutOptions.Center,
-            ColumnSpacing = 15,
-            RowSpacing = 4,
-            Margin = new Thickness(10,10,10,10)
-        };
-        grdEvents.RowDefinitions = grid.RowDefinitions;
-        grdEvents.HorizontalOptions = grid.HorizontalOptions;
-        grdEvents.ColumnDefinitions = grid.ColumnDefinitions;
-        grdEvents.ColumnSpacing = grid.ColumnSpacing;
-        grdEvents.RowSpacing = grid.RowSpacing;
-        grdEvents.Margin = grid.Margin;
-#endif
+//#if ANDROID || IOS
+//        var grid = new Grid()
+//        {
+//            Style = (Style)Application.Current.Resources["gridStyleEvents"],
+//            RowDefinitions =
+//            {
+//                new RowDefinition(GridLength.Auto),
+//                new RowDefinition(GridLength.Auto),
+//                new RowDefinition(GridLength.Auto),
+//                new RowDefinition(GridLength.Auto),
+//                new RowDefinition(GridLength.Auto),
+//                new RowDefinition(GridLength.Auto),
+//                new RowDefinition(GridLength.Auto)
+//            },           
+//        };
+//        grdEvents.Style = grid.Style;
+//        grdEvents.RowDefinitions = grid.RowDefinitions;
+//#else
+//        var grid = new Grid()
+//        {
+//            RowDefinitions =
+//            {
+//                new RowDefinition(GridLength.Auto),
+//                new RowDefinition(GridLength.Auto),
+//                new RowDefinition(GridLength.Auto),
+//                new RowDefinition(GridLength.Auto),
+//                new RowDefinition(GridLength.Auto),
+//                new RowDefinition(GridLength.Auto),
+//                new RowDefinition(GridLength.Auto)
+//            },
+//            ColumnDefinitions =
+//            {
+//                new ColumnDefinition { Width = new GridLength(400) },
+//                new ColumnDefinition { Width = new GridLength(400) }
+//            },
+//            HorizontalOptions = LayoutOptions.Center,
+//            ColumnSpacing = 15,
+//            RowSpacing = 4,
+//            Margin = new Thickness(10,10,10,10)
+//        };
+//        grdEvents.RowDefinitions = grid.RowDefinitions;
+//        grdEvents.HorizontalOptions = grid.HorizontalOptions;
+//        grdEvents.ColumnDefinitions = grid.ColumnDefinitions;
+//        grdEvents.ColumnSpacing = grid.ColumnSpacing;
+//        grdEvents.RowSpacing = grid.RowSpacing;
+//        grdEvents.Margin = grid.Margin;
+//#endif
 
         // Get all the calendars from the device and put them in a picker.
         GetCalendars();

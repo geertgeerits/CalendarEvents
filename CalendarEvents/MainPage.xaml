@@ -63,7 +63,8 @@
     <ScrollView>
         <StackLayout>
             <Grid
-                x:Name="grdEvents">
+                Style="{StaticResource gridStyleEvents}"
+                RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto">
 
                 <Label
                     x:Name="lblDateStart"
