@@ -218,7 +218,7 @@
                 </VisualStateGroup>
             </VisualStateGroupList>
         </Setter>
-        <!--!!!BUG!!! HorizontalOptions does not work on Windows Desktop for the MainPage, there shows only 1 colmun.-->
+        <!--Solved in .NET 8 - !!!BUG!!! HorizontalOptions does not work on Windows Desktop for the MainPage, there shows only 1 colmun.-->
         <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="Margin" Value="{OnIdiom 5, Phone=5, Tablet=10, Desktop=10}" />
         <Setter Property="ColumnSpacing" Value="{OnIdiom 5, Phone=5, Tablet=15, Desktop=15}" />
@@ -403,7 +403,7 @@
         <Setter Property="WidthRequest" Value="50" />
         <Setter Property="FontAutoScalingEnabled" Value="False" />
         <Setter Property="FontSize" Value="28" />
-        <Setter Property="IsEnabled" Value="False" />
+        <Setter Property="IsEnabled" Value="True" />
         <Setter Property="VisualStateManager.VisualStateGroups">
             <VisualStateGroupList>
                 <VisualStateGroup x:Name="CommonStates">

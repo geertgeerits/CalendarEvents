@@ -231,9 +231,9 @@ public partial class PageSettings : ContentPage
         };
 
 #if IOS
-        // Workaround for !!!BUG!!! in IOS RadioButton: Add a space before the content text.
-        rbnDateFormatSystem.Content = $" {CalEventLang.System_Text}";
-        rbnDateFormatISO8601.Content = $" {CalEventLang.DateISO8601_Text}";
+        // Solved in .NET 8 - Workaround for !!!BUG!!! in IOS RadioButton: Add a space before the content text.
+        //rbnDateFormatSystem.Content = $" {CalEventLang.System_Text}";
+        //rbnDateFormatISO8601.Content = $" {CalEventLang.DateISO8601_Text}";
 #endif
     }
 
