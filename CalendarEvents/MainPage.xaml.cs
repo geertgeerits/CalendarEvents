@@ -24,6 +24,9 @@ public partial class MainPage : ContentPage
     private readonly string cDicKeyAllCalendars = "000-AllCalendars-gg51";
     private readonly Dictionary<string, string> calendarDictionary = new();
     private IEnumerable<CalendarEvent> events;
+    private IEnumerable<Locale> locales;
+    private CancellationTokenSource cts;
+    private bool bTextToSpeechIsBusy = false;
 
     public MainPage()
     {
@@ -44,6 +47,7 @@ public partial class MainPage : ContentPage
         Globals.cAddDaysToStart = Preferences.Default.Get("SettingAddDaysToStart", "0");
         Globals.cAddDaysToEnd = Preferences.Default.Get("SettingAddDaysToEnd", "31");
         Globals.cLanguage = Preferences.Default.Get("SettingLanguage", "");
+        Globals.cLanguageSpeech = Preferences.Default.Get("SettingLanguageSpeech", "");
         Globals.bLicense = Preferences.Default.Get("SettingLicense", false);
         bLogAlwaysSend = Preferences.Default.Get("SettingLogAlwaysSend", false);
 
@@ -118,55 +122,74 @@ public partial class MainPage : ContentPage
         // Set the text language.
         SetTextLanguage();
 
+        // Initialize text to speech and get and set the speech language.
+        string cCultureName = "";
+
+        try
+        {
+            if (string.IsNullOrEmpty(Globals.cLanguageSpeech))
+            {
+                cCultureName = Thread.CurrentThread.CurrentCulture.Name;
+            }
+        }
+        catch (Exception)
+        {
+            cCultureName = "en-US";
+        }
+        //DisplayAlert("cCultureName", $"*{cCultureName}*", "OK");  // For testing.
+
+        InitializeTextToSpeech(cCultureName);
+
+
         // Solved in .NET 8.  Set up the grid for the different platforms due a
         // !!!BUG!!! in Windows with the grid style on the MainPage.xaml: there is only 1 column.
-//#if ANDROID || IOS
-//        var grid = new Grid()
-//        {
-//            Style = (Style)Application.Current.Resources["gridStyleEvents"],
-//            RowDefinitions =
-//            {
-//                new RowDefinition(GridLength.Auto),
-//                new RowDefinition(GridLength.Auto),
-//                new RowDefinition(GridLength.Auto),
-//                new RowDefinition(GridLength.Auto),
-//                new RowDefinition(GridLength.Auto),
-//                new RowDefinition(GridLength.Auto),
-//                new RowDefinition(GridLength.Auto)
-//            },           
-//        };
-//        grdEvents.Style = grid.Style;
-//        grdEvents.RowDefinitions = grid.RowDefinitions;
-//#else
-//        var grid = new Grid()
-//        {
-//            RowDefinitions =
-//            {
-//                new RowDefinition(GridLength.Auto),
-//                new RowDefinition(GridLength.Auto),
-//                new RowDefinition(GridLength.Auto),
-//                new RowDefinition(GridLength.Auto),
-//                new RowDefinition(GridLength.Auto),
-//                new RowDefinition(GridLength.Auto),
-//                new RowDefinition(GridLength.Auto)
-//            },
-//            ColumnDefinitions =
-//            {
-//                new ColumnDefinition { Width = new GridLength(400) },
-//                new ColumnDefinition { Width = new GridLength(400) }
-//            },
-//            HorizontalOptions = LayoutOptions.Center,
-//            ColumnSpacing = 15,
-//            RowSpacing = 4,
-//            Margin = new Thickness(10,10,10,10)
-//        };
-//        grdEvents.RowDefinitions = grid.RowDefinitions;
-//        grdEvents.HorizontalOptions = grid.HorizontalOptions;
-//        grdEvents.ColumnDefinitions = grid.ColumnDefinitions;
-//        grdEvents.ColumnSpacing = grid.ColumnSpacing;
-//        grdEvents.RowSpacing = grid.RowSpacing;
-//        grdEvents.Margin = grid.Margin;
-//#endif
+        //#if ANDROID || IOS
+        //        var grid = new Grid()
+        //        {
+        //            Style = (Style)Application.Current.Resources["gridStyleEvents"],
+        //            RowDefinitions =
+        //            {
+        //                new RowDefinition(GridLength.Auto),
+        //                new RowDefinition(GridLength.Auto),
+        //                new RowDefinition(GridLength.Auto),
+        //                new RowDefinition(GridLength.Auto),
+        //                new RowDefinition(GridLength.Auto),
+        //                new RowDefinition(GridLength.Auto),
+        //                new RowDefinition(GridLength.Auto)
+        //            },           
+        //        };
+        //        grdEvents.Style = grid.Style;
+        //        grdEvents.RowDefinitions = grid.RowDefinitions;
+        //#else
+        //        var grid = new Grid()
+        //        {
+        //            RowDefinitions =
+        //            {
+        //                new RowDefinition(GridLength.Auto),
+        //                new RowDefinition(GridLength.Auto),
+        //                new RowDefinition(GridLength.Auto),
+        //                new RowDefinition(GridLength.Auto),
+        //                new RowDefinition(GridLength.Auto),
+        //                new RowDefinition(GridLength.Auto),
+        //                new RowDefinition(GridLength.Auto)
+        //            },
+        //            ColumnDefinitions =
+        //            {
+        //                new ColumnDefinition { Width = new GridLength(400) },
+        //                new ColumnDefinition { Width = new GridLength(400) }
+        //            },
+        //            HorizontalOptions = LayoutOptions.Center,
+        //            ColumnSpacing = 15,
+        //            RowSpacing = 4,
+        //            Margin = new Thickness(10,10,10,10)
+        //        };
+        //        grdEvents.RowDefinitions = grid.RowDefinitions;
+        //        grdEvents.HorizontalOptions = grid.HorizontalOptions;
+        //        grdEvents.ColumnDefinitions = grid.ColumnDefinitions;
+        //        grdEvents.ColumnSpacing = grid.ColumnSpacing;
+        //        grdEvents.RowSpacing = grid.RowSpacing;
+        //        grdEvents.Margin = grid.Margin;
+        //#endif
 
         // Get all the calendars from the device and put them in a picker.
         GetCalendars();
@@ -522,6 +545,166 @@ public partial class MainPage : ContentPage
         entSearchWord.Focus();
     }
 
+    // Permissions for CalendarRead - Sometimes permission is not given in Android (not yet tested in iOS).
+    public async Task<PermissionStatus> CheckAndRequestCalendarRead()
+    {
+        PermissionStatus status = await Permissions.CheckStatusAsync<Permissions.CalendarRead>();
+        
+        if (status == PermissionStatus.Granted)
+            return status;
+
+        // !!!BUG!!! in Android?: does not works without the DisplayAlert.
+        await DisplayAlert("", CalEventLang.CalendarPermission_Text, CalEventLang.ButtonClose_Text);
+
+        status = await Permissions.RequestAsync<Permissions.CalendarRead>();
+        //await DisplayAlert("CheckAndRequestCalendarRead", status.ToString(), "OK");  // For testing.
+
+        return status;
+    }
+
+    // Initialize text to speech and fill the the array with the speech languages.
+    // .Country = KR ; .Id = ''  ; .Language = ko ; .Name = Korean (South Korea) ; 
+    private async void InitializeTextToSpeech(string cCultureName)
+    {
+        // Initialize text to speech.
+        int nTotalItems;
+
+        try
+        {
+            locales = await TextToSpeech.Default.GetLocalesAsync();
+
+            nTotalItems = locales.Count();
+
+            if (nTotalItems == 0)
+            {
+                return;
+            }
+        }
+        catch (Exception ex)
+        {
+            var properties = new Dictionary<string, string> {
+                { "File:", "MainPage.xaml.cs" },
+                { "Method:", "InitializeTextToSpeech" },
+                { "AppLanguage:", Globals.cLanguage },
+                { "AppLanguageSpeech:", Globals.cLanguageSpeech }
+            };
+            Crashes.TrackError(ex, properties);
+
+            await DisplayAlert(CalEventLang.ErrorTitle_Text, $"{ex.Message}\n\n{CalEventLang.TextToSpeechError_Text}", CalEventLang.ButtonClose_Text);
+            return;
+        }
+
+        lblTextToSpeech.IsVisible = true;
+        imgbtnTextToSpeech.IsVisible = true;
+        Globals.bLanguageLocalesExist = true;
+
+        // Put the locales in the array and sort the array.
+        Globals.cLanguageLocales = new string[nTotalItems];
+        int nItem = 0;
+
+        foreach (var l in locales)
+        {
+            Globals.cLanguageLocales[nItem] = $"{l.Language}-{l.Country} {l.Name}";
+            nItem++;
+        }
+
+        Array.Sort(Globals.cLanguageLocales);
+
+        // Search for the language after a first start or reset of the application.
+        if (string.IsNullOrEmpty(Globals.cLanguageSpeech))
+        {
+            SearchArrayWithSpeechLanguages(cCultureName);
+        }
+        //await DisplayAlert("Globals.cLanguageSpeech", Globals.cLanguageSpeech, "OK");  // For testing.
+
+        lblTextToSpeech.Text = Globals.GetIsoLanguageCode();
+    }
+
+    // Search for the language after a first start or reset of the application.
+    private void SearchArrayWithSpeechLanguages(string cCultureName)
+    {
+        try
+        {
+            int nTotalItems = Globals.cLanguageLocales.Length;
+
+            for (int nItem = 0; nItem < nTotalItems; nItem++)
+            {
+                if (Globals.cLanguageLocales[nItem].StartsWith(cCultureName))
+                {
+                    Globals.cLanguageSpeech = Globals.cLanguageLocales[nItem];
+                    break;
+                }
+            }
+
+            // If the language is not found try it with the language (Globals.cLanguage) of the user setting for this app.
+            if (string.IsNullOrEmpty(Globals.cLanguageSpeech))
+            {
+                for (int nItem = 0; nItem < nTotalItems; nItem++)
+                {
+                    if (Globals.cLanguageLocales[nItem].StartsWith(Globals.cLanguage))
+                    {
+                        Globals.cLanguageSpeech = Globals.cLanguageLocales[nItem];
+                        break;
+                    }
+                }
+            }
+
+            // If the language is still not found use the first language in the array.
+            if (string.IsNullOrEmpty(Globals.cLanguageSpeech))
+            {
+                Globals.cLanguageSpeech = Globals.cLanguageLocales[0];
+            }
+        }
+        catch (Exception ex)
+        {
+            Crashes.TrackError(ex);
+            DisplayAlert(CalEventLang.ErrorTitle_Text, ex.Message, CalEventLang.ButtonClose_Text);
+        }
+    }
+
+    // Button text to speech event.
+    private async void OnTextToSpeechClicked(object sender, EventArgs e)
+    {
+        // Cancel the text to speech.
+        if (bTextToSpeechIsBusy)
+        {
+            if (cts?.IsCancellationRequested ?? true)
+                return;
+
+            cts.Cancel();
+            imgbtnTextToSpeech.Source = Globals.cImageTextToSpeech;
+            return;
+        }
+
+        // Start with the text to speech.
+        //lblCalendarEvents.Text = "Test";
+        if (lblCalendarEvents.Text != null && lblCalendarEvents.Text != "")
+        {
+            bTextToSpeechIsBusy = true;
+            imgbtnTextToSpeech.Source = Globals.cImageTextToSpeechCancel;
+
+            try
+            {
+                cts = new CancellationTokenSource();
+
+                SpeechOptions options = new()
+                {
+                    Locale = locales.Single(l => $"{l.Language}-{l.Country} {l.Name}" == Globals.cLanguageSpeech)
+                };
+
+                await TextToSpeech.Default.SpeakAsync(lblCalendarEvents.Text, options, cancelToken: cts.Token);
+                bTextToSpeechIsBusy = false;
+            }
+            catch (Exception ex)
+            {
+                Crashes.TrackError(ex);
+                await DisplayAlert(CalEventLang.ErrorTitle_Text, ex.Message, CalEventLang.ButtonClose_Text);
+            }
+
+            imgbtnTextToSpeech.Source = Globals.cImageTextToSpeech;
+        }
+    }
+
     // Crash log confirmation.
     private async void ConfirmationSendCrashLog()
     {
@@ -553,22 +736,5 @@ public partial class MainPage : ContentPage
         //{
         //    Crashes.NotifyUserConfirmation(UserConfirmation.DontSend);
         //}
-    }
-
-    // Permissions for CalendarRead - Sometimes permission is not given in Android (not yet tested in iOS).
-    public async Task<PermissionStatus> CheckAndRequestCalendarRead()
-    {
-        PermissionStatus status = await Permissions.CheckStatusAsync<Permissions.CalendarRead>();
-        
-        if (status == PermissionStatus.Granted)
-            return status;
-
-        // !!!BUG!!! in Android?: does not works without the DisplayAlert.
-        await DisplayAlert("", CalEventLang.CalendarPermission_Text, CalEventLang.ButtonClose_Text);
-
-        status = await Permissions.RequestAsync<Permissions.CalendarRead>();
-        //await DisplayAlert("CheckAndRequestCalendarRead", status.ToString(), "OK");  // For testing.
-
-        return status;
     }
 }

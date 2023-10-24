@@ -24,7 +24,7 @@
 
             <Grid
                 Style="{StaticResource gridStyleSettings}"
-                RowDefinitions="Auto, 15, Auto, 4, Auto, 4, Auto, Auto, Auto, 4, Auto, 4, Auto, 15, Auto">
+                RowDefinitions="Auto, 15, Auto, Auto, 4, Auto, 4, Auto, Auto, Auto, 4, Auto, 4, Auto, 15, Auto">
 
                 <BoxView
                     Grid.Row="0"
@@ -85,14 +85,36 @@
 
                 <Label
                     Style="{StaticResource labelStyleDefault}"
-                    Grid.Row="4"
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Text="{local:Translate LanguageSpeech_Text}">
+                </Label>
+
+                <Border
+                    Style="{StaticResource borderStyleDefault}"
+                    Grid.Row="3"
+                    Grid.Column="2">
+
+                    <Picker
+                        x:Name="pckLanguageSpeech"
+                        Style="{StaticResource pickerStyleSettings}"
+                        Grid.Row="3"
+                        Grid.Column="2"
+                        SelectedIndexChanged="OnPickerLanguageSpeechChanged">
+                    </Picker>
+                </Border>
+
+                <Label
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="5"
                     Grid.Column="0"
                     Text="{local:Translate Theme_Text}">
                 </Label>
             
                 <Border
                     Style="{StaticResource borderStyleDefault}"
-                    Grid.Row="4"
+                    Grid.Row="5"
                     Grid.Column="1">
 
                     <Picker
@@ -113,14 +135,14 @@
 
                 <Label
                     Style="{StaticResource labelStyleDefault}"
-                    Grid.Row="6"
+                    Grid.Row="7"
                     Grid.Column="0"
                     Text="{local:Translate DateFormat_Text}">
                 </Label>
             
                 <RadioButton
                     x:Name="rbnDateFormatSystemShort"
-                    Grid.Row="6"
+                    Grid.Row="7"
                     Grid.Column="1"
                     GroupName="rbgDateFormat"
                     Value="rbnDateFormatSystemShort"
@@ -130,7 +152,7 @@
 
                 <RadioButton
                     x:Name="rbnDateFormatSystemLong"
-                    Grid.Row="7"
+                    Grid.Row="8"
                     Grid.Column="1"
                     GroupName="rbgDateFormat"
                     Value="rbnDateFormatSystemLong"
@@ -140,7 +162,7 @@
                 
                 <RadioButton
                     x:Name="rbnDateFormatISO8601"
-                    Grid.Row="8"
+                    Grid.Row="9"
                     Grid.Column="1"
                     GroupName="rbgDateFormat"
                     Value="rbnDateFormatISO8601"
@@ -151,7 +173,7 @@
 
                 <Label
                     Style="{StaticResource labelStyleDefault}"
-                    Grid.Row="10"
+                    Grid.Row="11"
                     Grid.Column="0"
                     Text="{local:Translate AddDaysToStart_Text}">
                 </Label>
@@ -159,7 +181,7 @@
                 <Border
                     x:Name="brdAddDaysToStart"
                     Style="{StaticResource borderStyleDefault}"
-                    Grid.Row="10"
+                    Grid.Row="11"
                     Grid.Column="1">
 
                     <Entry
@@ -180,7 +202,7 @@
 
                 <Label
                     Style="{StaticResource labelStyleDefault}"
-                    Grid.Row="12"
+                    Grid.Row="13"
                     Grid.Column="0"
                     Text="{local:Translate AddDaysToEnd_Text}">
                 </Label>
@@ -188,7 +210,7 @@
                 <Border
                     x:Name="brdAddDaysToEnd"
                     Style="{StaticResource borderStyleDefault}"
-                    Grid.Row="12"
+                    Grid.Row="13"
                     Grid.Column="1">
 
                     <Entry
@@ -210,7 +232,7 @@
                 <!--<Button
                     Style="{StaticResource buttonStyleFill}"
                     IsVisible="{OnPlatform false, iOS=true, Android=false}"
-                    Grid.Row="13"
+                    Grid.Row="14"
                     Grid.Column="0"
                     Text="{local:Translate Save_Text}"
                     ToolTipProperties.Text="{local:Translate ToolTipSettingsSave_Text}"
@@ -220,7 +242,7 @@
                 <Button
                     Style="{StaticResource buttonStyleFill}"
                     IsVisible="{OnPlatform false, iOS=true, Android=false}"
-                    Grid.Row="13"
+                    Grid.Row="14"
                     Grid.Column="1"
                     Text="{local:Translate Reset_Text}"
                     ToolTipProperties.Text="{local:Translate ToolTipSettingsReset_Text}"

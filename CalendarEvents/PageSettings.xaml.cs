@@ -72,6 +72,9 @@ public partial class PageSettings : ContentPage
             _ => 3,
         };
 
+        // Fill the picker with the speech languages and set the saved language in the picker.
+        FillPickerWithSpeechLanguages();
+
         // Set the current theme in the picker.
         pckTheme.SelectedIndex = Globals.cTheme switch
         {
@@ -175,6 +178,64 @@ public partial class PageSettings : ContentPage
 
             // Put text in the chosen language in the controls and variables.
             SetLanguage();
+
+            // Search the new language in the cLanguageLocales array and select the new speech language.
+            int nTotalItems = Globals.cLanguageLocales.Length;
+
+            for (int nItem = 0; nItem < nTotalItems; nItem++)
+            {
+                if (Globals.cLanguageLocales[nItem].StartsWith(Globals.cLanguage))
+                {
+                    pckLanguageSpeech.SelectedIndex = nItem;
+                    break;
+                }
+            }
+        }
+    }
+
+    // Fill the picker with the speech languages from the array.
+    // .Country = KR ; .Id = ''  ; .Language = ko ; .Name = Korean (South Korea) ; 
+    private void FillPickerWithSpeechLanguages()
+    {
+        // If there are no locales then return.
+        bool bIsSetSelectedIndex = false;
+
+        if (!Globals.bLanguageLocalesExist)
+        {
+            pckLanguageSpeech.IsEnabled = false;
+            return;
+        }
+
+        // Put the sorted locales from the array in the picker and select the saved language.
+        int nTotalItems = Globals.cLanguageLocales.Length;
+
+        for (int nItem = 0; nItem < nTotalItems; nItem++)
+        {
+            pckLanguageSpeech.Items.Add(Globals.cLanguageLocales[nItem]);
+
+            if (Globals.cLanguageSpeech == Globals.cLanguageLocales[nItem])
+            {
+                pckLanguageSpeech.SelectedIndex = nItem;
+                bIsSetSelectedIndex = true;
+            }
+        }
+
+        // If the language is not found set the picker to the first item.
+        if (!bIsSetSelectedIndex)
+        {
+            pckLanguageSpeech.SelectedIndex = 0;
+        }
+    }
+
+    // Picker speech language clicked event.
+    private void OnPickerLanguageSpeechChanged(object sender, EventArgs e)
+    {
+        var picker = (Picker)sender;
+        int selectedIndex = picker.SelectedIndex;
+
+        if (selectedIndex != -1)
+        {
+            Globals.cLanguageSpeech = picker.Items[selectedIndex];
         }
     }
 
@@ -307,6 +368,7 @@ public partial class PageSettings : ContentPage
         Preferences.Default.Set("SettingAddDaysToStart", Globals.cAddDaysToStart);
         Preferences.Default.Set("SettingAddDaysToEnd", Globals.cAddDaysToEnd);
         Preferences.Default.Set("SettingLanguage", Globals.cLanguage);
+        Preferences.Default.Set("SettingLanguageSpeech", Globals.cLanguageSpeech);
 
         // Wait 500 milliseconds otherwise the settings are not saved in Android.
         Task.Delay(500).Wait();
@@ -335,6 +397,7 @@ public partial class PageSettings : ContentPage
             Preferences.Default.Remove("SettingAddDaysToStart");
             Preferences.Default.Remove("SettingAddDaysToEnd");
             Preferences.Default.Remove("SettingLanguage");
+            Preferences.Default.Remove("SettingLanguageSpeech");
         }
 
         // Wait 500 milliseconds otherwise the settings are not saved in Android.

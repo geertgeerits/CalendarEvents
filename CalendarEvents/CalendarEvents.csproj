@@ -55,6 +55,8 @@
 	  <None Remove="Resources\Images\info_32p.png" />
 	  <None Remove="Resources\Images\internet_24p.png" />
 	  <None Remove="Resources\Images\settings_32p.png" />
+	  <None Remove="Resources\Images\speaker_64p_blue_green.png" />
+	  <None Remove="Resources\Images\speaker_cancel_64p_blue_red.png" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -385,6 +385,15 @@ namespace CalendarEvents.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Language speech:.
+        /// </summary>
+        internal static string LanguageSpeech_Text {
+            get {
+                return ResourceManager.GetString("LanguageSpeech_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This application may be used freely for non-commercial purposes.
         ///Use this program entirely at your own risk..
         /// </summary>
@@ -592,6 +601,15 @@ namespace CalendarEvents.Resources.Languages {
         internal static string System_Text {
             get {
                 return ResourceManager.GetString("System_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Text to speech is not supported on this device..
+        /// </summary>
+        internal static string TextToSpeechError_Text {
+            get {
+                return ResourceManager.GetString("TextToSpeechError_Text", resourceCulture);
             }
         }
         
