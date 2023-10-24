@@ -170,6 +170,12 @@ Dane z raportu są przechowywane przez 28 dni.</value>
   <data name="DateEnd_Text" xml:space="preserve">
     <value>Data końcowa:</value>
   </data>
+  <data name="DateFormatSystemLong_Text" xml:space="preserve">
+    <value>Długie systemowe</value>
+  </data>
+  <data name="DateFormatSystemShort_Text" xml:space="preserve">
+    <value>Krótki systemowy</value>
+  </data>
   <data name="DateFormat_Text" xml:space="preserve">
     <value>Format daty:</value>
   </data>

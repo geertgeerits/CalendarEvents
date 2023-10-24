@@ -26,7 +26,8 @@
                 HorizontalOptions="End"
                 ToolTipProperties.Text ="{x:Static resx:CalEventLang.ToolTipGoBack_Text}"
                 Text="&lt;"
-                Clicked="OnGoBackClicked">
+                Clicked="OnGoBackClicked"
+                IsEnabled="False">
             </Button>
 
             <Button
@@ -37,7 +38,8 @@
                 HorizontalOptions="Start"
                 ToolTipProperties.Text ="{x:Static resx:CalEventLang.ToolTipGoForward_Text}"
                 Text=">"
-                Clicked="OnGoForwardClicked">
+                Clicked="OnGoForwardClicked"
+                IsEnabled="False">
             </Button>
         </Grid>
     </NavigationPage.TitleView>

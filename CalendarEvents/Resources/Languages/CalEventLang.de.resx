@@ -170,6 +170,12 @@ Die Berichtsdaten werden 28 Tage lang aufbewahrt.</value>
   <data name="DateEnd_Text" xml:space="preserve">
     <value>Enddatum:</value>
   </data>
+  <data name="DateFormatSystemLong_Text" xml:space="preserve">
+    <value>System lang</value>
+  </data>
+  <data name="DateFormatSystemShort_Text" xml:space="preserve">
+    <value>System kurz</value>
+  </data>
   <data name="DateFormat_Text" xml:space="preserve">
     <value>Datumsformat:</value>
   </data>

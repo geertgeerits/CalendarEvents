@@ -24,7 +24,7 @@
 
             <Grid
                 Style="{StaticResource gridStyleSettings}"
-                RowDefinitions="Auto, 15, Auto, 4, Auto, 4, Auto, Auto, 4, Auto, 4, Auto, 15, Auto">
+                RowDefinitions="Auto, 15, Auto, 4, Auto, 4, Auto, Auto, Auto, 4, Auto, 4, Auto, 15, Auto">
 
                 <BoxView
                     Grid.Row="0"
@@ -119,18 +119,28 @@
                 </Label>
             
                 <RadioButton
-                    x:Name="rbnDateFormatSystem"
+                    x:Name="rbnDateFormatSystemShort"
                     Grid.Row="6"
                     Grid.Column="1"
                     GroupName="rbgDateFormat"
-                    Value="rbnDateFormatSystem"
-                    Content="{local:Translate System_Text}"
+                    Value="rbnDateFormatSystemShort"
+                    Content="{local:Translate DateFormatSystemShort_Text}"
+                    CheckedChanged="OnDateFormatRadioButtonCheckedChanged">
+                </RadioButton>
+
+                <RadioButton
+                    x:Name="rbnDateFormatSystemLong"
+                    Grid.Row="7"
+                    Grid.Column="1"
+                    GroupName="rbgDateFormat"
+                    Value="rbnDateFormatSystemLong"
+                    Content="{local:Translate DateFormatSystemLong_Text}"
                     CheckedChanged="OnDateFormatRadioButtonCheckedChanged">
                 </RadioButton>
                 
                 <RadioButton
                     x:Name="rbnDateFormatISO8601"
-                    Grid.Row="7"
+                    Grid.Row="8"
                     Grid.Column="1"
                     GroupName="rbgDateFormat"
                     Value="rbnDateFormatISO8601"
@@ -141,7 +151,7 @@
 
                 <Label
                     Style="{StaticResource labelStyleDefault}"
-                    Grid.Row="9"
+                    Grid.Row="10"
                     Grid.Column="0"
                     Text="{local:Translate AddDaysToStart_Text}">
                 </Label>
@@ -149,7 +159,7 @@
                 <Border
                     x:Name="brdAddDaysToStart"
                     Style="{StaticResource borderStyleDefault}"
-                    Grid.Row="9"
+                    Grid.Row="10"
                     Grid.Column="1">
 
                     <Entry
@@ -170,7 +180,7 @@
 
                 <Label
                     Style="{StaticResource labelStyleDefault}"
-                    Grid.Row="11"
+                    Grid.Row="12"
                     Grid.Column="0"
                     Text="{local:Translate AddDaysToEnd_Text}">
                 </Label>
@@ -178,7 +188,7 @@
                 <Border
                     x:Name="brdAddDaysToEnd"
                     Style="{StaticResource borderStyleDefault}"
-                    Grid.Row="11"
+                    Grid.Row="12"
                     Grid.Column="1">
 
                     <Entry

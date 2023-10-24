@@ -170,6 +170,12 @@ De rapportgegevens worden 28 dagen bewaard.</value>
   <data name="DateEnd_Text" xml:space="preserve">
     <value>Einddatum:</value>
   </data>
+  <data name="DateFormatSystemLong_Text" xml:space="preserve">
+    <value>Systeem lang</value>
+  </data>
+  <data name="DateFormatSystemShort_Text" xml:space="preserve">
+    <value>Systeem kort</value>
+  </data>
   <data name="DateFormat_Text" xml:space="preserve">
     <value>Datumnotatie:</value>
   </data>

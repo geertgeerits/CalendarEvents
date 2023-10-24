@@ -2,7 +2,7 @@
 // Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
 // Copyright ...: (C) 2023-2023
 // Version .....: 1.0.5
-// Date ........: 2023-10-23 (YYYY-MM-DD)
+// Date ........: 2023-10-24 (YYYY-MM-DD)
 // Language ....: Microsoft Visual Studio 2022: .NET 8.0 MAUI C# 12.0
 // Description .: Read calendar events to share
 // Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 1.0.1 ; https://github.com/jfversluis/Plugin.Maui.CalendarStore
@@ -10,6 +10,7 @@
 //                NuGet Package: Microsoft.AppCenter.Crashes version 5.0.3 
 // Thanks to ...: Gerald Versluis
 
+using Microsoft.VisualBasic;
 using Plugin.Maui.CalendarStore;
 
 namespace CalendarEvents;
@@ -40,7 +41,7 @@ public partial class MainPage : ContentPage
 
         // Get the saved settings.
         Globals.cTheme = Preferences.Default.Get("SettingTheme", "System");
-        Globals.bDateFormatSystem = Preferences.Default.Get("SettingDateFormatSystem", true);
+        Globals.cDateFormatSelect = Preferences.Default.Get("SettingDateFormatSelect", "SystemShort");
         Globals.cAddDaysToStart = Preferences.Default.Get("SettingAddDaysToStart", "0");
         Globals.cAddDaysToEnd = Preferences.Default.Get("SettingAddDaysToEnd", "31");
         Globals.cLanguage = Preferences.Default.Get("SettingLanguage", "");
@@ -79,17 +80,23 @@ public partial class MainPage : ContentPage
             Application.Current.UserAppTheme = AppTheme.Unspecified;
         }
 
-        // Get the system date format and set the date format.
-        Globals.cSysDateFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern;
-
-        if (Globals.bDateFormatSystem == true)
+        // Get the system date and time format and set the date and time format.
+        if (Globals.cDateFormatSelect == "SystemShort")
         {
-            Globals.cDateFormat = Globals.cSysDateFormat;
+            Globals.cDateFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern;
+            Globals.cTimeFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern;
+        }
+        else if (Globals.cDateFormatSelect == "SystemLong")
+        {
+            Globals.cDateFormat = CultureInfo.CurrentCulture.DateTimeFormat.LongDatePattern;
+            Globals.cTimeFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern;
         }
         else
         {
             Globals.cDateFormat = "yyyy-MM-dd";
+            Globals.cTimeFormat = "HH:mm";
         }
+        //DisplayAlert("Globals.cDateFormat", Globals.cDateFormat, "OK");
 
         // Get and set the system OS user language.
         try
@@ -355,7 +362,8 @@ public partial class MainPage : ContentPage
             {
                 foreach (CalendarEvent ev in events)
                 {
-                    cCalendarEvents = $"{cCalendarEvents}{ev.StartDate.ToString(Globals.cDateFormat + "  HH:mm")}  {ev.Title}\n\n";
+                    //cCalendarEvents = $"{cCalendarEvents}{ev.StartDate.ToString(Globals.cDateFormat + "  HH:mm")}  {ev.Title}\n\n";
+                    cCalendarEvents = $"{cCalendarEvents}{ev.StartDate.ToString(Globals.cDateFormat + "  " + Globals.cTimeFormat)}  {ev.Title}\n\n";
                 }
             }
             else
@@ -371,7 +379,8 @@ public partial class MainPage : ContentPage
                     
                     if (ev.Title.ToLowerInvariant().Contains(cSearchWord))
                     {
-                        cCalendarEvents = $"{cCalendarEvents}{ev.StartDate.ToString(Globals.cDateFormat + "  HH:mm")}  {ev.Title}\n\n";
+                        //cCalendarEvents = $"{cCalendarEvents}{ev.StartDate.ToString(Globals.cDateFormat + "  HH:mm")}  {ev.Title}\n\n";
+                        cCalendarEvents = $"{cCalendarEvents}{ev.StartDate.ToString(Globals.cDateFormat + "  " + Globals.cTimeFormat)}  {ev.Title}\n\n";
                     }
                 }
             }

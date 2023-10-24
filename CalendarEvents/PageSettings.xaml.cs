@@ -86,9 +86,13 @@ public partial class PageSettings : ContentPage
         };
 
         // Set radiobutton to the date format.
-        if (Globals.bDateFormatSystem == true)
+        if (Globals.cDateFormatSelect == "SystemShort")
         {
-            rbnDateFormatSystem.IsChecked = true;
+            rbnDateFormatSystemShort.IsChecked = true;
+        }
+        else if (Globals.cDateFormatSelect == "SystemLong")
+        {
+            rbnDateFormatSystemLong.IsChecked = true;
         }
         else
         {
@@ -232,7 +236,7 @@ public partial class PageSettings : ContentPage
 
 #if IOS
         // Solved in .NET 8 - Workaround for !!!BUG!!! in IOS RadioButton: Add a space before the content text.
-        //rbnDateFormatSystem.Content = $" {CalEventLang.System_Text}";
+        //rbnDateFormatSystemShort.Content = $" {CalEventLang.System_Text}";
         //rbnDateFormatISO8601.Content = $" {CalEventLang.DateISO8601_Text}";
 #endif
     }
@@ -240,15 +244,23 @@ public partial class PageSettings : ContentPage
     // Radio button date format clicked event.
     private void OnDateFormatRadioButtonCheckedChanged(object sender, EventArgs e)
     {
-        if (rbnDateFormatSystem.IsChecked)
+        if (rbnDateFormatSystemShort.IsChecked)
         {
-            Globals.bDateFormatSystem = true;
-            Globals.cDateFormat = Globals.cSysDateFormat;
+            Globals.cDateFormatSelect = "SystemShort";
+            Globals.cDateFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern;
+            Globals.cTimeFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern;
+        }
+        if (rbnDateFormatSystemLong.IsChecked)
+        {
+            Globals.cDateFormatSelect = "SystemLong";
+            Globals.cDateFormat = CultureInfo.CurrentCulture.DateTimeFormat.LongDatePattern;
+            Globals.cTimeFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern;
         }
         else if (rbnDateFormatISO8601.IsChecked)
         {
-            Globals.bDateFormatSystem = false;
+            Globals.cDateFormatSelect = "ISO8601";
             Globals.cDateFormat = "yyyy-MM-dd";
+            Globals.cTimeFormat = "HH:mm";
         }
     }
 
@@ -291,7 +303,7 @@ public partial class PageSettings : ContentPage
     private static void OnSettingsSaveClicked(object sender, EventArgs e)
     {
         Preferences.Default.Set("SettingTheme", Globals.cTheme);
-        Preferences.Default.Set("SettingDateFormatSystem", Globals.bDateFormatSystem);
+        Preferences.Default.Set("SettingDateFormatSelect", Globals.cDateFormatSelect);
         Preferences.Default.Set("SettingAddDaysToStart", Globals.cAddDaysToStart);
         Preferences.Default.Set("SettingAddDaysToEnd", Globals.cAddDaysToEnd);
         Preferences.Default.Set("SettingLanguage", Globals.cLanguage);
@@ -319,7 +331,7 @@ public partial class PageSettings : ContentPage
         {
             // Reset some settings.
             Preferences.Default.Remove("SettingTheme");
-            Preferences.Default.Remove("SettingDateFormatSystem");
+            Preferences.Default.Remove("SettingDateFormatSelect");
             Preferences.Default.Remove("SettingAddDaysToStart");
             Preferences.Default.Remove("SettingAddDaysToEnd");
             Preferences.Default.Remove("SettingLanguage");

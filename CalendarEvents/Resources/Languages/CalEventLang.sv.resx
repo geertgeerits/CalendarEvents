@@ -170,6 +170,12 @@ Rapportdata bevaras i 28 dagar.</value>
   <data name="DateEnd_Text" xml:space="preserve">
     <value>Slutdatum:</value>
   </data>
+  <data name="DateFormatSystemLong_Text" xml:space="preserve">
+    <value>System långt</value>
+  </data>
+  <data name="DateFormatSystemShort_Text" xml:space="preserve">
+    <value>System kort</value>
+  </data>
   <data name="DateFormat_Text" xml:space="preserve">
     <value>Datumformat:</value>
   </data>

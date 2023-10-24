@@ -217,6 +217,24 @@ namespace CalendarEvents.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to System long.
+        /// </summary>
+        internal static string DateFormatSystemLong_Text {
+            get {
+                return ResourceManager.GetString("DateFormatSystemLong_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to System short.
+        /// </summary>
+        internal static string DateFormatSystemShort_Text {
+            get {
+                return ResourceManager.GetString("DateFormatSystemShort_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ISO 8601.
         /// </summary>
         internal static string DateISO8601_Text {

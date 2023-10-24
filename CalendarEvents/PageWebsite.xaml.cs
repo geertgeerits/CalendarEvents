@@ -35,7 +35,6 @@ public partial class PageWebsite : ContentPage
     // Navigated event that's raised when page navigation completes.
     private void OnNavigated(object sender, WebNavigatedEventArgs e)
     {
-        // Solved in .NET 8.  CanGoBack and CanGoForward !!!BUG!!! on Android and iOS !!!
         // Enable or disable the back and forward buttons.
         btnGoBack.IsEnabled = wvWebpage.CanGoBack;
         btnGoForward.IsEnabled = wvWebpage.CanGoForward;

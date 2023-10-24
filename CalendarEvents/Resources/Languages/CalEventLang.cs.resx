@@ -170,6 +170,12 @@ Nejsou sdíleny s nikým jiným mimo vývojáře aplikace.
   <data name="DateEnd_Text" xml:space="preserve">
     <value>Datum ukončení:</value>
   </data>
+  <data name="DateFormatSystemLong_Text" xml:space="preserve">
+    <value>Systém dlouhý</value>
+  </data>
+  <data name="DateFormatSystemShort_Text" xml:space="preserve">
+    <value>Systém krátký</value>
+  </data>
   <data name="DateFormat_Text" xml:space="preserve">
     <value>Datový formát:</value>
   </data>

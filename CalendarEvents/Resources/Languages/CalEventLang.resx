@@ -170,6 +170,12 @@ The report data is retained for 28 days.</value>
   <data name="DateEnd_Text" xml:space="preserve">
     <value>End date:</value>
   </data>
+  <data name="DateFormatSystemLong_Text" xml:space="preserve">
+    <value>System long</value>
+  </data>
+  <data name="DateFormatSystemShort_Text" xml:space="preserve">
+    <value>System short</value>
+  </data>
   <data name="DateFormat_Text" xml:space="preserve">
     <value>Date format:</value>
   </data>

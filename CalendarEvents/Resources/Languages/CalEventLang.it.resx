@@ -170,6 +170,12 @@ I dati del rapporto vengono conservati per 28 giorni.</value>
   <data name="DateEnd_Text" xml:space="preserve">
     <value>Data di fine:</value>
   </data>
+  <data name="DateFormatSystemLong_Text" xml:space="preserve">
+    <value>Sistema lungo</value>
+  </data>
+  <data name="DateFormatSystemShort_Text" xml:space="preserve">
+    <value>Sistema in corto</value>
+  </data>
   <data name="DateFormat_Text" xml:space="preserve">
     <value>Formato data:</value>
   </data>

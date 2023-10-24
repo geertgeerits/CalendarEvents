@@ -10,9 +10,9 @@ static class Globals
 {
     // Global variables.
     public static string cTheme;
-    public static bool bDateFormatSystem;
-    public static string cSysDateFormat;
+    public static string cDateFormatSelect;
     public static string cDateFormat;
+    public static string cTimeFormat;   
     public static string cAddDaysToStart;
     public static string cAddDaysToEnd;
     public static string cLanguage;

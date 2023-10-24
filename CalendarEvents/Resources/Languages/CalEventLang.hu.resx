@@ -170,6 +170,12 @@ A jelentés adatait 28 napig őrzik meg.</value>
   <data name="DateEnd_Text" xml:space="preserve">
     <value>Befejezés dátuma:</value>
   </data>
+  <data name="DateFormatSystemLong_Text" xml:space="preserve">
+    <value>Rendszer hosszú</value>
+  </data>
+  <data name="DateFormatSystemShort_Text" xml:space="preserve">
+    <value>Rendszer rövid</value>
+  </data>
   <data name="DateFormat_Text" xml:space="preserve">
     <value>Dátum formátum:</value>
   </data>

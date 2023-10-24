@@ -170,6 +170,12 @@ Datele raportului sunt păstrate timp de 28 de zile.</value>
   <data name="DateEnd_Text" xml:space="preserve">
     <value>Data de încheiere:</value>
   </data>
+  <data name="DateFormatSystemLong_Text" xml:space="preserve">
+    <value>Sistem lung</value>
+  </data>
+  <data name="DateFormatSystemShort_Text" xml:space="preserve">
+    <value>Sistem scurt</value>
+  </data>
   <data name="DateFormat_Text" xml:space="preserve">
     <value>Formatul datei:</value>
   </data>
