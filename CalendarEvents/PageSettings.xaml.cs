@@ -86,17 +86,17 @@ public partial class PageSettings : ContentPage
         };
 
         // Set radiobutton to the date format.
-        if (Globals.cDateFormatSelect == "SystemShort")
+        switch (Globals.cDateFormatSelect)
         {
-            rbnDateFormatSystemShort.IsChecked = true;
-        }
-        else if (Globals.cDateFormatSelect == "SystemLong")
-        {
-            rbnDateFormatSystemLong.IsChecked = true;
-        }
-        else
-        {
-            rbnDateFormatISO8601.IsChecked = true;
+            case "SystemShort":
+                rbnDateFormatSystemShort.IsChecked = true;
+                break;
+            case "SystemLong":
+                rbnDateFormatSystemLong.IsChecked = true;
+                break;
+            default:
+                rbnDateFormatISO8601.IsChecked = true;
+                break;
         }
 
         // Set the days in the past and in the future.
@@ -250,7 +250,7 @@ public partial class PageSettings : ContentPage
             Globals.cDateFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern;
             Globals.cTimeFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern;
         }
-        if (rbnDateFormatSystemLong.IsChecked)
+        else if (rbnDateFormatSystemLong.IsChecked)
         {
             Globals.cDateFormatSelect = "SystemLong";
             Globals.cDateFormat = CultureInfo.CurrentCulture.DateTimeFormat.LongDatePattern;

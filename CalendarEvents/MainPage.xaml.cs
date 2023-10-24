@@ -10,7 +10,6 @@
 //                NuGet Package: Microsoft.AppCenter.Crashes version 5.0.3 
 // Thanks to ...: Gerald Versluis
 
-using Microsoft.VisualBasic;
 using Plugin.Maui.CalendarStore;
 
 namespace CalendarEvents;
@@ -67,36 +66,35 @@ public partial class MainPage : ContentPage
 #endif
 
         // Set the theme.
-        if (Globals.cTheme == "Light")
+        switch (Globals.cTheme)
         {
-            Application.Current.UserAppTheme = AppTheme.Light;
-        }
-        else if (Globals.cTheme == "Dark")
-        {
-            Application.Current.UserAppTheme = AppTheme.Dark;
-        }
-        else
-        {
-            Application.Current.UserAppTheme = AppTheme.Unspecified;
+            case "Light":
+                Application.Current.UserAppTheme = AppTheme.Light;
+                break;
+            case "Dark":
+                Application.Current.UserAppTheme = AppTheme.Dark;
+                break;
+            default:
+                Application.Current.UserAppTheme = AppTheme.Unspecified;
+                break;
         }
 
         // Get the system date and time format and set the date and time format.
-        if (Globals.cDateFormatSelect == "SystemShort")
+        switch (Globals.cDateFormatSelect)
         {
-            Globals.cDateFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern;
-            Globals.cTimeFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern;
+            case "SystemShort":
+                Globals.cDateFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern;
+                Globals.cTimeFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern;
+                break;
+            case "SystemLong":
+                Globals.cDateFormat = CultureInfo.CurrentCulture.DateTimeFormat.LongDatePattern;
+                Globals.cTimeFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern;
+                break;
+            default:
+                Globals.cDateFormat = "yyyy-MM-dd";
+                Globals.cTimeFormat = "HH:mm";
+                break;
         }
-        else if (Globals.cDateFormatSelect == "SystemLong")
-        {
-            Globals.cDateFormat = CultureInfo.CurrentCulture.DateTimeFormat.LongDatePattern;
-            Globals.cTimeFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern;
-        }
-        else
-        {
-            Globals.cDateFormat = "yyyy-MM-dd";
-            Globals.cTimeFormat = "HH:mm";
-        }
-        //DisplayAlert("Globals.cDateFormat", Globals.cDateFormat, "OK");
 
         // Get and set the system OS user language.
         try
@@ -362,8 +360,7 @@ public partial class MainPage : ContentPage
             {
                 foreach (CalendarEvent ev in events)
                 {
-                    //cCalendarEvents = $"{cCalendarEvents}{ev.StartDate.ToString(Globals.cDateFormat + "  HH:mm")}  {ev.Title}\n\n";
-                    cCalendarEvents = $"{cCalendarEvents}{ev.StartDate.ToString(Globals.cDateFormat + "  " + Globals.cTimeFormat)}  {ev.Title}\n\n";
+                    cCalendarEvents = $"{cCalendarEvents}{ev.StartDate.ToString(format: $"{Globals.cDateFormat}  {Globals.cTimeFormat}")}   {ev.Title}\n\n";
                 }
             }
             else
@@ -379,8 +376,7 @@ public partial class MainPage : ContentPage
                     
                     if (ev.Title.ToLowerInvariant().Contains(cSearchWord))
                     {
-                        //cCalendarEvents = $"{cCalendarEvents}{ev.StartDate.ToString(Globals.cDateFormat + "  HH:mm")}  {ev.Title}\n\n";
-                        cCalendarEvents = $"{cCalendarEvents}{ev.StartDate.ToString(Globals.cDateFormat + "  " + Globals.cTimeFormat)}  {ev.Title}\n\n";
+                        cCalendarEvents = $"{cCalendarEvents}{ev.StartDate.ToString(format: $"{Globals.cDateFormat}  {Globals.cTimeFormat}")}   {ev.Title}\n\n";
                     }
                 }
             }
