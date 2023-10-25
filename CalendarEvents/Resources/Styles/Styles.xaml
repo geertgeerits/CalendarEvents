@@ -114,6 +114,7 @@
         <Setter Property="VerticalOptions" Value="Center"/>
         <Setter Property="HorizontalOptions"  Value="Fill"/>
         <Setter Property="MinimumHeightRequest" Value="40"/>
+        <Setter Property="Margin" Value="{OnPlatform 0, Android=0, iOS=0, WinUI='9,0,0,0'}" />
         <Setter Property="BackgroundColor" Value="Transparent" />
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
         <Setter Property="FontFamily" Value="OpenSansRegular"/>
@@ -272,6 +273,12 @@
     <Style x:Key="borderStyleDefault" TargetType="Border">
         <Setter Property="HorizontalOptions" Value="Fill" />
         <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="StrokeShape" Value="RoundRectangle 5" />
+        <Setter Property="StrokeThickness" Value="1" />
+    </Style>
+
+    <Style x:Key="borderStyleRadioButton" TargetType="Border">
         <Setter Property="BackgroundColor" Value="Transparent" />
         <Setter Property="StrokeShape" Value="RoundRectangle 5" />
         <Setter Property="StrokeThickness" Value="1" />

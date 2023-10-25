@@ -137,7 +137,14 @@
                     Grid.Column="0"
                     Text="{local:Translate DateFormat_Text}">
                 </Label>
-            
+
+                <Border
+                    Style="{StaticResource borderStyleRadioButton}"
+                    Grid.Row="7"
+                    Grid.Column="1"
+                    Grid.RowSpan="3">
+                </Border>
+
                 <RadioButton
                     x:Name="rbnDateFormatSystemShort"
                     Grid.Row="7"
