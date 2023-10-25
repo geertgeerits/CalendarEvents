@@ -222,6 +222,9 @@ Raporttitietoja säilytetään 28 päivää.</value>
     <value>Päivämäärän muoto voidaan muuttaa asetuksista kansainväliseen standardimuotoon ISO 8601 (VVVV-KK-PP).
 Huomautus: 4 vuotta on enimmäisaika, jonka iOS-kalenteri voi etsiä tapahtumia.
 
+Tekstistä puheeksi: kaikkia sovellusasetuksissa olevia kieliä ei tueta.
+Tämä vaihtoehto riippuu laitteesta toiseen ja asennetuista kielistä. On mahdollista, että joillekin kielille käännös puheeksi tehdään Internetin kautta asianomaisten palvelujen toimesta.
+
 Tekstin kääntämiseen käytettiin Google Translatea. Tämä ei takaa, että kaikki käännökset ovat oikein.
 Tukikielet ovat: tšekki, tanska, hollanti, englanti, suomi, ranska, saksa, unkari, italia, norja, puola, portugali, romania, espanja ja ruotsi.
 
@@ -229,6 +232,9 @@ Voit aina ottaa minuun yhteyttä korjauksista.</value>
   </data>
   <data name="Info_Text" xml:space="preserve">
     <value>Tiedot</value>
+  </data>
+  <data name="LanguageSpeech_Text" xml:space="preserve">
+    <value>Kielen puhe:</value>
   </data>
   <data name="Language_Text" xml:space="preserve">
     <value>Kieli:</value>
@@ -305,6 +311,9 @@ Kiitos jo etukäteen.</value>
   </data>
   <data name="System_Text" xml:space="preserve">
     <value>Järjestelmä</value>
+  </data>
+  <data name="TextToSpeechError_Text" xml:space="preserve">
+    <value>Tämä laite ei tue tekstistä puheeksi.</value>
   </data>
   <data name="Theme_Text" xml:space="preserve">
     <value>Teema:</value>

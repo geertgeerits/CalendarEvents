@@ -222,6 +222,9 @@ Nejsou sdíleny s nikým jiným mimo vývojáře aplikace.
     <value>Formát data lze v nastavení změnit na mezinárodní standardní formát ISO 8601 (RRRR-MM-DD).
 Poznámka: 4 roky je maximální období, po které může kalendář iOS vyhledávat události.
 
+Převod textu na řeč: nejsou podporovány všechny jazyky, které jsou uvedeny v nastavení aplikace.
+Tato možnost závisí na zařízení a na nainstalovaných jazycích. Je možné, že u některých jazyků překlad do řeči provádějí příslušné služby přes internet.
+
 K překladu textu byl použit Google Translate. To nezaručuje, že všechny překlady jsou správné.
 Podporované jazyky jsou: čeština, dánština, holandština, angličtina, finština, francouzština, němčina, maďarština, italština, norština, polština, portugalština, rumunština, španělština a švédština.
 
@@ -229,6 +232,9 @@ Pro případné opravy mě můžete vždy kontaktovat.</value>
   </data>
   <data name="Info_Text" xml:space="preserve">
     <value>Informace</value>
+  </data>
+  <data name="LanguageSpeech_Text" xml:space="preserve">
+    <value>Jazyková řeč:</value>
   </data>
   <data name="Language_Text" xml:space="preserve">
     <value>Jazyk:</value>
@@ -305,6 +311,9 @@ Děkuji předem.</value>
   </data>
   <data name="System_Text" xml:space="preserve">
     <value>Systém</value>
+  </data>
+  <data name="TextToSpeechError_Text" xml:space="preserve">
+    <value>Převod textu na řeč není na tomto zařízení podporován.</value>
   </data>
   <data name="Theme_Text" xml:space="preserve">
     <value>Téma:</value>

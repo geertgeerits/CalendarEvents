@@ -222,6 +222,9 @@ Datele raportului sunt păstrate timp de 28 de zile.</value>
     <value>Formatul datei poate fi schimbat în setări la formatul standard internațional ISO 8601 (AAAA-LL-ZZ).
 Notă: 4 ani este perioada maximă pe care un calendar iOS poate căuta evenimente.
 
+Text în vorbire: nu sunt acceptate toate limbile care sunt furnizate în setările aplicației.
+Această opțiune depinde de la dispozitiv la dispozitiv și de limbile instalate. Este posibil ca, pentru unele limbi, traducerea în vorbire să se facă prin internet de către serviciile respective.
+
 Google Translate a fost folosit pentru traducerea textului. Aceasta nu este o garanție că toate traducerile sunt corecte.
 Limbile suportate sunt: cehă, daneză, olandeză, engleză, finlandeză, franceză, germană, maghiară, italiană, norvegiană, poloneză, portugheză, română, spaniolă și suedeză.
 
@@ -229,6 +232,9 @@ Mă puteți contacta oricând pentru orice corecturi.</value>
   </data>
   <data name="Info_Text" xml:space="preserve">
     <value>Informație</value>
+  </data>
+  <data name="LanguageSpeech_Text" xml:space="preserve">
+    <value>Vorbirea limbajului:</value>
   </data>
   <data name="Language_Text" xml:space="preserve">
     <value>Limba:</value>
@@ -305,6 +311,9 @@ Vă mulțumesc anticipat.</value>
   </data>
   <data name="System_Text" xml:space="preserve">
     <value>Sistem</value>
+  </data>
+  <data name="TextToSpeechError_Text" xml:space="preserve">
+    <value>Textul în vorbire nu este acceptat pe acest dispozitiv.</value>
   </data>
   <data name="Theme_Text" xml:space="preserve">
     <value>Temă:</value>

@@ -222,6 +222,9 @@ Rapportdata bevaras i 28 dagar.</value>
     <value>Datumformatet kan ändras i inställningarna till det internationella standardformatet ISO 8601 (ÅÅÅÅ-MM-DD).
 Obs: 4 år är den maximala perioden en iOS-kalender kan söka efter händelser.
 
+Text till tal: inte alla språk som finns i programinställningarna stöds.
+Detta alternativ beror från enhet till enhet och de installerade språken. Det är möjligt att för vissa språk görs översättningen till tal över internet av de berörda tjänsterna.
+
 Google Translate användes för översättningen av texten. Detta är inte en garanti för att alla översättningar är korrekta.
 Stödspråken är: tjeckiska, danska, holländska, engelska, finska, franska, tyska, ungerska, italienska, norska, polska, portugisiska, rumänska, spanska och svenska.
 
@@ -229,6 +232,9 @@ Du kan alltid kontakta mig för eventuella korrigeringar.</value>
   </data>
   <data name="Info_Text" xml:space="preserve">
     <value>Information</value>
+  </data>
+  <data name="LanguageSpeech_Text" xml:space="preserve">
+    <value>Språktal:</value>
   </data>
   <data name="Language_Text" xml:space="preserve">
     <value>Språk:</value>
@@ -305,6 +311,9 @@ Tack på förhand.</value>
   </data>
   <data name="System_Text" xml:space="preserve">
     <value>Systemet</value>
+  </data>
+  <data name="TextToSpeechError_Text" xml:space="preserve">
+    <value>Text till tal stöds inte på den här enheten.</value>
   </data>
   <data name="Theme_Text" xml:space="preserve">
     <value>Tema:</value>

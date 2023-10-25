@@ -364,10 +364,10 @@ namespace CalendarEvents.Resources.Languages {
         ///   Looks up a localized string similar to The date format can be changed in the settings to the international standard format ISO 8601 (YYYY-MM-DD).
         ///Note: 4 years is the maximum period an iOS calendar can search for events.
         ///
-        ///Google Translate was used for the translation of the text. This is not a guarantee that all translations are correct.
-        ///The supporting languages are: Czech, Danish, Dutch, English, Finnish, French, German, Hungarian, Italian, Norwegian, Polish, Portuguese, Romanian, Spanish and Swedish.
+        ///Text to speech: not all languages are supported that are provided in the application settings.
+        ///This option depend from device to device and the installed languages. It is possible that for some languages the translation to speech is done over the internet by the concerned services.
         ///
-        ///You can always contact me for any co [rest of string was truncated]&quot;;.
+        ///Google Translate was used for the trans [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string InfoExplanation_Text {
             get {

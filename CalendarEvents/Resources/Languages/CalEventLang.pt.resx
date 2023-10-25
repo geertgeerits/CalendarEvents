@@ -222,6 +222,9 @@ Os dados do relatório são retidos por 28 dias.</value>
     <value>O formato da data pode ser alterado nas configurações para o formato padrão internacional ISO 8601 (AAAA-MM-DD).
 Observação: 4 anos é o período máximo que um calendário iOS pode pesquisar eventos.
 
+Texto para fala: nem todos os idiomas fornecidos nas configurações do aplicativo são suportados.
+Esta opção depende de dispositivo para dispositivo e dos idiomas instalados. É possível que, para algumas línguas, a tradução para fala seja feita através da Internet pelos serviços competentes.
+
 O Google Translate foi utilizado para a tradução do texto. Isto não é uma garantia de que todas as traduções estejam corretas.
 Os idiomas de apoio são: checo, dinamarquês, holandês, inglês, finlandês, francês, alemão, húngaro, italiano, norueguês, polaco, português, romeno, espanhol e sueco.
 
@@ -229,6 +232,9 @@ Você sempre pode entrar em contato comigo para quaisquer correções.</value>
   </data>
   <data name="Info_Text" xml:space="preserve">
     <value>Informação</value>
+  </data>
+  <data name="LanguageSpeech_Text" xml:space="preserve">
+    <value>Linguagem de fala:</value>
   </data>
   <data name="Language_Text" xml:space="preserve">
     <value>Língua:</value>
@@ -305,6 +311,9 @@ Agradeço antecipadamente.</value>
   </data>
   <data name="System_Text" xml:space="preserve">
     <value>Sistema</value>
+  </data>
+  <data name="TextToSpeechError_Text" xml:space="preserve">
+    <value>A conversão de texto em fala não é compatível com este dispositivo.</value>
   </data>
   <data name="Theme_Text" xml:space="preserve">
     <value>Tema:</value>

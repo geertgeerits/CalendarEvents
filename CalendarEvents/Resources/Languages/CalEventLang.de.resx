@@ -222,6 +222,9 @@ Die Berichtsdaten werden 28 Tage lang aufbewahrt.</value>
     <value>Das Datumsformat kann in den Einstellungen auf das internationale Standardformat ISO 8601 (JJJJ-MM-TT) geändert werden.
 Hinweis: Der maximale Zeitraum, in dem ein iOS-Kalender nach Ereignissen suchen kann, beträgt 4 Jahre.
 
+Text zu Sprache: Es werden nicht alle Sprachen unterstützt, die in den Anwendungseinstellungen bereitgestellt werden.
+Diese Option hängt von Gerät zu Gerät und den installierten Sprachen ab. Es ist möglich, dass bei einigen Sprachen die Übersetzung in Sprache von den betreffenden Diensten über das Internet erfolgt.
+
 Für die Übersetzung des Textes wurde Google Translate verwendet. Dies ist keine Garantie dafür, dass alle Übersetzungen korrekt sind.
 Die unterstützenden Sprachen sind: Tschechisch, Dänisch, Niederländisch, Englisch, Finnisch, Französisch, Deutsch, Ungarisch, Italienisch, Norwegisch, Polnisch, Portugiesisch, Rumänisch, Spanisch und Schwedisch.
 
@@ -229,6 +232,9 @@ Für etwaige Korrekturen können Sie mich jederzeit kontaktieren.</value>
   </data>
   <data name="Info_Text" xml:space="preserve">
     <value>Information</value>
+  </data>
+  <data name="LanguageSpeech_Text" xml:space="preserve">
+    <value>Sprache Rede:</value>
   </data>
   <data name="Language_Text" xml:space="preserve">
     <value>Sprache:</value>
@@ -305,6 +311,9 @@ Vielen Dank im Voraus.</value>
   </data>
   <data name="System_Text" xml:space="preserve">
     <value>System</value>
+  </data>
+  <data name="TextToSpeechError_Text" xml:space="preserve">
+    <value>Text-to-Speech wird auf diesem Gerät nicht unterstützt.</value>
   </data>
   <data name="Theme_Text" xml:space="preserve">
     <value>Thema:</value>

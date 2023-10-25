@@ -222,6 +222,9 @@ Rapportdataene opbevares i 28 dage.</value>
     <value>Datoformatet kan ændres i indstillingerne til det internationale standardformat ISO 8601 (ÅÅÅÅ-MM-DD).
 Bemærk: 4 år er den maksimale periode, en iOS-kalender kan søge efter begivenheder.
 
+Tekst til tale: Ikke alle sprog understøttes, som er angivet i applikationsindstillingerne.
+Denne mulighed afhænger af enhed til enhed og de installerede sprog. Det er muligt, at for nogle sprog udføres oversættelsen til tale over internettet af de pågældende tjenester.
+
 Google Translate blev brugt til oversættelsen af teksten. Dette er ikke en garanti for, at alle oversættelser er korrekte.
 Understøttende sprog er: tjekkisk, dansk, hollandsk, engelsk, finsk, fransk, tysk, ungarsk, italiensk, norsk, polsk, portugisisk, rumænsk, spansk og svensk.
 
@@ -229,6 +232,9 @@ Du kan altid kontakte mig for eventuelle rettelser.</value>
   </data>
   <data name="Info_Text" xml:space="preserve">
     <value>Information</value>
+  </data>
+  <data name="LanguageSpeech_Text" xml:space="preserve">
+    <value>Sprog tale:</value>
   </data>
   <data name="Language_Text" xml:space="preserve">
     <value>Sprog:</value>
@@ -305,6 +311,9 @@ Tak på forhånd.</value>
   </data>
   <data name="System_Text" xml:space="preserve">
     <value>System</value>
+  </data>
+  <data name="TextToSpeechError_Text" xml:space="preserve">
+    <value>Tekst til tale understøttes ikke på denne enhed.</value>
   </data>
   <data name="Theme_Text" xml:space="preserve">
     <value>Tema:</value>

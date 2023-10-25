@@ -304,24 +304,27 @@ public partial class PageSettings : ContentPage
 
     // Radio button date format clicked event.
     private void OnDateFormatRadioButtonCheckedChanged(object sender, EventArgs e)
-    {
+    {       
         if (rbnDateFormatSystemShort.IsChecked)
         {
             Globals.cDateFormatSelect = "SystemShort";
+            Globals.cDateFormatDatePicker = CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern;
             Globals.cDateFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern;
             Globals.cTimeFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern;
         }
         else if (rbnDateFormatSystemLong.IsChecked)
         {
             Globals.cDateFormatSelect = "SystemLong";
+            Globals.cDateFormatDatePicker = CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern;
             Globals.cDateFormat = CultureInfo.CurrentCulture.DateTimeFormat.LongDatePattern;
             Globals.cTimeFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern;
         }
         else if (rbnDateFormatISO8601.IsChecked)
         {
             Globals.cDateFormatSelect = "ISO8601";
+            Globals.cDateFormatDatePicker = "yyyy-MM-dd";
             Globals.cDateFormat = "yyyy-MM-dd";
-            Globals.cTimeFormat = "HH:mm";
+            Globals.cTimeFormat = "HH:mm";            
         }
     }
 

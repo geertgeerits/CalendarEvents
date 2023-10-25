@@ -222,6 +222,9 @@ Les données du rapport sont conservées pendant 28 jours.</value>
     <value>Le format de date peut être modifié dans les paramètres au format standard international ISO 8601 (AAAA-MM-JJ).
 Remarque : 4 ans est la période maximale pendant laquelle un calendrier iOS peut rechercher des événements.
 
+Synthèse vocale : toutes les langues fournies dans les paramètres de l'application ne sont pas prises en charge.
+Cette option dépend d'un appareil à l'autre et des langues installées. Il est possible que pour certaines langues la traduction vocale soit effectuée sur internet par les services concernés.
+
 Google Translate a été utilisé pour la traduction du texte. Cela ne garantit pas que toutes les traductions sont correctes.
 Les langues prises en charge sont : tchèque, danois, néerlandais, anglais, finnois, français, allemand, hongrois, italien, norvégien, polonais, portugais, roumain, espagnol et suédois.
 
@@ -229,6 +232,9 @@ Vous pouvez toujours me contacter pour toute correction.</value>
   </data>
   <data name="Info_Text" xml:space="preserve">
     <value>Information</value>
+  </data>
+  <data name="LanguageSpeech_Text" xml:space="preserve">
+    <value>Discours de langue:</value>
   </data>
   <data name="Language_Text" xml:space="preserve">
     <value>Langue:</value>
@@ -305,6 +311,9 @@ Merci d'avance.</value>
   </data>
   <data name="System_Text" xml:space="preserve">
     <value>Système</value>
+  </data>
+  <data name="TextToSpeechError_Text" xml:space="preserve">
+    <value>La synthèse vocale n'est pas prise en charge sur cet appareil.</value>
   </data>
   <data name="Theme_Text" xml:space="preserve">
     <value>Thème:</value>

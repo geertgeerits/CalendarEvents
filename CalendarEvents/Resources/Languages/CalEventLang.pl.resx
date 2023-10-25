@@ -222,6 +222,9 @@ Dane z raportu są przechowywane przez 28 dni.</value>
     <value>Format daty można zmienić w ustawieniach na międzynarodowy standardowy format ISO 8601 (RRRR-MM-DD).
 Uwaga: 4 lata to maksymalny okres, przez jaki kalendarz iOS może wyszukiwać wydarzenia.
 
+Tekst na mowę: nie wszystkie języki dostępne w ustawieniach aplikacji są obsługiwane.
+Ta opcja zależy od urządzenia i zainstalowanych języków. Możliwe jest, że w przypadku niektórych języków tłumaczenie na mowę odbywa się przez Internet za pośrednictwem odpowiednich służb.
+
 Do tłumaczenia tekstu użyto Tłumacza Google. Nie gwarantuje to, że wszystkie tłumaczenia są poprawne.
 Obsługiwane języki to: czeski, duński, holenderski, angielski, fiński, francuski, niemiecki, węgierski, włoski, norweski, polski, portugalski, rumuński, hiszpański i szwedzki.
 
@@ -229,6 +232,9 @@ Zawsze możesz się ze mną skontaktować w celu wprowadzenia ewentualnych popra
   </data>
   <data name="Info_Text" xml:space="preserve">
     <value>Informacje</value>
+  </data>
+  <data name="LanguageSpeech_Text" xml:space="preserve">
+    <value>Mowa językowa:</value>
   </data>
   <data name="Language_Text" xml:space="preserve">
     <value>Język:</value>
@@ -305,6 +311,9 @@ Z góry dziękuję.</value>
   </data>
   <data name="System_Text" xml:space="preserve">
     <value>System</value>
+  </data>
+  <data name="TextToSpeechError_Text" xml:space="preserve">
+    <value>Funkcja zamiany tekstu na mowę nie jest obsługiwana na tym urządzeniu.</value>
   </data>
   <data name="Theme_Text" xml:space="preserve">
     <value>Temat:</value>
