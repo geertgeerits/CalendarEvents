@@ -422,4 +422,9 @@
         </Setter>
     </Style>
 
+    <Style x:Key="pickerStyleSettings" TargetType="Picker">
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="VerticalTextAlignment" Value="Center" />
+    </Style>
+
 </ResourceDictionary>

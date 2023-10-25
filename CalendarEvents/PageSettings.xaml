@@ -56,9 +56,8 @@
 
                     <Picker
                         x:Name="pckLanguage"
-                        VerticalOptions="Center"
+                        Style="{StaticResource pickerStyleSettings}"
                         MinimumWidthRequest="160"
-                        VerticalTextAlignment="Center"
                         SelectedIndexChanged="OnPickerLanguageChanged"
                         IsEnabled="True">
                         <Picker.ItemsSource>
@@ -119,9 +118,8 @@
 
                     <Picker
                         x:Name="pckTheme"
-                        VerticalOptions="Center"
+                        Style="{StaticResource pickerStyleSettings}"
                         MinimumWidthRequest="160"
-                        VerticalTextAlignment="Center"
                         SelectedIndexChanged="OnPickerThemeChanged">
                         <Picker.ItemsSource>
                             <x:Array Type="{x:Type x:String}">
