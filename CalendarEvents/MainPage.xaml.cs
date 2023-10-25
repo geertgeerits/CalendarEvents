@@ -493,6 +493,9 @@ public partial class MainPage : ContentPage
         dtpDateStart.Date = DateTime.Today.Date.AddDays(Convert.ToInt32(Globals.cAddDaysToStart));
         dtpDateEnd.Date = DateTime.Today.Date.AddDays(Convert.ToInt32(Globals.cAddDaysToEnd));
 
+        // Set the language of the text to speech in the label.
+        lblTextToSpeech.Text = GetIsoLanguageCode();
+
         // Set focus to the first entry field.
         entSearchWord.Focus();
     }
