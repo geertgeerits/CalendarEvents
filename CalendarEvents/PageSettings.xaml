@@ -139,7 +139,7 @@
                 </Label>
 
                 <Border
-                    Style="{StaticResource borderStyleRadioButton}"
+                    Style="{StaticResource borderStyleGroup}"
                     Grid.Row="7"
                     Grid.Column="1"
                     Grid.RowSpan="3">

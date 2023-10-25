@@ -278,7 +278,7 @@
         <Setter Property="StrokeThickness" Value="1" />
     </Style>
 
-    <Style x:Key="borderStyleRadioButton" TargetType="Border">
+    <Style x:Key="borderStyleGroup" TargetType="Border">
         <Setter Property="BackgroundColor" Value="Transparent" />
         <Setter Property="StrokeShape" Value="RoundRectangle 5" />
         <Setter Property="StrokeThickness" Value="1" />
