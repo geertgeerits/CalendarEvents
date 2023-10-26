@@ -2,7 +2,7 @@
 // Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
 // Copyright ...: (C) 2023-2023
 // Version .....: 1.0.5
-// Date ........: 2023-10-25 (YYYY-MM-DD)
+// Date ........: 2023-10-26 (YYYY-MM-DD)
 // Language ....: Microsoft Visual Studio 2022: .NET 8.0 MAUI C# 12.0
 // Description .: Read calendar events to share
 // Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 1.0.1 ; https://github.com/jfversluis/Plugin.Maui.CalendarStore
@@ -171,6 +171,8 @@ public partial class MainPage : ContentPage
     // Event calendar picker changed.
     private void OnPickerCalendarChanged(object sender, EventArgs e)
     {
+        CancelTextToSpeech();
+
         lblCalendarEvents.Text = "";
         
         int nSelectedIndex = pckCalendars.SelectedIndex;
@@ -297,6 +299,9 @@ public partial class MainPage : ContentPage
         entSearchWord.IsEnabled = false;
         entSearchWord.IsEnabled = true;
 
+        // Cancel the text to speech.
+        CancelTextToSpeech();
+
         // Clear the calendar events.
         lblCalendarEvents.Text = "";
 
@@ -381,6 +386,8 @@ public partial class MainPage : ContentPage
     // Clear the calendar events.
     private void OnClearEventsClicked(object sender, EventArgs e)
     {
+        CancelTextToSpeech();
+
         lblCalendarEvents.Text = "";
 
         _ = entSearchWord.Focus();
@@ -501,7 +508,7 @@ public partial class MainPage : ContentPage
     }
 
     // Permissions for CalendarRead - Sometimes permission is not given in Android (not yet tested in iOS).
-    public async Task<PermissionStatus> CheckAndRequestCalendarRead()
+    private async Task<PermissionStatus> CheckAndRequestCalendarRead()
     {
         PermissionStatus status = await Permissions.CheckStatusAsync<Permissions.CalendarRead>();
         
@@ -660,8 +667,22 @@ public partial class MainPage : ContentPage
         }
     }
 
+    // Cancel the text to speech.
+    private void CancelTextToSpeech()
+    {
+        // Cancel speech if a cancellation token exists & hasn't been already requested.
+        if (bTextToSpeechIsBusy)
+        {
+            if (cts?.IsCancellationRequested ?? true)
+                return;
+
+            cts.Cancel();
+            imgbtnTextToSpeech.Source = "speaker_64p_blue_green.png";
+        }
+    }
+
     // Get ISO language (and country) code from locales.
-    public static string GetIsoLanguageCode()
+    private static string GetIsoLanguageCode()
     {
         // Split before first space and remove last character '-' if there.
         string cLanguageIso = Globals.cLanguageSpeech.Split(' ').First();

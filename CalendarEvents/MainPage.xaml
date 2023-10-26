@@ -200,21 +200,8 @@
                     Clicked="OnButtonShareClicked">
                 </Button>
 
-                <Border
-                    Style="{StaticResource borderStyleDefault}"
-                    Grid.Row="6"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="2">
-                
-                    <Label
-                        x:Name="lblCalendarEvents"
-                        Style="{StaticResource labelStyleDefault}"
-                        Padding="8">
-                    </Label>
-                </Border>
-
                 <HorizontalStackLayout
-                    Grid.Row="7"
+                    Grid.Row="6"
                     Grid.Column="1"
                     HorizontalOptions="End"
                     VerticalOptions="End"
@@ -239,6 +226,19 @@
                         Clicked="OnTextToSpeechClicked">
                     </ImageButton>
                 </HorizontalStackLayout>
+
+                <Border
+                    Style="{StaticResource borderStyleDefault}"
+                    Grid.Row="7"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2">
+                
+                    <Label
+                        x:Name="lblCalendarEvents"
+                        Style="{StaticResource labelStyleDefault}"
+                        Padding="8">
+                    </Label>
+                </Border>
 
             </Grid>
         </StackLayout>
