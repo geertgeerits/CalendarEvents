@@ -26,7 +26,6 @@ public partial class MainPage : ContentPage
     private IEnumerable<CalendarEvent> events;
     private IEnumerable<Locale> locales;
     private CancellationTokenSource cts;
-    private bool bTextToSpeechIsBusy = false;
 
     public MainPage()
     {
@@ -66,6 +65,7 @@ public partial class MainPage : ContentPage
         // The height of the title bar is lower when an iPhone is in horizontal position.
         imgbtnAbout.VerticalOptions = LayoutOptions.Start;
         lblTitle.VerticalOptions = LayoutOptions.Start;
+        lblTitle.VerticalTextAlignment = TextAlignment.Start;
         imgbtnSettings.VerticalOptions = LayoutOptions.Start;
 #endif
 
@@ -155,6 +155,7 @@ public partial class MainPage : ContentPage
 
     private async void OnPageSettingsClicked(object sender, EventArgs e)
     {
+        CancelTextToSpeech();
         await Navigation.PushAsync(new PageSettings());
     }
 
@@ -500,7 +501,7 @@ public partial class MainPage : ContentPage
         dtpDateStart.Date = DateTime.Today.Date.AddDays(Convert.ToInt32(Globals.cAddDaysToStart));
         dtpDateEnd.Date = DateTime.Today.Date.AddDays(Convert.ToInt32(Globals.cAddDaysToEnd));
 
-        // Set the language of the text to speech in the label.
+        // Set the language ISO code of the text to speech in the label.
         lblTextToSpeech.Text = GetIsoLanguageCode();
 
         // Set focus to the first entry field.
@@ -628,13 +629,14 @@ public partial class MainPage : ContentPage
     private async void OnTextToSpeechClicked(object sender, EventArgs e)
     {
         // Cancel the text to speech.
-        if (bTextToSpeechIsBusy)
+        if (Globals.bTextToSpeechIsBusy)
         {
             if (cts?.IsCancellationRequested ?? true)
                 return;
 
             cts.Cancel();
             imgbtnTextToSpeech.Source = "speaker_64p_blue_green.png";
+            Globals.bTextToSpeechIsBusy = false;
             return;
         }
 
@@ -642,7 +644,7 @@ public partial class MainPage : ContentPage
         //lblCalendarEvents.Text = "Test";
         if (lblCalendarEvents.Text != null && lblCalendarEvents.Text != "")
         {
-            bTextToSpeechIsBusy = true;
+            Globals.bTextToSpeechIsBusy = true;
             imgbtnTextToSpeech.Source = "speaker_cancel_64p_blue_red.png";
 
             try
@@ -655,7 +657,7 @@ public partial class MainPage : ContentPage
                 };
 
                 await TextToSpeech.Default.SpeakAsync(lblCalendarEvents.Text, options, cancelToken: cts.Token);
-                bTextToSpeechIsBusy = false;
+                Globals.bTextToSpeechIsBusy = false;
             }
             catch (Exception ex)
             {
@@ -671,13 +673,14 @@ public partial class MainPage : ContentPage
     private void CancelTextToSpeech()
     {
         // Cancel speech if a cancellation token exists & hasn't been already requested.
-        if (bTextToSpeechIsBusy)
+        if (Globals.bTextToSpeechIsBusy)
         {
             if (cts?.IsCancellationRequested ?? true)
                 return;
 
             cts.Cancel();
             imgbtnTextToSpeech.Source = "speaker_64p_blue_green.png";
+            Globals.bTextToSpeechIsBusy = false;
         }
     }
 

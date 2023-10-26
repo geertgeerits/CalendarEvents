@@ -21,6 +21,7 @@ static class Globals
     public static string cLanguageSpeech;
     public static string[] cLanguageLocales;
     public static bool bLanguageLocalesExist = false;
+    public static bool bTextToSpeechIsBusy = false;
     public static bool bLicense;
 
     // Global methods.
