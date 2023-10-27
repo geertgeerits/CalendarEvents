@@ -5,7 +5,9 @@
              x:Class="CalendarEvents.MainPage"
              NavigationPage.HasBackButton="False"
              Loaded="OnPageLoaded"
-             Appearing="OnPageAppearing">
+             Appearing="OnPageAppearing"
+             Disappearing="OnPageDisappearingUnfocused"
+             Unfocused="OnPageDisappearingUnfocused">
 
     <NavigationPage.TitleView>
         <Grid RowDefinitions="40"

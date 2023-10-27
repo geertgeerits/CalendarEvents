@@ -2,10 +2,10 @@
 // Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
 // Copyright ...: (C) 2023-2023
 // Version .....: 1.0.5
-// Date ........: 2023-10-26 (YYYY-MM-DD)
+// Date ........: 2023-10-27 (YYYY-MM-DD)
 // Language ....: Microsoft Visual Studio 2022: .NET 8.0 MAUI C# 12.0
 // Description .: Read calendar events to share
-// Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 1.0.1 ; https://github.com/jfversluis/Plugin.Maui.CalendarStore
+// Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 1.0.2 ; https://github.com/jfversluis/Plugin.Maui.CalendarStore
 //                NuGet Package: Microsoft.AppCenter version 5.0.3 ; https://appcenter.ms/apps ; https://azure.microsoft.com/en-us/products/app-center/
 //                NuGet Package: Microsoft.AppCenter.Crashes version 5.0.3 
 // Thanks to ...: Gerald Versluis
@@ -143,13 +143,14 @@ public partial class MainPage : ContentPage
 
         InitializeTextToSpeech(cCultureName);
 
-        // Get all the calendars from the device and put them in a picker.
+        // Get all the calendars from the device and put them in the picker.
         GetCalendars();
-    }   
+    }
 
     // TitleView buttons clicked events.
     private async void OnPageAboutClicked(object sender, EventArgs e)
     {
+        CancelTextToSpeech();
         await Navigation.PushAsync(new PageAbout());
     }
 
@@ -506,6 +507,15 @@ public partial class MainPage : ContentPage
 
         // Set focus to the first entry field.
         entSearchWord.Focus();
+
+        // Cancel the text to speech.
+        CancelTextToSpeech();
+    }
+
+    // Cancel the text to speech using the Disappearing and Unfocused event of the MainPage.xaml - !!!BUG!!! Works only on Windows.
+    private void OnPageDisappearingUnfocused(object sender, EventArgs e)
+    {
+        CancelTextToSpeech();
     }
 
     // Permissions for CalendarRead - Sometimes permission is not given in Android (not yet tested in iOS).
@@ -631,12 +641,7 @@ public partial class MainPage : ContentPage
         // Cancel the text to speech.
         if (Globals.bTextToSpeechIsBusy)
         {
-            if (cts?.IsCancellationRequested ?? true)
-                return;
-
-            cts.Cancel();
-            imgbtnTextToSpeech.Source = "speaker_64p_blue_green.png";
-            Globals.bTextToSpeechIsBusy = false;
+            CancelTextToSpeech();
             return;
         }
 
@@ -657,7 +662,6 @@ public partial class MainPage : ContentPage
                 };
 
                 await TextToSpeech.Default.SpeakAsync(lblCalendarEvents.Text, options, cancelToken: cts.Token);
-                Globals.bTextToSpeechIsBusy = false;
             }
             catch (Exception ex)
             {
@@ -665,6 +669,7 @@ public partial class MainPage : ContentPage
                 await DisplayAlert(CalEventLang.ErrorTitle_Text, ex.Message, CalEventLang.ButtonClose_Text);
             }
 
+            Globals.bTextToSpeechIsBusy = false;
             imgbtnTextToSpeech.Source = "speaker_64p_blue_green.png";
         }
     }
@@ -679,8 +684,8 @@ public partial class MainPage : ContentPage
                 return;
 
             cts.Cancel();
-            imgbtnTextToSpeech.Source = "speaker_64p_blue_green.png";
             Globals.bTextToSpeechIsBusy = false;
+            imgbtnTextToSpeech.Source = "speaker_64p_blue_green.png";
         }
     }
 
