@@ -469,6 +469,7 @@ public partial class MainPage : ContentPage
                 btnClearEvents.IsEnabled = false;
                 btnCopyEvents.IsEnabled = false;
                 btnShareEvents.IsEnabled = false;
+                imgbtnTextToSpeech.IsEnabled = false;
 
                 await DisplayAlert(CalEventLang.LicenseTitle_Text, CalEventLang.CloseApplication_Text, CalEventLang.ButtonClose_Text);
 #else
@@ -508,12 +509,6 @@ public partial class MainPage : ContentPage
         entSearchWord.Focus();
 
         // Cancel the text to speech.
-        CancelTextToSpeech();
-    }
-
-    // Cancel the text to speech using the Disappearing and Unfocused event of the MainPage.xaml - !!!BUG!!! Works only on Windows.
-    private void OnPageDisappearingUnfocused(object sender, EventArgs e)
-    {
         CancelTextToSpeech();
     }
 
