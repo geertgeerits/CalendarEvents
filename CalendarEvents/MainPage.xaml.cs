@@ -2,7 +2,7 @@
 // Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
 // Copyright ...: (C) 2023-2023
 // Version .....: 1.0.5
-// Date ........: 2023-10-27 (YYYY-MM-DD)
+// Date ........: 2023-10-28 (YYYY-MM-DD)
 // Language ....: Microsoft Visual Studio 2022: .NET 8.0 MAUI C# 12.0
 // Description .: Read calendar events to share
 // Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 1.0.2 ; https://github.com/jfversluis/Plugin.Maui.CalendarStore
@@ -25,7 +25,6 @@ public partial class MainPage : ContentPage
     private readonly Dictionary<string, string> calendarDictionary = new();
     private IEnumerable<CalendarEvent> events;
     private IEnumerable<Locale> locales;
-    private CancellationTokenSource cts;
 
     public MainPage()
     {
@@ -654,14 +653,14 @@ public partial class MainPage : ContentPage
 
             try
             {
-                cts = new CancellationTokenSource();
+                Globals.cts = new CancellationTokenSource();
 
                 SpeechOptions options = new()
                 {
                     Locale = locales.Single(l => $"{l.Language}-{l.Country} {l.Name}" == Globals.cLanguageSpeech)
                 };
 
-                await TextToSpeech.Default.SpeakAsync(lblCalendarEvents.Text, options, cancelToken: cts.Token);
+                await TextToSpeech.Default.SpeakAsync(lblCalendarEvents.Text, options, cancelToken: Globals.cts.Token);
             }
             catch (Exception ex)
             {
@@ -680,10 +679,10 @@ public partial class MainPage : ContentPage
         // Cancel speech if a cancellation token exists & hasn't been already requested.
         if (Globals.bTextToSpeechIsBusy)
         {
-            if (cts?.IsCancellationRequested ?? true)
+            if (Globals.cts?.IsCancellationRequested ?? true)
                 return;
 
-            cts.Cancel();
+            Globals.cts.Cancel();
             Globals.bTextToSpeechIsBusy = false;
             imgbtnTextToSpeech.Source = "speaker_64p_blue_green.png";
         }
