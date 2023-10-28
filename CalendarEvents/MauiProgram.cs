@@ -19,11 +19,11 @@ namespace CalendarEvents
 
                 .ConfigureLifecycleEvents(events =>
                 {
-//#if ANDROID
-//                    events.AddAndroid(android => android
-//                        //.OnStop((activity) => ProcessEvent(nameof(AndroidLifecycle.OnStop)))
-//                        .OnPause((activity) => ProcessEvent(nameof(AndroidLifecycle.OnPause))));
-//#endif
+#if ANDROID
+                    events.AddAndroid(android => android
+                        //.OnStop((activity) => ProcessEvent(nameof(AndroidLifecycle.OnStop)))
+                        .OnPause((activity) => ProcessEvent(nameof(AndroidLifecycle.OnPause))));
+#endif
 
 #if IOS
                     events.AddiOS(ios => ios
@@ -31,10 +31,10 @@ namespace CalendarEvents
                         .WillTerminate((app) => ProcessEvent(nameof(iOSLifecycle.WillTerminate))));
 #endif
 
-//#if WINDOWS
-//                    events.AddWindows(windows => windows
-//                        .OnClosed((window, args) => ProcessEvent(nameof(WindowsLifecycle.OnClosed))));
-//#endif
+                    //#if WINDOWS
+                    //                    events.AddWindows(windows => windows
+                    //                        .OnClosed((window, args) => ProcessEvent(nameof(WindowsLifecycle.OnClosed))));
+                    //#endif
 
                     static bool ProcessEvent (string eventName, string type = null)
                     {
