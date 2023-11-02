@@ -198,7 +198,7 @@ Die Berichtsdaten werden 28 Tage lang aufbewahrt.</value>
     <value>E-mail:</value>
   </data>
   <data name="ErrorCalendar_Text" xml:space="preserve">
-    <value>Dieses Gerät enthält einen Kalender, der einen oder mehrere Fehler enthält oder nicht mit dieser Anwendung kompatibel ist.</value>
+    <value>Der Kalender enthält im angegebenen Zeitraum keine Ereignisse oder der Kalender ist nicht mit dieser Anwendung kompatibel.</value>
   </data>
   <data name="ErrorDate_Text" xml:space="preserve">
     <value>Das Enddatum muss gleich oder größer als das Startdatum sein.</value>

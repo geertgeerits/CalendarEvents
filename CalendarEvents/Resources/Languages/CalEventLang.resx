@@ -198,7 +198,7 @@ The report data is retained for 28 days.</value>
     <value>E-mail:</value>
   </data>
   <data name="ErrorCalendar_Text" xml:space="preserve">
-    <value>This device contains a calendar that contains one or more errors or is not compatible with this application.</value>
+    <value>The calendar does not contain any events during the specified period, or the calendar is not compatible with this application.</value>
   </data>
   <data name="ErrorDate_Text" xml:space="preserve">
     <value>The end date must be equal to or greater than the start date.</value>

@@ -198,7 +198,7 @@ A jelentés adatait 28 napig őrzik meg.</value>
     <value>Email:</value>
   </data>
   <data name="ErrorCalendar_Text" xml:space="preserve">
-    <value>Ez az eszköz olyan naptárat tartalmaz, amely egy vagy több hibát tartalmaz, vagy nem kompatibilis ezzel az alkalmazással.</value>
+    <value>A naptár nem tartalmaz eseményeket a megadott időszakban, vagy a naptár nem kompatibilis ezzel az alkalmazással.</value>
   </data>
   <data name="ErrorDate_Text" xml:space="preserve">
     <value>A befejező dátumnak egyenlőnek vagy nagyobbnak kell lennie a kezdő dátummal.</value>

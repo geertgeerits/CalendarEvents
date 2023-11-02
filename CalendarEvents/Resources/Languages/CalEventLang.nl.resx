@@ -198,7 +198,7 @@ De rapportgegevens worden 28 dagen bewaard.</value>
     <value>E-mail:</value>
   </data>
   <data name="ErrorCalendar_Text" xml:space="preserve">
-    <value>Dit toestel bevat een agenda dat een of meerdere fouten bevat, of die niet compatibel is met deze toepassing.</value>
+    <value>De agenda bevat geen evenementen gedurende de ingegeven periode, ofwel is de agenda niet compatibel is met deze toepassing.</value>
   </data>
   <data name="ErrorDate_Text" xml:space="preserve">
     <value>De einddatum moet gelijk zijn aan of groter zijn dan de startdatum.</value>

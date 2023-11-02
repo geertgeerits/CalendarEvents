@@ -198,7 +198,7 @@ Los datos del informe se conservan durante 28 días.</value>
     <value>Correo electrónico:</value>
   </data>
   <data name="ErrorCalendar_Text" xml:space="preserve">
-    <value>Este dispositivo contiene un calendario que contiene uno o más errores o no es compatible con esta aplicación.</value>
+    <value>El calendario no contiene ningún evento durante el período especificado o el calendario no es compatible con esta aplicación.</value>
   </data>
   <data name="ErrorDate_Text" xml:space="preserve">
     <value>La fecha de finalización debe ser igual o mayor que la fecha de inicio.</value>

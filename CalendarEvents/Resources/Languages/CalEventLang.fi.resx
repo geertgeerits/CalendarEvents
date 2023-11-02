@@ -198,7 +198,7 @@ Raporttitietoja säilytetään 28 päivää.</value>
     <value>Sähköposti:</value>
   </data>
   <data name="ErrorCalendar_Text" xml:space="preserve">
-    <value>Tämä laite sisältää kalenterin, joka sisältää yhden tai useamman virheen tai ei ole yhteensopiva tämän sovelluksen kanssa.</value>
+    <value>Kalenteri ei sisällä tapahtumia määritetyn ajanjakson aikana tai kalenteri ei ole yhteensopiva tämän sovelluksen kanssa.</value>
   </data>
   <data name="ErrorDate_Text" xml:space="preserve">
     <value>Päättymispäivän on oltava yhtä suuri tai suurempi kuin aloituspäivä.</value>

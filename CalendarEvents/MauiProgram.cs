@@ -47,6 +47,7 @@ namespace CalendarEvents
                             Globals.cts.Cancel();
                             Globals.bTextToSpeechIsBusy = false;
                         }
+                        
                         return true;
                     }
                 });

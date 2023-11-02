@@ -198,7 +198,7 @@ Rapportdataene oppbevares i 28 dager.</value>
     <value>E-post:</value>
   </data>
   <data name="ErrorCalendar_Text" xml:space="preserve">
-    <value>Denne enheten inneholder en kalender som inneholder én eller flere feil eller som ikke er kompatibel med denne applikasjonen.</value>
+    <value>Kalenderen inneholder ingen hendelser i løpet av den angitte perioden, eller kalenderen er ikke kompatibel med denne applikasjonen.</value>
   </data>
   <data name="ErrorDate_Text" xml:space="preserve">
     <value>Sluttdatoen må være lik eller større enn startdatoen.</value>
