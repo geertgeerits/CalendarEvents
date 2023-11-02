@@ -370,6 +370,12 @@ public partial class MainPage : ContentPage
             // Happens when there are no events in the selected calendar or between the startDate and endDate.
             lblCalendarEvents.Text = "";
         }
+        catch (Exception ex) when (ex is ArgumentException)
+        {
+            // System.ArgumentException: Handle must be valid. Arg_ParamName_Name, type.
+            // Happens when there are no events in the selected calendar or between the startDate and endDate.
+            lblCalendarEvents.Text = "";
+        }
         catch (Exception ex)
         {
             var properties = new Dictionary<string, string> {
