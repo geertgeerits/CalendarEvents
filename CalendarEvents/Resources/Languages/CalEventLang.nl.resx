@@ -279,6 +279,12 @@ Alvast bedankt.</value>
   <data name="LogTitle_Text" xml:space="preserve">
     <value>Verzenden van het foutenlogboek</value>
   </data>
+  <data name="MessageNoCalendars_Text" xml:space="preserve">
+    <value>Er zijn geen kalenders gevonden.</value>
+  </data>
+  <data name="MessageNoEvents_Text" xml:space="preserve">
+    <value>Er zijn geen evenementen gevonden.</value>
+  </data>
   <data name="NameProgramLocal_Text" xml:space="preserve">
     <value>Agenda-evenementen</value>
   </data>

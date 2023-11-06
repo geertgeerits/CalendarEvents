@@ -279,6 +279,12 @@ Děkuji předem.</value>
   <data name="LogTitle_Text" xml:space="preserve">
     <value>Odeslání protokolu chyb</value>
   </data>
+  <data name="MessageNoCalendars_Text" xml:space="preserve">
+    <value>Nebyly nalezeny žádné kalendáře.</value>
+  </data>
+  <data name="MessageNoEvents_Text" xml:space="preserve">
+    <value>Nebyly nalezeny žádné události.</value>
+  </data>
   <data name="NameProgramLocal_Text" xml:space="preserve">
     <value>Kalendář událostí</value>
   </data>

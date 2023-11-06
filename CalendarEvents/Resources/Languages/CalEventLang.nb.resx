@@ -279,6 +279,12 @@ Takk på forhånd.</value>
   <data name="LogTitle_Text" xml:space="preserve">
     <value>Sender feilloggen</value>
   </data>
+  <data name="MessageNoCalendars_Text" xml:space="preserve">
+    <value>Ingen kalendere ble funnet.</value>
+  </data>
+  <data name="MessageNoEvents_Text" xml:space="preserve">
+    <value>Ingen hendelser ble funnet.</value>
+  </data>
   <data name="NameProgramLocal_Text" xml:space="preserve">
     <value>Kalenderhendelser</value>
   </data>

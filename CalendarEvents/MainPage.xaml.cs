@@ -1,8 +1,8 @@
 ﻿// Program .....: CalendarEvents.sln
 // Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
 // Copyright ...: (C) 2023-2023
-// Version .....: 1.0.5
-// Date ........: 2023-11-02 (YYYY-MM-DD)
+// Version .....: 1.0.6
+// Date ........: 2023-11-06 (YYYY-MM-DD)
 // Language ....: Microsoft Visual Studio 2022: .NET 8.0 MAUI C# 12.0
 // Description .: Read calendar events to share
 // Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 1.0.2 ; https://github.com/jfversluis/Plugin.Maui.CalendarStore
@@ -221,6 +221,12 @@ public partial class MainPage : ContentPage
             // Get all the calendars from the device.
             var calendars = await CalendarStore.Default.GetCalendars();
 
+            if (calendars.Count() == 0)
+            {
+                await DisplayAlert(CalEventLang.ErrorTitle_Text, CalEventLang.MessageNoCalendars_Text, CalEventLang.ButtonClose_Text);
+                return;
+            }
+
             // Local language name for 'All calendars' (first item in the calendarDictionary and list of calendars).
             // After using the save button in the settings page the calendarDictionary is not empty.
             if (calendarDictionary.Count > 0)
@@ -362,19 +368,26 @@ public partial class MainPage : ContentPage
                 }
             }
 
-            lblCalendarEvents.Text = cCalendarEvents;
+            if (cCalendarEvents is not null and not "")
+            {
+                lblCalendarEvents.Text = cCalendarEvents;
+            }
+            else
+            {
+                lblCalendarEvents.Text = CalEventLang.MessageNoEvents_Text;
+            }
         }
         catch (Exception ex) when (ex is ObjectDisposedException)
         {
             // ObjectDisposedException: Cannot access a disposed object.
             // Happens when there are no events in the selected calendar or between the startDate and endDate.
-            lblCalendarEvents.Text = "";
+            lblCalendarEvents.Text = CalEventLang.MessageNoEvents_Text;
         }
         catch (Exception ex) when (ex is ArgumentException)
         {
             // System.ArgumentException: Handle must be valid. Arg_ParamName_Name, type.
             // Happens when there are no events in the selected calendar or between the startDate and endDate.
-            lblCalendarEvents.Text = "";
+            lblCalendarEvents.Text = CalEventLang.MessageNoEvents_Text;
         }
         catch (Exception ex)
         {

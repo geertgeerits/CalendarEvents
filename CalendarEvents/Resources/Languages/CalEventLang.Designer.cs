@@ -506,6 +506,24 @@ namespace CalendarEvents.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No calendars were found..
+        /// </summary>
+        internal static string MessageNoCalendars_Text {
+            get {
+                return ResourceManager.GetString("MessageNoCalendars_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No events were found..
+        /// </summary>
+        internal static string MessageNoEvents_Text {
+            get {
+                return ResourceManager.GetString("MessageNoEvents_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Calendar Events.
         /// </summary>
         internal static string NameProgram_Text {

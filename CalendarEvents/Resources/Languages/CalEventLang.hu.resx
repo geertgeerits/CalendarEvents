@@ -279,6 +279,12 @@ Előre is köszönöm.</value>
   <data name="LogTitle_Text" xml:space="preserve">
     <value>Hibanapló küldése</value>
   </data>
+  <data name="MessageNoCalendars_Text" xml:space="preserve">
+    <value>Nem találhatók naptárak.</value>
+  </data>
+  <data name="MessageNoEvents_Text" xml:space="preserve">
+    <value>Nem található események.</value>
+  </data>
   <data name="NameProgramLocal_Text" xml:space="preserve">
     <value>Események naptárban</value>
   </data>

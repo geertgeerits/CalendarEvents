@@ -279,6 +279,12 @@ Tack på förhand.</value>
   <data name="LogTitle_Text" xml:space="preserve">
     <value>Skickar felloggen</value>
   </data>
+  <data name="MessageNoCalendars_Text" xml:space="preserve">
+    <value>Inga kalendrar hittades.</value>
+  </data>
+  <data name="MessageNoEvents_Text" xml:space="preserve">
+    <value>Inga händelser hittades.</value>
+  </data>
   <data name="NameProgramLocal_Text" xml:space="preserve">
     <value>Kalenderhändelser</value>
   </data>

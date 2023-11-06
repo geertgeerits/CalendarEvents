@@ -279,6 +279,12 @@ Gracias de antemano.</value>
   <data name="LogTitle_Text" xml:space="preserve">
     <value>Envío del registro de errores</value>
   </data>
+  <data name="MessageNoCalendars_Text" xml:space="preserve">
+    <value>No se encontraron calendarios.</value>
+  </data>
+  <data name="MessageNoEvents_Text" xml:space="preserve">
+    <value>No se encontraron eventos.</value>
+  </data>
   <data name="NameProgramLocal_Text" xml:space="preserve">
     <value>Eventos del calendario</value>
   </data>

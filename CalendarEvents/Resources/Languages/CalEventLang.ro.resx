@@ -279,6 +279,12 @@ Vă mulțumesc anticipat.</value>
   <data name="LogTitle_Text" xml:space="preserve">
     <value>Se trimite jurnalul de erori</value>
   </data>
+  <data name="MessageNoCalendars_Text" xml:space="preserve">
+    <value>Nu au fost găsite calendare.</value>
+  </data>
+  <data name="MessageNoEvents_Text" xml:space="preserve">
+    <value>Nu au fost găsite evenimente.</value>
+  </data>
   <data name="NameProgramLocal_Text" xml:space="preserve">
     <value>Evenimente din calendar</value>
   </data>

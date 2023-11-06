@@ -279,6 +279,12 @@ Kiitos jo etukäteen.</value>
   <data name="LogTitle_Text" xml:space="preserve">
     <value>Virhelokin lähettäminen</value>
   </data>
+  <data name="MessageNoCalendars_Text" xml:space="preserve">
+    <value>Kalentereita ei löytynyt.</value>
+  </data>
+  <data name="MessageNoEvents_Text" xml:space="preserve">
+    <value>Tapahtumia ei löytynyt.</value>
+  </data>
   <data name="NameProgramLocal_Text" xml:space="preserve">
     <value>Kalenteri Tapahtumat</value>
   </data>
