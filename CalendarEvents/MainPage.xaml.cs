@@ -223,7 +223,7 @@ public partial class MainPage : ContentPage
 
             if (calendars.Count() == 0)
             {
-                await DisplayAlert(CalEventLang.ErrorTitle_Text, CalEventLang.MessageNoCalendars_Text, CalEventLang.ButtonClose_Text);
+                await DisplayAlert("", CalEventLang.MessageNoCalendars_Text, CalEventLang.ButtonClose_Text);
                 return;
             }
 
@@ -368,13 +368,13 @@ public partial class MainPage : ContentPage
                 }
             }
 
-            if (cCalendarEvents is not null and not "")
+            if (cCalendarEvents is null or "")
             {
-                lblCalendarEvents.Text = cCalendarEvents;
+                lblCalendarEvents.Text = CalEventLang.MessageNoEvents_Text;
             }
             else
             {
-                lblCalendarEvents.Text = CalEventLang.MessageNoEvents_Text;
+                lblCalendarEvents.Text = cCalendarEvents;
             }
         }
         catch (Exception ex) when (ex is ObjectDisposedException)
