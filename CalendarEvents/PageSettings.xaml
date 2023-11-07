@@ -234,35 +234,14 @@
                     </Entry>
                 </Border>
 
-                <!--<Button
-                    Style="{StaticResource buttonStyleFill}"
-                    IsVisible="{OnPlatform false, iOS=true, Android=false}"
-                    Grid.Row="14"
-                    Grid.Column="0"
-                    Text="{local:Translate Save_Text}"
-                    ToolTipProperties.Text="{local:Translate ToolTipSettingsSave_Text}"
-                    Clicked="OnSettingsSaveClicked">
-                </Button>
-
-                <Button
-                    Style="{StaticResource buttonStyleFill}"
-                    IsVisible="{OnPlatform false, iOS=true, Android=false}"
-                    Grid.Row="14"
-                    Grid.Column="1"
-                    Text="{local:Translate Reset_Text}"
-                    ToolTipProperties.Text="{local:Translate ToolTipSettingsReset_Text}"
-                    Clicked="OnSettingsResetClicked">
-                </Button>-->
-
             </Grid>
         </ScrollView>
 
-        <!--Solved in .NET 8 - !!!BUG!!! in IOS. The two buttons do not remain fixed at the bottom of the screen if the screen content is longer than the screen
-        (ie if scrolling is required). The two buttons are then no longer visible.-->
         <Button
             Style="{StaticResource buttonStyleFixedStart}"
             Grid.Row="2"
             Text="{local:Translate Save_Text}"
+            SemanticProperties.Description="{local:Translate ToolTipSettingsSave_Text}"
             ToolTipProperties.Text="{local:Translate ToolTipSettingsSave_Text}"
             Clicked="OnSettingsSaveClicked">
         </Button>
@@ -271,6 +250,7 @@
             Style="{StaticResource buttonStyleFixedEnd}"
             Grid.Row="2"
             Text="{local:Translate Reset_Text}"
+            SemanticProperties.Description="{local:Translate ToolTipSettingsReset_Text}"
             ToolTipProperties.Text="{local:Translate ToolTipSettingsReset_Text}"
             Clicked="OnSettingsResetClicked">
         </Button>

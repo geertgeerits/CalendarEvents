@@ -221,8 +221,11 @@ public partial class MainPage : ContentPage
             // Get all the calendars from the device.
             var calendars = await CalendarStore.Default.GetCalendars();
 
-            if (calendars.Count() == 0)
+            if (!calendars.Any())
             {
+                pckCalendars.IsEnabled = false;
+                btnGetEvents.IsEnabled = false;
+
                 await DisplayAlert("", CalEventLang.MessageNoCalendars_Text, CalEventLang.ButtonClose_Text);
                 return;
             }
