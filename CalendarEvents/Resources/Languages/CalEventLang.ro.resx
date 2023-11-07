@@ -354,6 +354,9 @@ Vă mulțumesc anticipat.</value>
   <data name="ToolTipSettingsSave_Text" xml:space="preserve">
     <value>Salvați setările</value>
   </data>
+  <data name="ToolTipTextToSpeech_Text" xml:space="preserve">
+    <value>Text în vorbire: activat sau dezactivat</value>
+  </data>
   <data name="Version_Text" xml:space="preserve">
     <value>Versiune:</value>
   </data>

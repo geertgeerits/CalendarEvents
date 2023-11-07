@@ -232,6 +232,8 @@
                         HeightRequest="38"
                         WidthRequest="38"
                         IsVisible="False"
+                        SemanticProperties.Description="{local:Translate ToolTipTextToSpeech_Text}"
+                        ToolTipProperties.Text="{local:Translate ToolTipTextToSpeech_Text}"                        
                         Clicked="OnTextToSpeechClicked">
                     </ImageButton>
                 </HorizontalStackLayout>

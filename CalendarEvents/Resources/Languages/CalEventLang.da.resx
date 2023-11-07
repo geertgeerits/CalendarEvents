@@ -354,6 +354,9 @@ Tak på forhånd.</value>
   <data name="ToolTipSettingsSave_Text" xml:space="preserve">
     <value>Gem indstillingerne</value>
   </data>
+  <data name="ToolTipTextToSpeech_Text" xml:space="preserve">
+    <value>Tekst til tale: til eller fra</value>
+  </data>
   <data name="Version_Text" xml:space="preserve">
     <value>Version:</value>
   </data>

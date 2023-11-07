@@ -354,6 +354,9 @@ Agradeço antecipadamente.</value>
   <data name="ToolTipSettingsSave_Text" xml:space="preserve">
     <value>Salve as configurações</value>
   </data>
+  <data name="ToolTipTextToSpeech_Text" xml:space="preserve">
+    <value>Texto para fala: ativado ou desativado</value>
+  </data>
   <data name="Version_Text" xml:space="preserve">
     <value>Versão:</value>
   </data>
