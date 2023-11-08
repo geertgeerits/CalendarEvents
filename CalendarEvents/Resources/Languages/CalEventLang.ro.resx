@@ -324,6 +324,12 @@ Vă mulțumesc anticipat.</value>
   <data name="Theme_Text" xml:space="preserve">
     <value>Temă:</value>
   </data>
+  <data name="ToolTipAppEmail_Text" xml:space="preserve">
+    <value>Trimiteți un e-mail autorului acestei aplicații</value>
+  </data>
+  <data name="ToolTipAppWebsite_Text" xml:space="preserve">
+    <value>Deschide site-ul acestei aplicații</value>
+  </data>
   <data name="ToolTipDateFormat_Text" xml:space="preserve">
     <value>Comutați între formatul de dată ISO și formatul de dată de sistem</value>
   </data>

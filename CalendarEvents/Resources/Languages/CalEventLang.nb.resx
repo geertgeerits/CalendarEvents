@@ -324,6 +324,12 @@ Takk på forhånd.</value>
   <data name="Theme_Text" xml:space="preserve">
     <value>Tema:</value>
   </data>
+  <data name="ToolTipAppEmail_Text" xml:space="preserve">
+    <value>Send en e-post til forfatteren av denne applikasjonen</value>
+  </data>
+  <data name="ToolTipAppWebsite_Text" xml:space="preserve">
+    <value>Åpne nettstedet til denne applikasjonen</value>
+  </data>
   <data name="ToolTipDateFormat_Text" xml:space="preserve">
     <value>Bytt mellom ISO-datoformatet og systemdatoformatet</value>
   </data>

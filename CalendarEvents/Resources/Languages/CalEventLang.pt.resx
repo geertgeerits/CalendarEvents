@@ -324,6 +324,12 @@ Agradeço antecipadamente.</value>
   <data name="Theme_Text" xml:space="preserve">
     <value>Tema:</value>
   </data>
+  <data name="ToolTipAppEmail_Text" xml:space="preserve">
+    <value>Envie um e-mail para o autor deste aplicativo</value>
+  </data>
+  <data name="ToolTipAppWebsite_Text" xml:space="preserve">
+    <value>Abra o site deste aplicativo</value>
+  </data>
   <data name="ToolTipDateFormat_Text" xml:space="preserve">
     <value>Alterne entre o formato de data ISO e o formato de data do sistema</value>
   </data>

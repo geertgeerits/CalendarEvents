@@ -324,6 +324,12 @@ Előre is köszönöm.</value>
   <data name="Theme_Text" xml:space="preserve">
     <value>Téma:</value>
   </data>
+  <data name="ToolTipAppEmail_Text" xml:space="preserve">
+    <value>Küldjön e-mailt az alkalmazás szerzőjének</value>
+  </data>
+  <data name="ToolTipAppWebsite_Text" xml:space="preserve">
+    <value>Nyissa meg az alkalmazás webhelyét</value>
+  </data>
   <data name="ToolTipDateFormat_Text" xml:space="preserve">
     <value>Váltás az ISO dátumformátum és a rendszerdátum formátum között</value>
   </data>

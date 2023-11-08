@@ -324,6 +324,12 @@ Alvast bedankt.</value>
   <data name="Theme_Text" xml:space="preserve">
     <value>Thema:</value>
   </data>
+  <data name="ToolTipAppEmail_Text" xml:space="preserve">
+    <value>Stuur een e-mail naar de auteur van deze toepassing</value>
+  </data>
+  <data name="ToolTipAppWebsite_Text" xml:space="preserve">
+    <value>Open de website van deze toepassing</value>
+  </data>
   <data name="ToolTipDateFormat_Text" xml:space="preserve">
     <value>Wissel tussen het ISO datumformaat en het systeem datumformaat</value>
   </data>
