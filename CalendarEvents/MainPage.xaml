@@ -73,8 +73,7 @@
                     Style="{StaticResource labelStyleDefault}"
                     Grid.Row="0"
                     Grid.Column="0"
-                    Text="{local:Translate DateStart_Text}"
-                    SemanticProperties.Description="{local:Translate DateStart_Text}">
+                    Text="{local:Translate DateStart_Text}">
                 </Label>
 
                 <Border
@@ -94,8 +93,7 @@
                     Style="{StaticResource labelStyleDefault}"
                     Grid.Row="1"
                     Grid.Column="0"
-                    Text="{local:Translate DateEnd_Text}"
-                    SemanticProperties.Description="{local:Translate DateEnd_Text}">
+                    Text="{local:Translate DateEnd_Text}">
                 </Label>
 
                 <Border
@@ -141,8 +139,7 @@
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
                     VerticalTextAlignment="Center"
-                    Text="{local:Translate Calendars_Text}"
-                    SemanticProperties.Description="{local:Translate Calendars_Text}">
+                    Text="{local:Translate Calendars_Text}">
                 </Label>
                 
                 <Border
