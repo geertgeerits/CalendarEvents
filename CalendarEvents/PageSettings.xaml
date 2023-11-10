@@ -24,7 +24,7 @@
 
             <Grid
                 Style="{StaticResource gridStyleSettings}"
-                RowDefinitions="Auto, 15, Auto, Auto, 4, Auto, 4, Auto, Auto, Auto, 4, Auto, 4, Auto, 15, Auto">
+                RowDefinitions="Auto, 15, Auto, Auto, 4, Auto, 4, Auto, Auto, Auto, 4, Auto, 4, Auto, 4, Auto">
 
                 <BoxView
                     Grid.Row="0"
@@ -232,6 +232,34 @@
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>
+                </Border>
+
+                <Label
+                    Grid.Row="15"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    VerticalTextAlignment="Center"
+                    Text="{local:Translate Calendars_Text}">
+                </Label>
+
+                <Border
+                    Style="{StaticResource borderStyleDefault}"
+                    Grid.Row="15"
+                    Grid.Column="1">
+
+                    <Picker
+                        x:Name="pckCalendars"
+                        VerticalOptions="Center"
+                        MinimumWidthRequest="160"
+                        VerticalTextAlignment="Center"
+                        SelectedIndexChanged="OnPickerCalendarChanged"
+                        IsEnabled="True">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>All calendars</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
                 </Border>
 
             </Grid>

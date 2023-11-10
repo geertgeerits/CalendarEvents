@@ -106,6 +106,21 @@ public partial class PageSettings : ContentPage
         entAddDaysToStart.Text = Globals.cAddDaysToStart;
         entAddDaysToEnd.Text = Globals.cAddDaysToEnd;
 
+        // Put the calendars from the calendarDictionary via the calendarList in the picker.
+        List<string> calendarList = Globals.calendarDictionary.Values.ToList();
+
+        pckCalendars.ItemsSource = calendarList;
+
+        if (Globals.nSelectedCalendar > calendarList.Count)
+        {
+            pckCalendars.SelectedIndex = 0;
+            Globals.nSelectedCalendar = 0;
+        }
+        else
+        {
+            pckCalendars.SelectedIndex = Globals.nSelectedCalendar;
+        }
+
         // Start the stopWatch for resetting all the settings.
         stopWatch.Start();
     }
@@ -363,6 +378,28 @@ public partial class PageSettings : ContentPage
         entAddDaysToEnd.IsEnabled = true;
     }
 
+    // Event calendar picker changed.
+    private void OnPickerCalendarChanged(object sender, EventArgs e)
+    {
+        int nSelectedIndex = pckCalendars.SelectedIndex;
+
+        if (nSelectedIndex == -1)
+        {
+            nSelectedIndex = 0;
+        }
+
+        // All calendars.
+        if (nSelectedIndex == 0)
+        {
+            return;
+        }
+
+        Globals.nSelectedCalendar= nSelectedIndex;
+
+        // One calendar.
+        //cCalendarId = Globals.calendarDictionary.Keys.ElementAt(nSelectedIndex);
+    }
+
     // Button save settings clicked event.
     private static void OnSettingsSaveClicked(object sender, EventArgs e)
     {
@@ -370,6 +407,7 @@ public partial class PageSettings : ContentPage
         Preferences.Default.Set("SettingDateFormatSelect", Globals.cDateFormatSelect);
         Preferences.Default.Set("SettingAddDaysToStart", Globals.cAddDaysToStart);
         Preferences.Default.Set("SettingAddDaysToEnd", Globals.cAddDaysToEnd);
+        Preferences.Default.Set("SettingSelectedCalendar", Globals.nSelectedCalendar);
         Preferences.Default.Set("SettingLanguage", Globals.cLanguage);
         Preferences.Default.Set("SettingLanguageSpeech", Globals.cLanguageSpeech);
 
@@ -399,6 +437,7 @@ public partial class PageSettings : ContentPage
             Preferences.Default.Remove("SettingDateFormatSelect");
             Preferences.Default.Remove("SettingAddDaysToStart");
             Preferences.Default.Remove("SettingAddDaysToEnd");
+            Preferences.Default.Remove("SettingSelectedCalendar");
             Preferences.Default.Remove("SettingLanguage");
             Preferences.Default.Remove("SettingLanguageSpeech");
         }

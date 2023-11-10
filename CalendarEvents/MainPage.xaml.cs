@@ -2,7 +2,7 @@
 // Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
 // Copyright ...: (C) 2023-2023
 // Version .....: 1.0.6
-// Date ........: 2023-11-08 (YYYY-MM-DD)
+// Date ........: 2023-11-10 (YYYY-MM-DD)
 // Language ....: Microsoft Visual Studio 2022: .NET 8.0 MAUI C# 12.0
 // Description .: Read calendar events to share
 // Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 1.0.2 ; https://github.com/jfversluis/Plugin.Maui.CalendarStore
@@ -22,7 +22,6 @@ public partial class MainPage : ContentPage
     private readonly bool bLogAlwaysSend;
     private string cCalendarId;
     private readonly string cDicKeyAllCalendars = "000-AllCalendars-gg51";
-    private readonly Dictionary<string, string> calendarDictionary = new();
     private IEnumerable<CalendarEvent> events;
     private IEnumerable<Locale> locales;
 
@@ -44,6 +43,7 @@ public partial class MainPage : ContentPage
         Globals.cDateFormatSelect = Preferences.Default.Get("SettingDateFormatSelect", "SystemShort");
         Globals.cAddDaysToStart = Preferences.Default.Get("SettingAddDaysToStart", "0");
         Globals.cAddDaysToEnd = Preferences.Default.Get("SettingAddDaysToEnd", "31");
+        Globals.nSelectedCalendar = Preferences.Default.Get("SettingSelectedCalendar", 0);
         Globals.cLanguage = Preferences.Default.Get("SettingLanguage", "");
         Globals.cLanguageSpeech = Preferences.Default.Get("SettingLanguageSpeech", "");
         Globals.bLicense = Preferences.Default.Get("SettingLicense", false);
@@ -189,8 +189,10 @@ public partial class MainPage : ContentPage
             return;
         }
 
+        Globals.nSelectedCalendar = nSelectedIndex;
+
         // One calendar.
-        cCalendarId = calendarDictionary.Keys.ElementAt(nSelectedIndex);
+        cCalendarId = Globals.calendarDictionary.Keys.ElementAt(nSelectedIndex);
     }
 
     // Get all the calendars from the device and put them in a picker.
@@ -232,12 +234,12 @@ public partial class MainPage : ContentPage
 
             // Local language name for 'All calendars' (first item in the calendarDictionary and list of calendars).
             // After using the save button in the settings page the calendarDictionary is not empty.
-            if (calendarDictionary.Count > 0)
+            if (Globals.calendarDictionary.Count > 0)
             {
-                calendarDictionary.Clear();
+                Globals.calendarDictionary.Clear();
             }
 
-            calendarDictionary.Add(cDicKeyAllCalendars, CalEventLang.AllCalendars_Text);
+            Globals.calendarDictionary.Add(cDicKeyAllCalendars, CalEventLang.AllCalendars_Text);
 
             // Put the calendars in the calendarDictionaryTemp.
             foreach (var calendar in calendars)
@@ -251,17 +253,26 @@ public partial class MainPage : ContentPage
             // Add the sorted calendarDictionaryTemp to the calendarDictionary - 'All calendars' stays this way on the first place.
             foreach (var item in calendarDictionaryTemp)
             {
-                if (!calendarDictionary.ContainsKey(item.Key))
+                if (!Globals.calendarDictionary.ContainsKey(item.Key))
                 {
-                    calendarDictionary.Add(item.Key, item.Value);
+                    Globals.calendarDictionary.Add(item.Key, item.Value);
                 }
             }
 
             // Put the calendars from the calendarDictionary via the calendarList in the picker.
-            List<string> calendarList = calendarDictionary.Values.ToList();
+            List<string> calendarList = Globals.calendarDictionary.Values.ToList();
             
             pckCalendars.ItemsSource = calendarList;
-            pckCalendars.SelectedIndex = 0;
+
+            if (Globals.nSelectedCalendar > calendarList.Count)
+            {
+                pckCalendars.SelectedIndex = 0;
+                Globals.nSelectedCalendar = 0;
+            }
+            else
+            {
+                pckCalendars.SelectedIndex = Globals.nSelectedCalendar;
+            }
         }
         catch (Exception ex) when (ex is ArgumentException)
         {
@@ -457,12 +468,12 @@ public partial class MainPage : ContentPage
         if (Globals.bLanguageChanged)
         {
             // Local language name for 'All calendars' (first item in the calendarDictionary, calendarList and calendar picker).
-            calendarDictionary[cDicKeyAllCalendars] = CalEventLang.AllCalendars_Text;
+            Globals.calendarDictionary[cDicKeyAllCalendars] = CalEventLang.AllCalendars_Text;
 
             // Put the calendars from the calendarDictionary via the calendarList in the picker.
             int nSelectedIndex = pckCalendars.SelectedIndex;
 
-            List<string> calendarList = calendarDictionary.Values.ToList();
+            List<string> calendarList = Globals.calendarDictionary.Values.ToList();
             pckCalendars.ItemsSource = calendarList;
 
             pckCalendars.SelectedIndex = nSelectedIndex;
@@ -526,6 +537,9 @@ public partial class MainPage : ContentPage
 
         // Set the language ISO code of the text to speech in the label.
         lblTextToSpeech.Text = GetIsoLanguageCode();
+
+        // Set the selected calendar in the picker.
+        pckCalendars.SelectedIndex = Globals.nSelectedCalendar;
 
         // Set focus to the first entry field.
         entSearchWord.Focus();
