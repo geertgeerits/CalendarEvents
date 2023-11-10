@@ -186,6 +186,7 @@ public partial class MainPage : ContentPage
         // All calendars.
         if (nSelectedIndex == 0)
         {
+            Globals.nSelectedCalendar = nSelectedIndex;
             return;
         }
 
