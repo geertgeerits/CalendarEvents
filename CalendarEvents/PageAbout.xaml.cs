@@ -45,7 +45,7 @@ public partial class PageAbout : ContentPage
         {
             string subject = "Calendar events";
             string body = "";
-            string[] recipients = new[] { "geertgeerits@gmail.com" };
+            string[] recipients = ["geertgeerits@gmail.com"];
 
             var message = new EmailMessage
             {
@@ -68,22 +68,27 @@ public partial class PageAbout : ContentPage
     }
 
     // Open the page 'PageWebsite' to open the website in the WebView control.
+    // !!!BUG!!! in Android: the WebView control gives an error when opening a link to the Google Play Console.
     private async void OnbtnWebsiteLinkClicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new PageWebsite());
-    }
+#if ANDROID
+        try
+        {
+            Uri uri = new("https://geertgeerits.wixsite.com/geertgeerits/calendar-events");
+            BrowserLaunchOptions options = new()
+            {
+                LaunchMode = BrowserLaunchMode.SystemPreferred,
+                TitleMode = BrowserTitleMode.Show
+            };
 
-    // Open the website in the default browser.
-    //private async void OnbtnWebsiteLinkClicked(object sender, EventArgs e)
-    //{
-    //    try
-    //    {
-    //        Uri uri = new("https://geertgeerits.wixsite.com/calendarevents");
-    //        await Browser.Default.OpenAsync(uri, BrowserLaunchMode.SystemPreferred);
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        await DisplayAlert(CodeLang.ErrorTitle_Text, ex.Message, CodeLang.ButtonClose_Text);
-    //    }
-    //}
+            await Browser.Default.OpenAsync(uri, options);
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert(CalEventLang.ErrorTitle_Text, ex.Message, CalEventLang.ButtonClose_Text);
+        }
+#else
+        await Navigation.PushAsync(new PageWebsite());
+#endif
+    }
 }

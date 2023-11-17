@@ -24,10 +24,21 @@ static class Globals
     public static bool bLanguageLocalesExist = false;
     public static bool bTextToSpeechIsBusy = false;
     public static CancellationTokenSource cts;
-    public static Dictionary<string, string> calendarDictionary = new();
+    public static Dictionary<string, string> calendarDictionary = [];
     public static bool bLicense;
 
     // Global methods.
+    // Set the theme.
+    public static void SetTheme()
+    {
+        Application.Current.UserAppTheme = cTheme switch
+        {
+            "Light" => AppTheme.Light,
+            "Dark" => AppTheme.Dark,
+            _ => AppTheme.Unspecified,
+        };
+    }
+
     // Set the current UI culture of the selected language.
     public static void SetCultureSelectedLanguage()
     {

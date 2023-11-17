@@ -107,7 +107,7 @@ public partial class PageSettings : ContentPage
         entAddDaysToEnd.Text = Globals.cAddDaysToEnd;
 
         // Put the calendars from the calendarDictionary via the calendarList in the picker.
-        List<string> calendarList = Globals.calendarDictionary.Values.ToList();
+        List<string> calendarList = [.. Globals.calendarDictionary.Values];
 
         pckCalendars.ItemsSource = calendarList;
 
@@ -273,6 +273,9 @@ public partial class PageSettings : ContentPage
                 // System.
                 _ => "System",
             };
+
+            // Set the theme.
+            Globals.SetTheme();
         }
     }
 

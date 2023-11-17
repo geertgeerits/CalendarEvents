@@ -2,7 +2,7 @@
 // Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
 // Copyright ...: (C) 2023-2023
 // Version .....: 1.0.6
-// Date ........: 2023-11-10 (YYYY-MM-DD)
+// Date ........: 2023-11-17 (YYYY-MM-DD)
 // Language ....: Microsoft Visual Studio 2022: .NET 8.0 MAUI C# 12.0
 // Description .: Read calendar events to share
 // Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 1.0.2 ; https://github.com/jfversluis/Plugin.Maui.CalendarStore
@@ -69,18 +69,7 @@ public partial class MainPage : ContentPage
 #endif
 
         // Set the theme.
-        switch (Globals.cTheme)
-        {
-            case "Light":
-                Application.Current.UserAppTheme = AppTheme.Light;
-                break;
-            case "Dark":
-                Application.Current.UserAppTheme = AppTheme.Dark;
-                break;
-            default:
-                Application.Current.UserAppTheme = AppTheme.Unspecified;
-                break;
-        }
+        Globals.SetTheme();
 
         // Get the system date and time format and set the date and time format.       
         switch (Globals.cDateFormatSelect)
@@ -210,7 +199,7 @@ public partial class MainPage : ContentPage
         _ = await CheckAndRequestCalendarRead();
 #endif
         // Declare a temporary dictionary used to sort the calendars on name.
-        Dictionary<string, string> calendarDictionaryTemp = new();
+        Dictionary<string, string> calendarDictionaryTemp = [];
 
         // Declare variable for the number op retries for asking for permission to read the calendar.
         int nRetries = 0;
@@ -261,7 +250,7 @@ public partial class MainPage : ContentPage
             }
 
             // Put the calendars from the calendarDictionary via the calendarList in the picker.
-            List<string> calendarList = Globals.calendarDictionary.Values.ToList();
+            List<string> calendarList = [.. Globals.calendarDictionary.Values];
             
             pckCalendars.ItemsSource = calendarList;
 
@@ -376,7 +365,7 @@ public partial class MainPage : ContentPage
                         continue;
                     }
                     
-                    if (ev.Title.ToLowerInvariant().Contains(cSearchWord))
+                    if (ev.Title.Contains(cSearchWord, StringComparison.InvariantCultureIgnoreCase))
                     {
                         cCalendarEvents = $"{cCalendarEvents}{ev.StartDate.ToString(format: $"{Globals.cDateFormat}  {Globals.cTimeFormat}")}   {ev.Title}\n\n";
                     }
@@ -474,7 +463,7 @@ public partial class MainPage : ContentPage
             // Put the calendars from the calendarDictionary via the calendarList in the picker.
             int nSelectedIndex = pckCalendars.SelectedIndex;
 
-            List<string> calendarList = Globals.calendarDictionary.Values.ToList();
+            List<string> calendarList = [.. Globals.calendarDictionary.Values];
             pckCalendars.ItemsSource = calendarList;
 
             pckCalendars.SelectedIndex = nSelectedIndex;
