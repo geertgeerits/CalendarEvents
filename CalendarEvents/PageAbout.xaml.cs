@@ -27,7 +27,7 @@ public partial class PageAbout : ContentPage
     }
 
     // Open the e-mail program.
-    private async void OnbtnEmailLinkClicked(object sender, EventArgs e)
+    private async void OnBtnEmailLinkClicked(object sender, EventArgs e)
     {
 #if IOS || MACCATALYST
         string cAddress = "geertgeerits@gmail.com";
@@ -69,7 +69,7 @@ public partial class PageAbout : ContentPage
 
     // Open the page 'PageWebsite' to open the website in the WebView control.
     // !!!BUG!!! in Android: the WebView control gives an error when opening a link to the Google Play Console.
-    private async void OnbtnWebsiteLinkClicked(object sender, EventArgs e)
+    private async void OnBtnWebsiteLinkClicked(object sender, EventArgs e)
     {
 #if ANDROID
         try

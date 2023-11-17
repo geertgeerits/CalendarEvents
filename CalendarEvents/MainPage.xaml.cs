@@ -188,15 +188,15 @@ public partial class MainPage : ContentPage
     // Get all the calendars from the device and put them in a picker.
     private async void GetCalendars()
     {
-        await LoadCalendars();
+        await LoadCalendarsAsync();
     }
 
     // Get all the calendars from the device and put them in a picker.
-    private async Task LoadCalendars()
+    private async Task LoadCalendarsAsync()
     {
 #if ANDROID
         // Permissions for Calendar read - Sometimes permission is not given in Android.
-        _ = await CheckAndRequestCalendarRead();
+        _ = await CheckAndRequestCalendarReadAsync();
 #endif
         // Declare a temporary dictionary used to sort the calendars on name.
         Dictionary<string, string> calendarDictionaryTemp = [];
@@ -277,7 +277,7 @@ public partial class MainPage : ContentPage
             if (nRetries < 4)
             {
                 nRetries++;
-                _ = await CheckAndRequestCalendarRead();
+                _ = await CheckAndRequestCalendarReadAsync();
                 goto Start;
             }
         }
@@ -320,13 +320,13 @@ public partial class MainPage : ContentPage
         activityIndicator.IsRunning = true;
         await Task.Delay(200);
 
-        await LoadEvents();
+        await LoadEventsAsync();
 
         activityIndicator.IsRunning = false;
     }
 
     // Get calendar events.
-    private async Task LoadEvents()    
+    private async Task LoadEventsAsync()    
     {
         // Get (all) the events from the calendar.
         string cCalendarEvents = "";
@@ -431,12 +431,12 @@ public partial class MainPage : ContentPage
     {
         if (lblCalendarEvents.Text is not null and not "")
         {
-            await ShareText(lblCalendarEvents.Text);
+            await ShareTextAsync(lblCalendarEvents.Text);
         }
     }
 
     // Share calendar events.
-    private static async Task ShareText(string cText)
+    private static async Task ShareTextAsync(string cText)
     {
         await Share.Default.RequestAsync(new ShareTextRequest
         {
@@ -539,7 +539,7 @@ public partial class MainPage : ContentPage
     }
 
     // Permissions for CalendarRead - Sometimes permission is not given in Android (not yet tested in iOS).
-    private async Task<PermissionStatus> CheckAndRequestCalendarRead()
+    private async Task<PermissionStatus> CheckAndRequestCalendarReadAsync()
     {
         PermissionStatus status = await Permissions.CheckStatusAsync<Permissions.CalendarRead>();
         
