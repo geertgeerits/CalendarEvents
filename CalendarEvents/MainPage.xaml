@@ -8,7 +8,7 @@
              Appearing="OnPageAppearing">
 
     <NavigationPage.TitleView>
-        <Grid RowDefinitions="40"
+        <Grid RowDefinitions="Auto"
               ColumnDefinitions="60, 160*, 50, 50"
               Margin="5"
               BackgroundColor="Gold">
