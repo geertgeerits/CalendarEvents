@@ -14,7 +14,7 @@
 
             // Set the border color if the input is invalid.
             Border border = (Border)entry.Parent.FindByName(BorderName);
-            border.Stroke = isValid ? Color.FromArgb("969696") : Colors.Red;
+            border.Stroke = isValid ? Color.FromArgb("969696") : Colors.OrangeRed;
         }
     }
 }

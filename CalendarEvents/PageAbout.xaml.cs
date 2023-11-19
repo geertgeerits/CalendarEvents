@@ -29,18 +29,6 @@ public partial class PageAbout : ContentPage
     // Open the e-mail program.
     private async void OnBtnEmailLinkClicked(object sender, EventArgs e)
     {
-#if IOS || MACCATALYST
-        string cAddress = "geertgeerits@gmail.com";
-
-        try
-        {
-            await Launcher.OpenAsync(new Uri($"mailto:{cAddress}"));
-        }
-        catch (Exception ex)
-        {
-            await DisplayAlert(CalEventLang.ErrorTitle_Text, ex.Message, CalEventLang.ButtonClose_Text);
-        }
-#else
         if (Email.Default.IsComposeSupported)
         {
             string subject = "Calendar events";
@@ -64,7 +52,6 @@ public partial class PageAbout : ContentPage
                 await DisplayAlert(CalEventLang.ErrorTitle_Text, ex.Message, CalEventLang.ButtonClose_Text);
             }
         }
-#endif
     }
 
     // Open the page 'PageWebsite' to open the website in the WebView control.

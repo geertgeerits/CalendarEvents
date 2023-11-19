@@ -2,7 +2,7 @@
 // Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
 // Copyright ...: (C) 2023-2023
 // Version .....: 1.0.6
-// Date ........: 2023-11-18 (YYYY-MM-DD)
+// Date ........: 2023-11-19 (YYYY-MM-DD)
 // Language ....: Microsoft Visual Studio 2022: .NET 8.0 MAUI C# 12.0
 // Description .: Read calendar events to share
 // Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 1.0.2 ; https://github.com/jfversluis/Plugin.Maui.CalendarStore
@@ -502,7 +502,7 @@ public partial class MainPage : ContentPage
             }
         }
 
-        // Set focus to the first entry field (workaround for !!!BUG!!! ?).
+        // Set focus to the first entry field.
         // Add in the header of the xaml page: 'Loaded="OnPageLoaded"'
         Task.Delay(500).Wait();
         entSearchWord.Focus();
