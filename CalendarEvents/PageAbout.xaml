@@ -46,11 +46,11 @@
                         </Label>
 
                         <ImageButton
-                            Source="circled_envelope_24p.png"                         
+                            Source="envelope_48x24p.png"                         
                             HorizontalOptions="Center"
                             VerticalOptions="Center"
                             HeightRequest="24"
-                            WidthRequest="24"
+                            WidthRequest="48"
                             SemanticProperties.Description="{x:Static resx:CalEventLang.ToolTipAppEmail_Text}"
                             ToolTipProperties.Text="{x:Static resx:CalEventLang.ToolTipAppEmail_Text}"
                             Clicked="OnBtnEmailLinkClicked">
@@ -64,11 +64,11 @@
                         </Label>
 
                         <ImageButton
-                            Source="internet_24p.png"
+                            Source="internet_48x24p.png"
                             HorizontalOptions="Center"
                             VerticalOptions="Center"
                             HeightRequest="24"
-                            WidthRequest="24"
+                            WidthRequest="48"
                             SemanticProperties.Description="{x:Static resx:CalEventLang.ToolTipAppWebsite_Text}"
                             ToolTipProperties.Text="{x:Static resx:CalEventLang.ToolTipAppWebsite_Text}"
                             Clicked="OnBtnWebsiteLinkClicked">
