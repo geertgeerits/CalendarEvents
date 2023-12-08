@@ -2,10 +2,10 @@
 // Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
 // Copyright ...: (C) 2023-2023
 // Version .....: 1.0.6
-// Date ........: 2023-11-20 (YYYY-MM-DD)
+// Date ........: 2023-12-08 (YYYY-MM-DD)
 // Language ....: Microsoft Visual Studio 2022: .NET 8.0 MAUI C# 12.0
 // Description .: Read calendar events to share
-// Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 1.0.2 ; https://github.com/jfversluis/Plugin.Maui.CalendarStore
+// Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 2.0.0-preview1; https://github.com/jfversluis/Plugin.Maui.CalendarStore
 //                NuGet Package: Microsoft.AppCenter version 5.0.3 ; https://appcenter.ms/apps ; https://azure.microsoft.com/en-us/products/app-center/
 //                NuGet Package: Microsoft.AppCenter.Crashes version 5.0.3 
 // Thanks to ...: Gerald Versluis
@@ -34,7 +34,9 @@ public partial class MainPage : ContentPage
         catch (Exception ex)
         {
             Crashes.TrackError(ex);
+#if DEBUG
             DisplayAlert("InitializeComponent MainPage", ex.Message, "OK");
+#endif
             return;
         }
 
@@ -583,8 +585,9 @@ public partial class MainPage : ContentPage
             //    { "AppLanguageSpeech:", Globals.cLanguageSpeech }
             //};
             //Crashes.TrackError(ex, properties);
-
-            //await DisplayAlert(CalEventLang.ErrorTitle_Text, $"{ex.Message}\n\n{CalEventLang.TextToSpeechError_Text}", CalEventLang.ButtonClose_Text);
+#if DEBUG
+            await DisplayAlert(CalEventLang.ErrorTitle_Text, $"{ex.Message}\n\n{CalEventLang.TextToSpeechError_Text}", CalEventLang.ButtonClose_Text);
+#endif
             return;
         }
 
@@ -652,7 +655,9 @@ public partial class MainPage : ContentPage
         catch (Exception ex)
         {
             Crashes.TrackError(ex);
+#if DEBUG
             DisplayAlert(CalEventLang.ErrorTitle_Text, ex.Message, CalEventLang.ButtonClose_Text);
+#endif
         }
     }
 
@@ -687,7 +692,9 @@ public partial class MainPage : ContentPage
             catch (Exception ex)
             {
                 Crashes.TrackError(ex);
+#if DEBUG
                 await DisplayAlert(CalEventLang.ErrorTitle_Text, ex.Message, CalEventLang.ButtonClose_Text);
+#endif
             }
 
             Globals.bTextToSpeechIsBusy = false;

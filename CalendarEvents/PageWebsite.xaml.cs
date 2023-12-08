@@ -11,7 +11,9 @@ public partial class PageWebsite : ContentPage
         catch (Exception ex)
         {
             Crashes.TrackError(ex);
+#if DEBUG
             DisplayAlert("InitializeComponent: PageWebsite", ex.Message, "OK");
+#endif
             return;
         }
 
