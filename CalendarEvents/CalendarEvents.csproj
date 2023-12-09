@@ -107,17 +107,17 @@
 	</PropertyGroup>	
 	
 	<PropertyGroup Condition="'$(TargetFramework)'=='net8.0-ios'">
-		<ProvisioningType>automatic</ProvisioningType>
-		<CodesignKey>Apple Development: Created via API (KL96X68Q72)</CodesignKey>
-		<CodesignProvision>VS: WildCard Development</CodesignProvision>
+		<ProvisioningType>manual</ProvisioningType>
+		<CodesignKey>iPhone Distribution</CodesignKey>
+		<CodesignProvision>provisioningprofile04iOSCalendarEvents</CodesignProvision>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="$(TargetFramework.Contains('-ios')) and '$(Configuration)' == 'Release'">
 		<RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
 		<!-- Only needed when you have a need for entitlements -->
 		<!-- <CodesignEntitlement>Entitlements.plist</CodesignEntitlement> -->
-		<CodesignKey>iOS Distribution: Geert Geerits (S6CWMSSJ54)</CodesignKey>
-		<CodesignProvision>provisioningprofile03iOSCalendarEvents</CodesignProvision>
+		<CodesignKey>Apple Distribution: Geert Geerits (S6CWMSSJ54)</CodesignKey>
+		<CodesignProvision>provisioningprofile04iOSCalendarEvents</CodesignProvision>
 		<ArchiveOnBuild>true</ArchiveOnBuild>
 		<TcpPort>58181</TcpPort>
 
