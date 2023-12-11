@@ -33,16 +33,16 @@
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/appicon.appiconset</string>
 	<key>NSCalendarsUsageDescription</key>
-	<string>This app wants to read from your calendars.</string>
+	<string>This app needs your permission to read events from your calendars. It concerns the date, time and title of the event.</string>
 	<key>NSCalendarsFullAccessUsageDescription</key>
-	<string>This app wants to read from your calendars.</string>
+	<string>This app needs your permission to read events from your calendars. It concerns the date, time and title of the event.</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.geertgeerits.calendarevents</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.6</string>
+	<string>1.0.7</string>
 	<key>MinimumOSVersion</key>
 	<string>11.0</string>
 	<key>CFBundleVersion</key>
-	<string>6</string>
+	<string>7</string>
 </dict>
 </plist>
