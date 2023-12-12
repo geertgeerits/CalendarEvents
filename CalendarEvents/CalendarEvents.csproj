@@ -19,7 +19,7 @@
 		<ApplicationIdGuid>67d69051-af79-468e-aa14-97f27a1fc29c</ApplicationIdGuid>
 
 		<!-- Versions -->
-		<ApplicationDisplayVersion>1.0.7</ApplicationDisplayVersion>
+		<ApplicationDisplayVersion>1.0.8</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">11.0</SupportedOSPlatformVersion>
@@ -101,15 +101,15 @@
 		<AndroidSigningKeyAlias>key</AndroidSigningKeyAlias>
 		<AndroidSigningKeyPass></AndroidSigningKeyPass>
 		<AndroidSigningStorePass></AndroidSigningStorePass>
-		<ApplicationDisplayVersion>1.0.7</ApplicationDisplayVersion>
-		<ApplicationVersion>7</ApplicationVersion>
+		<ApplicationDisplayVersion>1.0.8</ApplicationDisplayVersion>
+		<ApplicationVersion>8</ApplicationVersion>
 		<ApplicationId>com.geertgeerits.calendarevents</ApplicationId>
 	</PropertyGroup>	
 	
 	<PropertyGroup Condition="'$(TargetFramework)'=='net8.0-ios'">
-		<ProvisioningType>manual</ProvisioningType>
-		<CodesignKey>iPhone Distribution</CodesignKey>
-		<CodesignProvision>provisioningprofile04iOSCalendarEvents</CodesignProvision>
+		<ProvisioningType>automatic</ProvisioningType>
+		<CodesignKey>Apple Development: Created via API (KL96X68Q72)</CodesignKey>
+		<CodesignProvision>VS: com.geertgeerits.calendarevents Development</CodesignProvision>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="$(TargetFramework.Contains('-ios')) and '$(Configuration)' == 'Release'">
@@ -121,8 +121,8 @@
 		<ArchiveOnBuild>true</ArchiveOnBuild>
 		<TcpPort>58181</TcpPort>
 
-		<ApplicationDisplayVersion>1.0.7</ApplicationDisplayVersion>
-		<ApplicationVersion>7</ApplicationVersion>
+		<ApplicationDisplayVersion>1.0.8</ApplicationDisplayVersion>
+		<ApplicationVersion>8</ApplicationVersion>
 		<ApplicationId>com.geertgeerits.calendarevents</ApplicationId>
 	</PropertyGroup>
 

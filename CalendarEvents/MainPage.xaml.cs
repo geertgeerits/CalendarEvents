@@ -1,7 +1,7 @@
 ﻿// Program .....: CalendarEvents.sln
 // Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
 // Copyright ...: (C) 2023-2023
-// Version .....: 1.0.7
+// Version .....: 1.0.8
 // Date ........: 2023-12-11 (YYYY-MM-DD)
 // Language ....: Microsoft Visual Studio 2022: .NET 8.0 MAUI C# 12.0
 // Description .: Read calendar events to share

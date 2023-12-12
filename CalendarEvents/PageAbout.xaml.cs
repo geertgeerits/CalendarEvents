@@ -18,7 +18,7 @@ public partial class PageAbout : ContentPage
         }
 
         // Put text in the chosen language in the controls.
-        lblVersion.Text = $"{CalEventLang.Version_Text} 1.0.7";
+        lblVersion.Text = $"{CalEventLang.Version_Text} 1.0.8";
         lblCopyright.Text = $"{CalEventLang.Copyright_Text} © 2023-2023 Geert Geerits";
         lblEmail.Text = $"{CalEventLang.Email_Text} geertgeerits@gmail.com";
         lblWebsite.Text = $"{CalEventLang.Website_Text}: ../calendarevents";
