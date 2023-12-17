@@ -2,7 +2,7 @@
 // Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
 // Copyright ...: (C) 2023-2023
 // Version .....: 1.0.8
-// Date ........: 2023-12-11 (YYYY-MM-DD)
+// Date ........: 2023-12-17 (YYYY-MM-DD)
 // Language ....: Microsoft Visual Studio 2022: .NET 8.0 MAUI C# 12.0
 // Description .: Read calendar events to share
 // Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 2.0.0-preview1; https://github.com/jfversluis/Plugin.Maui.CalendarStore
@@ -21,6 +21,7 @@ public partial class MainPage : ContentPage
     private string cLicenseText;
     private readonly bool bLogAlwaysSend;
     private string cCalendarId;
+    private int nCalendarSelected;
     private readonly string cDicKeyAllCalendars = "000-AllCalendars-gg51";
     private IEnumerable<CalendarEvent> events;
     private IEnumerable<Locale> locales;
@@ -170,22 +171,17 @@ public partial class MainPage : ContentPage
         
         int nSelectedIndex = pckCalendars.SelectedIndex;
         
-        if (nSelectedIndex == -1)
-        {
-            nSelectedIndex = 0;
-        }
-
         // All calendars.
-        if (nSelectedIndex == 0)
+        if (nSelectedIndex != -1)
         {
-            Globals.nSelectedCalendar = nSelectedIndex;
-            return;
+            nCalendarSelected = nSelectedIndex;
         }
-
-        Globals.nSelectedCalendar = nSelectedIndex;
 
         // One calendar.
-        cCalendarId = Globals.calendarDictionary.Keys.ElementAt(nSelectedIndex);
+        if (nSelectedIndex > 0)
+        {
+            cCalendarId = Globals.calendarDictionary.Keys.ElementAt(nSelectedIndex);
+        }
     }
 
     // Get all the calendars from the device and put them in a picker.
@@ -257,14 +253,14 @@ public partial class MainPage : ContentPage
             
             pckCalendars.ItemsSource = calendarList;
 
-            if (Globals.nSelectedCalendar > calendarList.Count)
+            if (nCalendarSelected > calendarList.Count)
             {
                 pckCalendars.SelectedIndex = 0;
-                Globals.nSelectedCalendar = 0;
+                nCalendarSelected = 0;
             }
             else
             {
-                pckCalendars.SelectedIndex = Globals.nSelectedCalendar;
+                pckCalendars.SelectedIndex = nCalendarSelected;
             }
         }
         catch (Exception ex) when (ex is ArgumentException)

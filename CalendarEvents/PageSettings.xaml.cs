@@ -382,21 +382,10 @@ public partial class PageSettings : ContentPage
     {
         int nSelectedIndex = pckCalendars.SelectedIndex;
 
-        if (nSelectedIndex == -1)
+        if (nSelectedIndex != -1)
         {
-            nSelectedIndex = 0;
+            Globals.nSelectedCalendar = nSelectedIndex;
         }
-
-        // All calendars.
-        if (nSelectedIndex == 0)
-        {
-            return;
-        }
-
-        Globals.nSelectedCalendar= nSelectedIndex;
-
-        // One calendar.
-        //cCalendarId = Globals.calendarDictionary.Keys.ElementAt(nSelectedIndex);
     }
 
     // Button save settings clicked event.
