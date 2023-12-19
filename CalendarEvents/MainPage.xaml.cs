@@ -1,8 +1,8 @@
 ﻿// Program .....: CalendarEvents.sln
 // Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
 // Copyright ...: (C) 2023-2023
-// Version .....: 1.0.8
-// Date ........: 2023-12-17 (YYYY-MM-DD)
+// Version .....: 1.0.9
+// Date ........: 2023-12-19 (YYYY-MM-DD)
 // Language ....: Microsoft Visual Studio 2022: .NET 8.0 MAUI C# 12.0
 // Description .: Read calendar events to share
 // Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 2.0.0-preview1; https://github.com/jfversluis/Plugin.Maui.CalendarStore
@@ -134,7 +134,7 @@ public partial class MainPage : ContentPage
         //DisplayAlert("cCultureName", $"*{cCultureName}*", "OK");  // For testing.
 
         InitializeTextToSpeech(cCultureName);
-
+        
         // Get all the calendars from the device and put them in the picker.
         GetCalendars();
     }
@@ -218,6 +218,7 @@ public partial class MainPage : ContentPage
                 btnGetEvents.IsEnabled = false;
 
                 await DisplayAlert("", CalEventLang.MessageNoCalendars_Text, CalEventLang.ButtonClose_Text);
+                Globals.calendarDictionary.Add(cDicKeyAllCalendars, CalEventLang.AllCalendars_Text);
                 return;
             }
 
@@ -253,10 +254,11 @@ public partial class MainPage : ContentPage
             
             pckCalendars.ItemsSource = calendarList;
 
-            if (nCalendarSelected > calendarList.Count)
+            if (nCalendarSelected > calendarList.Count || Globals.nSelectedCalendar > calendarList.Count)
             {
                 pckCalendars.SelectedIndex = 0;
                 nCalendarSelected = 0;
+                Globals.nSelectedCalendar = 0;
             }
             else
             {
@@ -528,8 +530,16 @@ public partial class MainPage : ContentPage
         lblTextToSpeech.Text = GetIsoLanguageCode();
 
         // Set the selected calendar in the picker.
-        pckCalendars.SelectedIndex = Globals.nSelectedCalendar;
-
+        try
+        {
+            pckCalendars.SelectedIndex = Globals.nSelectedCalendar;
+        }
+        catch (Exception)
+        {
+            Globals.nSelectedCalendar = 0;
+            pckCalendars.SelectedIndex = 0;
+        }
+        
         // Set focus to the first entry field.
         entSearchWord.Focus();
 
