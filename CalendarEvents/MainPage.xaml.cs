@@ -168,7 +168,7 @@ public partial class MainPage : ContentPage
         CancelTextToSpeech();
 
         lblCalendarEvents.Text = "";
-        
+
         int nSelectedIndex = pckCalendars.SelectedIndex;
         
         // All calendars.
@@ -254,7 +254,7 @@ public partial class MainPage : ContentPage
             
             pckCalendars.ItemsSource = calendarList;
 
-            if (nCalendarSelected > calendarList.Count || Globals.nSelectedCalendar > calendarList.Count)
+            if (nCalendarSelected > calendarList.Count - 1 || Globals.nSelectedCalendar > calendarList.Count - 1)
             {
                 pckCalendars.SelectedIndex = 0;
                 nCalendarSelected = 0;
@@ -539,7 +539,7 @@ public partial class MainPage : ContentPage
             Globals.nSelectedCalendar = 0;
             pckCalendars.SelectedIndex = 0;
         }
-        
+
         // Set focus to the first entry field.
         entSearchWord.Focus();
 
