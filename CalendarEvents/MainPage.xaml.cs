@@ -5,7 +5,7 @@
 // Date ........: 2023-12-28 (YYYY-MM-DD)
 // Language ....: Microsoft Visual Studio 2022: .NET 8.0 MAUI C# 12.0
 // Description .: Read calendar events to share
-// Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 2.0.0-preview1; https://github.com/jfversluis/Plugin.Maui.CalendarStore
+// Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 2.0.0; https://github.com/jfversluis/Plugin.Maui.CalendarStore
 //                NuGet Package: Microsoft.AppCenter version 5.0.3 ; https://appcenter.ms/apps ; https://azure.microsoft.com/en-us/products/app-center/
 //                NuGet Package: Microsoft.AppCenter.Crashes version 5.0.3 
 // Thanks to ...: Gerald Versluis
