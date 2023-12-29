@@ -78,26 +78,22 @@
                     <VerticalStackLayout>
                         <Label
                             x:Name="lblPrivacyPolicy"
-                            Style="{StaticResource labelStyleInfo}"
-                            FontSize="13">
+                            Style="{StaticResource labelStyleInfo}">
                         </Label>
 
                         <Label
                             x:Name="lblCrashErrorReport"
-                            Style="{StaticResource labelStyleInfo}"
-                            FontSize="13">
+                            Style="{StaticResource labelStyleInfo}">
                         </Label>
 
                         <Label
                             x:Name="lblLicense"
-                            Style="{StaticResource labelStyleInfo}"
-                            FontSize="13">
+                            Style="{StaticResource labelStyleInfo}">
                         </Label>
 
                         <Label
                             x:Name="lblExplanation"
-                            Style="{StaticResource labelStyleInfo}"
-                            FontSize="13">
+                            Style="{StaticResource labelStyleInfo}">
                         </Label>
                     </VerticalStackLayout>
                 </VerticalStackLayout>
