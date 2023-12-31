@@ -28,7 +28,13 @@
     </Style>
 
     <Style TargetType="Border">
+        <Setter Property="StrokeThickness" Value="1" />
         <Setter Property="Stroke" Value="{AppThemeBinding Light={StaticResource MidGray}, Dark={StaticResource MidGray}}" />
+        <Setter Property="StrokeShape">
+            <Setter.Value>
+                <RoundRectangle CornerRadius="5" />
+            </Setter.Value>
+        </Setter>
     </Style>
 
     <Style TargetType="Label">
@@ -60,6 +66,7 @@
         <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource LightGray}, Dark={StaticResource DarkGray}}" />
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource DarkGray}, Dark={StaticResource LightGray}}" />
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" />
+        <Setter Property="CornerRadius" Value="5" />
         <Setter Property="BorderWidth" Value="1" />
         <Setter Property="FontFamily" Value="OpenSansRegular"/>
         <Setter Property="FontSize" Value="16"/>
@@ -87,22 +94,18 @@
         <Setter Property="BackgroundColor" Value="Transparent"/>
         <Setter Property="BorderColor" Value="Transparent"/>
         <Setter Property="BorderWidth" Value="0"/>
-        <Setter Property="CornerRadius" Value="0"/>
-        <Setter Property="MinimumHeightRequest" Value="32"/>
-        <Setter Property="MinimumWidthRequest" Value="32"/>
+        <Setter Property="CornerRadius" Value="5"/>
         <Setter Property="VisualStateManager.VisualStateGroups">
             <VisualStateGroupList>
                 <VisualStateGroup x:Name="CommonStates">
                     <VisualState x:Name="Normal">
                         <VisualState.Setters>
-                            <Setter Property="Scale"
-                                        Value="1" />
+                            <Setter Property="Scale" Value="1" />
                         </VisualState.Setters>
                     </VisualState>
                     <VisualState x:Name="Pressed">
                         <VisualState.Setters>
-                            <Setter Property="Scale"
-                                        Value="0.8" />
+                            <Setter Property="Scale" Value="0.8" />
                         </VisualState.Setters>
                     </VisualState>
                 </VisualStateGroup>
@@ -274,14 +277,10 @@
         <Setter Property="HorizontalOptions" Value="Fill" />
         <Setter Property="VerticalOptions" Value="Center" />
         <Setter Property="BackgroundColor" Value="Transparent" />
-        <Setter Property="StrokeShape" Value="RoundRectangle 5" />
-        <Setter Property="StrokeThickness" Value="1" />
     </Style>
 
     <Style x:Key="borderStyleGroup" TargetType="Border">
         <Setter Property="BackgroundColor" Value="Transparent" />
-        <Setter Property="StrokeShape" Value="RoundRectangle 5" />
-        <Setter Property="StrokeThickness" Value="1" />
     </Style>
 
     <Style x:Key="labelStyleDefault" TargetType="Label">
@@ -311,7 +310,7 @@
     <Style x:Key="labelStyleExplanation" TargetType="Label">
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource DarkGray}, Dark={StaticResource LightGray}}" />
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" />
-        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="HorizontalOptions" Value="Fill" />
         <Setter Property="VerticalOptions" Value="Center" />
         <Setter Property="HorizontalTextAlignment" Value="Start" />
         <Setter Property="Padding" Value="5" />
