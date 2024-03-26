@@ -2,13 +2,13 @@
 // Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
 // Copyright ...: (C) 2023-2024
 // Version .....: 1.0.9
-// Date ........: 2024-03-23 (YYYY-MM-DD)
+// Date ........: 2024-03-26 (YYYY-MM-DD)
 // Language ....: Microsoft Visual Studio 2022: .NET 8.0 MAUI C# 12.0
 // Description .: Read calendar events to share
 // Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 2.0.0; https://github.com/jfversluis/Plugin.Maui.CalendarStore
 //                NuGet Package: Microsoft.AppCenter version 5.0.3 ; https://appcenter.ms/apps ; https://azure.microsoft.com/en-us/products/app-center/
 //                NuGet Package: Microsoft.AppCenter.Crashes version 5.0.3 
-// Thanks to ...: Gerald Versluis
+// Thanks to ...: Gerald Versluis for his video's on YouTube about .NET MAUI
 
 using Plugin.Maui.CalendarStore;
 
