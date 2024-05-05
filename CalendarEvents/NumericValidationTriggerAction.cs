@@ -1,6 +1,6 @@
 ﻿namespace CalendarEvents
 {
-    public class NumericValidationTriggerAction : TriggerAction<Entry>
+    public sealed class NumericValidationTriggerAction : TriggerAction<Entry>
     {
         public decimal MinValue { get; set; }
         public decimal MaxValue { get; set; }

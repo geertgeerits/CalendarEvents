@@ -3,53 +3,54 @@ global using CalendarEvents.Resources.Languages;
 global using System.Globalization;
 global using Microsoft.AppCenter.Crashes;
 
-namespace CalendarEvents;
-
-// Global variables and methods.
-static class Globals
+namespace CalendarEvents
 {
-    // Global variables.
-    public static string cTheme;
-    public static string cDateFormatSelect;
-    public static string cDateFormatDatePicker;
-    public static string cDateFormat;
-    public static string cTimeFormat;   
-    public static string cAddDaysToStart;
-    public static string cAddDaysToEnd;
-    public static int nSelectedCalendar;
-    public static string cLanguage;
-    public static bool bLanguageChanged = false;
-    public static string cLanguageSpeech;
-    public static string[] cLanguageLocales;
-    public static bool bLanguageLocalesExist = false;
-    public static bool bTextToSpeechIsBusy = false;
-    public static CancellationTokenSource cts;
-    public static Dictionary<string, string> calendarDictionary = [];
-    public static bool bLicense;
-
-    // Global methods.
-    // Set the theme.
-    public static void SetTheme()
+    // Global variables and methods.
+    internal static class Globals
     {
-        Application.Current.UserAppTheme = cTheme switch
-        {
-            "Light" => AppTheme.Light,
-            "Dark" => AppTheme.Dark,
-            _ => AppTheme.Unspecified,
-        };
-    }
+        // Global variables.
+        public static string cTheme;
+        public static string cDateFormatSelect;
+        public static string cDateFormatDatePicker;
+        public static string cDateFormat;
+        public static string cTimeFormat;   
+        public static string cAddDaysToStart;
+        public static string cAddDaysToEnd;
+        public static int nSelectedCalendar;
+        public static string cLanguage;
+        public static bool bLanguageChanged = false;
+        public static string cLanguageSpeech;
+        public static string[] cLanguageLocales;
+        public static bool bLanguageLocalesExist = false;
+        public static bool bTextToSpeechIsBusy = false;
+        public static CancellationTokenSource cts;
+        public static Dictionary<string, string> calendarDictionary = [];
+        public static bool bLicense;
 
-    // Set the current UI culture of the selected language.
-    public static void SetCultureSelectedLanguage()
-    {
-        try
+        // Global methods.
+        // Set the theme.
+        public static void SetTheme()
         {
-            CultureInfo switchToCulture = new(cLanguage);
-            LocalizationResourceManager.Instance.SetCulture(switchToCulture);
+            Application.Current.UserAppTheme = cTheme switch
+            {
+                "Light" => AppTheme.Light,
+                "Dark" => AppTheme.Dark,
+                _ => AppTheme.Unspecified,
+            };
         }
-        catch
+
+        // Set the current UI culture of the selected language.
+        public static void SetCultureSelectedLanguage()
         {
-            // Do nothing.
+            try
+            {
+                CultureInfo switchToCulture = new(cLanguage);
+                LocalizationResourceManager.Instance.SetCulture(switchToCulture);
+            }
+            catch
+            {
+                // Do nothing.
+            }
         }
     }
 }

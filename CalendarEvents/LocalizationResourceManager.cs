@@ -2,7 +2,8 @@
 
 namespace CalendarEvents
 {
-    public class LocalizationResourceManager : INotifyPropertyChanged {
+    public sealed class LocalizationResourceManager : INotifyPropertyChanged
+    {
         private LocalizationResourceManager()
         {
             CalEventLang.Culture = CultureInfo.CurrentCulture;

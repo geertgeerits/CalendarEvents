@@ -1,6 +1,6 @@
 ﻿namespace CalendarEvents
 {
-    public partial class AppShell : Shell
+    public sealed partial class AppShell : Shell
     {
         public AppShell()
         {
