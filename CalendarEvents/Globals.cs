@@ -1,7 +1,7 @@
 ﻿// Global usings.
 global using CalendarEvents.Resources.Languages;
 global using System.Globalization;
-global using Microsoft.AppCenter.Crashes;
+//global using Microsoft.AppCenter.Crashes;
 
 namespace CalendarEvents
 {

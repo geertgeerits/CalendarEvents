@@ -15,7 +15,7 @@ namespace CalendarEvents
             }
             catch (Exception ex)
             {
-                Crashes.TrackError(ex);
+                //Crashes.TrackError(ex);
 #if DEBUG
                 DisplayAlert("InitializeComponent PageSettings", ex.Message, "OK");
 #endif

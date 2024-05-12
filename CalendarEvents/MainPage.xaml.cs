@@ -2,12 +2,12 @@
 // Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
 // Copyright ...: (C) 2023-2024
 // Version .....: 1.0.9
-// Date ........: 2024-05-05 (YYYY-MM-DD)
+// Date ........: 2024-05-12 (YYYY-MM-DD)
 // Language ....: Microsoft Visual Studio 2022: .NET 8.0 MAUI C# 12.0
 // Description .: Read calendar events to share
 // Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 2.0.0; https://github.com/jfversluis/Plugin.Maui.CalendarStore
 //                NuGet Package: Microsoft.AppCenter version 5.0.3 ; https://appcenter.ms/apps ; https://azure.microsoft.com/en-us/products/app-center/
-//                NuGet Package: Microsoft.AppCenter.Crashes version 5.0.3 
+//                (NuGet Package: Microsoft.AppCenter.Crashes version 5.0.3)
 // Thanks to ...: Gerald Versluis for his video's on YouTube about .NET MAUI
 
 using Plugin.Maui.CalendarStore;
@@ -34,7 +34,7 @@ namespace CalendarEvents
             }
             catch (Exception ex)
             {
-                Crashes.TrackError(ex);
+                //Crashes.TrackError(ex);
 #if DEBUG
                 DisplayAlert("InitializeComponent MainPage", ex.Message, "OK");
 #endif
@@ -53,15 +53,15 @@ namespace CalendarEvents
             bLogAlwaysSend = Preferences.Default.Get("SettingLogAlwaysSend", false);
 
             // Crash log confirmation.
-            if (!bLogAlwaysSend)
-            {
-                Crashes.ShouldAwaitUserConfirmation = () =>
-                {
-                    // Return true if you built a UI for user consent and are waiting for user input on that custom UI, otherwise false.
-                    ConfirmationSendCrashLog();
-                    return true;
-                };
-            }
+            //if (!bLogAlwaysSend)
+            //{
+            //    Crashes.ShouldAwaitUserConfirmation = () =>
+            //    {
+            //        // Return true if you built a UI for user consent and are waiting for user input on that custom UI, otherwise false.
+            //        ConfirmationSendCrashLog();
+            //        return true;
+            //    };
+            //}
 
             // The height of the title bar is lower when an iPhone is in horizontal position.
             if (DeviceInfo.Platform == DevicePlatform.iOS && DeviceInfo.Idiom == DeviceIdiom.Phone)
@@ -284,14 +284,14 @@ namespace CalendarEvents
             }
             catch (Exception ex)
             {
-                var properties = new Dictionary<string, string>
-                {
-                    { "File:", "MainPage.xaml.cs" },
-                    { "Method:", "LoadCalendars" },
-                    { "CalendarStore:", "GetCalendars" },
-                    { "AppLanguage:", Globals.cLanguage }
-                };
-                Crashes.TrackError(ex, properties);
+                //var properties = new Dictionary<string, string>
+                //{
+                //    { "File:", "MainPage.xaml.cs" },
+                //    { "Method:", "LoadCalendars" },
+                //    { "CalendarStore:", "GetCalendars" },
+                //    { "AppLanguage:", Globals.cLanguage }
+                //};
+                //Crashes.TrackError(ex, properties);
 
                 _ = DisplayAlert(CalEventLang.ErrorTitle_Text, ex.Message, CalEventLang.ButtonClose_Text);
             }
@@ -396,13 +396,13 @@ namespace CalendarEvents
             }
             catch (Exception ex)
             {
-                var properties = new Dictionary<string, string> {
-                    { "File:", "MainPage.xaml.cs" },
-                    { "Method:", "LoadEvents" },
-                    { "CalendarStore:", "GetEvents" },
-                    { "AppLanguage:", Globals.cLanguage }
-                };
-                Crashes.TrackError(ex, properties);
+                //var properties = new Dictionary<string, string> {
+                //    { "File:", "MainPage.xaml.cs" },
+                //    { "Method:", "LoadEvents" },
+                //    { "CalendarStore:", "GetEvents" },
+                //    { "AppLanguage:", Globals.cLanguage }
+                //};
+                //Crashes.TrackError(ex, properties);
             
                 await DisplayAlert(CalEventLang.ErrorTitle_Text, $"{CalEventLang.ErrorCalendar_Text}\n\n{ex.Message}", CalEventLang.ButtonClose_Text);
             }
@@ -660,7 +660,7 @@ namespace CalendarEvents
             }
             catch (Exception ex)
             {
-                Crashes.TrackError(ex);
+                //Crashes.TrackError(ex);
 #if DEBUG
                 DisplayAlert(CalEventLang.ErrorTitle_Text, ex.Message, CalEventLang.ButtonClose_Text);
 #endif
@@ -697,7 +697,7 @@ namespace CalendarEvents
                 }
                 catch (Exception ex)
                 {
-                    Crashes.TrackError(ex);
+                    //Crashes.TrackError(ex);
 #if DEBUG
                     await DisplayAlert(CalEventLang.ErrorTitle_Text, ex.Message, CalEventLang.ButtonClose_Text);
 #endif
@@ -738,36 +738,36 @@ namespace CalendarEvents
         }
 
         // Crash log confirmation.
-        private async void ConfirmationSendCrashLog()
-        {
-            // Using the DisplayActionSheet with 3 choices.
-            string cAction = await DisplayActionSheet(CalEventLang.LogTitle2_Text, null, null, CalEventLang.LogSend_Text, CalEventLang.LogAlwaysSend_Text, CalEventLang.LogDontSend_Text);
+        //private async void ConfirmationSendCrashLog()
+        //{
+        //    // Using the DisplayActionSheet with 3 choices.
+        //    string cAction = await DisplayActionSheet(CalEventLang.LogTitle2_Text, null, null, CalEventLang.LogSend_Text, CalEventLang.LogAlwaysSend_Text, CalEventLang.LogDontSend_Text);
 
-            if (cAction == CalEventLang.LogSend_Text)
-            {
-                Crashes.NotifyUserConfirmation(UserConfirmation.Send);
-            }
-            else if (cAction == CalEventLang.LogAlwaysSend_Text)
-            {
-                Crashes.NotifyUserConfirmation(UserConfirmation.AlwaysSend);
-                Preferences.Default.Set("SettingLogAlwaysSend", true);
-            }
-            else if (cAction == CalEventLang.LogDontSend_Text)
-            {
-                Crashes.NotifyUserConfirmation(UserConfirmation.DontSend);
-            }
+        //    if (cAction == CalEventLang.LogSend_Text)
+        //    {
+        //        Crashes.NotifyUserConfirmation(UserConfirmation.Send);
+        //    }
+        //    else if (cAction == CalEventLang.LogAlwaysSend_Text)
+        //    {
+        //        Crashes.NotifyUserConfirmation(UserConfirmation.AlwaysSend);
+        //        Preferences.Default.Set("SettingLogAlwaysSend", true);
+        //    }
+        //    else if (cAction == CalEventLang.LogDontSend_Text)
+        //    {
+        //        Crashes.NotifyUserConfirmation(UserConfirmation.DontSend);
+        //    }
 
-            // Using the DisplayAlert with 2 choices.
-            //bool bAction = await DisplayAlert(CodeLang.LogTitle_Text, CodeLang.LogMessage_Text, CodeLang.LogSend_Text, CodeLang.LogDontSend_Text);
+        //    // Using the DisplayAlert with 2 choices.
+        //    //bool bAction = await DisplayAlert(CodeLang.LogTitle_Text, CodeLang.LogMessage_Text, CodeLang.LogSend_Text, CodeLang.LogDontSend_Text);
 
-            //if (bAction)
-            //{
-            //    Crashes.NotifyUserConfirmation(UserConfirmation.Send);
-            //}
-            //else
-            //{
-            //    Crashes.NotifyUserConfirmation(UserConfirmation.DontSend);
-            //}
-        }
+        //    //if (bAction)
+        //    //{
+        //    //    Crashes.NotifyUserConfirmation(UserConfirmation.Send);
+        //    //}
+        //    //else
+        //    //{
+        //    //    Crashes.NotifyUserConfirmation(UserConfirmation.DontSend);
+        //    //}
+        //}
     }
 }
