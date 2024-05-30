@@ -17,7 +17,7 @@ namespace CalendarEvents
                 return;
             }
 
-            // Put text in the chosen language in the controls.
+            //// Put text in the chosen language in the controls
             lblVersion.Text = $"{CalEventLang.Version_Text} 1.0.9";
             lblCopyright.Text = $"{CalEventLang.Copyright_Text} © 2023-2024 Geert Geerits";
             lblEmail.Text = $"{CalEventLang.Email_Text} geertgeerits@gmail.com";
@@ -28,7 +28,11 @@ namespace CalendarEvents
             lblExplanation.Text = $"\n{CalEventLang.InfoExplanation_Text}";
         }
 
-        // Open the e-mail program.
+        /// <summary>
+        /// Open the e-mail program 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void OnBtnEmailLinkClicked(object sender, EventArgs e)
         {
             if (Email.Default.IsComposeSupported)
@@ -56,7 +60,11 @@ namespace CalendarEvents
             }
         }
 
-        // Open the website link in the default browser
+        /// <summary>
+        /// Open the website link in the default browser 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void OnBtnWebsiteLinkClicked(object sender, EventArgs e)
         {
             try

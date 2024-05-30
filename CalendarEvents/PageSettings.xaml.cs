@@ -4,7 +4,7 @@ namespace CalendarEvents
 {
     public sealed partial class PageSettings : ContentPage
     {
-        // Local variables.
+        //// Local variables
         private readonly Stopwatch stopWatch = new();
 
         public PageSettings()
@@ -22,75 +22,41 @@ namespace CalendarEvents
                 return;
             }
 
-            // Put text in the chosen language in the controls and variables.
+            //// Put text in the chosen language in the controls and variables
             SetLanguage();
         
-            // Set the current language in the picker.
+            //// Set the current language in the picker
             pckLanguage.SelectedIndex = Globals.cLanguage switch
             {
-                // Čeština - Czech.
-                "cs" => 0,
-
-                // Dansk - Danish.
-                "da" => 1,
-
-                // Deutsch - German.
-                "de" => 2,
-
-                // Español - Spanish.
-                "es" => 4,
-
-                // Français - French.
-                "fr" => 5,
-
-                // Italiano - Italian.
-                "it" => 6,
-
-                // Magyar - Hungarian.
-                "hu" => 7,
-
-                // Nederlands - Dutch.
-                "nl" => 8,
-
-                // Norsk Bokmål - Norwegian Bokmål.
-                "nb" => 9,
-
-                // Polski - Polish.
-                "pl" => 10,
-
-                // Português - Portuguese.
-                "pt" => 11,
-
-                // Română - Romanian.
-                "ro" => 12,
-
-                // Suomi - Finnish.
-                "fi" => 13,
-
-                // Svenska - Swedish.
-                "sv" => 14,
-
-                // English.
-                _ => 3,
+                "cs" => 0,      // Čeština - Czech
+                "da" => 1,      // Dansk - Danish
+                "de" => 2,      // Deutsch - German
+                "es" => 4,      // Español - Spanish
+                "fr" => 5,      // Français - French
+                "it" => 6,      // Italiano - Italian
+                "hu" => 7,      // Magyar - Hungarian
+                "nl" => 8,      // Nederlands - Dutch
+                "nb" => 9,      // Norsk Bokmål - Norwegian Bokmål
+                "pl" => 10,     // Polski - Polish
+                "pt" => 11,     // Português - Portuguese
+                "ro" => 12,     // Română - Romanian
+                "fi" => 13,     // Suomi - Finnish
+                "sv" => 14,     // Svenska - Swedish
+                _ => 3,         // English
             };
 
-            // Fill the picker with the speech languages and set the saved language in the picker.
+            //// Fill the picker with the speech languages and set the saved language in the picker
             FillPickerWithSpeechLanguages();
 
-            // Set the current theme in the picker.
+            //// Set the current theme in the picker
             pckTheme.SelectedIndex = Globals.cTheme switch
             {
-                // Light.
-                "Light" => 1,
-
-                // Dark.
-                "Dark" => 2,
-
-                // System.
-                _ => 0,
+                "Light" => 1,       // Light
+                "Dark" => 2,        // Dark
+                _ => 0,             // System
             };
 
-            // Set radiobutton to the date format.
+            //// Set radiobutton to the date format
             switch (Globals.cDateFormatSelect)
             {
                 case "SystemShort":
@@ -104,11 +70,11 @@ namespace CalendarEvents
                     break;
             }
 
-            // Set the days in the past and in the future.
+            //// Set the days in the past and in the future
             entAddDaysToStart.Text = Globals.cAddDaysToStart;
             entAddDaysToEnd.Text = Globals.cAddDaysToEnd;
 
-            // Put the calendars from the calendarDictionary via the calendarList in the picker.
+            //// Put the calendars from the calendarDictionary via the calendarList in the picker
             List<string> calendarList = [.. Globals.calendarDictionary.Values];
 
             pckCalendars.ItemsSource = calendarList;
@@ -123,11 +89,15 @@ namespace CalendarEvents
                 pckCalendars.SelectedIndex = Globals.nSelectedCalendar;
             }
 
-            // Start the stopWatch for resetting all the settings.
+            //// Start the stopWatch for resetting all the settings
             stopWatch.Start();
         }
 
-        // Picker language clicked event.
+        /// <summary>
+        /// Picker language clicked event 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnPickerLanguageChanged(object sender, EventArgs e)
         {
             string cLanguageOld = Globals.cLanguage;
@@ -139,50 +109,21 @@ namespace CalendarEvents
             {
                 Globals.cLanguage = selectedIndex switch
                 {
-                    // Čeština - Czech.
-                    0 => "cs",
-
-                    // Dansk - Danish.
-                    1 => "da",
-
-                    // Deutsch - German.
-                    2 => "de",
-
-                    // Español - Spanish.
-                    4 => "es",
-
-                    // Français - French.
-                    5 => "fr",
-
-                    // Italiano - Italian.
-                    6 => "it",
-
-                    // Magyar - Hungarian.
-                    7 => "hu",
-
-                    // Nederlands - Dutch.
-                    8 => "nl",
-
-                    // Norsk Bokmål - Norwegian Bokmål.
-                    9 => "nb",
-
-                    // Polski - Polish.
-                    10 => "pl",
-
-                    // Português - Portuguese.
-                    11 => "pt",
-
-                    // Română - Romanian.
-                    12 => "ro",
-
-                    // Suomi - Finnish.
-                    13 => "fi",
-
-                    // Svenska - Swedish.
-                    14 => "sv",
-
-                    // English.
-                    _ => "en",
+                    0 => "cs",      // Čeština - Czech
+                    1 => "da",      // Dansk - Danish
+                    2 => "de",      // Deutsch - German
+                    4 => "es",      // Español - Spanish
+                    5 => "fr",      // Français - French
+                    6 => "it",      // Italiano - Italian
+                    7 => "hu",      // Magyar - Hungarian
+                    8 => "nl",      // Nederlands - Dutch
+                    9 => "nb",      // Norsk Bokmål - Norwegian Bokmål
+                    10 => "pl",     // Polski - Polish
+                    11 => "pt",     // Português - Portuguese
+                    12 => "ro",     // Română - Romanian
+                    13 => "fi",     // Suomi - Finnish
+                    14 => "sv",     // Svenska - Swedish
+                    _ => "en",      // English
                 };
             }
 
@@ -190,13 +131,13 @@ namespace CalendarEvents
             {
                 Globals.bLanguageChanged = true;
 
-                // Set the current UI culture of the selected language.
+                // Set the current UI culture of the selected language
                 Globals.SetCultureSelectedLanguage();
 
-                // Put text in the chosen language in the controls and variables.
+                // Put text in the chosen language in the controls and variables
                 SetLanguage();
 
-                // Search the new language in the cLanguageLocales array and select the new speech language.
+                // Search the new language in the cLanguageLocales array and select the new speech language
                 int nTotalItems = Globals.cLanguageLocales.Length;
 
                 for (int nItem = 0; nItem < nTotalItems; nItem++)
@@ -210,11 +151,13 @@ namespace CalendarEvents
             }
         }
 
-        // Fill the picker with the speech languages from the array.
-        // .Country = KR ; .Id = ''  ; .Language = ko ; .Name = Korean (South Korea) ; 
+        /// <summary>
+        /// Fill the picker with the speech languages from the array 
+        /// .Country = KR ; .Id = ''  ; .Language = ko ; .Name = Korean (South Korea) ; 
+        /// </summary>
         private void FillPickerWithSpeechLanguages()
         {
-            // If there are no locales then return.
+            // If there are no locales then return
             bool bIsSetSelectedIndex = false;
 
             if (!Globals.bLanguageLocalesExist)
@@ -223,7 +166,7 @@ namespace CalendarEvents
                 return;
             }
 
-            // Put the sorted locales from the array in the picker and select the saved language.
+            // Put the sorted locales from the array in the picker and select the saved language
             int nTotalItems = Globals.cLanguageLocales.Length;
 
             for (int nItem = 0; nItem < nTotalItems; nItem++)
@@ -237,14 +180,18 @@ namespace CalendarEvents
                 }
             }
 
-            // If the language is not found set the picker to the first item.
+            // If the language is not found set the picker to the first item
             if (!bIsSetSelectedIndex)
             {
                 pckLanguageSpeech.SelectedIndex = 0;
             }
         }
 
-        // Picker speech language clicked event.
+        /// <summary>
+        /// Picker speech language clicked event 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnPickerLanguageSpeechChanged(object sender, EventArgs e)
         {
             var picker = (Picker)sender;
@@ -256,7 +203,11 @@ namespace CalendarEvents
             }
         }
 
-        // Picker theme clicked event.
+        /// <summary>
+        /// Picker theme clicked event 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnPickerThemeChanged(object sender, EventArgs e)
         {
             var picker = (Picker)sender;
@@ -266,22 +217,21 @@ namespace CalendarEvents
             {
                 Globals.cTheme = selectedIndex switch
                 {
-                    // Light.
-                    1 => "Light",
-
-                    // Dark.
-                    2 => "Dark",
-
-                    // System.
-                    _ => "System",
+                    1 => "Light",       // Light
+                    2 => "Dark",        // Dark
+                    _ => "System",      // System
                 };
 
-                // Set the theme.
+                // Set the theme
                 Globals.SetTheme();
             }
         }
 
-        // Select all the text in the entry field.
+        /// <summary>
+        /// Select all the text in the entry field 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void EntryFocused(object sender, EventArgs e)
         {
             var entry = (Entry)sender;
@@ -291,7 +241,9 @@ namespace CalendarEvents
             entry.SelectionLength = entry.Text.Length;
         }
 
-        // Put text in the chosen language in the controls and variables.
+        /// <summary>
+        /// Put text in the chosen language in the controls and variables 
+        /// </summary>
         private void SetLanguage()
         {
             var ThemeList = new List<string>
@@ -302,21 +254,20 @@ namespace CalendarEvents
             };
             pckTheme.ItemsSource = ThemeList;
 
-            // Set the current theme in the picker.
+            // Set the current theme in the picker
             pckTheme.SelectedIndex = Globals.cTheme switch
             {
-                // Light.
-                "Light" => 1,
-
-                // Dark.
-                "Dark" => 2,
-
-                // System.
-                _ => 0,
+                "Light" => 1,       // Light
+                "Dark" => 2,        // Dark
+                _ => 0,             // System
             };
         }
 
-        // Radio button date format clicked event.
+        /// <summary>
+        /// Radio button date format clicked event 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnDateFormatRadioButtonCheckedChanged(object sender, EventArgs e)
         {       
             if (rbnDateFormatSystemShort.IsChecked)
@@ -342,10 +293,14 @@ namespace CalendarEvents
             }
         }
 
-        // Verify the number of days in the past.
+        /// <summary>
+        /// Verify the number of days in the past 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void VerifyAddDaysToStart(object sender, EventArgs e)
         {
-            // Validate input values.
+            // Validate input values
             bool bIsNumber = int.TryParse(entAddDaysToStart.Text, out int nAddDaysToStart);
             if (bIsNumber == false || nAddDaysToStart < -500 || nAddDaysToStart > 500)
             {
@@ -359,7 +314,11 @@ namespace CalendarEvents
             entAddDaysToEnd.Focus();
         }
 
-        // Verify the number of days in the future.
+        /// <summary>
+        /// Verify the number of days in the future 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void VerifyAddDaysToEnd(object sender, EventArgs e)
         {
             bool bIsNumber = int.TryParse(entAddDaysToEnd.Text, out int nAddDaysToEnd);
@@ -372,12 +331,16 @@ namespace CalendarEvents
 
             Globals.cAddDaysToEnd = Convert.ToString(nAddDaysToEnd);
 
-            // Close the keyboard.
+            // Close the keyboard
             entAddDaysToEnd.IsEnabled = false;
             entAddDaysToEnd.IsEnabled = true;
         }
 
-        // Event calendar picker changed.
+        /// <summary>
+        /// Event calendar picker changed 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnPickerCalendarChanged(object sender, EventArgs e)
         {
             int nSelectedIndex = pckCalendars.SelectedIndex;
@@ -388,7 +351,11 @@ namespace CalendarEvents
             }
         }
 
-        // Button save settings clicked event.
+        /// <summary>
+        /// Button save settings clicked event 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private static void OnSettingsSaveClicked(object sender, EventArgs e)
         {
             Preferences.Default.Set("SettingTheme", Globals.cTheme);
@@ -399,28 +366,32 @@ namespace CalendarEvents
             Preferences.Default.Set("SettingLanguage", Globals.cLanguage);
             Preferences.Default.Set("SettingLanguageSpeech", Globals.cLanguageSpeech);
 
-            // Give it some time to save the settings.
+            // Give it some time to save the settings
             Task.Delay(400).Wait();
 
-            // Restart the application.
+            // Restart the application
             //Application.Current.MainPage = new AppShell();
             Application.Current.MainPage = new NavigationPage(new MainPage());
         }
 
-        // Button reset settings clicked event.
+        /// <summary>
+        /// Button reset settings clicked event 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnSettingsResetClicked(object sender, EventArgs e)
         {
-            // Get the elapsed time in milli seconds.
+            // Get the elapsed time in milli seconds
             stopWatch.Stop();
 
             if (stopWatch.ElapsedMilliseconds < 2001)
             {
-                // Clear all settings after the first clicked event within the first 2 seconds after opening the setting page.
+                // Clear all settings after the first clicked event within the first 2 seconds after opening the setting page
                 Preferences.Default.Clear();
             }
             else
             {
-                // Reset some settings.
+                // Reset some settings
                 Preferences.Default.Remove("SettingTheme");
                 Preferences.Default.Remove("SettingDateFormatSelect");
                 Preferences.Default.Remove("SettingAddDaysToStart");
@@ -430,10 +401,10 @@ namespace CalendarEvents
                 Preferences.Default.Remove("SettingLanguageSpeech");
             }
 
-            // Give it some time to remove the settings.
+            // Give it some time to remove the settings
             Task.Delay(400).Wait();
 
-            // Restart the application.
+            // Restart the application
             //Application.Current.MainPage = new AppShell();
             Application.Current.MainPage = new NavigationPage(new MainPage());
         }

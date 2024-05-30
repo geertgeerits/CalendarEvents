@@ -1,14 +1,14 @@
-﻿// Global usings.
+﻿//// Global usings
 global using CalendarEvents.Resources.Languages;
 global using System.Globalization;
 //global using Microsoft.AppCenter.Crashes;
 
 namespace CalendarEvents
 {
-    // Global variables and methods.
+    //// Global variables and methods
     internal static class Globals
     {
-        // Global variables.
+        //// Global variables
         public static string cTheme;
         public static string cDateFormatSelect;
         public static string cDateFormatDatePicker;
@@ -27,8 +27,11 @@ namespace CalendarEvents
         public static Dictionary<string, string> calendarDictionary = [];
         public static bool bLicense;
 
-        // Global methods.
-        // Set the theme.
+        //// Global methods
+
+        /// <summary>
+        /// Set the theme 
+        /// </summary>
         public static void SetTheme()
         {
             Application.Current.UserAppTheme = cTheme switch
@@ -39,7 +42,9 @@ namespace CalendarEvents
             };
         }
 
-        // Set the current UI culture of the selected language.
+        /// <summary>
+        /// Set the current UI culture of the selected language 
+        /// </summary>
         public static void SetCultureSelectedLanguage()
         {
             try
