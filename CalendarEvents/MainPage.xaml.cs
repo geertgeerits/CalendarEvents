@@ -2,7 +2,7 @@
  * Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
  * Copyright ...: (C) 2023-2024
  * Version .....: 1.0.9
- * Date ........: 2024-06-20 (YYYY-MM-DD)
+ * Date ........: 2024-07-11 (YYYY-MM-DD)
  * Language ....: Microsoft Visual Studio 2022: .NET 8.0 MAUI C# 12.0
  * Description .: Read calendar events to share
  * Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 2.0.0; https://github.com/jfversluis/Plugin.Maui.CalendarStore
@@ -17,14 +17,14 @@ namespace CalendarEvents
     public sealed partial class MainPage : ContentPage
     {
         //// Local variables
-        private string cCopyright;
-        private string cLicenseText;
-        private readonly bool bLogAlwaysSend;
-        private string cCalendarId;
+        private string cCopyright = "";
+        private string cLicenseText = "";
+        //private readonly bool bLogAlwaysSend;
+        private string cCalendarId = "";
         private int nCalendarSelected;
         private readonly string cDicKeyAllCalendars = "000-AllCalendars-gg51";
-        private IEnumerable<CalendarEvent> events;
-        private IEnumerable<Locale> locales;
+        private IEnumerable<CalendarEvent>? events;
+        private IEnumerable<Locale>? locales;
 
         public MainPage()
         {
@@ -50,7 +50,7 @@ namespace CalendarEvents
             Globals.cLanguage = Preferences.Default.Get("SettingLanguage", "");
             Globals.cLanguageSpeech = Preferences.Default.Get("SettingLanguageSpeech", "");
             Globals.bLicense = Preferences.Default.Get("SettingLicense", false);
-            bLogAlwaysSend = Preferences.Default.Get("SettingLogAlwaysSend", false);
+            //bLogAlwaysSend = Preferences.Default.Get("SettingLogAlwaysSend", false);
 
             // Crash log confirmation
             //if (!bLogAlwaysSend)
@@ -519,7 +519,7 @@ namespace CalendarEvents
             // Show license.
             if (Globals.bLicense == false)
             {
-                Globals.bLicense = await Application.Current.MainPage.DisplayAlert(CalEventLang.LicenseTitle_Text, $"Calendar Events\n{cCopyright}\n\n{cLicenseText}", CalEventLang.Agree_Text, CalEventLang.Disagree_Text);
+                Globals.bLicense = await Application.Current!.MainPage!.DisplayAlert(CalEventLang.LicenseTitle_Text, $"Calendar Events\n{cCopyright}\n\n{cLicenseText}", CalEventLang.Agree_Text, CalEventLang.Disagree_Text);
 
                 if (Globals.bLicense)
                 {
@@ -683,26 +683,29 @@ namespace CalendarEvents
         {
             try
             {
-                int nTotalItems = Globals.cLanguageLocales.Length;
-
-                for (int nItem = 0; nItem < nTotalItems; nItem++)
+                if (Globals.cLanguageLocales is not null)
                 {
-                    if (Globals.cLanguageLocales[nItem].StartsWith(cCultureName))
-                    {
-                        Globals.cLanguageSpeech = Globals.cLanguageLocales[nItem];
-                        break;
-                    }
-                }
+                    int nTotalItems = Globals.cLanguageLocales.Length;
 
-                // If the language is not found try it with the language (Globals.cLanguage) of the user setting for this app
-                if (string.IsNullOrEmpty(Globals.cLanguageSpeech))
-                {
                     for (int nItem = 0; nItem < nTotalItems; nItem++)
                     {
-                        if (Globals.cLanguageLocales[nItem].StartsWith(Globals.cLanguage))
+                        if (Globals.cLanguageLocales[nItem].StartsWith(cCultureName))
                         {
                             Globals.cLanguageSpeech = Globals.cLanguageLocales[nItem];
                             break;
+                        }
+                    }
+
+                    // If the language is not found try it with the language (Globals.cLanguage) of the user setting for this app
+                    if (string.IsNullOrEmpty(Globals.cLanguageSpeech))
+                    {
+                        for (int nItem = 0; nItem < nTotalItems; nItem++)
+                        {
+                            if (Globals.cLanguageLocales[nItem].StartsWith(Globals.cLanguage))
+                            {
+                                Globals.cLanguageSpeech = Globals.cLanguageLocales[nItem];
+                                break;
+                            }
                         }
                     }
                 }
@@ -710,7 +713,7 @@ namespace CalendarEvents
                 // If the language is still not found use the first language in the array
                 if (string.IsNullOrEmpty(Globals.cLanguageSpeech))
                 {
-                    Globals.cLanguageSpeech = Globals.cLanguageLocales[0];
+                    Globals.cLanguageSpeech = Globals.cLanguageLocales![0];
                 }
             }
             catch (Exception ex)
@@ -749,7 +752,7 @@ namespace CalendarEvents
 
                     SpeechOptions options = new()
                     {
-                        Locale = locales.Single(l => $"{l.Language}-{l.Country} {l.Name}" == Globals.cLanguageSpeech)
+                        Locale = locales?.Single(l => $"{l.Language}-{l.Country} {l.Name}" == Globals.cLanguageSpeech)
                     };
 
                     await TextToSpeech.Default.SpeakAsync(lblCalendarEvents.Text, options, cancelToken: Globals.cts.Token);

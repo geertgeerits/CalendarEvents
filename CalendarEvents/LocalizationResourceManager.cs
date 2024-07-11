@@ -14,7 +14,7 @@ namespace CalendarEvents
         public object this[string resourceKey]
             => CalEventLang.ResourceManager.GetObject(resourceKey, CalEventLang.Culture) ?? Array.Empty<byte>();
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         public void SetCulture(CultureInfo culture)
         {

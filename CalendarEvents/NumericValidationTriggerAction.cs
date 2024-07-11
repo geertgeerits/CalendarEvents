@@ -4,7 +4,7 @@
     {
         public decimal MinValue { get; set; }
         public decimal MaxValue { get; set; }
-        public string BorderName { get; set; }
+        public string? BorderName { get; set; }
 
         protected override void Invoke(Entry entry)
         {

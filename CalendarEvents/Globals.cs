@@ -9,21 +9,21 @@ namespace CalendarEvents
     internal static class Globals
     {
         //// Global variables
-        public static string cTheme;
-        public static string cDateFormatSelect;
-        public static string cDateFormatDatePicker;
-        public static string cDateFormat;
-        public static string cTimeFormat;   
-        public static string cAddDaysToStart;
-        public static string cAddDaysToEnd;
+        public static string cTheme = "";
+        public static string cDateFormatSelect = "";
+        public static string cDateFormatDatePicker = "";
+        public static string cDateFormat = "";
+        public static string cTimeFormat = "";   
+        public static string cAddDaysToStart = "";
+        public static string cAddDaysToEnd = "";
         public static int nSelectedCalendar;
-        public static string cLanguage;
-        public static bool bLanguageChanged = false;
-        public static string cLanguageSpeech;
-        public static string[] cLanguageLocales;
-        public static bool bLanguageLocalesExist = false;
-        public static bool bTextToSpeechIsBusy = false;
-        public static CancellationTokenSource cts;
+        public static string cLanguage = "";
+        public static bool bLanguageChanged;
+        public static string cLanguageSpeech = "";
+        public static string[]? cLanguageLocales;
+        public static bool bLanguageLocalesExist;
+        public static bool bTextToSpeechIsBusy;
+        public static CancellationTokenSource? cts;
         public static Dictionary<string, string> calendarDictionary = [];
         public static bool bLicense;
 
@@ -34,7 +34,7 @@ namespace CalendarEvents
         /// </summary>
         public static void SetTheme()
         {
-            Application.Current.UserAppTheme = cTheme switch
+            Application.Current!.UserAppTheme = cTheme switch
             {
                 "Light" => AppTheme.Light,
                 "Dark" => AppTheme.Dark,
