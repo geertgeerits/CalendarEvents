@@ -2,7 +2,7 @@
  * Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
  * Copyright ...: (C) 2023-2024
  * Version .....: 1.0.9
- * Date ........: 2024-07-11 (YYYY-MM-DD)
+ * Date ........: 2024-09-25 (YYYY-MM-DD)
  * Language ....: Microsoft Visual Studio 2022: .NET 8.0 MAUI C# 12.0
  * Description .: Read calendar events to share
  * Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 2.0.0; https://github.com/jfversluis/Plugin.Maui.CalendarStore
@@ -31,6 +31,9 @@ namespace CalendarEvents
             try
             {
                 InitializeComponent();
+
+                // Select all the text in the entry field - works for all pages in the app
+                Globals.ModifyEntrySelectAllText();
             }
             catch (Exception ex)
             {
@@ -150,20 +153,6 @@ namespace CalendarEvents
         {
             CancelTextToSpeech();
             await Navigation.PushAsync(new PageSettings());
-        }
-
-        /// <summary>
-        /// Select all the text in the entry field 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void EntryFocused(object sender, EventArgs e)
-        {
-            var entry = (Entry)sender;
-
-            entry.CursorPosition = entry.Text.Length;
-            entry.CursorPosition = 0;
-            entry.SelectionLength = entry.Text.Length;
         }
 
         /// <summary>

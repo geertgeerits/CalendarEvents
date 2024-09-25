@@ -129,7 +129,6 @@
                         HorizontalOptions="Fill"
                         ReturnType="Done"
                         Text=""
-                        Focused="EntryFocused"
                         Completed="OnGetEventsClicked">
                     </Entry>
                 </Border>

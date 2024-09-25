@@ -234,20 +234,6 @@ namespace CalendarEvents
         }
 
         /// <summary>
-        /// Select all the text in the entry field 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void EntryFocused(object sender, EventArgs e)
-        {
-            var entry = (Entry)sender;
-
-            entry.CursorPosition = entry.Text.Length;
-            entry.CursorPosition = 0;
-            entry.SelectionLength = entry.Text.Length;
-        }
-
-        /// <summary>
         /// Put text in the chosen language in the controls and variables 
         /// </summary>
         private void SetLanguage()
