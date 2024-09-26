@@ -2,7 +2,7 @@
  * Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
  * Copyright ...: (C) 2023-2024
  * Version .....: 1.0.9
- * Date ........: 2024-09-25 (YYYY-MM-DD)
+ * Date ........: 2024-09-26 (YYYY-MM-DD)
  * Language ....: Microsoft Visual Studio 2022: .NET 8.0 MAUI C# 12.0
  * Description .: Read calendar events to share
  * Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 2.0.0; https://github.com/jfversluis/Plugin.Maui.CalendarStore
@@ -534,7 +534,6 @@ namespace CalendarEvents
             }
 
             // Set focus to the first entry field
-            // Add in the header of the xaml page: 'Loaded="OnPageLoaded"'
             Task.Delay(500).Wait();
             entSearchWord.Focus();
         }
@@ -576,7 +575,7 @@ namespace CalendarEvents
             }
 
             // Set focus to the first entry field
-            entSearchWord.Focus();
+            _ = entSearchWord.Focus();
 
             // Cancel the text to speech
             CancelTextToSpeech();

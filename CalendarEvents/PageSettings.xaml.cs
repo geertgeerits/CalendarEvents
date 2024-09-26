@@ -297,13 +297,13 @@ namespace CalendarEvents
             if (bIsNumber == false || nAddDaysToStart < -500 || nAddDaysToStart > 500)
             {
                 entAddDaysToStart.Text = "";
-                entAddDaysToStart.Focus();
+                _ = entAddDaysToStart.Focus();
                 return;
             }
 
             Globals.cAddDaysToStart = Convert.ToString(nAddDaysToStart);
 
-            entAddDaysToEnd.Focus();
+            _ = entAddDaysToEnd.Focus();
         }
 
         /// <summary>
@@ -317,7 +317,7 @@ namespace CalendarEvents
             if (bIsNumber == false || nAddDaysToEnd < -500 || nAddDaysToEnd > 500)
             {
                 entAddDaysToEnd.Text = "";
-                entAddDaysToEnd.Focus();
+                _ = entAddDaysToEnd.Focus();
                 return;
             }
 
