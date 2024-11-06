@@ -5,27 +5,26 @@
         public App()
         {
             InitializeComponent();
-
-            //MainPage = new AppShell();
-            MainPage = new NavigationPage(new MainPage());
         }
 
-        //// Window dimensions and location for desktop apps
+        /// <summary>
+        /// Window dimensions and location for desktop apps
+        /// </summary>
+        /// <param name="activationState"></param>
+        /// <returns></returns>
         protected override Window CreateWindow(IActivationState? activationState)
         {
-            var window = base.CreateWindow(activationState);
-
-            const int newHeight = 950;
-            const int newWidth = 950;
-
-            window.X = 200;
-            window.Y = 50;
-
-            window.Height = newHeight;
-            window.Width = newWidth;
-
-            window.MinimumHeight = 800;
-            window.MinimumWidth = 950;
+            var window = new Microsoft.Maui.Controls.Window(new NavigationPage(new MainPage()))
+            {
+                X = 200,
+                Y = 50,
+                Height = 950,
+                Width = 950,
+                MinimumHeight = 800,
+                MinimumWidth = 950,
+                MaximumHeight = 1000,
+                MaximumWidth = 950
+            };
 
             return window;
         }

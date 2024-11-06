@@ -2,7 +2,7 @@
 
 namespace CalendarEvents
 {
-    public sealed class LocalizationResourceManager : INotifyPropertyChanged
+    public sealed partial class LocalizationResourceManager : INotifyPropertyChanged
     {
         private LocalizationResourceManager()
         {

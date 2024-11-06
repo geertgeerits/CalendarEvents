@@ -2,8 +2,8 @@
  * Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
  * Copyright ...: (C) 2023-2024
  * Version .....: 1.0.9
- * Date ........: 2024-09-26 (YYYY-MM-DD)
- * Language ....: Microsoft Visual Studio 2022: .NET 8.0 MAUI C# 12.0
+ * Date ........: 2024-11-06 (YYYY-MM-DD)
+ * Language ....: Microsoft Visual Studio 2022: .NET 9.0 MAUI C# 13.0
  * Description .: Read calendar events to share
  * Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 2.0.0; https://github.com/jfversluis/Plugin.Maui.CalendarStore
  *                NuGet Package: Microsoft.AppCenter version 5.0.3 ; https://appcenter.ms/apps ; https://azure.microsoft.com/en-us/products/app-center/
@@ -508,7 +508,7 @@ namespace CalendarEvents
             // Show license.
             if (Globals.bLicense == false)
             {
-                Globals.bLicense = await Application.Current!.MainPage!.DisplayAlert(CalEventLang.LicenseTitle_Text, $"Calendar Events\n{cCopyright}\n\n{cLicenseText}", CalEventLang.Agree_Text, CalEventLang.Disagree_Text);
+                Globals.bLicense = await Application.Current!.Windows[0].Page!.DisplayAlert(CalEventLang.LicenseTitle_Text, $"Calendar Events\n{cCopyright}\n\n{cLicenseText}", CalEventLang.Agree_Text, CalEventLang.Disagree_Text);
 
                 if (Globals.bLicense)
                 {
