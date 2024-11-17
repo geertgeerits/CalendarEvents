@@ -10,20 +10,21 @@ namespace CalendarEvents
             }
             catch (Exception ex)
             {
-                //Crashes.TrackError(ex);
 #if DEBUG
                 DisplayAlert("InitializeComponent: PageAbout", ex.Message, "OK");
 #endif
                 return;
             }
-
+#if WINDOWS
+            //// Set the margins for the controls in the title bar for Windows
+            lblTitle.Margin = new Thickness(68, 10, 0, 0);
+#endif
             //// Put text in the chosen language in the controls
             lblVersion.Text = $"{CalEventLang.Version_Text} 1.0.9";
             lblCopyright.Text = $"{CalEventLang.Copyright_Text} © 2023-2024 Geert Geerits";
             lblEmail.Text = $"{CalEventLang.Email_Text} geertgeerits@gmail.com";
             lblWebsite.Text = $"{CalEventLang.Website_Text}: ../calendarevents";
             lblPrivacyPolicy.Text = $"\n{CalEventLang.PrivacyPolicyTitle_Text} {CalEventLang.PrivacyPolicy_Text}";
-            lblCrashErrorReport.Text = $"\n{CalEventLang.CrashErrorReport_Text}";
             lblLicense.Text = $"\n{CalEventLang.LicenseTitle_Text}: {CalEventLang.License_Text}\n{CalEventLang.LicenseMit2_Text}";
             lblExplanation.Text = $"\n{CalEventLang.InfoExplanation_Text}";
         }

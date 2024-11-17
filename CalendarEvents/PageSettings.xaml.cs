@@ -15,13 +15,15 @@ namespace CalendarEvents
             }
             catch (Exception ex)
             {
-                //Crashes.TrackError(ex);
 #if DEBUG
                 DisplayAlert("InitializeComponent PageSettings", ex.Message, "OK");
 #endif
                 return;
             }
-
+#if WINDOWS
+            //// Set the margins for the controls in the title bar for Windows
+            lblTitle.Margin = new Thickness(60, 10, 0, 0);
+#endif
             //// Put text in the chosen language in the controls and variables
             SetLanguage();
         

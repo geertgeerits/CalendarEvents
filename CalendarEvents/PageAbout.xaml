@@ -4,12 +4,13 @@
              xmlns:resx="clr-namespace:CalendarEvents.Resources.Languages"
              x:Class="CalendarEvents.PageAbout">
 
-    <NavigationPage.TitleView>
+    <Shell.TitleView>
         <Label
+            x:Name="lblTitle"
             Style="{StaticResource labelStyleTitleView}"
             Text="{x:Static resx:CalEventLang.Info_Text}">
         </Label>
-    </NavigationPage.TitleView>
+    </Shell.TitleView>
        
     <ScrollView>
         <StackLayout>

@@ -4,12 +4,13 @@
              xmlns:local="clr-namespace:CalendarEvents"
              x:Class="CalendarEvents.PageSettings">
 
-    <NavigationPage.TitleView>
+    <Shell.TitleView>
         <Label
+            x:Name="lblTitle"
             Style="{StaticResource labelStyleTitleView}"
             Text="{local:Translate Settings_Text}">
         </Label>
-    </NavigationPage.TitleView>
+    </Shell.TitleView>
 
     <Grid
         RowDefinitions="Auto, *, Auto"

@@ -7,7 +7,6 @@
  * Description .: Read calendar events to share
  * Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 2.0.0; https://github.com/jfversluis/Plugin.Maui.CalendarStore
  *                NuGet Package: Microsoft.AppCenter version 5.0.3 ; https://appcenter.ms/apps ; https://azure.microsoft.com/en-us/products/app-center/
- *                (NuGet Package: Microsoft.AppCenter.Crashes version 5.0.3)
  * Thanks to ...: Gerald Versluis for his video's on YouTube about .NET MAUI */
 
 using Plugin.Maui.CalendarStore;
@@ -31,18 +30,21 @@ namespace CalendarEvents
             try
             {
                 InitializeComponent();
-
-                // Select all the text in the entry field - works for all pages in the app
-                Globals.ModifyEntrySelectAllText();
             }
             catch (Exception ex)
             {
-                //Crashes.TrackError(ex);
 #if DEBUG
                 DisplayAlert("InitializeComponent MainPage", ex.Message, "OK");
 #endif
                 return;
             }
+#if WINDOWS
+            //// Set the margins for the controls in the title bar for Windows
+            imgbtnAbout.Margin = new Thickness(20, 0, 0, 0);
+            lblTitle.Margin = new Thickness(20, 10, 0, 0);
+#endif
+            // Select all the text in the entry field - works for all pages in the app
+            Globals.ModifyEntrySelectAllText();
 
             // Get the saved settings
             Globals.cTheme = Preferences.Default.Get("SettingTheme", "System");
@@ -53,18 +55,6 @@ namespace CalendarEvents
             Globals.cLanguage = Preferences.Default.Get("SettingLanguage", "");
             Globals.cLanguageSpeech = Preferences.Default.Get("SettingLanguageSpeech", "");
             Globals.bLicense = Preferences.Default.Get("SettingLicense", false);
-            //bLogAlwaysSend = Preferences.Default.Get("SettingLogAlwaysSend", false);
-
-            // Crash log confirmation
-            //if (!bLogAlwaysSend)
-            //{
-            //    Crashes.ShouldAwaitUserConfirmation = () =>
-            //    {
-            //        // Return true if you built a UI for user consent and are waiting for user input on that custom UI, otherwise false.
-            //        ConfirmationSendCrashLog();
-            //        return true;
-            //    };
-            //}
 
             // The height of the title bar is lower when an iPhone is in horizontal position
             if (DeviceInfo.Platform == DevicePlatform.iOS && DeviceInfo.Idiom == DeviceIdiom.Phone)
@@ -208,9 +198,6 @@ namespace CalendarEvents
         Start:
             try
             {
-                // For testing crashes - DivideByZeroException
-                //int divByZero = 51 / int.Parse("0");
-
                 // Get all the calendars from the device.
                 var calendars = await CalendarStore.Default.GetCalendars();
 
@@ -286,15 +273,6 @@ namespace CalendarEvents
             }
             catch (Exception ex)
             {
-                //var properties = new Dictionary<string, string>
-                //{
-                //    { "File:", "MainPage.xaml.cs" },
-                //    { "Method:", "LoadCalendars" },
-                //    { "CalendarStore:", "GetCalendars" },
-                //    { "AppLanguage:", Globals.cLanguage }
-                //};
-                //Crashes.TrackError(ex, properties);
-
                 _ = DisplayAlert(CalEventLang.ErrorTitle_Text, ex.Message, CalEventLang.ButtonClose_Text);
             }
         }
@@ -343,9 +321,6 @@ namespace CalendarEvents
 
             try
             {
-                // For testing crashes - DivideByZeroException
-                //int divByZero = 51 / int.Parse("0");
-
                 // All calendars
                 if (pckCalendars.SelectedIndex == 0)
                 {
@@ -405,14 +380,6 @@ namespace CalendarEvents
             }
             catch (Exception ex)
             {
-                //var properties = new Dictionary<string, string> {
-                //    { "File:", "MainPage.xaml.cs" },
-                //    { "Method:", "LoadEvents" },
-                //    { "CalendarStore:", "GetEvents" },
-                //    { "AppLanguage:", Globals.cLanguage }
-                //};
-                //Crashes.TrackError(ex, properties);
-            
                 await DisplayAlert(CalEventLang.ErrorTitle_Text, $"{CalEventLang.ErrorCalendar_Text}\n\n{ex.Message}", CalEventLang.ButtonClose_Text);
             }
         }
@@ -624,13 +591,6 @@ namespace CalendarEvents
             }
             catch (Exception ex)
             {
-                //var properties = new Dictionary<string, string> {
-                //    { "File:", "MainPage.xaml.cs" },
-                //    { "Method:", "InitializeTextToSpeech" },
-                //    { "AppLanguage:", Globals.cLanguage },
-                //    { "AppLanguageSpeech:", Globals.cLanguageSpeech }
-                //};
-                //Crashes.TrackError(ex, properties);
 #if DEBUG
                 await DisplayAlert(CalEventLang.ErrorTitle_Text, $"{ex.Message}\n\n{CalEventLang.TextToSpeechError_Text}", CalEventLang.ButtonClose_Text);
 #endif
@@ -706,7 +666,6 @@ namespace CalendarEvents
             }
             catch (Exception ex)
             {
-                //Crashes.TrackError(ex);
 #if DEBUG
                 DisplayAlert(CalEventLang.ErrorTitle_Text, ex.Message, CalEventLang.ButtonClose_Text);
 #endif
@@ -747,7 +706,6 @@ namespace CalendarEvents
                 }
                 catch (Exception ex)
                 {
-                    //Crashes.TrackError(ex);
 #if DEBUG
                     await DisplayAlert(CalEventLang.ErrorTitle_Text, ex.Message, CalEventLang.ButtonClose_Text);
 #endif
@@ -791,40 +749,5 @@ namespace CalendarEvents
 
             return cLanguageIso;
         }
-
-        ///// <summary>
-        ///// Crash log confirmation
-        ///// </summary>
-        //private async void ConfirmationSendCrashLog()
-        //{
-        //    // Using the DisplayActionSheet with 3 choices
-        //    string cAction = await DisplayActionSheet(CalEventLang.LogTitle2_Text, null, null, CalEventLang.LogSend_Text, CalEventLang.LogAlwaysSend_Text, CalEventLang.LogDontSend_Text);
-
-        //    if (cAction == CalEventLang.LogSend_Text)
-        //    {
-        //        Crashes.NotifyUserConfirmation(UserConfirmation.Send);
-        //    }
-        //    else if (cAction == CalEventLang.LogAlwaysSend_Text)
-        //    {
-        //        Crashes.NotifyUserConfirmation(UserConfirmation.AlwaysSend);
-        //        Preferences.Default.Set("SettingLogAlwaysSend", true);
-        //    }
-        //    else if (cAction == CalEventLang.LogDontSend_Text)
-        //    {
-        //        Crashes.NotifyUserConfirmation(UserConfirmation.DontSend);
-        //    }
-
-        //    // Using the DisplayAlert with 2 choices
-        //    //bool bAction = await DisplayAlert(CodeLang.LogTitle_Text, CodeLang.LogMessage_Text, CodeLang.LogSend_Text, CodeLang.LogDontSend_Text);
-
-        //    //if (bAction)
-        //    //{
-        //    //    Crashes.NotifyUserConfirmation(UserConfirmation.Send);
-        //    //}
-        //    //else
-        //    //{
-        //    //    Crashes.NotifyUserConfirmation(UserConfirmation.DontSend);
-        //    //}
-        //}
     }
 }

@@ -14,19 +14,17 @@
         /// <returns></returns>
         protected override Window CreateWindow(IActivationState? activationState)
         {
-            var window = new Microsoft.Maui.Controls.Window(new NavigationPage(new MainPage()))
+            return new Window(new AppShell())
             {
                 X = 200,
                 Y = 50,
                 Height = 950,
                 Width = 950,
                 MinimumHeight = 800,
-                MinimumWidth = 950,
-                MaximumHeight = 1000,
-                MaximumWidth = 950
+                MinimumWidth = 900,
+                MaximumHeight = 1100,
+                MaximumWidth = 1100
             };
-
-            return window;
         }
     }
 }

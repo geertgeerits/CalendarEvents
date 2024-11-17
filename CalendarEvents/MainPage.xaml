@@ -3,19 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:CalendarEvents"
              x:Class="CalendarEvents.MainPage"
-             NavigationPage.HasBackButton="False"
              Loaded="OnPageLoaded"
              Appearing="OnPageAppearing">
 
-    <NavigationPage.TitleView>
+    <Shell.TitleView>
         <Grid RowDefinitions="Auto"
               ColumnDefinitions="60, 160*, 50, 50"
-              Margin="5"
-              BackgroundColor="Gold">
+              Margin="5">
 
             <ImageButton
                 x:Name="imgbtnAbout"
-                Grid.Row="0"
                 Grid.Column="0"
                 Source="info_32p.png"
                 HorizontalOptions="Start"
@@ -30,7 +27,6 @@
             <Label
                 x:Name="lblTitle"
                 Style="{StaticResource labelStyleTitleView}"
-                Grid.Row="0"
                 Grid.Column="1"
                 FontSize="20"
                 Text="{local:Translate NameProgram_Text}">
@@ -38,7 +34,6 @@
 
             <ActivityIndicator
                     x:Name="activityIndicator"
-                    Grid.Row="0"
                     Grid.Column="2"
                     VerticalOptions="Center"
                     HorizontalOptions="Center"
@@ -60,7 +55,7 @@
                 Clicked="OnPageSettingsClicked">
             </ImageButton>
         </Grid>
-    </NavigationPage.TitleView>
+    </Shell.TitleView>
 
     <ScrollView>
         <StackLayout>
