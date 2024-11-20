@@ -2,7 +2,7 @@
  * Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
  * Copyright ...: (C) 2023-2024
  * Version .....: 1.0.9
- * Date ........: 2024-11-17 (YYYY-MM-DD)
+ * Date ........: 2024-11-20 (YYYY-MM-DD)
  * Language ....: Microsoft Visual Studio 2022: .NET 9.0 MAUI C# 13.0
  * Description .: Read calendar events to share
  * Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 2.0.0; https://github.com/jfversluis/Plugin.Maui.CalendarStore
@@ -10,6 +10,7 @@
  * Thanks to ...: Gerald Versluis for his video's on YouTube about .NET MAUI */
 
 using Plugin.Maui.CalendarStore;
+using System.Diagnostics;
 
 namespace CalendarEvents
 {
@@ -18,7 +19,6 @@ namespace CalendarEvents
         //// Local variables
         private string cCopyright = "";
         private string cLicenseText = "";
-        //private readonly bool bLogAlwaysSend;
         private string cCalendarId = "";
         private int nCalendarSelected;
         private readonly string cDicKeyAllCalendars = "000-AllCalendars-gg51";
@@ -42,6 +42,7 @@ namespace CalendarEvents
             //// Set the margins for the controls in the title bar for Windows
             imgbtnAbout.Margin = new Thickness(20, 0, 0, 0);
             lblTitle.Margin = new Thickness(20, 10, 0, 0);
+            lblTextToSpeech.Margin = new Thickness(0, 15, 0, 0);
 #endif
             // Select all the text in the entry field - works for all pages in the app
             Globals.ModifyEntrySelectAllText();
@@ -124,7 +125,7 @@ namespace CalendarEvents
             {
                 cCultureName = "en-US";
             }
-            //DisplayAlert("cCultureName", $"*{cCultureName}*", "OK");  // For testing
+            Debug.WriteLine($"cCultureName: *{cCultureName}*");  // For testing
 
             InitializeTextToSpeech(cCultureName);
         
