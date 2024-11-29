@@ -315,10 +315,10 @@ namespace CalendarEvents
         /// Get calendar events 
         /// </summary>
         /// <returns></returns>
-        private async Task LoadEventsAsync()    
+        private async Task LoadEventsAsync()
         {
-            // Get (all) the events from the calendar
-            string cCalendarEvents = "";
+            // Declare a list for the calendar events
+            List<string> lCalendarEvents = [];
 
             try
             {
@@ -337,7 +337,7 @@ namespace CalendarEvents
                 {
                     foreach (CalendarEvent ev in events)
                     {
-                        cCalendarEvents = $"{cCalendarEvents}{ev.StartDate.ToString(format: $"{Globals.cDateFormat}  {Globals.cTimeFormat}")}   {ev.Title}\n\n";
+                        lCalendarEvents.Add($"{ev.StartDate.ToString(format: $"{Globals.cDateFormat}  {Globals.cTimeFormat}")}   {ev.Title}\n\n");
                     }
                 }
                 else
@@ -350,21 +350,28 @@ namespace CalendarEvents
                         {
                             continue;
                         }
-                    
+
                         if (ev.Title.Contains(cSearchWord, StringComparison.InvariantCultureIgnoreCase))
                         {
-                            cCalendarEvents = $"{cCalendarEvents}{ev.StartDate.ToString(format: $"{Globals.cDateFormat}  {Globals.cTimeFormat}")}   {ev.Title}\n\n";
+                            lCalendarEvents.Add($"{ev.StartDate.ToString(format: $"{Globals.cDateFormat}  {Globals.cTimeFormat}")}   {ev.Title}\n\n");
                         }
                     }
                 }
 
-                if (cCalendarEvents is null or "")
+                if (lCalendarEvents.Count == 0)
                 {
                     lblCalendarEvents.Text = CalEventLang.MessageNoEvents_Text;
                 }
                 else
                 {
-                    lblCalendarEvents.Text = cCalendarEvents;
+                    // Remove duplicates
+                    List<string> lCalendarEventsNoDupes = lCalendarEvents.Distinct().ToList();
+
+                    // Put the events in the label
+                    foreach (string cItem in lCalendarEventsNoDupes)
+                    {
+                        lblCalendarEvents.Text += cItem;
+                    }
                 }
             }
             catch (Exception ex) when (ex is ObjectDisposedException)
