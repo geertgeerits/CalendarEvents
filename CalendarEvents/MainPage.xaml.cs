@@ -9,6 +9,7 @@
  *                NuGet Package: Microsoft.AppCenter version 5.0.3 ; https://appcenter.ms/apps ; https://azure.microsoft.com/en-us/products/app-center/
  * Thanks to ...: Gerald Versluis for his video's on YouTube about .NET MAUI */
 
+using Microsoft.Maui.Controls;
 using Plugin.Maui.CalendarStore;
 using System.Diagnostics;
 
@@ -564,6 +565,20 @@ namespace CalendarEvents
 
             // Cancel the text to speech
             CancelTextToSpeech();
+        }
+
+        /// <summary>
+        ///  On page disappearing event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private async void OnPageDisappearing(object sender, EventArgs e)
+        {
+            // Hide the soft keyboard when the page disappears
+            if (entSearchWord.IsSoftInputShowing())
+            {
+                await entSearchWord.HideSoftInputAsync(System.Threading.CancellationToken.None);
+            }
         }
 
         /// <summary>
