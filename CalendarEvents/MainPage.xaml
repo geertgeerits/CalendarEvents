@@ -200,6 +200,17 @@
                     Clicked="OnButtonShareClicked">
                 </Button>
 
+                <Label
+                    x:Name="lblNumberOfEvents"
+                    Grid.Row="6"
+                    Grid.Column="0"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Center"
+                    HorizontalTextAlignment="Start"
+                    Margin="10,2,0,0"
+                    Text="">
+                </Label>
+
                 <HorizontalStackLayout
                     Grid.Row="6"
                     Grid.Column="1"

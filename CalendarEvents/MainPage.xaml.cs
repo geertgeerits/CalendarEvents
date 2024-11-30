@@ -2,7 +2,7 @@
  * Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
  * Copyright ...: (C) 2023-2024
  * Version .....: 1.0.9
- * Date ........: 2024-11-29 (YYYY-MM-DD)
+ * Date ........: 2024-11-30 (YYYY-MM-DD)
  * Language ....: Microsoft Visual Studio 2022: .NET 9.0 MAUI C# 13.0
  * Description .: Read calendar events to share
  * Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 2.0.0; https://github.com/jfversluis/Plugin.Maui.CalendarStore
@@ -42,6 +42,7 @@ namespace CalendarEvents
             //// Set the margins for the controls in the title bar for Windows
             imgbtnAbout.Margin = new Thickness(20, 0, 0, 0);
             lblTitle.Margin = new Thickness(20, 10, 0, 0);
+            lblNumberOfEvents.Margin = new Thickness(9, 15, 0, 0);
             lblTextToSpeech.Margin = new Thickness(0, 15, 0, 0);
 #endif
             // Select all the text in the entry field - works for all pages in the app
@@ -155,6 +156,7 @@ namespace CalendarEvents
         {
             CancelTextToSpeech();
 
+            lblNumberOfEvents.Text = "";
             lblCalendarEvents.Text = "";
 
             int nSelectedIndex = pckCalendars.SelectedIndex;
@@ -300,6 +302,7 @@ namespace CalendarEvents
             CancelTextToSpeech();
 
             // Clear the calendar events
+            lblNumberOfEvents.Text = "";
             lblCalendarEvents.Text = "";
 
             // Get calendar events. !!!BUG!!!? activityIndicator is only working after adding a Task.Delay()
@@ -371,7 +374,11 @@ namespace CalendarEvents
                     foreach (string cItem in lCalendarEventsNoDupes)
                     {
                         lblCalendarEvents.Text += cItem;
+                        Debug.WriteLine(cItem);  // For testing
                     }
+
+                    // Set the number of events in the label
+                    lblNumberOfEvents.Text = lCalendarEventsNoDupes.Count.ToString("N0");
                 }
             }
             catch (Exception ex) when (ex is ObjectDisposedException)
@@ -379,12 +386,14 @@ namespace CalendarEvents
                 // ObjectDisposedException: Cannot access a disposed object
                 // Happens when there are no events in the selected calendar or between the startDate and endDate
                 lblCalendarEvents.Text = CalEventLang.MessageNoEvents_Text;
+                Debug.WriteLine("Error ObjectDisposedException: " + ex.Message);
             }
             catch (Exception ex) when (ex is ArgumentException)
             {
                 // System.ArgumentException: Handle must be valid. Arg_ParamName_Name, type
                 // Happens when there are no events in the selected calendar or between the startDate and endDate
                 lblCalendarEvents.Text = CalEventLang.MessageNoEvents_Text;
+                Debug.WriteLine("Error ArgumentException: " + ex.Message);
             }
             catch (Exception ex)
             {
@@ -401,6 +410,7 @@ namespace CalendarEvents
         {
             CancelTextToSpeech();
 
+            lblNumberOfEvents.Text = "";
             lblCalendarEvents.Text = "";
 
             _ = entSearchWord.Focus();
