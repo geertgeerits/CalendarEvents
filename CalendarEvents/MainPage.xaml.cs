@@ -39,7 +39,7 @@ namespace CalendarEvents
                 return;
             }
 #if WINDOWS
-            //// !!!BUG!!! in Windows: Set the width for the 2e colomn of the TitleView because 'GridUnitType.Star' does not work in Windows
+            //// !!!BUG!!! in Windows: Set the width for the 2e colomn of the grid because 'GridUnitType.Star' does not work in Windows if using the 'NavigationPage.TitleView'
             grdTitleView.ColumnDefinitions[1].Width = new GridLength(725);
 
             //// Set the margins for the controls in the title bar for Windows
