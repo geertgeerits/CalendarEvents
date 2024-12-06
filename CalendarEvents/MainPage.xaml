@@ -7,10 +7,12 @@
              Appearing="OnPageAppearing"
              Disappearing="OnPageDisappearing">
 
-    <Shell.TitleView>
-        <Grid RowDefinitions="Auto"
-              ColumnDefinitions="60, 160*, 50, 50"
-              Margin="5">
+    <NavigationPage.TitleView>
+        <Grid 
+            x:Name="grdTitleView"
+            RowDefinitions="Auto"
+            ColumnDefinitions="60, 160*, 50, 50"
+            Margin="5">
 
             <ImageButton
                 x:Name="imgbtnAbout"
@@ -56,7 +58,7 @@
                 Clicked="OnPageSettingsClicked">
             </ImageButton>
         </Grid>
-    </Shell.TitleView>
+    </NavigationPage.TitleView>
 
     <ScrollView>
         <StackLayout>

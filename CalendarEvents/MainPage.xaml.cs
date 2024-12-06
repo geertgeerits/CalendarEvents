@@ -2,14 +2,13 @@
  * Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
  * Copyright ...: (C) 2023-2024
  * Version .....: 1.0.9
- * Date ........: 2024-11-30 (YYYY-MM-DD)
+ * Date ........: 2024-12-06 (YYYY-MM-DD)
  * Language ....: Microsoft Visual Studio 2022: .NET 9.0 MAUI C# 13.0
  * Description .: Read calendar events to share
  * Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 2.0.0; https://github.com/jfversluis/Plugin.Maui.CalendarStore
  *                NuGet Package: Microsoft.AppCenter version 5.0.3 ; https://appcenter.ms/apps ; https://azure.microsoft.com/en-us/products/app-center/
  * Thanks to ...: Gerald Versluis for his video's on YouTube about .NET MAUI */
 
-using Microsoft.Maui.Controls;
 using Plugin.Maui.CalendarStore;
 using System.Diagnostics;
 
@@ -40,16 +39,19 @@ namespace CalendarEvents
                 return;
             }
 #if WINDOWS
+            //// !!!BUG!!! in Windows: Set the width for the 2e colomn of the TitleView because 'GridUnitType.Star' does not work in Windows
+            grdTitleView.ColumnDefinitions[1].Width = new GridLength(725);
+
             //// Set the margins for the controls in the title bar for Windows
             imgbtnAbout.Margin = new Thickness(20, 0, 0, 0);
             lblTitle.Margin = new Thickness(20, 10, 0, 0);
             lblNumberOfEvents.Margin = new Thickness(9, 15, 0, 0);
             lblTextToSpeech.Margin = new Thickness(0, 15, 0, 0);
 #endif
-            // Select all the text in the entry field - works for all pages in the app
+            //// Select all the text in the entry field - works for all pages in the app
             Globals.ModifyEntrySelectAllText();
 
-            // Get the saved settings
+            //// Get the saved settings
             Globals.cTheme = Preferences.Default.Get("SettingTheme", "System");
             Globals.cDateFormatSelect = Preferences.Default.Get("SettingDateFormatSelect", "SystemShort");
             Globals.cAddDaysToStart = Preferences.Default.Get("SettingAddDaysToStart", "0");
@@ -59,7 +61,7 @@ namespace CalendarEvents
             Globals.cLanguageSpeech = Preferences.Default.Get("SettingLanguageSpeech", "");
             Globals.bLicense = Preferences.Default.Get("SettingLicense", false);
 
-            // The height of the title bar is lower when an iPhone is in horizontal position
+            //// The height of the title bar is lower when an iPhone is in horizontal position
             if (DeviceInfo.Platform == DevicePlatform.iOS && DeviceInfo.Idiom == DeviceIdiom.Phone)
             {
                 imgbtnAbout.VerticalOptions = LayoutOptions.Start;
@@ -68,10 +70,10 @@ namespace CalendarEvents
                 imgbtnSettings.VerticalOptions = LayoutOptions.Start;
             }
 
-            // Set the theme
+            //// Set the theme
             Globals.SetTheme();
 
-            // Get the system date and time format and set the date and time format       
+            //// Get the system date and time format and set the date and time format       
             switch (Globals.cDateFormatSelect)
             {
                 case "SystemShort":
@@ -91,7 +93,7 @@ namespace CalendarEvents
                     break;
             }
 
-            // Get and set the system OS user language
+            //// Get and set the system OS user language
             try
             {
                 if (string.IsNullOrEmpty(Globals.cLanguage))
@@ -104,16 +106,16 @@ namespace CalendarEvents
                 Globals.cLanguage = "en";
             }
 
-            // Set the date properties for the DatePickers
+            //// Set the date properties for the DatePickers
             dtpDateStart.MinimumDate = new DateTime(1583, 1, 1);
             dtpDateStart.MaximumDate = new DateTime(3000, 1, 1);
             dtpDateEnd.MinimumDate = new DateTime(1583, 1, 1);
             dtpDateEnd.MaximumDate = new DateTime(3000, 1, 1);
 
-            // Set the text language
+            //// Set the text language
             SetTextLanguage();
 
-            // Initialize text to speech and get and set the speech language
+            //// Initialize text to speech and get and set the speech language
             string cCultureName = "";
 
             try
@@ -131,7 +133,7 @@ namespace CalendarEvents
 
             InitializeTextToSpeech(cCultureName);
         
-            // Get all the calendars from the device and put them in the picker
+            //// Get all the calendars from the device and put them in the picker
             GetCalendars();
         }
 
