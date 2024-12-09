@@ -21,7 +21,7 @@ namespace CalendarEvents
 #endif
             //// Put text in the chosen language in the controls
             lblVersion.Text = $"{CalEventLang.Version_Text} 1.0.9";
-            lblCopyright.Text = $"{CalEventLang.Copyright_Text} © 2023-2024 Geert Geerits";
+            lblCopyright.Text = $"{CalEventLang.Copyright_Text} © 2023-2025 Geert Geerits";
             lblEmail.Text = $"{CalEventLang.Email_Text} geertgeerits@gmail.com";
             lblWebsite.Text = $"{CalEventLang.Website_Text}: ../calendarevents";
             lblPrivacyPolicy.Text = $"\n{CalEventLang.PrivacyPolicyTitle_Text} {CalEventLang.PrivacyPolicy_Text}";

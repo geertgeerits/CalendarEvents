@@ -1,8 +1,8 @@
 ﻿/* Program .....: CalendarEvents.sln
  * Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
- * Copyright ...: (C) 2023-2024
+ * Copyright ...: (C) 2023-2025
  * Version .....: 1.0.9
- * Date ........: 2024-12-06 (YYYY-MM-DD)
+ * Date ........: 2024-12-09 (YYYY-MM-DD)
  * Language ....: Microsoft Visual Studio 2022: .NET 9.0 MAUI C# 13.0
  * Description .: Read calendar events to share
  * Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 2.0.0; https://github.com/jfversluis/Plugin.Maui.CalendarStore
@@ -467,7 +467,7 @@ namespace CalendarEvents
             // Set the CurrentUICulture
             Globals.SetCultureSelectedLanguage();
 
-            cCopyright = $"{CalEventLang.Copyright_Text} © 2023-2024 Geert Geerits";
+            cCopyright = $"{CalEventLang.Copyright_Text} © 2023-2025 Geert Geerits";
             cLicenseText = $"{CalEventLang.License_Text}\n\n{CalEventLang.LicenseMit2_Text}";
 
             // Local name for 'All calendars' in calendarDictionary and calendar picker
