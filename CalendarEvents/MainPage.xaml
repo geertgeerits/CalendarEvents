@@ -36,12 +36,14 @@
             </Label>
 
             <ActivityIndicator
-                    x:Name="activityIndicator"
-                    Grid.Column="2"
-                    VerticalOptions="Center"
-                    HorizontalOptions="Center"
-                    Color="#1186f8"
-                    IsRunning="False">
+                x:Name="activityIndicator"
+                Grid.Column="2"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                BackgroundColor="Transparent"
+                Color="#1186f8"
+                Scale="{OnPlatform Default='1', Android='1', iOS='2', WinUI='1'}"
+                IsRunning="False">
             </ActivityIndicator>
 
             <ImageButton
