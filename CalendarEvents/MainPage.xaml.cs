@@ -48,6 +48,10 @@ namespace CalendarEvents
             lblNumberOfEvents.Margin = new Thickness(9, 15, 0, 0);
             lblTextToSpeech.Margin = new Thickness(0, 15, 0, 0);
 #endif
+#if IOS
+            //// Set the scale of the activity indicator for iOS
+            activityIndicator.Scale = 2;
+#endif
             //// Select all the text in the entry field - works for all pages in the app
             Globals.ModifyEntrySelectAllText();
 
