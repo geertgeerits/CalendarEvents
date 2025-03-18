@@ -195,7 +195,7 @@ De rapportgegevens worden 28 dagen bewaard.</value>
     <value>Niet akkoord</value>
   </data>
   <data name="Email_Text" xml:space="preserve">
-    <value>E-mail:</value>
+    <value>E-mail: </value>
   </data>
   <data name="ErrorCalendar_Text" xml:space="preserve">
     <value>De agenda bevat geen evenementen gedurende de ingegeven periode, ofwel is de agenda niet compatibel is met deze toepassing.</value>
@@ -367,7 +367,7 @@ Alvast bedankt.</value>
     <value>Versie:</value>
   </data>
   <data name="Website_Text" xml:space="preserve">
-    <value>Website</value>
+    <value>Website: </value>
   </data>
   <data name="Yes_Text" xml:space="preserve">
     <value>Ja</value>

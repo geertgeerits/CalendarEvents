@@ -195,7 +195,7 @@ Raporttitietoja säilytetään 28 päivää.</value>
     <value>Olen eri mieltä</value>
   </data>
   <data name="Email_Text" xml:space="preserve">
-    <value>Sähköposti:</value>
+    <value>Sähköposti: </value>
   </data>
   <data name="ErrorCalendar_Text" xml:space="preserve">
     <value>Kalenteri ei sisällä tapahtumia määritetyn ajanjakson aikana tai kalenteri ei ole yhteensopiva tämän sovelluksen kanssa.</value>
@@ -367,7 +367,7 @@ Kiitos jo etukäteen.</value>
     <value>Versio:</value>
   </data>
   <data name="Website_Text" xml:space="preserve">
-    <value>Verkkosivusto</value>
+    <value>Verkkosivusto: </value>
   </data>
   <data name="Yes_Text" xml:space="preserve">
     <value>Joo</value>

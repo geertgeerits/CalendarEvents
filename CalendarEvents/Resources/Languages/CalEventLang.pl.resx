@@ -195,7 +195,7 @@ Dane z raportu są przechowywane przez 28 dni.</value>
     <value>Nie zgadzać się</value>
   </data>
   <data name="Email_Text" xml:space="preserve">
-    <value>E-mail:</value>
+    <value>E-mail: </value>
   </data>
   <data name="ErrorCalendar_Text" xml:space="preserve">
     <value>Kalendarz nie zawiera żadnych wydarzeń w podanym okresie lub kalendarz nie jest kompatybilny z tą aplikacją.</value>
@@ -367,7 +367,7 @@ Z góry dziękuję.</value>
     <value>Wersja:</value>
   </data>
   <data name="Website_Text" xml:space="preserve">
-    <value>Strona internetowa</value>
+    <value>Strona internetowa: </value>
   </data>
   <data name="Yes_Text" xml:space="preserve">
     <value>Tak</value>

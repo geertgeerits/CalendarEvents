@@ -195,7 +195,7 @@ Die Berichtsdaten werden 28 Tage lang aufbewahrt.</value>
     <value>Nicht zustimmen</value>
   </data>
   <data name="Email_Text" xml:space="preserve">
-    <value>E-mail:</value>
+    <value>E-mail: </value>
   </data>
   <data name="ErrorCalendar_Text" xml:space="preserve">
     <value>Der Kalender enthält im angegebenen Zeitraum keine Ereignisse oder der Kalender ist nicht mit dieser Anwendung kompatibel.</value>
@@ -367,7 +367,7 @@ Vielen Dank im Voraus.</value>
     <value>Ausführung:</value>
   </data>
   <data name="Website_Text" xml:space="preserve">
-    <value>Webseite</value>
+    <value>Webseite: </value>
   </data>
   <data name="Yes_Text" xml:space="preserve">
     <value>Ja</value>

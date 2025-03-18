@@ -195,7 +195,7 @@ A jelentés adatait 28 napig őrzik meg.</value>
     <value>Nem ért egyet</value>
   </data>
   <data name="Email_Text" xml:space="preserve">
-    <value>Email:</value>
+    <value>Email: </value>
   </data>
   <data name="ErrorCalendar_Text" xml:space="preserve">
     <value>A naptár nem tartalmaz eseményeket a megadott időszakban, vagy a naptár nem kompatibilis ezzel az alkalmazással.</value>
@@ -367,7 +367,7 @@ Előre is köszönöm.</value>
     <value>Változat:</value>
   </data>
   <data name="Website_Text" xml:space="preserve">
-    <value>Weboldal</value>
+    <value>Weboldal: </value>
   </data>
   <data name="Yes_Text" xml:space="preserve">
     <value>Igen</value>

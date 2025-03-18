@@ -195,7 +195,7 @@ Rapportdataene opbevares i 28 dage.</value>
     <value>Være uenig</value>
   </data>
   <data name="Email_Text" xml:space="preserve">
-    <value>E-mail:</value>
+    <value>E-mail: </value>
   </data>
   <data name="ErrorCalendar_Text" xml:space="preserve">
     <value>Kalenderen indeholder ingen begivenheder i den angivne periode, eller kalenderen er ikke kompatibel med denne applikation.</value>
@@ -367,7 +367,7 @@ Tak på forhånd.</value>
     <value>Version:</value>
   </data>
   <data name="Website_Text" xml:space="preserve">
-    <value>Internet side</value>
+    <value>Internet side: </value>
   </data>
   <data name="Yes_Text" xml:space="preserve">
     <value>Ja</value>

@@ -192,7 +192,7 @@ Rapportdata bevaras i 28 dagar.</value>
     <value>Instämmer inte alls</value>
   </data>
   <data name="Email_Text" xml:space="preserve">
-    <value>E-post:</value>
+    <value>E-post: </value>
   </data>
   <data name="ErrorCalendar_Text" xml:space="preserve">
     <value>Kalendern innehåller inga händelser under den angivna perioden, eller så är kalendern inte kompatibel med denna applikation.</value>
@@ -364,7 +364,7 @@ Tack på förhand.</value>
     <value>Version:</value>
   </data>
   <data name="Website_Text" xml:space="preserve">
-    <value>Hemsida</value>
+    <value>Hemsida: </value>
   </data>
   <data name="Yes_Text" xml:space="preserve">
     <value>Ja</value>

@@ -195,7 +195,7 @@ Os dados do relatório são retidos por 28 dias.</value>
     <value>Discordar</value>
   </data>
   <data name="Email_Text" xml:space="preserve">
-    <value>E-mail:</value>
+    <value>E-mail: </value>
   </data>
   <data name="ErrorCalendar_Text" xml:space="preserve">
     <value>O calendário não contém eventos durante o período especificado ou o calendário não é compatível com este aplicativo.</value>
@@ -367,7 +367,7 @@ Agradeço antecipadamente.</value>
     <value>Versão:</value>
   </data>
   <data name="Website_Text" xml:space="preserve">
-    <value>Site</value>
+    <value>Site: </value>
   </data>
   <data name="Yes_Text" xml:space="preserve">
     <value>Sim</value>

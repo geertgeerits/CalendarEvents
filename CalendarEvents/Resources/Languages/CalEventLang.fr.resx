@@ -195,7 +195,7 @@ Les données du rapport sont conservées pendant 28 jours.</value>
     <value>Désaccord</value>
   </data>
   <data name="Email_Text" xml:space="preserve">
-    <value>E-mail:</value>
+    <value>E-mail: </value>
   </data>
   <data name="ErrorCalendar_Text" xml:space="preserve">
     <value>Le calendrier ne contient aucun événement pendant la période spécifiée ou le calendrier n'est pas compatible avec cette application.</value>
@@ -367,7 +367,7 @@ Merci d'avance.</value>
     <value>Version:</value>
   </data>
   <data name="Website_Text" xml:space="preserve">
-    <value>Site Internet</value>
+    <value>Site Internet: </value>
   </data>
   <data name="Yes_Text" xml:space="preserve">
     <value>Oui</value>

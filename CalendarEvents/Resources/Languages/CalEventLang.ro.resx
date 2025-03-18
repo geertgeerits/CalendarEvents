@@ -195,7 +195,7 @@ Datele raportului sunt păstrate timp de 28 de zile.</value>
     <value>Dezacord</value>
   </data>
   <data name="Email_Text" xml:space="preserve">
-    <value>E-mail:</value>
+    <value>E-mail: </value>
   </data>
   <data name="ErrorCalendar_Text" xml:space="preserve">
     <value>Calendarul nu conține niciun eveniment în perioada specificată sau calendarul nu este compatibil cu această aplicație.</value>
@@ -367,7 +367,7 @@ Vă mulțumesc anticipat.</value>
     <value>Versiune:</value>
   </data>
   <data name="Website_Text" xml:space="preserve">
-    <value>Site-ul web</value>
+    <value>Site-ul web: </value>
   </data>
   <data name="Yes_Text" xml:space="preserve">
     <value>Da</value>

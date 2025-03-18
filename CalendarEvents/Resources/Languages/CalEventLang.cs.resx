@@ -195,7 +195,7 @@ Nejsou sdíleny s nikým jiným mimo vývojáře aplikace.
     <value>Nesouhlasit</value>
   </data>
   <data name="Email_Text" xml:space="preserve">
-    <value>E-mailem:</value>
+    <value>E-mailem: </value>
   </data>
   <data name="ErrorCalendar_Text" xml:space="preserve">
     <value>Kalendář neobsahuje žádné události během zadaného období nebo kalendář není kompatibilní s touto aplikací.</value>
@@ -367,7 +367,7 @@ Děkuji předem.</value>
     <value>Verze:</value>
   </data>
   <data name="Website_Text" xml:space="preserve">
-    <value>Webová stránka</value>
+    <value>Webová stránka: </value>
   </data>
   <data name="Yes_Text" xml:space="preserve">
     <value>Ano</value>
