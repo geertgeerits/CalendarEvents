@@ -2,11 +2,10 @@
  * Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
  * Copyright ...: (C) 2023-2025
  * Version .....: 1.0.9
- * Date ........: 2025-01-24 (YYYY-MM-DD)
+ * Date ........: 2025-03-18 (YYYY-MM-DD)
  * Language ....: Microsoft Visual Studio 2022: .NET 9.0 MAUI C# 13.0
  * Description .: Read calendar events to share
  * Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 2.0.1; https://github.com/jfversluis/Plugin.Maui.CalendarStore
- *                NuGet Package: Microsoft.AppCenter version 5.0.3 ; https://appcenter.ms/apps ; https://azure.microsoft.com/en-us/products/app-center/
  * Thanks to ...: Gerald Versluis for his video's on YouTube about .NET MAUI */
 
 using Plugin.Maui.CalendarStore;
@@ -97,12 +96,12 @@ namespace CalendarEvents
                     break;
             }
 
-            //// Get and set the system OS user language
+            //// Get and set the user interface language
             try
             {
                 if (string.IsNullOrEmpty(Globals.cLanguage))
                 {
-                    Globals.cLanguage = Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName;
+                    Globals.cLanguage = Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName;
                 }
             }
             catch (Exception)
@@ -126,7 +125,7 @@ namespace CalendarEvents
             {
                 if (string.IsNullOrEmpty(Globals.cLanguageSpeech))
                 {
-                    cCultureName = Thread.CurrentThread.CurrentCulture.Name;
+                    cCultureName = Thread.CurrentThread.CurrentUICulture.Name;
                 }
             }
             catch (Exception)
@@ -674,12 +673,15 @@ namespace CalendarEvents
                 {
                     int nTotalItems = Globals.cLanguageLocales.Length;
 
-                    for (int nItem = 0; nItem < nTotalItems; nItem++)
+                    if (!string.IsNullOrEmpty(cCultureName))
                     {
-                        if (Globals.cLanguageLocales[nItem].StartsWith(cCultureName))
+                        for (int nItem = 0; nItem < nTotalItems; nItem++)
                         {
-                            Globals.cLanguageSpeech = Globals.cLanguageLocales[nItem];
-                            break;
+                            if (Globals.cLanguageLocales[nItem].StartsWith(cCultureName))
+                            {
+                                Globals.cLanguageSpeech = Globals.cLanguageLocales[nItem];
+                                break;
+                            }
                         }
                     }
 

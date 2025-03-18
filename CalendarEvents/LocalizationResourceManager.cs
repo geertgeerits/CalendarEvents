@@ -6,7 +6,7 @@ namespace CalendarEvents
     {
         private LocalizationResourceManager()
         {
-            CalEventLang.Culture = CultureInfo.CurrentCulture;
+            CalEventLang.Culture = CultureInfo.CurrentUICulture;
         }
 
         public static LocalizationResourceManager Instance { get; } = new();
