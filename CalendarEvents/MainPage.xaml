@@ -82,8 +82,7 @@
                     <DatePicker
                         x:Name="dtpDateStart"
                         VerticalOptions="Center"
-                        HorizontalOptions="Fill"
-                        Date="{Binding SelectedDate}">
+                        HorizontalOptions="Fill">
                     </DatePicker>
                 </Border>
 
@@ -102,8 +101,7 @@
                     <DatePicker
                         x:Name="dtpDateEnd"
                         VerticalOptions="Center"
-                        HorizontalOptions="Fill"
-                        Date="{Binding SelectedDate}">
+                        HorizontalOptions="Fill">
                     </DatePicker>
                 </Border>
 
