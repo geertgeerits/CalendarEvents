@@ -83,7 +83,7 @@ namespace CalendarEvents
         {
             if (Email.Default.IsComposeSupported)
             {
-                string subject = "Barcode generator and scanner";
+                string subject = "Calendar Events";
                 string body = "";
                 string[] recipients = [url];
 
