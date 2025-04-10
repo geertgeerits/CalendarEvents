@@ -19,10 +19,8 @@ namespace CalendarEvents
         public static string cLanguage = "";
         public static bool bLanguageChanged;
         public static string cLanguageSpeech = "";
-        public static string[]? cLanguageLocales;
-        public static bool bLanguageLocalesExist;
+        public static bool bTextToSpeechAvailable;
         public static bool bTextToSpeechIsBusy;
-        public static CancellationTokenSource? cts;
         public static Dictionary<string, string> calendarDictionary = [];
         public static bool bLicense;
 
@@ -42,18 +40,18 @@ namespace CalendarEvents
         }
 
         /// <summary>
-        /// Set the current UI culture of the selected language 
+        /// Set the current UI culture of the selected language
         /// </summary>
-        public static void SetCultureSelectedLanguage()
+        public static void SetCultureSelectedLanguage(string cCultureName)
         {
             try
             {
-                CultureInfo switchToCulture = new(cLanguage);
+                CultureInfo switchToCulture = new(cCultureName);
                 LocalizationResourceManager.Instance.SetCulture(switchToCulture);
             }
             catch
             {
-                // Do nothing.
+                // Do nothing
             }
         }
 

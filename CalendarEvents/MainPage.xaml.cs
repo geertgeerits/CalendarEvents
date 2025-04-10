@@ -2,10 +2,10 @@
  * Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
  * Copyright ...: (C) 2023-2025
  * Version .....: 1.0.9
- * Date ........: 2025-03-19 (YYYY-MM-DD)
+ * Date ........: 2025-04-10 (YYYY-MM-DD)
  * Language ....: Microsoft Visual Studio 2022: .NET 9.0 MAUI C# 13.0
  * Description .: Read calendar events to share
- * Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 2.0.1; https://github.com/jfversluis/Plugin.Maui.CalendarStore
+ * Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 3.0.0; https://github.com/jfversluis/Plugin.Maui.CalendarStore
  * Thanks to ...: Gerald Versluis for his video's on YouTube about .NET MAUI */
 
 using Plugin.Maui.CalendarStore;
@@ -22,7 +22,6 @@ namespace CalendarEvents
         private int nCalendarSelected;
         private readonly string cDicKeyAllCalendars = "000-AllCalendars-gg51";
         private IEnumerable<CalendarEvent>? events;
-        private IEnumerable<Locale>? locales;
 
         public MainPage()
         {
@@ -96,60 +95,97 @@ namespace CalendarEvents
                     break;
             }
 
-            //// Get and set the user interface language
-            try
-            {
-                if (string.IsNullOrEmpty(Globals.cLanguage))
-                {
-                    Globals.cLanguage = Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName;
-                }
-            }
-            catch (Exception)
-            {
-                Globals.cLanguage = "en";
-            }
-
             //// Set the date properties for the DatePickers
             dtpDateStart.MinimumDate = new DateTime(1583, 1, 1);
             dtpDateStart.MaximumDate = new DateTime(3000, 1, 1);
             dtpDateEnd.MinimumDate = new DateTime(1583, 1, 1);
             dtpDateEnd.MaximumDate = new DateTime(3000, 1, 1);
 
-            //// Set the text language
-            SetTextLanguage();
-
-            //// Initialize text to speech and get and set the speech language
-            string cCultureName = "";
-
+            //// Get and set the user interface language after a first start or reset of the application
             try
             {
-                if (string.IsNullOrEmpty(Globals.cLanguageSpeech))
+                if (string.IsNullOrEmpty(Globals.cLanguage))
                 {
-                    cCultureName = Thread.CurrentThread.CurrentUICulture.Name;
+                    Globals.cLanguage = Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName;
+
+                    // Chinese needs the language code as zh-CN and zh-TW
+                    if (Globals.cLanguage == "zh")
+                    {
+                        Globals.cLanguage = Thread.CurrentThread.CurrentUICulture.Name;
+                    }
                 }
             }
             catch (Exception)
             {
-                cCultureName = "en-US";
+                Globals.cLanguage = "en";
             }
-            Debug.WriteLine($"cCultureName: *{cCultureName}*");  // For testing
+            finally
+            {
+                // Save the UI language
+                Preferences.Default.Set("SettingLanguage", Globals.cLanguage);
+                Debug.WriteLine("MainPage - Globals.cLanguage: " + Globals.cLanguage);
+            }
 
-            InitializeTextToSpeech(cCultureName);
-        
+            //// Set the text language
+            SetTextLanguage();
+
+            //// Initialize text to speech and get and set the speech language
+            InitializeTextToSpeechAsync();
+
             //// Get all the calendars from the device and put them in the picker
             GetCalendars();
+        }
+
+        /// <summary>
+        /// Initialize text to speech and get and set the speech language
+        /// Must be called in the constructor of the MainPage and not in the ClassSpeech.cs
+        /// The InitializeTextToSpeechAsync method is called asynchronously after the UI components are initialized
+        /// Once the asynchronous operation completes, the Globals.bTextToSpeechAvailable value is checked, and the UI is updated accordingly
+        /// </summary>
+        private async void InitializeTextToSpeechAsync()
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(Globals.cLanguageSpeech))
+                {
+                    Globals.cLanguageSpeech = Thread.CurrentThread.CurrentUICulture.Name;
+                }
+            }
+            catch (Exception)
+            {
+                Globals.cLanguageSpeech = "en-US";
+            }
+
+            // Initialize text to speech
+            Globals.bTextToSpeechAvailable = await ClassSpeech.InitializeTextToSpeechAsync();
+
+            if (Globals.bTextToSpeechAvailable)
+            {
+                lblTextToSpeech.IsVisible = true;
+                imgbtnTextToSpeech.IsVisible = true;
+                lblTextToSpeech.Text = GetIsoLanguageCode();
+
+                // Search the selected language in the cLanguageLocales array
+                ClassSpeech.SearchArrayWithSpeechLanguages(Globals.cLanguageSpeech);
+
+                // Save the speech language
+                Preferences.Default.Set("SettingLanguageSpeech", Globals.cLanguageSpeech);
+            }
+
+            Debug.WriteLine("MainPage - Globals.bTextToSpeechAvailable: " + Globals.bTextToSpeechAvailable);
+            Debug.WriteLine("MainPage - Globals.cLanguageSpeech: " + Globals.cLanguageSpeech);
         }
 
         //// TitleView buttons clicked events
         private async void OnPageAboutClicked(object sender, EventArgs e)
         {
-            CancelTextToSpeech();
+            ClassSpeech.CancelTextToSpeech();
             await Navigation.PushAsync(new PageAbout());
         }
 
         private async void OnPageSettingsClicked(object sender, EventArgs e)
         {
-            CancelTextToSpeech();
+            ClassSpeech.CancelTextToSpeech();
             await Navigation.PushAsync(new PageSettings());
         }
 
@@ -160,7 +196,7 @@ namespace CalendarEvents
         /// <param name="e"></param>
         private void OnPickerCalendarChanged(object sender, EventArgs e)
         {
-            CancelTextToSpeech();
+            ClassSpeech.CancelTextToSpeech();
 
             lblNumberOfEvents.Text = "";
             lblCalendarEvents.Text = "";
@@ -305,7 +341,7 @@ namespace CalendarEvents
             entSearchWord.IsEnabled = true;
 
             // Cancel the text to speech
-            CancelTextToSpeech();
+            ClassSpeech.CancelTextToSpeech();
 
             // Clear the calendar events
             lblNumberOfEvents.Text = "";
@@ -414,7 +450,7 @@ namespace CalendarEvents
         /// <param name="e"></param>
         private void OnClearEventsClicked(object sender, EventArgs e)
         {
-            CancelTextToSpeech();
+            ClassSpeech.CancelTextToSpeech();
 
             lblNumberOfEvents.Text = "";
             lblCalendarEvents.Text = "";
@@ -468,7 +504,7 @@ namespace CalendarEvents
         private void SetTextLanguage()
         {
             // Set the CurrentUICulture
-            Globals.SetCultureSelectedLanguage();
+            Globals.SetCultureSelectedLanguage(Globals.cLanguage);
 
             cCopyright = $"{CalEventLang.Copyright_Text} © 2023-2025 Geert Geerits";
             cLicenseText = $"{CalEventLang.License_Text}\n\n{CalEventLang.LicenseMit2_Text}";
@@ -569,7 +605,7 @@ namespace CalendarEvents
             _ = entSearchWord.Focus();
 
             // Cancel the text to speech
-            CancelTextToSpeech();
+            ClassSpeech.CancelTextToSpeech();
         }
 
         /// <summary>
@@ -607,171 +643,21 @@ namespace CalendarEvents
         }
 
         /// <summary>
-        /// Initialize text to speech and fill the the array with the speech languages 
-        /// .Country = KR ; .Id = ''  ; .Language = ko ; .Name = Korean (South Korea) ; 
-        /// </summary>
-        /// <param name="cCultureName"></param>
-        private async void InitializeTextToSpeech(string cCultureName)
-        {
-            // Initialize text to speech
-            int nTotalItems;
-
-            try
-            {
-                locales = await TextToSpeech.Default.GetLocalesAsync();
-
-                nTotalItems = locales.Count();
-
-                if (nTotalItems == 0)
-                {
-                    return;
-                }
-            }
-            catch (Exception ex)
-            {
-#if DEBUG
-                await DisplayAlert(CalEventLang.ErrorTitle_Text, $"{ex.Message}\n\n{CalEventLang.TextToSpeechError_Text}", CalEventLang.ButtonClose_Text);
-#endif
-                return;
-            }
-
-            lblTextToSpeech.IsVisible = true;
-            imgbtnTextToSpeech.IsVisible = true;
-            Globals.bLanguageLocalesExist = true;
-
-            // Put the locales in the array and sort the array
-            Globals.cLanguageLocales = new string[nTotalItems];
-            int nItem = 0;
-
-            foreach (var l in locales)
-            {
-                Globals.cLanguageLocales[nItem] = $"{l.Language}-{l.Country} {l.Name}";
-                nItem++;
-            }
-
-            Array.Sort(Globals.cLanguageLocales);
-
-            // Search for the language after a first start or reset of the application
-            if (string.IsNullOrEmpty(Globals.cLanguageSpeech))
-            {
-                SearchArrayWithSpeechLanguages(cCultureName);
-            }
-            //await DisplayAlert("Globals.cLanguageSpeech", Globals.cLanguageSpeech, "OK");  // For testing
-
-            lblTextToSpeech.Text = GetIsoLanguageCode();
-        }
-
-        /// <summary>
-        /// Search for the language after a first start or reset of the application 
-        /// </summary>
-        /// <param name="cCultureName"></param>
-        private void SearchArrayWithSpeechLanguages(string cCultureName)
-        {
-            try
-            {
-                if (Globals.cLanguageLocales is not null)
-                {
-                    int nTotalItems = Globals.cLanguageLocales.Length;
-
-                    if (!string.IsNullOrEmpty(cCultureName))
-                    {
-                        for (int nItem = 0; nItem < nTotalItems; nItem++)
-                        {
-                            if (Globals.cLanguageLocales[nItem].StartsWith(cCultureName))
-                            {
-                                Globals.cLanguageSpeech = Globals.cLanguageLocales[nItem];
-                                break;
-                            }
-                        }
-                    }
-
-                    // If the language is not found try it with the language (Globals.cLanguage) of the user setting for this app
-                    if (string.IsNullOrEmpty(Globals.cLanguageSpeech))
-                    {
-                        for (int nItem = 0; nItem < nTotalItems; nItem++)
-                        {
-                            if (Globals.cLanguageLocales[nItem].StartsWith(Globals.cLanguage))
-                            {
-                                Globals.cLanguageSpeech = Globals.cLanguageLocales[nItem];
-                                break;
-                            }
-                        }
-                    }
-                }
-
-                // If the language is still not found use the first language in the array
-                if (string.IsNullOrEmpty(Globals.cLanguageSpeech))
-                {
-                    Globals.cLanguageSpeech = Globals.cLanguageLocales![0];
-                }
-            }
-            catch (Exception ex)
-            {
-#if DEBUG
-                DisplayAlert(CalEventLang.ErrorTitle_Text, ex.Message, CalEventLang.ButtonClose_Text);
-#endif
-            }
-        }
-
-        /// <summary>
-        /// Button text to speech event 
+        /// Button text to speech event - Convert text to speech
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void OnTextToSpeechClicked(object sender, EventArgs e)
+        private void OnTextToSpeechClicked(object sender, EventArgs e)
         {
             // Cancel the text to speech
             if (Globals.bTextToSpeechIsBusy)
             {
-                CancelTextToSpeech();
+                imgbtnTextToSpeech.Source = ClassSpeech.CancelTextToSpeech();
                 return;
             }
 
-            // Start with the text to speech
-            //lblCalendarEvents.Text = "Test";
-            if (lblCalendarEvents.Text != null && lblCalendarEvents.Text != "")
-            {
-                Globals.bTextToSpeechIsBusy = true;
-                imgbtnTextToSpeech.Source = "speaker_cancel_64p_blue_red.png";
-
-                try
-                {
-                    Globals.cts = new CancellationTokenSource();
-
-                    SpeechOptions options = new()
-                    {
-                        Locale = locales?.Single(l => $"{l.Language}-{l.Country} {l.Name}" == Globals.cLanguageSpeech)
-                    };
-
-                    await TextToSpeech.Default.SpeakAsync(lblCalendarEvents.Text, options, cancelToken: Globals.cts.Token);
-                }
-                catch (Exception ex)
-                {
-#if DEBUG
-                    await DisplayAlert(CalEventLang.ErrorTitle_Text, ex.Message, CalEventLang.ButtonClose_Text);
-#endif
-                }
-
-                Globals.bTextToSpeechIsBusy = false;
-                imgbtnTextToSpeech.Source = "speaker_64p_blue_green.png";
-            }
-        }
-
-        /// <summary>
-        /// Cancel the text to speech 
-        /// </summary>
-        private void CancelTextToSpeech()
-        {
-            // Cancel speech if a cancellation token exists & hasn't been already requested
-            if (Globals.bTextToSpeechIsBusy)
-            {
-                if (Globals.cts?.IsCancellationRequested ?? true)
-                    return;
-
-                Globals.cts.Cancel();
-                Globals.bTextToSpeechIsBusy = false;
-                imgbtnTextToSpeech.Source = "speaker_64p_blue_green.png";
-            }
+            // Convert the text to speech
+            _ = ClassSpeech.ConvertTextToSpeechAsync(imgbtnTextToSpeech, lblCalendarEvents.Text);
         }
 
         /// <summary>
