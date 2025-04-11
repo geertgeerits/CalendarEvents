@@ -48,9 +48,7 @@ namespace CalendarEvents
             };
 
             //// Fill the picker with the speech languages and select the saved language in the picker
-            //FillPickerWithSpeechLanguages();
             ClassSpeech.FillPickerWithSpeechLanguages(pckLanguageSpeech);
-
 
             //// Set the current theme in the picker
             pckTheme.SelectedIndex = Globals.cTheme switch

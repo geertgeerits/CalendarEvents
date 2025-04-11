@@ -2,7 +2,7 @@
  * Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
  * Copyright ...: (C) 2023-2025
  * Version .....: 1.0.9
- * Date ........: 2025-04-10 (YYYY-MM-DD)
+ * Date ........: 2025-04-11 (YYYY-MM-DD)
  * Language ....: Microsoft Visual Studio 2022: .NET 9.0 MAUI C# 13.0
  * Description .: Read calendar events to share
  * Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 3.0.0; https://github.com/jfversluis/Plugin.Maui.CalendarStore

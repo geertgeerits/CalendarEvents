@@ -16,7 +16,7 @@ namespace CalendarEvents
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 })
 
-                .ConfigureLifecycleEvents(events =>
+                .ConfigureLifecycleEvents(static events =>
                 {
 #if ANDROID
                     events.AddAndroid(android => android
