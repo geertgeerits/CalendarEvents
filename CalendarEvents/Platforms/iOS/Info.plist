@@ -41,7 +41,8 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0.9</string>
 	<key>MinimumOSVersion</key>
-	<string>12.2</string>
+	<!--<string>12.2</string>-->
+	<string>16.0</string>
 	<key>CFBundleVersion</key>
 	<string>9</string>
 </dict>
