@@ -262,7 +262,7 @@ namespace CalendarEvents.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Retrieve and share calendar events.
+        ///   Looks up a localized string similar to Retrieve and share events from the local calendar data..
         /// </summary>
         internal static string Description_Text {
             get {

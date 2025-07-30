@@ -189,7 +189,7 @@ Les données du rapport sont conservées pendant 28 jours.</value>
     <value>Défaut</value>
   </data>
   <data name="Description_Text" xml:space="preserve">
-    <value>Récupérer et partager des événements de calendrier</value>
+    <value>Récupérez et partagez des événements à partir des données du calendrier local.</value>
   </data>
   <data name="Disagree_Text" xml:space="preserve">
     <value>Désaccord</value>

@@ -189,7 +189,7 @@ Os dados do relatório são retidos por 28 dias.</value>
     <value>Padrão</value>
   </data>
   <data name="Description_Text" xml:space="preserve">
-    <value>Recuperar e compartilhar eventos da agenda</value>
+    <value>Recupere e compartilhe eventos dos dados do calendário local.</value>
   </data>
   <data name="Disagree_Text" xml:space="preserve">
     <value>Discordar</value>

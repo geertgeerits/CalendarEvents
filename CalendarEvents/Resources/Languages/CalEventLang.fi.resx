@@ -189,7 +189,7 @@ Raporttitietoja säilytetään 28 päivää.</value>
     <value>Oletus</value>
   </data>
   <data name="Description_Text" xml:space="preserve">
-    <value>Hae ja jaa kalenteritapahtumia</value>
+    <value>Hae ja jaa tapahtumia paikallisista kalenteritiedoista.</value>
   </data>
   <data name="Disagree_Text" xml:space="preserve">
     <value>Olen eri mieltä</value>

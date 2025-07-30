@@ -189,7 +189,7 @@ Dane z raportu są przechowywane przez 28 dni.</value>
     <value>Standard</value>
   </data>
   <data name="Description_Text" xml:space="preserve">
-    <value>Pobieraj i udostępniaj wydarzenia z kalendarza</value>
+    <value>Pobieranie i udostępnianie wydarzeń z danych kalendarza lokalnego.</value>
   </data>
   <data name="Disagree_Text" xml:space="preserve">
     <value>Nie zgadzać się</value>

@@ -189,7 +189,7 @@ Die Berichtsdaten werden 28 Tage lang aufbewahrt.</value>
     <value>Standard</value>
   </data>
   <data name="Description_Text" xml:space="preserve">
-    <value>Kalenderereignisse abrufen und teilen</value>
+    <value>Rufen Sie Ereignisse aus den lokalen Kalenderdaten ab und geben Sie sie frei.</value>
   </data>
   <data name="Disagree_Text" xml:space="preserve">
     <value>Nicht zustimmen</value>

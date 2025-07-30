@@ -189,7 +189,7 @@ A jelentés adatait 28 napig őrzik meg.</value>
     <value>Alapértelmezett</value>
   </data>
   <data name="Description_Text" xml:space="preserve">
-    <value>Naptári események lekérése és megosztása</value>
+    <value>Események lekérése és megosztása a helyi naptáradatokból.</value>
   </data>
   <data name="Disagree_Text" xml:space="preserve">
     <value>Nem ért egyet</value>

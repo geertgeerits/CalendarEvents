@@ -189,7 +189,7 @@ Datele raportului sunt păstrate timp de 28 de zile.</value>
     <value>Standard</value>
   </data>
   <data name="Description_Text" xml:space="preserve">
-    <value>Preluați și partajați evenimente din calendar</value>
+    <value>Preluați și partajați evenimente din datele calendarului local.</value>
   </data>
   <data name="Disagree_Text" xml:space="preserve">
     <value>Dezacord</value>

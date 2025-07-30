@@ -189,7 +189,7 @@ Rapportdataene opbevares i 28 dage.</value>
     <value>Standard</value>
   </data>
   <data name="Description_Text" xml:space="preserve">
-    <value>Hent og del kalenderbegivenheder</value>
+    <value>Hent og del begivenheder fra de lokale kalenderdata.</value>
   </data>
   <data name="Disagree_Text" xml:space="preserve">
     <value>Være uenig</value>

@@ -186,7 +186,7 @@ Rapportdata bevaras i 28 dagar.</value>
     <value>Standard</value>
   </data>
   <data name="Description_Text" xml:space="preserve">
-    <value>Hämta och dela kalenderhändelser</value>
+    <value>Hämta och dela händelser från den lokala kalenderdatan.</value>
   </data>
   <data name="Disagree_Text" xml:space="preserve">
     <value>Instämmer inte alls</value>

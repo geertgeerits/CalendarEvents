@@ -189,7 +189,7 @@ Los datos del informe se conservan durante 28 días.</value>
     <value>Estándar</value>
   </data>
   <data name="Description_Text" xml:space="preserve">
-    <value>Recuperar y compartir eventos del calendario</value>
+    <value>Recupere y comparta eventos de los datos del calendario local.</value>
   </data>
   <data name="Disagree_Text" xml:space="preserve">
     <value>No acordado</value>

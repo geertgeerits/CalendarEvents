@@ -189,7 +189,7 @@ De rapportgegevens worden 28 dagen bewaard.</value>
     <value>Standaard</value>
   </data>
   <data name="Description_Text" xml:space="preserve">
-    <value>Agenda-evenementen ophalen en delen</value>
+    <value>Haal gebeurtenissen op uit de lokale agendagegevens en deel ze.</value>
   </data>
   <data name="Disagree_Text" xml:space="preserve">
     <value>Niet akkoord</value>

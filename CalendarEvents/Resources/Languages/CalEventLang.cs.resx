@@ -189,7 +189,7 @@ Nejsou sdíleny s nikým jiným mimo vývojáře aplikace.
     <value>Výchozí</value>
   </data>
   <data name="Description_Text" xml:space="preserve">
-    <value>Načítání a sdílení událostí kalendáře</value>
+    <value>Načíst a sdílet události z dat lokálního kalendáře.</value>
   </data>
   <data name="Disagree_Text" xml:space="preserve">
     <value>Nesouhlasit</value>

@@ -189,7 +189,7 @@ The report data is retained for 28 days.</value>
     <value>Default</value>
   </data>
   <data name="Description_Text" xml:space="preserve">
-    <value>Retrieve and share calendar events</value>
+    <value>Retrieve and share events from the local calendar data.</value>
   </data>
   <data name="Disagree_Text" xml:space="preserve">
     <value>Disagree</value>
