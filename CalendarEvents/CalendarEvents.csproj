@@ -20,6 +20,7 @@
 		<ApplicationIdGuid>67d69051-af79-468e-aa14-97f27a1fc29c</ApplicationIdGuid>
 
 		<!-- Versions -->
+		<PackageVersion>1.0.9</PackageVersion>
 		<ApplicationDisplayVersion>1.0.9</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
 
