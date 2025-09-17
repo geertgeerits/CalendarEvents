@@ -20,8 +20,8 @@
 		<ApplicationIdGuid>67d69051-af79-468e-aa14-97f27a1fc29c</ApplicationIdGuid>
 
 		<!-- Versions -->
-		<PackageVersion>1.0.9</PackageVersion>
-		<ApplicationDisplayVersion>1.0.9</ApplicationDisplayVersion>
+		<PackageVersion>1.0.10</PackageVersion>
+		<ApplicationDisplayVersion>1.0.10</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">12.2</SupportedOSPlatformVersion>
@@ -71,8 +71,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.90" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.7" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.110" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.9" />
 		<PackageReference Include="Plugin.Maui.CalendarStore" Version="4.0.0" />
 	</ItemGroup>
 
@@ -110,8 +110,8 @@
 		<AndroidSigningKeyAlias>key</AndroidSigningKeyAlias>
 		<AndroidSigningKeyPass></AndroidSigningKeyPass>
 		<AndroidSigningStorePass></AndroidSigningStorePass>
-		<ApplicationDisplayVersion>1.0.9</ApplicationDisplayVersion>
-		<ApplicationVersion>9</ApplicationVersion>
+		<ApplicationDisplayVersion>1.0.10</ApplicationDisplayVersion>
+		<ApplicationVersion>10</ApplicationVersion>
 		<ApplicationId>com.geertgeerits.calendarevents</ApplicationId>
 	</PropertyGroup>	
 	
@@ -130,8 +130,8 @@
 		<ArchiveOnBuild>true</ArchiveOnBuild>
 		<TcpPort>58181</TcpPort>
 
-		<ApplicationDisplayVersion>1.0.9</ApplicationDisplayVersion>
-		<ApplicationVersion>9</ApplicationVersion>
+		<ApplicationDisplayVersion>1.0.10</ApplicationDisplayVersion>
+		<ApplicationVersion>10</ApplicationVersion>
 		<ApplicationId>com.geertgeerits.calendarevents</ApplicationId>
 	</PropertyGroup>
 

@@ -363,6 +363,11 @@ Agradeço antecipadamente.</value>
   <data name="ToolTipTextToSpeech_Text" xml:space="preserve">
     <value>Texto para fala: ativado ou desativado</value>
   </data>
+  <data name="Trademarks_Text" xml:space="preserve">
+    <value>Apple, App Store e o logotipo da App Store são marcas comerciais da Apple Inc., registradas nos EUA e em outros países e regiões.
+Google, Google Play, o logotipo do Google Play e Android são marcas comerciais da Google LLC.
+Microsoft, Microsoft Store, o logotipo da Microsoft Store e Windows são marcas comerciais da Microsoft Corporation.</value>
+  </data>
   <data name="Version_Text" xml:space="preserve">
     <value>Versão:</value>
   </data>
