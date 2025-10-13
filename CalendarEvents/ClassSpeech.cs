@@ -46,7 +46,7 @@ namespace CalendarEvents
             {
 #if DEBUG
                 Debug.WriteLine($"Error in InitializeTextToSpeechAsync: {ex.Message}");
-                await Application.Current!.Windows[0].Page!.DisplayAlert(CalEventLang.ErrorTitle_Text, $"{ex.Message}\n\n{CalEventLang.TextToSpeechError_Text}", CalEventLang.ButtonClose_Text);
+                await Application.Current!.Windows[0].Page!.DisplayAlertAsync(CalEventLang.ErrorTitle_Text, $"{ex.Message}\n\n{CalEventLang.TextToSpeechError_Text}", CalEventLang.ButtonClose_Text);
 #endif
                 return false;
             }
@@ -146,7 +146,7 @@ namespace CalendarEvents
             catch (Exception ex)
             {
 #if DEBUG
-                Application.Current!.Windows[0].Page!.DisplayAlert(CalEventLang.ErrorTitle_Text, ex.Message, CalEventLang.ButtonClose_Text);
+                Application.Current!.Windows[0].Page!.DisplayAlertAsync(CalEventLang.ErrorTitle_Text, ex.Message, CalEventLang.ButtonClose_Text);
 #endif
             }
 
@@ -220,7 +220,7 @@ namespace CalendarEvents
                 catch (Exception ex)
                 {
 #if DEBUG
-                    await Application.Current!.Windows[0].Page!.DisplayAlert(CalEventLang.ErrorTitle_Text, $"{ex.Message}\n{ex.StackTrace}", CalEventLang.ButtonClose_Text);
+                    await Application.Current!.Windows[0].Page!.DisplayAlertAsync(CalEventLang.ErrorTitle_Text, $"{ex.Message}\n{ex.StackTrace}", CalEventLang.ButtonClose_Text);
 #endif
                 }
 

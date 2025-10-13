@@ -1,9 +1,9 @@
 ﻿/* Program .....: CalendarEvents.sln
  * Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
- * Copyright ...: (C) 2023-2025
+ * Copyright ...: (C) 2023-2026
  * Version .....: 1.0.10
- * Date ........: 2025-09-17 (YYYY-MM-DD)
- * Language ....: Microsoft Visual Studio 2022: .NET 9.0 MAUI C# 13.0
+ * Date ........: 2025-10-13 (YYYY-MM-DD)
+ * Language ....: Microsoft Visual Studio 2026: .NET 10.0 MAUI C# 14.0
  * Description .: Read calendar events to share
  * Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 4.0.0; https://github.com/jfversluis/Plugin.Maui.CalendarStore
  * Thanks to ...: Gerald Versluis for his video's on YouTube about .NET MAUI */
@@ -32,7 +32,7 @@ namespace CalendarEvents
             catch (Exception ex)
             {
 #if DEBUG
-                DisplayAlert("InitializeComponent MainPage", ex.Message, "OK");
+                DisplayAlertAsync("InitializeComponent MainPage", ex.Message, "OK");
 #endif
                 return;
             }
@@ -251,7 +251,7 @@ namespace CalendarEvents
                     pckCalendars.IsEnabled = false;
                     btnGetEvents.IsEnabled = false;
 
-                    await DisplayAlert("", CalEventLang.MessageNoCalendars_Text, CalEventLang.ButtonClose_Text);
+                    await DisplayAlertAsync("", CalEventLang.MessageNoCalendars_Text, CalEventLang.ButtonClose_Text);
                     Globals.calendarDictionary.Add(cDicKeyAllCalendars, CalEventLang.AllCalendars_Text);
                     return;
                 }
@@ -303,7 +303,7 @@ namespace CalendarEvents
             {
                 // ArgumentException: Value does not fall within the expected range
                 // The Add method throws an exception if the new key is already in the dictionary
-                //await DisplayAlert(CalEventLang.ErrorTitle_Text, ex.Message, CalEventLang.ButtonClose_Text);
+                //await DisplayAlertAsync(CalEventLang.ErrorTitle_Text, ex.Message, CalEventLang.ButtonClose_Text);
             }
             catch (Exception ex) when (ex is NullReferenceException)
             {
@@ -318,7 +318,7 @@ namespace CalendarEvents
             }
             catch (Exception ex)
             {
-                _ = DisplayAlert(CalEventLang.ErrorTitle_Text, ex.Message, CalEventLang.ButtonClose_Text);
+                _ = DisplayAlertAsync(CalEventLang.ErrorTitle_Text, ex.Message, CalEventLang.ButtonClose_Text);
             }
         }
 
@@ -370,12 +370,19 @@ namespace CalendarEvents
                 // All calendars
                 if (pckCalendars.SelectedIndex == 0)
                 {
-                    events = await CalendarStore.Default.GetEvents(startDate: dtpDateStart.Date, endDate: dtpDateEnd.Date.AddDays(1));
+                    events = await CalendarStore.Default.GetEvents(
+                        startDate: dtpDateStart.Date!.Value,
+                        endDate: dtpDateEnd.Date!.Value.AddDays(1)
+                    );
                 }
                 // One calendar
                 else
                 {
-                    events = await CalendarStore.Default.GetEvents(calendarId: cCalendarId, startDate: dtpDateStart.Date, endDate: dtpDateEnd.Date.AddDays(1));
+                    events = await CalendarStore.Default.GetEvents(
+                        calendarId: cCalendarId,
+                        startDate: dtpDateStart.Date!.Value,
+                        endDate: dtpDateEnd.Date!.Value.AddDays(1)
+                    );
                 }
 
                 if (entSearchWord.Text is null or "")
@@ -439,7 +446,7 @@ namespace CalendarEvents
             }
             catch (Exception ex)
             {
-                await DisplayAlert(CalEventLang.ErrorTitle_Text, $"{CalEventLang.ErrorCalendar_Text}\n\n{ex.Message}", CalEventLang.ButtonClose_Text);
+                await DisplayAlertAsync(CalEventLang.ErrorTitle_Text, $"{CalEventLang.ErrorCalendar_Text}\n\n{ex.Message}", CalEventLang.ButtonClose_Text);
             }
         }
 
@@ -535,7 +542,7 @@ namespace CalendarEvents
             // Show license.
             if (Globals.bLicense == false)
             {
-                Globals.bLicense = await Application.Current!.Windows[0].Page!.DisplayAlert(CalEventLang.LicenseTitle_Text, $"Calendar Events\n{cCopyright}\n\n{cLicenseText}", CalEventLang.Agree_Text, CalEventLang.Disagree_Text);
+                Globals.bLicense = await Application.Current!.Windows[0].Page!.DisplayAlertAsync(CalEventLang.LicenseTitle_Text, $"Calendar Events\n{cCopyright}\n\n{cLicenseText}", CalEventLang.Agree_Text, CalEventLang.Disagree_Text);
 
                 if (Globals.bLicense)
                 {
@@ -553,7 +560,7 @@ namespace CalendarEvents
                     btnShareEvents.IsEnabled = false;
                     imgbtnTextToSpeech.IsEnabled = false;
 
-                    await DisplayAlert(CalEventLang.LicenseTitle_Text, CalEventLang.CloseApplication_Text, CalEventLang.ButtonClose_Text);
+                    await DisplayAlertAsync(CalEventLang.LicenseTitle_Text, CalEventLang.CloseApplication_Text, CalEventLang.ButtonClose_Text);
 #else
                     Application.Current.Quit();
 #endif
@@ -634,10 +641,10 @@ namespace CalendarEvents
                 return status;
 
             // !!!BUG!!! in Android?: does not works without the DisplayAlert
-            await DisplayAlert("", CalEventLang.CalendarPermission_Text, CalEventLang.ButtonClose_Text);
+            await DisplayAlertAsync("", CalEventLang.CalendarPermission_Text, CalEventLang.ButtonClose_Text);
 
             status = await Permissions.RequestAsync<Permissions.CalendarRead>();
-            //await DisplayAlert("CheckAndRequestCalendarRead", status.ToString(), "OK");  // For testing
+            //await DisplayAlertAsync("CheckAndRequestCalendarRead", status.ToString(), "OK");  // For testing
 
             return status;
         }

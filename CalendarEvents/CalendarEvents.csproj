@@ -1,10 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net9.0-android;net9.0-ios;net9.0-maccatalyst</TargetFrameworks>
-		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net9.0-windows10.0.19041.0</TargetFrameworks>
+		<TargetFrameworks>net10.0-android;net10.0-ios;net10.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net10.0-windows10.0.19041.0</TargetFrameworks>
 		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
-		<!-- <TargetFrameworks>$(TargetFrameworks);net9.0-tizen</TargetFrameworks> -->
+		<!-- <TargetFrameworks>$(TargetFrameworks);net10.0-tizen</TargetFrameworks> -->
 		<OutputType>Exe</OutputType>
 		<RootNamespace>CalendarEvents</RootNamespace>
 		<NeutralLanguage>en-US</NeutralLanguage>
@@ -71,8 +71,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.110" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.9" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="10.0.0-rc.1.25452.6" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.0-rc.1.25451.107" />
 		<PackageReference Include="Plugin.Maui.CalendarStore" Version="4.0.0" />
 	</ItemGroup>
 
@@ -115,7 +115,7 @@
 		<ApplicationId>com.geertgeerits.calendarevents</ApplicationId>
 	</PropertyGroup>	
 	
-	<PropertyGroup Condition="'$(TargetFramework)'=='net9.0-ios'">
+	<PropertyGroup Condition="'$(TargetFramework)'=='net10.0-ios'">
 		<ProvisioningType>automatic</ProvisioningType>
 		<CodesignKey>Apple Development: Created via API (KL96X68Q72)</CodesignKey>
 		<CodesignProvision>VS: com.geertgeerits.calendarevents Development</CodesignProvision>
@@ -135,7 +135,7 @@
 		<ApplicationId>com.geertgeerits.calendarevents</ApplicationId>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net9.0-ios|AnyCPU'">
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net10.0-ios|AnyCPU'">
 		<MtouchLink>None</MtouchLink>
 	</PropertyGroup>
 

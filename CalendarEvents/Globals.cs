@@ -1,8 +1,4 @@
-﻿//// Global usings
-global using CalendarEvents.Resources.Languages;
-global using System.Globalization;
-
-namespace CalendarEvents
+﻿namespace CalendarEvents
 {
     //// Global variables and methods
     internal static class Globals

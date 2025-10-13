@@ -16,7 +16,7 @@ namespace CalendarEvents
             catch (Exception ex)
             {
 #if DEBUG
-                DisplayAlert("InitializeComponent PageSettings", ex.Message, "OK");
+                DisplayAlertAsync("InitializeComponent PageSettings", ex.Message, "OK");
 #endif
                 return;
             }

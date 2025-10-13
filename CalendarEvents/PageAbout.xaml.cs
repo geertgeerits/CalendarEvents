@@ -11,7 +11,7 @@ namespace CalendarEvents
             catch (Exception ex)
             {
 #if DEBUG
-                DisplayAlert("InitializeComponent: PageAbout", ex.Message, "OK");
+                DisplayAlertAsync("InitializeComponent: PageAbout", ex.Message, "OK");
 #endif
                 return;
             }
@@ -21,7 +21,7 @@ namespace CalendarEvents
 #endif
             //// Put text in the chosen language in the controls
             lblVersion.Text = $"{CalEventLang.Version_Text} 1.0.10";
-            lblCopyright.Text = $"{CalEventLang.Copyright_Text} © 2023-2025 Geert Geerits";
+            lblCopyright.Text = $"{CalEventLang.Copyright_Text} © 2023-2026 Geert Geerits";
             lblPrivacyPolicy.Text = $"\n{CalEventLang.PrivacyPolicyTitle_Text} {CalEventLang.PrivacyPolicy_Text}";
             lblLicense.Text = $"{CalEventLang.LicenseTitle_Text}: {CalEventLang.License_Text}\n{CalEventLang.LicenseMit2_Text}";
             lblExplanation.Text = $"\n{CalEventLang.InfoExplanation_Text}";
@@ -102,7 +102,7 @@ namespace CalendarEvents
                 }
                 catch (Exception ex)
                 {
-                    await Application.Current!.Windows[0].Page!.DisplayAlert(CalEventLang.ErrorTitle_Text, ex.Message, CalEventLang.ButtonClose_Text);
+                    await Application.Current!.Windows[0].Page!.DisplayAlertAsync(CalEventLang.ErrorTitle_Text, ex.Message, CalEventLang.ButtonClose_Text);
                 }
             }
         }
@@ -127,7 +127,7 @@ namespace CalendarEvents
             }
             catch (Exception ex)
             {
-                await Application.Current!.Windows[0].Page!.DisplayAlert(CalEventLang.ErrorTitle_Text, ex.Message, CalEventLang.ButtonClose_Text);
+                await Application.Current!.Windows[0].Page!.DisplayAlertAsync(CalEventLang.ErrorTitle_Text, ex.Message, CalEventLang.ButtonClose_Text);
             }
         }
     }
