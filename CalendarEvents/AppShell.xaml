@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Shell
-    x:Class="CalendarEvents.AppShell"
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns="http://schemas.microsoft.com/dotnet/maui/global"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:CalendarEvents"
+    x:Class="CalendarEvents.AppShell"
     Shell.FlyoutBehavior="Disabled">
 
     <ShellContent
         Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
+        ContentTemplate="{DataTemplate MainPage}"
         Route="MainPage" />
 
 </Shell>

@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/maui/global"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:CalendarEvents"
              x:Class="CalendarEvents.MainPage"
              Loaded="OnPageLoaded"
              Appearing="OnPageAppearing"
@@ -22,8 +21,8 @@
                 VerticalOptions="Center"
                 HeightRequest="32"
                 WidthRequest="32"
-                SemanticProperties.Description="{local:Translate Info_Text}"
-                ToolTipProperties.Text="{local:Translate Info_Text}"
+                SemanticProperties.Description="{Translate Info_Text}"
+                ToolTipProperties.Text="{Translate Info_Text}"
                 Clicked="OnPageAboutClicked">
             </ImageButton>
 
@@ -32,7 +31,7 @@
                 Style="{StaticResource labelStyleTitleView}"
                 Grid.Column="1"
                 FontSize="20"
-                Text="{local:Translate NameProgram_Text}">
+                Text="{Translate NameProgram_Text}">
             </Label>
 
             <ActivityIndicator
@@ -53,8 +52,8 @@
                 VerticalOptions="Center"
                 HeightRequest="32"
                 WidthRequest="32"
-                SemanticProperties.Description="{local:Translate Settings_Text}"
-                ToolTipProperties.Text="{local:Translate Settings_Text}"
+                SemanticProperties.Description="{Translate Settings_Text}"
+                ToolTipProperties.Text="{Translate Settings_Text}"
                 Clicked="OnPageSettingsClicked">
             </ImageButton>
         </Grid>
@@ -71,7 +70,7 @@
                     Style="{StaticResource labelStyleDefault}"
                     Grid.Row="0"
                     Grid.Column="0"
-                    Text="{local:Translate DateStart_Text}">
+                    Text="{Translate DateStart_Text}">
                 </Label>
 
                 <Border
@@ -90,7 +89,7 @@
                     Style="{StaticResource labelStyleDefault}"
                     Grid.Row="1"
                     Grid.Column="0"
-                    Text="{local:Translate DateEnd_Text}">
+                    Text="{Translate DateEnd_Text}">
                 </Label>
 
                 <Border
@@ -109,9 +108,9 @@
                     Style="{StaticResource labelStyleDefault}"
                     Grid.Row="2"
                     Grid.Column="0"
-                    Text="{local:Translate SearchFor_Text}"
-                    SemanticProperties.Description="{local:Translate ToolTipSearchFor_Text}"
-                    ToolTipProperties.Text="{local:Translate ToolTipSearchFor_Text}">
+                    Text="{Translate SearchFor_Text}"
+                    SemanticProperties.Description="{Translate ToolTipSearchFor_Text}"
+                    ToolTipProperties.Text="{Translate ToolTipSearchFor_Text}">
                 </Label>
 
                 <Border
@@ -134,7 +133,7 @@
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
                     VerticalTextAlignment="Center"
-                    Text="{local:Translate Calendars_Text}">
+                    Text="{Translate Calendars_Text}">
                 </Label>
                 
                 <Border
@@ -162,9 +161,9 @@
                     Style="{StaticResource buttonStyleFill}"
                     Grid.Row="4"
                     Grid.Column="0"
-                    Text="{local:Translate EventsGet_Text}"
-                    SemanticProperties.Description="{local:Translate ToolTipEventsGet_Text}"
-                    ToolTipProperties.Text="{local:Translate ToolTipEventsGet_Text}"
+                    Text="{Translate EventsGet_Text}"
+                    SemanticProperties.Description="{Translate ToolTipEventsGet_Text}"
+                    ToolTipProperties.Text="{Translate ToolTipEventsGet_Text}"
                     Clicked="OnGetEventsClicked">
                 </Button>
 
@@ -173,9 +172,9 @@
                     Style="{StaticResource buttonStyleFill}"
                     Grid.Row="4"
                     Grid.Column="1"
-                    Text="{local:Translate EventsClear_Text}"
-                    SemanticProperties.Description="{local:Translate ToolTipEventsClear_Text}"
-                    ToolTipProperties.Text="{local:Translate ToolTipEventsClear_Text}"
+                    Text="{Translate EventsClear_Text}"
+                    SemanticProperties.Description="{Translate ToolTipEventsClear_Text}"
+                    ToolTipProperties.Text="{Translate ToolTipEventsClear_Text}"
                     Clicked="OnClearEventsClicked">
                 </Button>
 
@@ -184,9 +183,9 @@
                     Style="{StaticResource buttonStyleFill}"
                     Grid.Row="5"
                     Grid.Column="0"
-                    Text="{local:Translate EventsCopy_Text}"
-                    SemanticProperties.Description="{local:Translate ToolTipEventsCopy_Text}"
-                    ToolTipProperties.Text="{local:Translate ToolTipEventsCopy_Text}"
+                    Text="{Translate EventsCopy_Text}"
+                    SemanticProperties.Description="{Translate ToolTipEventsCopy_Text}"
+                    ToolTipProperties.Text="{Translate ToolTipEventsCopy_Text}"
                     Clicked="OnClipboardButtonClicked">
                 </Button>
             
@@ -195,9 +194,9 @@
                     Style="{StaticResource buttonStyleFill}"
                     Grid.Row="5"
                     Grid.Column="1"
-                    Text="{local:Translate EventsShare_Text}"
-                    SemanticProperties.Description="{local:Translate ToolTipEventsShare_Text}"
-                    ToolTipProperties.Text="{local:Translate ToolTipEventsShare_Text}"
+                    Text="{Translate EventsShare_Text}"
+                    SemanticProperties.Description="{Translate ToolTipEventsShare_Text}"
+                    ToolTipProperties.Text="{Translate ToolTipEventsShare_Text}"
                     Clicked="OnButtonShareClicked">
                 </Button>
 
@@ -235,8 +234,8 @@
                         HeightRequest="38"
                         WidthRequest="38"
                         IsVisible="False"
-                        SemanticProperties.Description="{local:Translate ToolTipTextToSpeech_Text}"
-                        ToolTipProperties.Text="{local:Translate ToolTipTextToSpeech_Text}"                        
+                        SemanticProperties.Description="{Translate ToolTipTextToSpeech_Text}"
+                        ToolTipProperties.Text="{Translate ToolTipTextToSpeech_Text}"                        
                         Clicked="OnTextToSpeechClicked">
                     </ImageButton>
                 </HorizontalStackLayout>
