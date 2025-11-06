@@ -4,7 +4,6 @@
     {
         public decimal MinValue { get; set; }
         public decimal MaxValue { get; set; }
-        public string? BorderName { get; set; }
 
         protected override void Invoke(Entry entry)
         {
@@ -13,8 +12,23 @@
             isValid = isValid && result >= MinValue && result <= MaxValue;
 
             // Set the border color if the input is invalid
-            Border border = (Border)entry.Parent.FindByName(BorderName);
-            border.Stroke = isValid ? Color.FromArgb("969696") : Colors.OrangeRed;
+            if (entry.Parent is Border border && Application.Current?.Resources != null)
+            {
+                if (isValid)
+                {
+                    if (Application.Current.Resources.TryGetValue("EntryValidNumber", out var validColor) && validColor is Color validColorValue)
+                    {
+                        border.Stroke = validColorValue;
+                    }
+                }
+                else
+                {
+                    if (Application.Current.Resources.TryGetValue("EntryInvalidNumber", out var InvalidColor) && InvalidColor is Color InvalidColorValue)
+                    {
+                        border.Stroke = InvalidColorValue;
+                    }
+                }
+            }
         }
     }
 }

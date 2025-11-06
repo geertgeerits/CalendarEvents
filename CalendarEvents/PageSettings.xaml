@@ -195,7 +195,7 @@
                         Completed="VerifyAddDaysToStart">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <NumericValidationTriggerAction MinValue="-500" MaxValue="500" BorderName="brdAddDaysToStart"/>
+                                <NumericValidationTriggerAction MinValue="-500" MaxValue="500"/>
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>
@@ -223,7 +223,7 @@
                         Completed="VerifyAddDaysToEnd">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <NumericValidationTriggerAction MinValue="-500" MaxValue="500" BorderName="brdAddDaysToEnd"/>
+                                <NumericValidationTriggerAction MinValue="-500" MaxValue="500"/>
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>
