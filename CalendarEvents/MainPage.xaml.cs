@@ -75,8 +75,9 @@ namespace CalendarEvents
                 imgbtnSettings.VerticalOptions = LayoutOptions.Start;
             }
 
-            //// Set the theme
+            //// Set the theme and the number color
             Globals.SetTheme();
+            ClassEntryMethods.SetNumberColor();
 
             //// Get the system date and time format and set the date and time format       
             switch (Globals.cDateFormatSelect)
