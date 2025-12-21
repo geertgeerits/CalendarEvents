@@ -218,6 +218,9 @@ Rapportdata bevaras i 28 dagar.</value>
   <data name="EventsShare_Text" xml:space="preserve">
     <value>Dela händelser</value>
   </data>
+  <data name="Events_Text" xml:space="preserve">
+    <value>Händelser:</value>
+  </data>
   <data name="InfoExplanation_Text" xml:space="preserve">
     <value>Datumformatet kan ändras i inställningarna till det internationella standardformatet ISO 8601 (ÅÅÅÅ-MM-DD).
 Obs: 4 år är den maximala perioden en iOS-kalender kan söka efter händelser.

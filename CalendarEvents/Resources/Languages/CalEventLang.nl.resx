@@ -218,6 +218,9 @@ De rapportgegevens worden 28 dagen bewaard.</value>
   <data name="EventsShare_Text" xml:space="preserve">
     <value>Deel evenementen</value>
   </data>
+  <data name="Events_Text" xml:space="preserve">
+    <value>Evenementen:</value>
+  </data>
   <data name="InfoExplanation_Text" xml:space="preserve">
     <value>Het datumformaat kan in de instellingen worden gewijzigd in het internationale standaardformaat ISO 8601 (JJJJ-MM-DD).
 Let op: 4 jaar is de maximale periode waarin een iOS-agenda naar evenementen kan zoeken.

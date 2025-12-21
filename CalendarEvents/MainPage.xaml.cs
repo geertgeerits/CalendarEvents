@@ -9,7 +9,6 @@
  * Thanks to ...: Gerald Versluis for his video's on YouTube about .NET MAUI */
 
 using Plugin.Maui.CalendarStore;
-using System.Diagnostics;
 
 namespace CalendarEvents
 {
@@ -20,6 +19,7 @@ namespace CalendarEvents
         private string cLicenseText = "";
         private string cCalendarId = "";
         private int nCalendarSelected;
+        private int nNumberOfEvents;
         private readonly string cDicKeyAllCalendars = "000-AllCalendars-gg51";
         private IEnumerable<CalendarEvent>? events;
 
@@ -427,7 +427,8 @@ namespace CalendarEvents
                     }
 
                     // Set the number of events in the label
-                    lblNumberOfEvents.Text = lCalendarEventsNoDupes.Count.ToString("N0");
+                    nNumberOfEvents = lCalendarEventsNoDupes.Count;
+                    lblNumberOfEvents.Text = $"{CalEventLang.Events_Text} {nNumberOfEvents:N0}";
                 }
             }
             catch (Exception ex) when (ex is ObjectDisposedException)
@@ -529,6 +530,9 @@ namespace CalendarEvents
                 pckCalendars.ItemsSource = calendarList;
 
                 pckCalendars.SelectedIndex = nSelectedIndex;
+
+                // Update the number of events label
+                lblNumberOfEvents.Text = $"{CalEventLang.Events_Text} {nNumberOfEvents:N0}";
             }
         }
 

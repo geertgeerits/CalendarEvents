@@ -218,6 +218,9 @@ Raporttitietoja säilytetään 28 päivää.</value>
   <data name="EventsShare_Text" xml:space="preserve">
     <value>Jaa tapahtumia</value>
   </data>
+  <data name="Events_Text" xml:space="preserve">
+    <value>Tapahtumat:</value>
+  </data>
   <data name="InfoExplanation_Text" xml:space="preserve">
     <value>Päivämäärän muoto voidaan muuttaa asetuksista kansainväliseen standardimuotoon ISO 8601 (VVVV-KK-PP).
 Huomautus: 4 vuotta on enimmäisaika, jonka iOS-kalenteri voi etsiä tapahtumia.

@@ -218,6 +218,9 @@ The report data is retained for 28 days.</value>
   <data name="EventsShare_Text" xml:space="preserve">
     <value>Share events</value>
   </data>
+  <data name="Events_Text" xml:space="preserve">
+    <value>Events:</value>
+  </data>
   <data name="InfoExplanation_Text" xml:space="preserve">
     <value>The date format can be changed in the settings to the international standard format ISO 8601 (YYYY-MM-DD).
 Note: 4 years is the maximum period an iOS calendar can search for events.

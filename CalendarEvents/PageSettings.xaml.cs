@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-
-namespace CalendarEvents
+﻿namespace CalendarEvents
 {
     public sealed partial class PageSettings : ContentPage
     {

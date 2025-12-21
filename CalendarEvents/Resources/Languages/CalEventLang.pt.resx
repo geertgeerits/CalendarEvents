@@ -218,6 +218,9 @@ Os dados do relatório são retidos por 28 dias.</value>
   <data name="EventsShare_Text" xml:space="preserve">
     <value>Compartilhar eventos</value>
   </data>
+  <data name="Events_Text" xml:space="preserve">
+    <value>Eventos:</value>
+  </data>
   <data name="InfoExplanation_Text" xml:space="preserve">
     <value>O formato da data pode ser alterado nas configurações para o formato padrão internacional ISO 8601 (AAAA-MM-DD).
 Observação: 4 anos é o período máximo que um calendário iOS pode pesquisar eventos.

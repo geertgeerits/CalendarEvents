@@ -218,6 +218,9 @@ Nejsou sdíleny s nikým jiným mimo vývojáře aplikace.
   <data name="EventsShare_Text" xml:space="preserve">
     <value>Sdílejte události</value>
   </data>
+  <data name="Events_Text" xml:space="preserve">
+    <value>Události:</value>
+  </data>
   <data name="InfoExplanation_Text" xml:space="preserve">
     <value>Formát data lze v nastavení změnit na mezinárodní standardní formát ISO 8601 (RRRR-MM-DD).
 Poznámka: 4 roky je maximální období, po které může kalendář iOS vyhledávat události.

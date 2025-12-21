@@ -218,6 +218,9 @@ Los datos del informe se conservan durante 28 días.</value>
   <data name="EventsShare_Text" xml:space="preserve">
     <value>Compartir eventos</value>
   </data>
+  <data name="Events_Text" xml:space="preserve">
+    <value>Eventos:</value>
+  </data>
   <data name="InfoExplanation_Text" xml:space="preserve">
     <value>El formato de fecha se puede cambiar en la configuración al formato estándar internacional ISO 8601 (AAAA-MM-DD).
 Nota: 4 años es el período máximo que un calendario de iOS puede buscar eventos.

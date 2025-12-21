@@ -218,6 +218,9 @@ A jelentés adatait 28 napig őrzik meg.</value>
   <data name="EventsShare_Text" xml:space="preserve">
     <value>Események megosztása</value>
   </data>
+  <data name="Events_Text" xml:space="preserve">
+    <value>Események:</value>
+  </data>
   <data name="InfoExplanation_Text" xml:space="preserve">
     <value>A dátumformátum a beállításokban módosítható az ISO 8601 nemzetközi szabvány formátumra (ÉÉÉÉ-HH-NN).
 Megjegyzés: 4 év a maximális időtartam, amelyre az iOS-naptár eseményeket kereshet.

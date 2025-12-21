@@ -218,6 +218,9 @@ Die Berichtsdaten werden 28 Tage lang aufbewahrt.</value>
   <data name="EventsShare_Text" xml:space="preserve">
     <value>Teilen Sie Ereignisse</value>
   </data>
+  <data name="Events_Text" xml:space="preserve">
+    <value>Veranstaltungen:</value>
+  </data>
   <data name="InfoExplanation_Text" xml:space="preserve">
     <value>Das Datumsformat kann in den Einstellungen auf das internationale Standardformat ISO 8601 (JJJJ-MM-TT) geändert werden.
 Hinweis: Der maximale Zeitraum, in dem ein iOS-Kalender nach Ereignissen suchen kann, beträgt 4 Jahre.

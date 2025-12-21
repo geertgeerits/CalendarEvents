@@ -218,6 +218,9 @@ Rapportdataene oppbevares i 28 dager.</value>
   <data name="EventsShare_Text" xml:space="preserve">
     <value>Del hendelser</value>
   </data>
+  <data name="Events_Text" xml:space="preserve">
+    <value>Arrangementer:</value>
+  </data>
   <data name="InfoExplanation_Text" xml:space="preserve">
     <value>Datoformatet kan endres i innstillingene til det internasjonale standardformatet ISO 8601 (ÅÅÅÅ-MM-DD).
 Merk: 4 år er den maksimale perioden en iOS-kalender kan søke etter hendelser.
