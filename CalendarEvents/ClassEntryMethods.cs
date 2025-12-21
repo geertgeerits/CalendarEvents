@@ -3,11 +3,11 @@
     internal static class ClassEntryMethods
     {
         // Global variables
-        public static bool bKeyboardCustom = true;
+        public static bool bKeyboardCustom = false;
         public static string cNumDecimalDigits = string.Empty;
         public static string cPercDecimalDigits = string.Empty;
         public static string cRoundNumber = string.Empty;
-        public static bool bColorNumber = true;
+        public static bool bColorNumber = false;
         public static bool bShowFormattedNumber;
         public static string cNumGroupSeparator = string.Empty;
         public static string cNumDecimalSeparator = string.Empty;
