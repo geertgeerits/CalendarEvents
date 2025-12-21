@@ -2,6 +2,9 @@
 {
     public sealed partial class PageSettings : ContentPage
     {
+        //// The currently focused Entry field
+        private Entry? _focusedEntry;
+
         //// Local variables
         private readonly Stopwatch stopWatch = new();
 
@@ -236,7 +239,20 @@
         }
 
         /// <summary>
-        /// Verify the number of days in the past 
+        /// Handles the event that occurs when the associated Entry control receives focus.
+        /// </summary>
+        /// <param name="sender">The source of the event, typically the Entry control that has gained focus.</param>
+        /// <param name="e">A FocusEventArgs object that contains the event data.</param>
+        private void entAddDays_Focused(object sender, FocusEventArgs e)
+        {
+            if (sender is Entry entry)
+            {
+                _focusedEntry = entry;
+            }
+        }
+
+        /// <summary>
+        /// Verify the number of start days
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -257,7 +273,7 @@
         }
 
         /// <summary>
-        /// Verify the number of days in the future 
+        /// Verify the number of end days
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -291,6 +307,19 @@
             {
                 Globals.nSelectedCalendar = nSelectedIndex;
             }
+        }
+
+        /// <summary>
+        /// Handles the click event for the minus button, toggling the negative sign on the currently focused entry field
+        /// </summary>
+        /// <remarks>If no entry field is currently focused, this method does nothing. When invoked, it
+        /// adds or removes the negative sign at the beginning of the entry's text and updates the cursor position
+        /// accordingly.</remarks>
+        /// <param name="sender">The source of the event, typically the minus button control.</param>
+        /// <param name="e">An EventArgs object that contains the event data.</param>
+        private void BtnMinusSign_Clicked(object sender, EventArgs e)
+        {
+            ClassEntryMethods.BtnNumericMinusSignClicked(_focusedEntry!);
         }
 
         /// <summary>

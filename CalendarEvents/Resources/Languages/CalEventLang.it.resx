@@ -366,6 +366,9 @@ Grazie in anticipo.</value>
   <data name="ToolTipTextToSpeech_Text" xml:space="preserve">
     <value>Sintesi vocale: attivata o disattivata</value>
   </data>
+  <data name="ToolTipToggleNegPosNumber_Text" xml:space="preserve">
+    <value>Tasto di commutazione per passare da numeri negativi a positivi e viceversa</value>
+  </data>
   <data name="Trademarks_Text" xml:space="preserve">
     <value>Apple, App Store e il logo dell'App Store sono marchi di Apple Inc., registrati negli Stati Uniti e in altri paesi e regioni.
 Google, Google Play, il logo di Google Play e Android sono marchi di Google LLC.

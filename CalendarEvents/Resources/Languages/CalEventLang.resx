@@ -366,6 +366,9 @@ Thank you in advance.</value>
   <data name="ToolTipTextToSpeech_Text" xml:space="preserve">
     <value>Text to speech: on or off</value>
   </data>
+  <data name="ToolTipToggleNegPosNumber_Text" xml:space="preserve">
+    <value>Toggle key to switch between negative and positive numbers</value>
+  </data>
   <data name="Trademarks_Text" xml:space="preserve">
     <value>Apple, App Store and the App Store logo are trademarks of Apple Inc., registered in the U.S. and other countries and regions.
 Google, Google Play, the Google Play logo and Android are trademarks of Google LLC.

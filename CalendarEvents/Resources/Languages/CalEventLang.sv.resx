@@ -366,6 +366,9 @@ Tack på förhand.</value>
   <data name="ToolTipTextToSpeech_Text" xml:space="preserve">
     <value>Text till tal: på eller av</value>
   </data>
+  <data name="ToolTipToggleNegPosNumber_Text" xml:space="preserve">
+    <value>Växla mellan negativa och positiva tal</value>
+  </data>
   <data name="Trademarks_Text" xml:space="preserve">
     <value>Apple, App Store och App Store-logotypen är varumärken som tillhör Apple Inc., registrerade i USA och andra länder och regioner.
 Google, Google Play, Google Play-logotypen och Android är varumärken som tillhör Google LLC.

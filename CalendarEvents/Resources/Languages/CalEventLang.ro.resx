@@ -366,6 +366,9 @@ Vă mulțumesc anticipat.</value>
   <data name="ToolTipTextToSpeech_Text" xml:space="preserve">
     <value>Text în vorbire: activat sau dezactivat</value>
   </data>
+  <data name="ToolTipToggleNegPosNumber_Text" xml:space="preserve">
+    <value>Tasta de comutare pentru a comuta între numerele negative și cele pozitive</value>
+  </data>
   <data name="Trademarks_Text" xml:space="preserve">
     <value>Apple, App Store și sigla App Store sunt mărci comerciale ale Apple Inc., înregistrate în S.U.A. și în alte țări și regiuni.
 Google, Google Play, sigla Google Play și Android sunt mărci comerciale ale Google LLC.

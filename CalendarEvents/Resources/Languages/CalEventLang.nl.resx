@@ -366,6 +366,9 @@ Alvast bedankt.</value>
   <data name="ToolTipTextToSpeech_Text" xml:space="preserve">
     <value>Tekst naar spraak: aan of uit</value>
   </data>
+  <data name="ToolTipToggleNegPosNumber_Text" xml:space="preserve">
+    <value>Schakeltoets om te wisselen tussen negatieve en positieve getallen</value>
+  </data>
   <data name="Trademarks_Text" xml:space="preserve">
     <value>Apple, App Store en het App Store-logo zijn handelsmerken van Apple Inc., geregistreerd in de VS en andere landen en regio's.
 Google, Google Play, het Google Play-logo en Android zijn handelsmerken van Google LLC.

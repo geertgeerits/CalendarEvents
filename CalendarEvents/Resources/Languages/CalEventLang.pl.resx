@@ -366,6 +366,9 @@ Z góry dziękuję.</value>
   <data name="ToolTipTextToSpeech_Text" xml:space="preserve">
     <value>Tekst na mowę: wł. lub wył</value>
   </data>
+  <data name="ToolTipToggleNegPosNumber_Text" xml:space="preserve">
+    <value>Klawisz przełączający do przełączania między liczbami ujemnymi i dodatnimi</value>
+  </data>
   <data name="Trademarks_Text" xml:space="preserve">
     <value>Apple, App Store i logo App Store są znakami towarowymi firmy Apple Inc., zarejestrowanymi w Stanach Zjednoczonych oraz innych krajach i regionach.
 Google, Google Play, logo Google Play i Android są znakami towarowymi firmy Google LLC.

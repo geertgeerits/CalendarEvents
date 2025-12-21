@@ -366,6 +366,9 @@ Előre is köszönöm.</value>
   <data name="ToolTipTextToSpeech_Text" xml:space="preserve">
     <value>Szövegfelolvasó: be vagy ki</value>
   </data>
+  <data name="ToolTipToggleNegPosNumber_Text" xml:space="preserve">
+    <value>Váltógomb a negatív és pozitív számok közötti váltáshoz</value>
+  </data>
   <data name="Trademarks_Text" xml:space="preserve">
     <value>Az Apple, az App Store és az App Store logó az Apple Inc. bejegyzett védjegyei az Egyesült Államokban és más országokban és régiókban.
 A Google, a Google Play, a Google Play logó és az Android a Google LLC védjegyei.

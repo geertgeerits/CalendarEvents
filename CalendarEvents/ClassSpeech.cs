@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-
-namespace CalendarEvents
+﻿namespace CalendarEvents
 {
     internal sealed class ClassSpeech
     {

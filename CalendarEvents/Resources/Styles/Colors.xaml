@@ -5,6 +5,11 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
+    <Color x:Key="EntryTextPositiveNumberLight">Black</Color>
+    <Color x:Key="EntryTextPositiveNumberDark">White</Color>
+    <Color x:Key="EntryTextNegativeNumberLight">Red</Color>
+    <Color x:Key="EntryTextNegativeNumberDark">LightPink</Color>
+    
     <Color x:Key="EntryValidNumber">DarkGray</Color>
     <Color x:Key="EntryInvalidNumber">Orange</Color>
 

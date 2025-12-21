@@ -366,6 +366,9 @@ Merci d'avance.</value>
   <data name="ToolTipTextToSpeech_Text" xml:space="preserve">
     <value>Synthèse vocale : activé ou désactivé</value>
   </data>
+  <data name="ToolTipToggleNegPosNumber_Text" xml:space="preserve">
+    <value>Appuyez sur la touche bascule pour alterner entre les nombres négatifs et positifs</value>
+  </data>
   <data name="Trademarks_Text" xml:space="preserve">
     <value>Apple, App Store et le logo App Store sont des marques commerciales d'Apple Inc., déposées aux États-Unis et dans d'autres pays et régions.
 Google, Google Play, le logo Google Play et Android sont des marques commerciales de Google LLC.

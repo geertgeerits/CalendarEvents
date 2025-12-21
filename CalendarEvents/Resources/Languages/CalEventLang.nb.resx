@@ -366,6 +366,9 @@ Takk på forhånd.</value>
   <data name="ToolTipTextToSpeech_Text" xml:space="preserve">
     <value>Tekst til tale: på eller av</value>
   </data>
+  <data name="ToolTipToggleNegPosNumber_Text" xml:space="preserve">
+    <value>Veksleknapp for å veksle mellom negative og positive tall</value>
+  </data>
   <data name="Trademarks_Text" xml:space="preserve">
     <value>Apple, App Store og App Store-logoen er varemerker for Apple Inc., registrert i USA og andre land og regioner.
 Google, Google Play, Google Play-logoen og Android er varemerker for Google LLC.

@@ -366,6 +366,9 @@ Vielen Dank im Voraus.</value>
   <data name="ToolTipTextToSpeech_Text" xml:space="preserve">
     <value>Text zu Sprache: ein oder aus</value>
   </data>
+  <data name="ToolTipToggleNegPosNumber_Text" xml:space="preserve">
+    <value>Kipptaste zum Umschalten zwischen negativen und positiven Zahlen</value>
+  </data>
   <data name="Trademarks_Text" xml:space="preserve">
     <value>Apple, App Store und das App Store-Logo sind Marken von Apple Inc. und in den USA sowie anderen Ländern und Regionen eingetragen.
 Google, Google Play, das Google Play-Logo und Android sind Marken von Google LLC.

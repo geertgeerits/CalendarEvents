@@ -247,8 +247,9 @@
                             <Setter Property="ColumnDefinitions">
                                 <Setter.Value>
                                     <ColumnDefinitionCollection>
-                                        <ColumnDefinition Width="{OnIdiom 170, Phone=170, Tablet=300, Desktop=300}" />
-                                        <ColumnDefinition Width="{OnIdiom 170, Phone=170, Tablet=300, Desktop=300}" />
+                                        <ColumnDefinition Width="{OnIdiom 160, Phone=160, Tablet=260, Desktop=260}" />
+                                        <ColumnDefinition Width="{OnIdiom 160, Phone=160, Tablet=260, Desktop=260}" />
+                                        <ColumnDefinition Width="{OnIdiom 25, Phone=25, Tablet=30, Desktop=30}" />
                                     </ColumnDefinitionCollection>
                                 </Setter.Value>
                             </Setter>
@@ -262,8 +263,9 @@
                             <Setter Property="ColumnDefinitions">
                                 <Setter.Value>
                                     <ColumnDefinitionCollection>
-                                        <ColumnDefinition Width="{OnIdiom 270, Phone=270, Tablet=400, Desktop=400}" />
-                                        <ColumnDefinition Width="{OnIdiom 270, Phone=270, Tablet=400, Desktop=400}" />
+                                        <ColumnDefinition Width="{OnIdiom 260, Phone=260, Tablet=360, Desktop=360}" />
+                                        <ColumnDefinition Width="{OnIdiom 260, Phone=260, Tablet=360, Desktop=360}" />
+                                        <ColumnDefinition Width="{OnIdiom 30, Phone=30, Tablet=30, Desktop=30}" />
                                     </ColumnDefinitionCollection>
                                 </Setter.Value>
                             </Setter>
@@ -431,6 +433,19 @@
                 </VisualStateGroup>
             </VisualStateGroupList>
         </Setter>
+    </Style>
+
+    <Style x:Key="buttonStyleMinusSign" TargetType="Button">
+        <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource MidGray}, Dark={StaticResource MidGray}}" />
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LightGray}, Dark={StaticResource DarkGray}}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="HeightRequest" Value="40" />
+        <Setter Property="WidthRequest" Value="25" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="FontAutoScalingEnabled" Value="False" />
+        <Setter Property="Text" Value="-" />
     </Style>
 
     <Style x:Key="pickerStyleSettings" TargetType="Picker">

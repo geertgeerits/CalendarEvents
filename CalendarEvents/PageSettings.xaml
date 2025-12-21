@@ -29,7 +29,7 @@
                     Style="{StaticResource borderStyleDefault}"
                     Grid.Row="0"
                     Grid.Column="0"
-                    Grid.ColumnSpan="2">
+                    Grid.ColumnSpan="3">
 
                     <Label
                         x:Name="lblExplanation"
@@ -90,13 +90,11 @@
                 <Border
                     Style="{StaticResource borderStyleDefault}"
                     Grid.Row="3"
-                    Grid.Column="2">
+                    Grid.Column="1">
 
                     <Picker
                         x:Name="pckLanguageSpeech"
                         Style="{StaticResource pickerStyleSettings}"
-                        Grid.Row="3"
-                        Grid.Column="2"
                         SelectedIndexChanged="OnPickerLanguageSpeechChanged">
                     </Picker>
                 </Border>
@@ -192,14 +190,25 @@
                         Text="1"
                         Placeholder="-500 - 500"
                         MaxLength="4"
+                        Focused="entAddDays_Focused"
                         Completed="VerifyAddDaysToStart">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <NumericValidationTriggerAction MinValue="-500" MaxValue="500"/>
+                                <ValidationTriggerActionDecimal MinValue="-500" MaxValue="500"/>
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>
                 </Border>
+
+                <Button
+                    x:Name="btnMinusSign"
+                    Style="{StaticResource buttonStyleMinusSign}"
+                    Grid.Row="11"
+                    Grid.Column="2"
+                    Grid.RowSpan="3"
+                    ToolTipProperties.Text="{Translate ToolTipToggleNegPosNumber_Text}"
+                    Clicked="BtnMinusSign_Clicked">
+                </Button>
 
                 <Label
                     Style="{StaticResource labelStyleDefault}"
@@ -220,10 +229,11 @@
                         Text="32"
                         Placeholder="-500 - 500"
                         MaxLength="4"
+                        Focused="entAddDays_Focused"
                         Completed="VerifyAddDaysToEnd">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <NumericValidationTriggerAction MinValue="-500" MaxValue="500"/>
+                                <ValidationTriggerActionDecimal MinValue="-500" MaxValue="500"/>
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>

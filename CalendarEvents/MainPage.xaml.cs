@@ -53,6 +53,9 @@ namespace CalendarEvents
             //// Select all the text in the entry field - works for all pages in the app
             Globals.ModifyEntrySelectAllText();
 
+            //// Initialize the number format settings based on the current culture
+            ClassEntryMethods.InitializeNumberFormat();
+
             //// Get the saved settings
             Globals.cTheme = Preferences.Default.Get("SettingTheme", "System");
             Globals.cDateFormatSelect = Preferences.Default.Get("SettingDateFormatSelect", "SystemLong");
