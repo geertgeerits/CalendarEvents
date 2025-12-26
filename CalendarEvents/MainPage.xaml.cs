@@ -2,7 +2,7 @@
  * Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
  * Copyright ...: (C) 2023-2026
  * Version .....: 1.0.10
- * Date ........: 2025-12-24 (YYYY-MM-DD)
+ * Date ........: 2025-12-26 (YYYY-MM-DD)
  * Language ....: Microsoft Visual Studio 2026: .NET 10.0 MAUI C# 14.0
  * Description .: Read calendar events to share
  * Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 4.0.0; https://github.com/jfversluis/Plugin.Maui.CalendarStore
@@ -159,13 +159,7 @@ namespace CalendarEvents
             {
                 Globals.cLanguageSpeech = "en-US";
             }
-#if IOS
-            // Use one of the normal voices for en-US (Reed, Samantha and Shelley) instead of the ridiculous voices in iOS
-            if (Globals.cLanguageSpeech == "en-US")
-            {
-                Globals.cLanguageSpeech = "en-US- Samantha";
-            }
-#endif
+
             // Initialize text to speech
             Globals.bTextToSpeechAvailable = await ClassSpeech.InitializeTextToSpeechAsync();
 
