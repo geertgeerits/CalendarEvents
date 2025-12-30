@@ -39,11 +39,31 @@
 	<key>CFBundleIdentifier</key>
 	<string>com.geertgeerits.calendarevents</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.10</string>
+	<string>1.0.11</string>
 	<key>MinimumOSVersion</key>
 	<string>12.2</string>
 	<key>CFBundleVersion</key>
-	<string>10</string>
+	<string>11</string>
+
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>cs</string>
+		<string>da</string>
+		<string>de</string>
+		<string>es</string>
+		<string>fi</string>
+		<string>fr</string>
+		<string>hu</string>
+		<string>it</string>
+		<string>nb</string>
+		<string>nl</string>
+		<string>pl</string>
+		<string>pt</string>
+		<string>ro</string>
+		<string>sv</string>
+	</array>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>en</string>
 
 	<!--<key>UIDesignRequiresCompatibility</key>
 	<true/>-->

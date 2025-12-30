@@ -20,7 +20,7 @@ namespace CalendarEvents
             lblTitle.Margin = new Thickness(86, 18, 0, 0);
 #endif
             //// Put text in the chosen language in the controls
-            lblVersion.Text = $"{CalEventLang.Version_Text} 1.0.10";
+            lblVersion.Text = $"{CalEventLang.Version_Text} 1.0.11";
             lblCopyright.Text = $"{CalEventLang.Copyright_Text} © 2023-2026 Geert Geerits";
             lblPrivacyPolicy.Text = $"\n{CalEventLang.PrivacyPolicyTitle_Text} {CalEventLang.PrivacyPolicy_Text}";
             lblLicense.Text = $"{CalEventLang.LicenseTitle_Text}: {CalEventLang.License_Text}\n{CalEventLang.LicenseMit2_Text}";

@@ -20,9 +20,9 @@
 		<ApplicationIdGuid>67d69051-af79-468e-aa14-97f27a1fc29c</ApplicationIdGuid>
 
 		<!-- Versions -->
-		<PackageVersion>1.0.10</PackageVersion>
-		<ApplicationDisplayVersion>1.0.10</ApplicationDisplayVersion>
-		<ApplicationVersion>1</ApplicationVersion>
+		<PackageVersion>1.0.11</PackageVersion>
+		<ApplicationDisplayVersion>1.0.11</ApplicationDisplayVersion>
+		<ApplicationVersion>11</ApplicationVersion>
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">12.2</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">15.0</SupportedOSPlatformVersion>
@@ -110,8 +110,8 @@
 		<AndroidSigningKeyAlias>key</AndroidSigningKeyAlias>
 		<AndroidSigningKeyPass></AndroidSigningKeyPass>
 		<AndroidSigningStorePass></AndroidSigningStorePass>
-		<ApplicationDisplayVersion>1.0.10</ApplicationDisplayVersion>
-		<ApplicationVersion>10</ApplicationVersion>
+		<ApplicationDisplayVersion>1.0.11</ApplicationDisplayVersion>
+		<ApplicationVersion>11</ApplicationVersion>
 		<ApplicationId>com.geertgeerits.calendarevents</ApplicationId>
 	</PropertyGroup>	
 	
@@ -130,8 +130,8 @@
 		<ArchiveOnBuild>true</ArchiveOnBuild>
 		<TcpPort>58181</TcpPort>
 
-		<ApplicationDisplayVersion>1.0.10</ApplicationDisplayVersion>
-		<ApplicationVersion>10</ApplicationVersion>
+		<ApplicationDisplayVersion>1.0.11</ApplicationDisplayVersion>
+		<ApplicationVersion>11</ApplicationVersion>
 		<ApplicationId>com.geertgeerits.calendarevents</ApplicationId>
 	</PropertyGroup>
 
