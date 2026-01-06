@@ -17,6 +17,8 @@
         public static string cLanguageSpeech = "";
         public static bool bTextToSpeechAvailable;
         public static bool bTextToSpeechIsBusy;
+        public static readonly string cImageTextToSpeech = "speaker_64p_blue_green.png";
+        public static readonly string cImageTextToSpeechCancel = "speaker_cancel_64p_blue_red.png";
         public static Dictionary<string, string> calendarDictionary = [];
         public static bool bLicense;
 

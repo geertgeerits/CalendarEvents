@@ -248,7 +248,7 @@
             if (!string.IsNullOrEmpty(cText))
             {
                 Globals.bTextToSpeechIsBusy = true;
-                imageButton.Source = "speaker_cancel_64p_blue_red.png";
+                imageButton.Source = Globals.cImageTextToSpeechCancel;
 
                 try
                 {
@@ -270,7 +270,7 @@
 #endif
                 }
 
-                imageButton.Source = "speaker_64p_blue_green.png";
+                imageButton.Source = Globals.cImageTextToSpeech;
             }
         }
 
@@ -283,14 +283,14 @@
             {
                 if (cts?.IsCancellationRequested ?? true)
                 {
-                    return "speaker_cancel_64p_blue_red.png";
+                    return Globals.cImageTextToSpeechCancel;
                 }
 
                 cts.Cancel();
                 Globals.bTextToSpeechIsBusy = false;
             }
 
-            return "speaker_64p_blue_green.png";
+            return Globals.cImageTextToSpeech;
         }
     }
 }
