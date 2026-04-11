@@ -7,8 +7,8 @@
 
     <Style TargetType="Shell" ApplyToDerivedTypes="True">
         <Setter Property="Shell.BackgroundColor" Value="Gold" />
-        <Setter Property="Shell.ForegroundColor" Value="DarkSlateGray" />
-        <Setter Property="Shell.TitleColor" Value="Black" />
+        <Setter Property="Shell.ForegroundColor" Value="{AppThemeBinding Light=Black, Dark={OnPlatform Default=Black, WinUI=White}}" />
+        <Setter Property="Shell.TitleColor" Value="{AppThemeBinding Light=Black, Dark=White}" />
     </Style>
 
     <Style TargetType="Page" ApplyToDerivedTypes="True">
