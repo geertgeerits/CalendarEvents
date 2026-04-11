@@ -4,13 +4,13 @@
              x:Class="CalendarEvents.PageSettings"
              SafeAreaEdges="All">
 
-    <NavigationPage.TitleView>
+    <Shell.TitleView>
         <Label
             x:Name="lblTitle"
             Style="{StaticResource labelStyleTitleView}"
             Text="{Translate Settings_Text}">
         </Label>
-    </NavigationPage.TitleView>
+    </Shell.TitleView>
 
     <Grid
         RowDefinitions="Auto, *, Auto"

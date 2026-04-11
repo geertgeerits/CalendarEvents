@@ -7,7 +7,7 @@
              Appearing="OnPageAppearing"
              Disappearing="OnPageDisappearing">
 
-    <NavigationPage.TitleView>
+    <Shell.TitleView>
         <Grid 
             x:Name="grdTitleView"
             RowDefinitions="Auto"
@@ -58,7 +58,7 @@
                 Clicked="OnPageSettingsClicked">
             </ImageButton>
         </Grid>
-    </NavigationPage.TitleView>
+    </Shell.TitleView>
 
     <ScrollView>
         <StackLayout>

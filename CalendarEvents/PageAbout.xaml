@@ -5,13 +5,13 @@
              x:Class="CalendarEvents.PageAbout"
              SafeAreaEdges="All">
 
-    <NavigationPage.TitleView>
+    <Shell.TitleView>
         <Label
             x:Name="lblTitle"
             Style="{StaticResource labelStyleTitleView}"
             Text="{Translate Info_Text}">
         </Label>
-    </NavigationPage.TitleView>
+    </Shell.TitleView>
        
     <ScrollView>
         <VerticalStackLayout>
