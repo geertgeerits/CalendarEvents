@@ -2,7 +2,7 @@
  * Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
  * Copyright ...: (C) 2023-2026
  * Version .....: 1.0.11
- * Date ........: 2026-04-11 (YYYY-MM-DD)
+ * Date ........: 2026-04-12 (YYYY-MM-DD)
  * Language ....: Microsoft Visual Studio 2026: .NET 10.0 MAUI C# 14.0
  * Description .: Read calendar events to share
  * Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 4.0.0; https://github.com/jfversluis/Plugin.Maui.CalendarStore
@@ -37,9 +37,6 @@ namespace CalendarEvents
                 return;
             }
 #if WINDOWS
-            //// !!!BUG!!! in Windows: Set the width for the 2e colomn of the grid because 'GridUnitType.Star' does not work in Windows if using the 'NavigationPage.TitleView'
-            grdTitleView.ColumnDefinitions[1].Width = new GridLength(725);
-
             //// Set the margins for the controls in the title bar for Windows
             imgbtnAbout.Margin = new Thickness(20, 0, 0, 0);
             lblTitle.Margin = new Thickness(20, 10, 0, 0);
