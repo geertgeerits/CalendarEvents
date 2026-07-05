@@ -2,7 +2,7 @@
  * Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
  * Copyright ...: (C) 2023-2026
  * Version .....: 1.0.11
- * Date ........: 2026-04-12 (YYYY-MM-DD)
+ * Date ........: 2026-07-05 (YYYY-MM-DD)
  * Language ....: Microsoft Visual Studio 2026: .NET 10.0 MAUI C# 14.0
  * Description .: Read calendar events to share
  * Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 4.0.0; https://github.com/jfversluis/Plugin.Maui.CalendarStore
@@ -14,7 +14,7 @@ namespace CalendarEvents
 {
     public sealed partial class MainPage : ContentPage
     {
-        //// Local variables
+        // Local variables
         private string cCopyright = "";
         private string cLicenseText = "";
         private string cCalendarId = "";
@@ -25,6 +25,20 @@ namespace CalendarEvents
 
         public MainPage()
         {
+#if ANDROID
+            // !!!BUG!!! On some Android versions the software keyboard covers the UI when it is opened and the editor is focused
+            // Workaround: set WindowSoftInputModeAdjust.Resize in MainActivity and here in the constructor of the MainPage
+            // Setting WindowSoftInputModeAdjust.Resize on app start (without it - soft keyboard covers UI)
+            // https://github.com/dotnet/maui/issues/33922#issuecomment-4338782788
+            Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific.Application.SetWindowSoftInputModeAdjust(
+                App.Current,
+                Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific.WindowSoftInputModeAdjust.Resize
+            );
+
+            // MainActivity set ConfigChanges.Density, without it on some android versions still software keyboard covers UI
+            //Android.Views.SoftInput WindowSoftInputMode = Android.Views.SoftInput.AdjustNothing;
+            // On ContentPage "SafeAreaEdges" = "All"
+#endif
             try
             {
                 InitializeComponent();
@@ -37,23 +51,23 @@ namespace CalendarEvents
                 return;
             }
 #if WINDOWS
-            //// Set the margins for the controls in the title bar for Windows
+            // Set the margins for the controls in the title bar for Windows
             imgbtnAbout.Margin = new Thickness(20, 0, 0, 0);
             lblTitle.Margin = new Thickness(20, 10, 0, 0);
             lblNumberOfEvents.Margin = new Thickness(9, 15, 0, 0);
             lblTextToSpeech.Margin = new Thickness(0, 15, 0, 0);
 #endif
 #if IOS
-            //// Set the scale of the activity indicator for iOS
+            // Set the scale of the activity indicator for iOS
             activityIndicator.Scale = 2;
 #endif
-            //// Select all the text in the entry field - works for all pages in the app
+            // Select all the text in the entry field - works for all pages in the app
             Globals.ModifyEntrySelectAllText();
 
-            //// Initialize the number format settings based on the current culture
+            // Initialize the number format settings based on the current culture
             ClassEntryMethods.InitializeNumberFormat();
 
-            //// Get the saved settings
+            // Get the saved settings
             Globals.cTheme = Preferences.Default.Get("SettingTheme", "System");
             Globals.cDateFormatSelect = Preferences.Default.Get("SettingDateFormatSelect", "SystemLong");
             Globals.cAddDaysToStart = Preferences.Default.Get("SettingAddDaysToStart", "0");
@@ -63,7 +77,7 @@ namespace CalendarEvents
             Globals.cLanguageSpeech = Preferences.Default.Get("SettingLanguageSpeech", "");
             Globals.bLicense = Preferences.Default.Get("SettingLicense", false);
 
-            //// The height of the title bar is lower when an iPhone is in horizontal position
+            // The height of the title bar is lower when an iPhone is in horizontal position
             if (DeviceInfo.Platform == DevicePlatform.iOS && DeviceInfo.Idiom == DeviceIdiom.Phone)
             {
                 imgbtnAbout.VerticalOptions = LayoutOptions.Start;
@@ -72,11 +86,11 @@ namespace CalendarEvents
                 imgbtnSettings.VerticalOptions = LayoutOptions.Start;
             }
 
-            //// Set the theme and the number color
+            // Set the theme and the number color
             Globals.SetTheme();
             ClassEntryMethods.SetNumberColor();
 
-            //// Get the system date and time format and set the date and time format       
+            // Get the system date and time format and set the date and time format       
             switch (Globals.cDateFormatSelect)
             {
                 case "SystemShort":
@@ -96,13 +110,13 @@ namespace CalendarEvents
                     break;
             }
 
-            //// Set the date properties for the DatePickers
+            // Set the date properties for the DatePickers
             dtpDateStart.MinimumDate = new DateTime(1583, 1, 1);
             dtpDateStart.MaximumDate = new DateTime(3000, 1, 1);
             dtpDateEnd.MinimumDate = new DateTime(1583, 1, 1);
             dtpDateEnd.MaximumDate = new DateTime(3000, 1, 1);
 
-            //// Get and set the user interface language after a first start or reset of the application
+            // Get and set the user interface language after a first start or reset of the application
             try
             {
                 if (string.IsNullOrEmpty(Globals.cLanguage))
@@ -127,13 +141,13 @@ namespace CalendarEvents
                 Debug.WriteLine("MainPage - Globals.cLanguage: " + Globals.cLanguage);
             }
 
-            //// Set the text language
+            // Set the text language
             SetTextLanguage();
 
-            //// Initialize text to speech and get and set the speech language
+            // Initialize text to speech and get and set the speech language
             InitializeTextToSpeechAsync();
 
-            //// Get all the calendars from the device and put them in the picker
+            // Get all the calendars from the device and put them in the picker
             GetCalendars();
         }
 
@@ -177,7 +191,7 @@ namespace CalendarEvents
             Debug.WriteLine("MainPage - Globals.cLanguageSpeech: " + Globals.cLanguageSpeech);
         }
 
-        //// TitleView buttons clicked events
+        // TitleView buttons clicked events
         private async void OnPageAboutClicked(object sender, EventArgs e)
         {
             ClassSpeech.CancelTextToSpeech();

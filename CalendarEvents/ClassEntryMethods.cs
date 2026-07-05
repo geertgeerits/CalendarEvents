@@ -609,7 +609,7 @@
             int nDecimals = -1;
 
             // Find the ValidationTriggerActionDecimal attached to the Entry
-            var trigger = entry.Triggers
+            ValidationTriggerActionDecimal? trigger = entry.Triggers
                 .OfType<EventTrigger>()
                 .SelectMany(t => t.Actions)
                 .OfType<ValidationTriggerActionDecimal>()

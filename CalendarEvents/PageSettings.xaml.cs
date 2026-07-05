@@ -2,10 +2,10 @@
 {
     public sealed partial class PageSettings : ContentPage
     {
-        //// The currently focused Entry field
+        // The currently focused Entry field
         private Entry? _focusedEntry;
 
-        //// Local variables
+        // Local variables
         private readonly Stopwatch stopWatch = new();
 
         public PageSettings()
@@ -22,13 +22,13 @@
                 return;
             }
 #if WINDOWS
-            //// Set the margins for the controls in the title bar for Windows
+            // Set the margins for the controls in the title bar for Windows
             lblTitle.Margin = new Thickness(86, 18, 0, 0);
 #endif
-            //// Put text in the chosen language in the controls and variables
+            // Put text in the chosen language in the controls and variables
             SetLanguage();
         
-            //// Set the current language in the picker
+            // Set the current language in the picker
             pckLanguage.SelectedIndex = Globals.cLanguage switch
             {
                 "cs" => 0,      // Čeština - Czech
@@ -48,10 +48,10 @@
                 _ => 3,         // English
             };
 
-            //// Fill the picker with the speech languages and select the saved language in the picker
+            // Fill the picker with the speech languages and select the saved language in the picker
             ClassSpeech.FillPickerWithSpeechLanguages(pckLanguageSpeech);
 
-            //// Set the current theme in the picker
+            // Set the current theme in the picker
             pckTheme.SelectedIndex = Globals.cTheme switch
             {
                 "Light" => 1,       // Light
@@ -59,7 +59,7 @@
                 _ => 0,             // System
             };
 
-            //// Set radiobutton to the date format
+            // Set radiobutton to the date format
             switch (Globals.cDateFormatSelect)
             {
                 case "SystemShort":
@@ -73,11 +73,11 @@
                     break;
             }
 
-            //// Set the days in the past and in the future
+            // Set the days in the past and in the future
             entAddDaysToStart.Text = Globals.cAddDaysToStart;
             entAddDaysToEnd.Text = Globals.cAddDaysToEnd;
 
-            //// Put the calendars from the calendarDictionary via the calendarList in the picker
+            // Put the calendars from the calendarDictionary via the calendarList in the picker
             List<string> calendarList = [.. Globals.calendarDictionary.Values];
 
             pckCalendars.ItemsSource = calendarList;
@@ -92,7 +92,7 @@
                 pckCalendars.SelectedIndex = Globals.nSelectedCalendar;
             }
 
-            //// Start the stopWatch for resetting all the settings
+            // Start the stopWatch for resetting all the settings
             stopWatch.Start();
         }
 
@@ -105,7 +105,7 @@
         {
             string cLanguageOld = Globals.cLanguage;
 
-            var picker = (Picker)sender;
+            Picker picker = (Picker)sender;
             int selectedIndex = picker.SelectedIndex;
 
             if (selectedIndex != -1)
@@ -163,7 +163,7 @@
         /// <param name="e"></param>
         private void OnPickerThemeChanged(object sender, EventArgs e)
         {
-            var picker = (Picker)sender;
+            Picker picker = (Picker)sender;
             int selectedIndex = picker.SelectedIndex;
 
             if (selectedIndex != -1)
@@ -185,12 +185,12 @@
         /// </summary>
         private void SetLanguage()
         {
-            var ThemeList = new List<string>
-            {
+            List<string> ThemeList =
+            [
                 CalEventLang.System_Text,
                 CalEventLang.Light_Text,
                 CalEventLang.Dark_Text
-            };
+            ];
             pckTheme.ItemsSource = ThemeList;
 
             // Set the current theme in the picker
@@ -237,7 +237,7 @@
         /// </summary>
         /// <param name="sender">The source of the event, typically the Entry control that has gained focus.</param>
         /// <param name="e">A FocusEventArgs object that contains the event data.</param>
-        private void entAddDays_Focused(object sender, FocusEventArgs e)
+        private void EntAddDays_Focused(object sender, FocusEventArgs e)
         {
             if (sender is Entry entry)
             {

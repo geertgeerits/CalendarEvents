@@ -191,7 +191,7 @@
                         Text="1"
                         Placeholder="-500 - 500"
                         MaxLength="4"
-                        Focused="entAddDays_Focused"
+                        Focused="EntAddDays_Focused"
                         Completed="VerifyAddDaysToStart">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
@@ -230,7 +230,7 @@
                         Text="32"
                         Placeholder="-500 - 500"
                         MaxLength="4"
-                        Focused="entAddDays_Focused"
+                        Focused="EntAddDays_Focused"
                         Completed="VerifyAddDaysToEnd">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">

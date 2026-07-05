@@ -1,9 +1,9 @@
 ﻿namespace CalendarEvents
 {
-    //// Global variables and methods
+    // Global variables and methods
     internal static class Globals
     {
-        //// Global variables
+        // Global variables
         public static string cTheme = "";
         public static string cDateFormatSelect = "";
         public static string cDateFormatDatePicker = "";
@@ -22,7 +22,7 @@
         public static Dictionary<string, string> calendarDictionary = [];
         public static bool bLicense;
 
-        //// Global methods
+        // Global methods
 
         /// <summary>
         /// Set the theme 
