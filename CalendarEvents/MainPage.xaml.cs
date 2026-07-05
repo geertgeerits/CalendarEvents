@@ -364,11 +364,13 @@ namespace CalendarEvents
 
             // Get calendar events. !!!BUG!!!? activityIndicator is only working after adding a Task.Delay()
             activityIndicator.IsRunning = true;
+            activityIndicator.IsVisible = true;
             await Task.Delay(200);
 
             await LoadEventsAsync();
 
             activityIndicator.IsRunning = false;
+            activityIndicator.IsVisible = false;
         }
 
         /// <summary>

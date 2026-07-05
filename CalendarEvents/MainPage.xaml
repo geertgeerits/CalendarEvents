@@ -41,7 +41,8 @@
                 VerticalOptions="Center"
                 HorizontalOptions="Center"
                 Color="#1186f8"
-                IsRunning="False">
+                IsRunning="False"
+                IsVisible="False">
             </ActivityIndicator>
 
             <ImageButton
