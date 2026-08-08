@@ -125,7 +125,7 @@
 	<PropertyGroup Condition="'$(TargetFramework)'=='net10.0-ios'">
 		<ProvisioningType>automatic</ProvisioningType>
 		<CodesignKey>Apple Development: Created via API (KL96X68Q72)</CodesignKey>
-		<CodesignProvision>VS: com.geertgeerits.calendarevents Development</CodesignProvision>
+		<CodesignProvision></CodesignProvision>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="$(TargetFramework.Contains('-ios')) and '$(Configuration)' == 'Release'">
