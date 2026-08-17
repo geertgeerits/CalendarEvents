@@ -2,7 +2,7 @@
  * Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
  * Copyright ...: (C) 2023-2026
  * Version .....: 1.0.11
- * Date ........: 2026-08-16 (YYYY-MM-DD)
+ * Date ........: 2026-08-17 (YYYY-MM-DD)
  * Language ....: Microsoft Visual Studio 2026: .NET 10.0 MAUI C# 14.0
  * Description .: Read calendar events to share
  * Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 4.0.0; https://github.com/jfversluis/Plugin.Maui.CalendarStore
@@ -616,7 +616,7 @@ namespace CalendarEvents
             dtpDateEnd.Date = DateTime.Today.Date.AddDays(Convert.ToInt32(Globals.cAddDaysToEnd));
 
             // Set the language ISO code of the text to speech in the label
-            lblTextToSpeech.Text = GetIsoLanguageCode();
+            lblTextToSpeech.Text = ClassSpeech.GetIsoLanguageSpeechCode();
 
             // Set the selected calendar in the picker
             try
@@ -686,23 +686,6 @@ namespace CalendarEvents
 
             // Convert the text to speech
             _ = ClassSpeech.ConvertTextToSpeechAsync(imgbtnTextToSpeech, lblCalendarEvents.Text);
-        }
-
-        /// <summary>
-        /// Get ISO language (and country) code from locales 
-        /// </summary>
-        /// <returns></returns>
-        private static string GetIsoLanguageCode()
-        {
-            // Split before first space and remove last character '-' if there
-            string cLanguageIso = Globals.cLanguageSpeech.Split(' ').First();
-
-            if (cLanguageIso.EndsWith('-'))
-            {
-                cLanguageIso = cLanguageIso[..^1];
-            }
-
-            return cLanguageIso;
         }
     }
 }
