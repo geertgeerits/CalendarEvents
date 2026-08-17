@@ -178,7 +178,7 @@ namespace CalendarEvents
             {
                 lblTextToSpeech.IsVisible = true;
                 imgbtnTextToSpeech.IsVisible = true;
-                lblTextToSpeech.Text = GetIsoLanguageCode();
+                lblTextToSpeech.Text = ClassSpeech.GetIsoLanguageSpeechCode();
 
                 // Search the selected language in the cLanguageLocales array
                 ClassSpeech.SearchArrayWithSpeechLanguages(Globals.cLanguageSpeech);
