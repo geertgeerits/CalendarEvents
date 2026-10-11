@@ -1,8 +1,8 @@
 ﻿/* Program .....: CalendarEvents.sln
  * Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
  * Copyright ...: (C) 2023-2026
- * Version .....: 1.0.12
- * Date ........: 2026-08-18 (YYYY-MM-DD)
+ * Version .....: 1.0.13
+ * Date ........: 2026-10-11 (YYYY-MM-DD)
  * Language ....: Microsoft Visual Studio 2026: .NET 10.0 MAUI C# 14.0
  * Description .: Read calendar events to share
  * Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 4.0.0; https://github.com/jfversluis/Plugin.Maui.CalendarStore
@@ -15,9 +15,9 @@ namespace CalendarEvents
     public sealed partial class MainPage : ContentPage
     {
         // Local variables
-        private string cCopyright = "";
-        private string cLicenseText = "";
-        private string cCalendarId = "";
+        private string cCopyright = string.Empty;
+        private string cLicenseText = string.Empty;
+        private string cCalendarId = string.Empty;
         private int nCalendarSelected;
         private int nNumberOfEvents;
         private readonly string cDicKeyAllCalendars = "000-AllCalendars-gg51";
@@ -50,13 +50,6 @@ namespace CalendarEvents
 #endif
                 return;
             }
-#if WINDOWS
-            // Set the margins for the controls in the title bar for Windows
-            imgbtnAbout.Margin = new Thickness(20, 0, 0, 0);
-            lblTitle.Margin = new Thickness(20, 10, 0, 0);
-            lblNumberOfEvents.Margin = new Thickness(9, 15, 0, 0);
-            lblTextToSpeech.Margin = new Thickness(0, 15, 0, 0);
-#endif
 #if IOS
             // Set the scale of the activity indicator for iOS
             activityIndicator.Scale = 2;
@@ -73,8 +66,8 @@ namespace CalendarEvents
             Globals.cAddDaysToStart = Preferences.Default.Get("SettingAddDaysToStart", "0");
             Globals.cAddDaysToEnd = Preferences.Default.Get("SettingAddDaysToEnd", "31");
             Globals.nSelectedCalendar = Preferences.Default.Get("SettingSelectedCalendar", 0);
-            Globals.cLanguage = Preferences.Default.Get("SettingLanguage", "");
-            Globals.cLanguageSpeech = Preferences.Default.Get("SettingLanguageSpeech", "");
+            Globals.cLanguage = Preferences.Default.Get("SettingLanguage", string.Empty);
+            Globals.cLanguageSpeech = Preferences.Default.Get("SettingLanguageSpeech", string.Empty);
             Globals.bLicense = Preferences.Default.Get("SettingLicense", false);
 
             // The height of the title bar is lower when an iPhone is in horizontal position
@@ -213,8 +206,8 @@ namespace CalendarEvents
         {
             ClassSpeech.CancelTextToSpeech();
 
-            lblNumberOfEvents.Text = "";
-            lblCalendarEvents.Text = "";
+            lblNumberOfEvents.Text = string.Empty;
+            lblCalendarEvents.Text = string.Empty;
 
             int nSelectedIndex = pckCalendars.SelectedIndex;
         
@@ -266,7 +259,7 @@ namespace CalendarEvents
                     pckCalendars.IsEnabled = false;
                     btnGetEvents.IsEnabled = false;
 
-                    await DisplayAlertAsync("", CalEventLang.MessageNoCalendars_Text, CalEventLang.ButtonClose_Text);
+                    await DisplayAlertAsync(string.Empty, CalEventLang.MessageNoCalendars_Text, CalEventLang.ButtonClose_Text);
                     Globals.calendarDictionary.Add(cDicKeyAllCalendars, CalEventLang.AllCalendars_Text);
                     return;
                 }
@@ -359,8 +352,8 @@ namespace CalendarEvents
             ClassSpeech.CancelTextToSpeech();
 
             // Clear the calendar events
-            lblNumberOfEvents.Text = "";
-            lblCalendarEvents.Text = "";
+            lblNumberOfEvents.Text = string.Empty;
+            lblCalendarEvents.Text = string.Empty;
 
             // Get calendar events. !!!BUG!!!? activityIndicator is only working after adding a Task.Delay()
             activityIndicator.IsRunning = true;
@@ -392,6 +385,7 @@ namespace CalendarEvents
                         endDate: dtpDateEnd.Date!.Value.AddDays(1)
                     );
                 }
+                
                 // One calendar
                 else
                 {
@@ -402,27 +396,44 @@ namespace CalendarEvents
                     );
                 }
 
-                if (entSearchWord.Text is null or "")
+                // No search word
+                if (string.IsNullOrEmpty(entSearchWord.Text))
                 {
                     foreach (CalendarEvent ev in events)
                     {
-                        lCalendarEvents.Add($"{ev.StartDate.ToString(format: $"{Globals.cDateFormat}  {Globals.cTimeFormat}")}   {ev.Title}\n\n");
+                        if (ev.StartDate.Date == ev.EndDate.Date)
+                        {
+                            lCalendarEvents.Add($"{ev.StartDate.ToString(format: $"{Globals.cDateFormat}  {Globals.cTimeFormat}")} - {ev.EndDate.ToString(format: $"{Globals.cTimeFormat}")}   {ev.Title}\n\n");
+                        }
+                        else
+                        {
+                            lCalendarEvents.Add($"{ev.StartDate.ToString(format: $"{Globals.cDateFormat}  {Globals.cTimeFormat}")} - {ev.EndDate.ToString(format: $"{Globals.cDateFormat}  {Globals.cTimeFormat}")}   {ev.Title}\n\n");
+                        }
                     }
                 }
+
+                // With search word
                 else
                 {
                     string cSearchWord = entSearchWord.Text.ToLowerInvariant().Trim();
 
                     foreach (CalendarEvent ev in events)
                     {
-                        if (ev.Title is null or "")
+                        if (string.IsNullOrEmpty(ev.Title))
                         {
                             continue;
                         }
 
                         if (ev.Title.Contains(cSearchWord, StringComparison.InvariantCultureIgnoreCase))
                         {
-                            lCalendarEvents.Add($"{ev.StartDate.ToString(format: $"{Globals.cDateFormat}  {Globals.cTimeFormat}")}   {ev.Title}\n\n");
+                            if (ev.StartDate.Date == ev.EndDate.Date)
+                            {
+                                lCalendarEvents.Add($"{ev.StartDate.ToString(format: $"{Globals.cDateFormat}  {Globals.cTimeFormat}")} - {ev.EndDate.ToString(format: $"{Globals.cTimeFormat}")}   {ev.Title}\n\n");
+                            }
+                            else
+                            {
+                                lCalendarEvents.Add($"{ev.StartDate.ToString(format: $"{Globals.cDateFormat}  {Globals.cTimeFormat}")} - {ev.EndDate.ToString(format: $"{Globals.cDateFormat}  {Globals.cTimeFormat}")}   {ev.Title}\n\n");
+                            }
                         }
                     }
                 }
@@ -431,6 +442,7 @@ namespace CalendarEvents
                 {
                     lblCalendarEvents.Text = CalEventLang.MessageNoEvents_Text;
                 }
+                
                 else
                 {
                     // Remove duplicates
@@ -477,8 +489,8 @@ namespace CalendarEvents
         {
             ClassSpeech.CancelTextToSpeech();
 
-            lblNumberOfEvents.Text = "";
-            lblCalendarEvents.Text = "";
+            lblNumberOfEvents.Text = string.Empty;
+            lblCalendarEvents.Text = string.Empty;
 
             _ = entSearchWord.Focus();
         }
@@ -490,7 +502,7 @@ namespace CalendarEvents
         /// <param name="e"></param>
         private async void OnClipboardButtonClicked(object sender, EventArgs e)
         {
-            if (lblCalendarEvents.Text is not null and not "")
+            if (!string.IsNullOrEmpty(lblCalendarEvents.Text))
             {
                 await Clipboard.Default.SetTextAsync(lblCalendarEvents.Text);
             }
@@ -503,7 +515,7 @@ namespace CalendarEvents
         /// <param name="e"></param>
         private async void OnButtonShareClicked(object sender, EventArgs e)
         {
-            if (lblCalendarEvents.Text is not null and not "")
+            if (!string.IsNullOrEmpty(lblCalendarEvents.Text))
             {
                 await ShareTextAsync(lblCalendarEvents.Text);
             }
@@ -662,7 +674,7 @@ namespace CalendarEvents
                 return status;
 
             // !!!BUG!!! in Android?: does not works without the DisplayAlert
-            await DisplayAlertAsync("", CalEventLang.CalendarPermission_Text, CalEventLang.ButtonClose_Text);
+            await DisplayAlertAsync(string.Empty, CalEventLang.CalendarPermission_Text, CalEventLang.ButtonClose_Text);
 
             status = await Permissions.RequestAsync<Permissions.CalendarRead>();
             //await DisplayAlertAsync("CheckAndRequestCalendarRead", status.ToString(), "OK");  // For testing

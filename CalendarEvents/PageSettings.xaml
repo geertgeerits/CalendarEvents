@@ -8,6 +8,7 @@
         <Label
             x:Name="lblTitle"
             Style="{StaticResource labelStyleTitleView}"
+            Margin="{OnPlatform Default='0,0,0,0', WinUI='86,18,0,0'}"
             Text="{Translate Settings_Text}">
         </Label>
     </Shell.TitleView>
