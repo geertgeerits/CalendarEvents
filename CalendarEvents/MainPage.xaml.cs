@@ -397,7 +397,7 @@ namespace CalendarEvents
                 }
 
                 // Declare variables for the end date and time of the calendar event
-                DateTime dEndDate = DateTime.MinValue;
+                DateTimeOffset dEndDate = DateTimeOffset.MinValue;
 
                 // No search word
                 if (string.IsNullOrEmpty(entSearchWord.Text))
@@ -405,19 +405,10 @@ namespace CalendarEvents
                     foreach (CalendarEvent ev in events)
                     {
                         // Get the end date and time of the calendar event
-                        dEndDate = DateTime.ParseExact(AdjustEndForAllDay(ev).ToString(format: $"{Globals.cDateFormat}  {Globals.cTimeFormat}"), $"{Globals.cDateFormat}  {Globals.cTimeFormat}", CultureInfo.InvariantCulture);
+                        dEndDate = AdjustEndForAllDay(ev);
 
-                        // If the start date and end date are the same, format the event differently
-                        if (ev.StartDate.Date == dEndDate.Date)
-                        {
-                            lCalendarEvents.Add($"{ev.StartDate.ToString(format: $"{Globals.cDateFormat}  {Globals.cTimeFormat}")} - {dEndDate.ToString(format: $"{Globals.cTimeFormat}")}   {ev.Title}\n\n");
-                        }
-                        
-                        // If the start date and end date are different, format the event differently
-                        else
-                        {
-                            lCalendarEvents.Add($"{ev.StartDate.ToString(format: $"{Globals.cDateFormat}  {Globals.cTimeFormat}")} - {dEndDate.ToString(format: $"{Globals.cDateFormat}  {Globals.cTimeFormat}")}   {ev.Title}\n\n");
-                        }
+                        // Format the calendar event and add it to the list of events
+                        FormatEvents(lCalendarEvents, ev, dEndDate);
                     }
                 }
 
@@ -429,7 +420,7 @@ namespace CalendarEvents
                     foreach (CalendarEvent ev in events)
                     {
                         // Get the end date and time of the calendar event
-                        dEndDate = DateTime.ParseExact(AdjustEndForAllDay(ev).ToString(format: $"{Globals.cDateFormat}  {Globals.cTimeFormat}"), $"{Globals.cDateFormat}  {Globals.cTimeFormat}", CultureInfo.InvariantCulture);
+                        dEndDate = AdjustEndForAllDay(ev);
 
                         // If the title is null or empty, skip this event
                         if (string.IsNullOrEmpty(ev.Title))
@@ -440,21 +431,13 @@ namespace CalendarEvents
                         // If the title contains the search word, add the event to the list of events
                         if (ev.Title.Contains(cSearchWord, StringComparison.InvariantCultureIgnoreCase))
                         {
-                            // If the start date and end date are the same, format the event differently
-                            if (ev.StartDate.Date == dEndDate.Date)
-                            {
-                                lCalendarEvents.Add($"{ev.StartDate.ToString(format: $"{Globals.cDateFormat}  {Globals.cTimeFormat}")} - {dEndDate.ToString(format: $"{Globals.cTimeFormat}")}   {ev.Title}\n\n");
-                            }
-                            
-                            // If the start date and end date are different, format the event differently
-                            else
-                            {
-                                lCalendarEvents.Add($"{ev.StartDate.ToString(format: $"{Globals.cDateFormat}  {Globals.cTimeFormat}")} - {dEndDate.ToString(format: $"{Globals.cDateFormat}  {Globals.cTimeFormat}")}   {ev.Title}\n\n");
-                            }
+                            // Format the calendar event and add it to the list of events
+                            FormatEvents(lCalendarEvents, ev, dEndDate);
                         }
                     }
                 }
 
+                // If there are no events, show a message
                 if (lCalendarEvents.Count == 0)
                 {
                     lblCalendarEvents.Text = CalEventLang.MessageNoEvents_Text;
@@ -494,6 +477,33 @@ namespace CalendarEvents
             catch (Exception ex)
             {
                 await DisplayAlertAsync(CalEventLang.ErrorTitle_Text, $"{CalEventLang.ErrorCalendar_Text}\n\n{ex.Message}", CalEventLang.ButtonClose_Text);
+            }
+        }
+
+        /// <summary>
+        /// Format the calendar events and add them to the list of events
+        /// </summary>
+        /// <param name="lCalendarEvents"></param>
+        /// <param name="ev"></param>
+        /// <param name="dEndDate"></param>
+        private void FormatEvents(List<string> lCalendarEvents, CalendarEvent ev, DateTimeOffset dEndDate)
+        {
+            // If an all-day event and the start date is the same as the end date minus one day, format the event differently
+            if (ev.IsAllDay && ev.StartDate == ev.EndDate.AddDays(-1))
+            {
+                lCalendarEvents.Add($"{ev.StartDate.ToString(format: $"{Globals.cDateFormat}")}   {ev.Title}\n\n");
+            }
+
+            // If the start date and end date are the same, format the event differently
+            else if (ev.StartDate.Date == dEndDate.Date)
+            {
+                lCalendarEvents.Add($"{ev.StartDate.ToString(format: $"{Globals.cDateFormat}  {Globals.cTimeFormat}")} - {dEndDate.ToString(format: $"{Globals.cTimeFormat}")}   {ev.Title}\n\n");
+            }
+
+            // If the start date and end date are different, format the event differently
+            else
+            {
+                lCalendarEvents.Add($"{ev.StartDate.ToString(format: $"{Globals.cDateFormat}  {Globals.cTimeFormat}")} - {dEndDate.ToString(format: $"{Globals.cDateFormat}  {Globals.cTimeFormat}")}   {ev.Title}\n\n");
             }
         }
 
