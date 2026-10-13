@@ -488,12 +488,31 @@ namespace CalendarEvents
         /// <param name="dEndDate"></param>
         private static void FormatEvents(List<string> lCalendarEvents, CalendarEvent ev, DateTimeOffset dEndDate)
         {
-            // If an all-day event and the start date is the same as the end date minus one day, format the event differently
+            //Debug.WriteLine("ev.StartDate: " + ev.StartDate.ToString(format: $"{Globals.cDateFormat}  {Globals.cTimeFormat}"));
+            //Debug.WriteLine("ev.EndDate: " + ev.EndDate.ToString(format: $"{Globals.cDateFormat}  {Globals.cTimeFormat}"));
+            //Debug.WriteLine("ev.IsAllDay: " + ev.IsAllDay.ToString());
+
+            // If one all-day event, format the event differently
+#if IOS
+            // iOS
+            // ev.StartDate: Wednesday, November 11, 2026  12:00 AM
+            // ev.EndDate: Wednesday, November 11, 2026  11:59 PM
+            // ev.IsAllDay: True
+
+            if (ev.IsAllDay && ev.StartDate.Date == ev.EndDate.Date)
+            {
+                lCalendarEvents.Add($"{ev.StartDate.ToString(format: $"{Globals.cDateFormat}")}   {ev.Title}\n\n");
+            }
+#else
+            // Android and Windows
+            // ev.StartDate: Wednesday, 11 November 2026  00:00
+            // ev.EndDate: Thursday, 12 November 2026  00:00
+            // ev.IsAllDay: True
             if (ev.IsAllDay && ev.StartDate == ev.EndDate.AddDays(-1))
             {
                 lCalendarEvents.Add($"{ev.StartDate.ToString(format: $"{Globals.cDateFormat}")}   {ev.Title}\n\n");
             }
-
+#endif
             // If the start date and end date are the same, format the event differently
             else if (ev.StartDate.Date == dEndDate.Date)
             {
