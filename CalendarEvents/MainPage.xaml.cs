@@ -2,7 +2,7 @@
  * Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
  * Copyright ...: (C) 2023-2026
  * Version .....: 1.0.13
- * Date ........: 2026-10-12 (YYYY-MM-DD)
+ * Date ........: 2026-10-13 (YYYY-MM-DD)
  * Language ....: Microsoft Visual Studio 2026: .NET 10.0 MAUI C# 14.0
  * Description .: Read calendar events to share
  * Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 4.0.0; https://github.com/jfversluis/Plugin.Maui.CalendarStore
@@ -445,8 +445,8 @@ namespace CalendarEvents
                 
                 else
                 {
-                    // Remove duplicates
-                    List<string> lCalendarEventsNoDupes = [.. lCalendarEvents.Distinct()];
+                    // Remove duplicates (case-insensitive)
+                    List<string> lCalendarEventsNoDupes = [.. lCalendarEvents.Distinct(StringComparer.OrdinalIgnoreCase)];
 
                     // Put the events in the label
                     foreach (string cItem in lCalendarEventsNoDupes)
@@ -486,7 +486,7 @@ namespace CalendarEvents
         /// <param name="lCalendarEvents"></param>
         /// <param name="ev"></param>
         /// <param name="dEndDate"></param>
-        private void FormatEvents(List<string> lCalendarEvents, CalendarEvent ev, DateTimeOffset dEndDate)
+        private static void FormatEvents(List<string> lCalendarEvents, CalendarEvent ev, DateTimeOffset dEndDate)
         {
             // If an all-day event and the start date is the same as the end date minus one day, format the event differently
             if (ev.IsAllDay && ev.StartDate == ev.EndDate.AddDays(-1))
@@ -512,7 +512,7 @@ namespace CalendarEvents
         /// Some platforms return an all-day event EndDate as the start of the next day.
         /// These overloads provide convenient signatures in case the call sites use different argument forms.
         /// </summary>
-        private DateTimeOffset AdjustEndForAllDay(CalendarEvent ev)
+        private static DateTimeOffset AdjustEndForAllDay(CalendarEvent ev)
         {
             if (ev is null)
             {
@@ -523,7 +523,7 @@ namespace CalendarEvents
             return AdjustEndForAllDay(ev.EndDate, ev.IsAllDay);
         }
 
-        private DateTimeOffset AdjustEndForAllDay(DateTimeOffset end, bool isAllDay)
+        private static DateTimeOffset AdjustEndForAllDay(DateTimeOffset end, bool isAllDay)
         {
             if (!isAllDay)
             {
@@ -535,11 +535,11 @@ namespace CalendarEvents
             return end.AddDays(-1);
         }
 
-        private DateTimeOffset AdjustEndForAllDay(DateTimeOffset start, DateTimeOffset end, bool isAllDay)
-        {
-            // Keep signature compatibility if callers pass start and end.
-            return AdjustEndForAllDay(end, isAllDay);
-        }
+        //private static DateTimeOffset AdjustEndForAllDay(DateTimeOffset start, DateTimeOffset end, bool isAllDay)
+        //{
+        //    // Keep signature compatibility if callers pass start and end.
+        //    return AdjustEndForAllDay(end, isAllDay);
+        //}
 
         /// <summary>
         /// Clear the calendar events 
