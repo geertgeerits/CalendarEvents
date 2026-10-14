@@ -2,7 +2,7 @@
  * Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
  * Copyright ...: (C) 2023-2026
  * Version .....: 1.0.13
- * Date ........: 2026-10-13 (YYYY-MM-DD)
+ * Date ........: 2026-10-14 (YYYY-MM-DD)
  * Language ....: Microsoft Visual Studio 2026: .NET 10.0 MAUI C# 14.0
  * Description .: Read calendar events to share
  * Dependencies : NuGet Package: Plugin.Maui.CalendarStore version 4.0.0; https://github.com/jfversluis/Plugin.Maui.CalendarStore
@@ -404,6 +404,12 @@ namespace CalendarEvents
                 {
                     foreach (CalendarEvent ev in events)
                     {
+                        // If the title is null or empty, skip this event
+                        if (string.IsNullOrEmpty(ev.Title))
+                        {
+                            continue;
+                        }
+
                         // Get the end date and time of the calendar event
                         dEndDate = AdjustEndForAllDay(ev);
 
@@ -419,14 +425,14 @@ namespace CalendarEvents
 
                     foreach (CalendarEvent ev in events)
                     {
-                        // Get the end date and time of the calendar event
-                        dEndDate = AdjustEndForAllDay(ev);
-
                         // If the title is null or empty, skip this event
                         if (string.IsNullOrEmpty(ev.Title))
                         {
                             continue;
                         }
+
+                        // Get the end date and time of the calendar event
+                        dEndDate = AdjustEndForAllDay(ev);
 
                         // If the title contains the search word, add the event to the list of events
                         if (ev.Title.Contains(cSearchWord, StringComparison.InvariantCultureIgnoreCase))
@@ -492,34 +498,48 @@ namespace CalendarEvents
             //Debug.WriteLine("ev.EndDate: " + ev.EndDate.ToString(format: $"{Globals.cDateFormat}  {Globals.cTimeFormat}"));
             //Debug.WriteLine("ev.IsAllDay: " + ev.IsAllDay.ToString());
 
-            // If one all-day event, format the event differently
-#if IOS
-            // iOS
-            // ev.StartDate: Wednesday, November 11, 2026  12:00 AM
-            // ev.EndDate: Wednesday, November 11, 2026  11:59 PM
-            // ev.IsAllDay: True
+            /* One all-day event, format the event with only the start date and title
+               iOS
+                ev.StartDate: Wednesday, November 11, 2026  12:00 AM
+                ev.EndDate: Wednesday, November 11, 2026  11:59 PM
+                ev.IsAllDay: True
 
-            if (ev.IsAllDay && ev.StartDate.Date == ev.EndDate.Date)
+               Android and Windows
+                ev.StartDate: Wednesday, 11 November 2026  00:00
+                ev.EndDate: Thursday, 12 November 2026  00:00
+                ev.IsAllDay: True
+
+               Multiple all-day events, format the event with both the start date, end date and title
+               iOS
+                ev.StartDate: Tuesday, March 31, 2026  12:00 AM
+                ev.EndDate: Monday, May 11, 2026  11:59 PM
+                ev.IsAllDay: True
+
+               Android and Windows
+                ev.StartDate: Tuesday, 31 March 2026  00:00
+                ev.EndDate: Tuesday, 12 May 2026  00:00
+                ev.IsAllDay: True
+             */
+
+            // If one all-day event, format the event with only the start date and title
+            if (ev.IsAllDay && ev.StartDate.Date == dEndDate.Date)
             {
                 lCalendarEvents.Add($"{ev.StartDate.ToString(format: $"{Globals.cDateFormat}")}   {ev.Title}\n\n");
             }
-#else
-            // Android and Windows
-            // ev.StartDate: Wednesday, 11 November 2026  00:00
-            // ev.EndDate: Thursday, 12 November 2026  00:00
-            // ev.IsAllDay: True
-            if (ev.IsAllDay && ev.StartDate == ev.EndDate.AddDays(-1))
+
+            // If multiple all-day events, format the event with both the start date, end date and title
+            else if (ev.IsAllDay && ev.StartDate.Date != dEndDate.Date)
             {
-                lCalendarEvents.Add($"{ev.StartDate.ToString(format: $"{Globals.cDateFormat}")}   {ev.Title}\n\n");
+                lCalendarEvents.Add($"{ev.StartDate.ToString(format: $"{Globals.cDateFormat}")} - {dEndDate.ToString(format: $"{Globals.cDateFormat}")}   {ev.Title}\n\n");
             }
-#endif
-            // If the start date and end date are the same, format the event differently
+
+            // If the start date and end date are the same, format the event with both the start date-time, end time and title
             else if (ev.StartDate.Date == dEndDate.Date)
             {
                 lCalendarEvents.Add($"{ev.StartDate.ToString(format: $"{Globals.cDateFormat}  {Globals.cTimeFormat}")} - {dEndDate.ToString(format: $"{Globals.cTimeFormat}")}   {ev.Title}\n\n");
             }
 
-            // If the start date and end date are different, format the event differently
+            // If the start date and end date are different, format the event with both the start date-time, end date-time and title
             else
             {
                 lCalendarEvents.Add($"{ev.StartDate.ToString(format: $"{Globals.cDateFormat}  {Globals.cTimeFormat}")} - {dEndDate.ToString(format: $"{Globals.cDateFormat}  {Globals.cTimeFormat}")}   {ev.Title}\n\n");
@@ -551,7 +571,11 @@ namespace CalendarEvents
 
             // For all-day events the EndDate is frequently the next day's midnight.
             // Subtract one day so the end date represents the actual last included day.
+#if ANDROID || WINDOWS
             return end.AddDays(-1);
+#else
+            return end;
+#endif
         }
 
         //private static DateTimeOffset AdjustEndForAllDay(DateTimeOffset start, DateTimeOffset end, bool isAllDay)
